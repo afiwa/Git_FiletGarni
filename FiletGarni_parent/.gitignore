@@ -3,6 +3,7 @@ log/
 /target/
 target/
 */target/
+*/target
 
 *.classpath
 .classpath
