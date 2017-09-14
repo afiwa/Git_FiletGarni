@@ -2,7 +2,7 @@
 public class Bidon {
 
     private String pouet;
-    private in age;
+    private int age;
     public Bidon() {
         // TODO Auto-generated constructor stub
     }
@@ -21,13 +21,13 @@ public class Bidon {
     /**
      * @return the age
      */
-    public in getAge() {
+    public int getAge() {
         return age;
     }
     /**
      * @param paramAge the age to set
      */
-    public void setAge(in paramAge) {
+    public void setAge(int paramAge) {
         age = paramAge;
     }
     
