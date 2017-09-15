@@ -1,21 +1,20 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.util.List;
 
-/**
- * 
- */
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorColumn(name = "consommateur")
 public class Consommateur extends NonSalarie {
-
-    /**
-     * Default constructor
-     */
+  
+	private static final long serialVersionUID = 1L;
+	
+	@OneToMany(mappedBy = "consommateur")
+	private List<Commande> commandes;
+    
     public Consommateur() {
     }
-
-    /**
-     * 
-     */
-    private Set<Commande> commandes;
-
 }
