@@ -5,44 +5,45 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "ville")
 public class Ville implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_ville", nullable = false)
 	private Integer id;
-	
+
 	@Column(name="nom_ville", nullable = false, length = 50)
-    private String nom;
-	
-	// TODO ManytoOne
-	@Transient
+	private String nom;
+
+
+	@ManyToOne
+	@JoinColumn(name="id_codepostal_tville", nullable=true, foreignKey=@ForeignKey(name="FK_codepostal_tville"))
 	private CodePostal codePostal;
-	
+
 	@OneToMany(mappedBy = "ville")
-    private List<Adresse> adresses;
-	
-	// TODO ManytoOne
-	@Transient
-    private Livreur livreur;
-    
-    // TODO ManytoOne
-	@Transient
-    private TourneeTheorique tourneeTheorique;
-    
-    public Ville() {
-    }
+	private List<Adresse> adresses;
+
+	@ManyToOne
+	@JoinColumn(name="id_livreur_tville", nullable=true, foreignKey = @ForeignKey(name="FK_livreur_ville"))
+	private Livreur livreur;
+
+	@ManyToOne
+	@JoinColumn(name="id_tourneetheo_tville", nullable=true, foreignKey = @ForeignKey(name="FK_tourneetheo_ville"))
+	private TourneeTheorique tourneeTheorique;
+
 
 	public Integer getId() {
 		return id;
@@ -92,6 +93,9 @@ public class Ville implements Serializable{
 		tourneeTheorique = paramTourneeTheorique;
 	}
 
+	public Ville() {
+	}
+
 	public Ville(Integer paramId, String paramNom, CodePostal paramCodePostal, Livreur paramLivreur,
 			TourneeTheorique paramTourneeTheorique) {
 		super();
@@ -101,5 +105,5 @@ public class Ville implements Serializable{
 		livreur = paramLivreur;
 		tourneeTheorique = paramTourneeTheorique;
 	}
-       
+
 }
