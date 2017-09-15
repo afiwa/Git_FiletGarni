@@ -2,6 +2,8 @@
     <wb-module deploy-name="FiletGarni_Data_Impl">
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/" source-path="/src/test/resources"/>
         <property name="java-output-path" value="/FiletGarni_Data_Impl/target/classes"/>
     </wb-module>
 </project-modules>
