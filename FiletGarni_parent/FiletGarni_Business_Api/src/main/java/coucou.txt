@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-coucou lalala
-=======
-coucou lolo
->>>>>>> Antoine
