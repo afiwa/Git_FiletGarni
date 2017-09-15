@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -54,7 +55,7 @@ public class Commande implements Serializable {
 	@Column(name = "typepaiement_commande", nullable = true, length = 50)
     private TypePaiement typePaiement;
 	
-	// TODO OneToOne
+	@OneToOne
     private Evaluation evaluation;
 	
 	// TODO OneToMany
