@@ -52,7 +52,8 @@ public class Commande implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateRecuperationClient;
 	
-	@Column(name = "typepaiement_commande", nullable = true, length = 50)
+	@ManyToOne
+	@JoinColumn(name = "id_typepaiement_tcommande", nullable = true, foreignKey = @ForeignKey(name = "FK_typepaiement_tcommande"))
     private TypePaiement typePaiement;
 	
 	@OneToOne
