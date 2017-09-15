@@ -1,41 +1,93 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
-/**
- * 
- */
-public class Recette {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name = "recette")
+public class Recette implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_recette", nullable = false)
+	private Integer id;
+	
+	@Column(name="libelle_recette", nullable = false, length = 50)
+    private String libelle;
+	
+	@Column(name="descriptif_recette", nullable = false, length = 500)
+    private String descriptif;
+	
+	
+	// TODO OneToMany			
+    private List<CategorieRecette> categorieRecettes;
+    
+    @ManyToMany
+	@JoinTable(name = "produitRecette_recette", 
+				joinColumns = @JoinColumn(name = "id_recette", referencedColumnName = "id_recette"),
+				inverseJoinColumns = @JoinColumn(name = "id_produitrecette", referencedColumnName = "id_produitrecette"))
+    private List<produitRecette> produitRecettes;
+    
     public Recette() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String libelle;
+	public void setId(Integer paramId) {
+		id = paramId;
+	}
 
-    /**
-     * 
-     */
-    private String descriptif;
+	public String getLibelle() {
+		return libelle;
+	}
 
-    /**
-     * 
-     */
-    private Set<CategorieRecette> categorieRecettes;
+	public void setLibelle(String paramLibelle) {
+		libelle = paramLibelle;
+	}
 
-    /**
-     * 
-     */
-    private Set<produitRecette> produitRecettes;
+	public String getDescriptif() {
+		return descriptif;
+	}
 
+	public void setDescriptif(String paramDescriptif) {
+		descriptif = paramDescriptif;
+	}
+
+	public List<CategorieRecette> getCategorieRecettes() {
+		return categorieRecettes;
+	}
+
+	public void setCategorieRecettes(List<CategorieRecette> paramCategorieRecettes) {
+		categorieRecettes = paramCategorieRecettes;
+	}
+
+	public List<produitRecette> getProduitRecettes() {
+		return produitRecettes;
+	}
+
+	public void setProduitRecettes(List<produitRecette> paramProduitRecettes) {
+		produitRecettes = paramProduitRecettes;
+	}
+
+	public Recette(Integer paramId, String paramLibelle, String paramDescriptif) {
+		super();
+		id = paramId;
+		libelle = paramLibelle;
+		descriptif = paramDescriptif;
+	}    
 }

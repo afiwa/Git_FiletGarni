@@ -1,36 +1,75 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
-/**
- * 
- */
-public class produitRecette {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name = "produitrecette")
+public class produitRecette implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_produitrecette", nullable = false)
+	private Integer id;
+	
+	@Column(name="quantite_produitrecette", nullable = false)
+    private Double quantiteRecette;
+	
+	@OneToMany(mappedBy = "produitRecette")
+    private List<Produit> produits;
+    
+    @ManyToMany(mappedBy = "produitRecettes")
+    private List<Recette> recettes;
+    
     public produitRecette() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private Double quantiteRecette;
+	public void setId(Integer paramId) {
+		id = paramId;
+	}
 
-    /**
-     * 
-     */
-    private Set<Produit> produits;
+	public Double getQuantiteRecette() {
+		return quantiteRecette;
+	}
 
-    /**
-     * 
-     */
-    private Set<Recette> recettes;
+	public void setQuantiteRecette(Double paramQuantiteRecette) {
+		quantiteRecette = paramQuantiteRecette;
+	}
 
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> paramProduits) {
+		produits = paramProduits;
+	}
+
+	public List<Recette> getRecettes() {
+		return recettes;
+	}
+
+	public void setRecettes(List<Recette> paramRecettes) {
+		recettes = paramRecettes;
+	}
+
+	public produitRecette(Integer paramId, Double paramQuantiteRecette) {
+		super();
+		id = paramId;
+		quantiteRecette = paramQuantiteRecette;
+	}
 }

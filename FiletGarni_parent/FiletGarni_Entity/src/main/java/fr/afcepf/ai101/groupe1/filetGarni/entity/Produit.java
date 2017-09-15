@@ -1,76 +1,182 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
-/**
- * 
- */
-public class Produit {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name = "produit")
+public class Produit implements Serializable {
+   
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_produit", nullable = false)
+	private Integer id;
+	
+	@Column(name="photo_produit", nullable = true, length = 20)
+    private String photo;
+	
+	@Column(name="libelle_produit", nullable = false, length = 50)
+    private String libelle;
+	
+	@Column(name="prix_produit", nullable = false)
+    private Double prix;
+	
+	@Column(name="description_produit", nullable = false, length = 500)
+    private String description;
+	
+	@Column(name="quantitestock_produit", nullable = false)
+    private Integer quantiteEnStock;
+	
+	@Column(name="date_creation_produit", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date dateCreationProduit;
+	
+	// TODO OneToMany
+    private List<Conditionnement> conditionnements;
+    
+    // TODO ManyToOne
+    private CategorieProduit categorie;
+    
+    @OneToOne(mappedBy = "produit")
+    private LigneCommande lgnCommande;
+    
+    // TODO ManyToOne
+    private Producteur producteur;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_produitRecette_tproduit", nullable = true, foreignKey = @ForeignKey(name = "FK_produitrecette_tproduit"))
+    private produitRecette produitRecette;
+    
     public Produit() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String photo;
+	public void setId(Integer paramId) {
+		id = paramId;
+	}
 
-    /**
-     * 
-     */
-    private String libelle;
+	public String getPhoto() {
+		return photo;
+	}
 
-    /**
-     * 
-     */
-    private Double prix;
+	public void setPhoto(String paramPhoto) {
+		photo = paramPhoto;
+	}
 
-    /**
-     * 
-     */
-    private String description;
+	public String getLibelle() {
+		return libelle;
+	}
 
-    /**
-     * 
-     */
-    private Integer quantiteEnStock;
+	public void setLibelle(String paramLibelle) {
+		libelle = paramLibelle;
+	}
 
-    /**
-     * 
-     */
-    private java.util.Date dateCreationProduit;
+	public Double getPrix() {
+		return prix;
+	}
 
-    /**
-     * 
-     */
-    private Set<Conditionnement> conditionnements;
+	public void setPrix(Double paramPrix) {
+		prix = paramPrix;
+	}
 
-    /**
-     * 
-     */
-    private Set<CategorieProduit> produits;
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * 
-     */
-    private LigneCommande lgnCommande;
+	public void setDescription(String paramDescription) {
+		description = paramDescription;
+	}
 
-    /**
-     * 
-     */
-    private Producteur producteur;
+	public Integer getQuantiteEnStock() {
+		return quantiteEnStock;
+	}
 
-    /**
-     * 
-     */
-    private produitRecette produitRecette;
+	public void setQuantiteEnStock(Integer paramQuantiteEnStock) {
+		quantiteEnStock = paramQuantiteEnStock;
+	}
 
+	public java.util.Date getDateCreationProduit() {
+		return dateCreationProduit;
+	}
+
+	public void setDateCreationProduit(java.util.Date paramDateCreationProduit) {
+		dateCreationProduit = paramDateCreationProduit;
+	}
+
+	public List<Conditionnement> getConditionnements() {
+		return conditionnements;
+	}
+
+	public void setConditionnements(List<Conditionnement> paramConditionnements) {
+		conditionnements = paramConditionnements;
+	}
+
+	public CategorieProduit getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(CategorieProduit paramCategorie) {
+		categorie = paramCategorie;
+	}
+
+	public LigneCommande getLgnCommande() {
+		return lgnCommande;
+	}
+
+	public void setLgnCommande(LigneCommande paramLgnCommande) {
+		lgnCommande = paramLgnCommande;
+	}
+
+	public Producteur getProducteur() {
+		return producteur;
+	}
+
+	public void setProducteur(Producteur paramProducteur) {
+		producteur = paramProducteur;
+	}
+
+	public produitRecette getProduitRecette() {
+		return produitRecette;
+	}
+
+	public void setProduitRecette(produitRecette paramProduitRecette) {
+		produitRecette = paramProduitRecette;
+	}
+
+	public Produit(Integer paramId, String paramPhoto, String paramLibelle, Double paramPrix, String paramDescription,
+			Integer paramQuantiteEnStock, Date paramDateCreationProduit, CategorieProduit paramCategorie,
+			LigneCommande paramLgnCommande, Producteur paramProducteur,
+			fr.afcepf.ai101.groupe1.filetGarni.entity.produitRecette paramProduitRecette) {
+		super();
+		id = paramId;
+		photo = paramPhoto;
+		libelle = paramLibelle;
+		prix = paramPrix;
+		description = paramDescription;
+		quantiteEnStock = paramQuantiteEnStock;
+		dateCreationProduit = paramDateCreationProduit;
+		categorie = paramCategorie;
+		lgnCommande = paramLgnCommande;
+		producteur = paramProducteur;
+		produitRecette = paramProduitRecette;
+	}    
 }

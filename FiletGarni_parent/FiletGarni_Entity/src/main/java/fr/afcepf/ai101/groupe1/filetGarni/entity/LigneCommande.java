@@ -46,7 +46,7 @@ public class LigneCommande implements Serializable{
 				foreignKey = @ForeignKey(name = "FK_commande_tlignecommande"))
     private Commande commande;
     
-    // TODO OnetoOne
+    @OneToOne
     private Produit produit;
     
     // TODO ManyToOne
