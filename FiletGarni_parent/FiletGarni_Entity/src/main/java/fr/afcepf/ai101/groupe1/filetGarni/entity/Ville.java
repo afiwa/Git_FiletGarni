@@ -1,46 +1,105 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
-/**
- * 
- */
-public class Ville {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name = "ville")
+public class Ville implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_ville", nullable = false)
+	private Integer id;
+	
+	@Column(name="nom_ville", nullable = false, length = 50)
+    private String nom;
+	
+	// TODO ManytoOne
+	@Transient
+	private CodePostal codePostal;
+	
+	@OneToMany(mappedBy = "ville")
+    private List<Adresse> adresses;
+	
+	// TODO ManytoOne
+	@Transient
+    private Livreur livreur;
+    
+    // TODO ManytoOne
+	@Transient
+    private TourneeTheorique tourneeTheorique;
+    
     public Ville() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String nom;
+	public void setId(Integer paramId) {
+		id = paramId;
+	}
 
-    /**
-     * 
-     */
-    private CodePostal codePostal;
+	public String getNom() {
+		return nom;
+	}
 
-    /**
-     * 
-     */
-    private Set<Adresse> adresses;
+	public void setNom(String paramNom) {
+		nom = paramNom;
+	}
 
-    /**
-     * 
-     */
-    private Livreur livreur;
+	public CodePostal getCodePostal() {
+		return codePostal;
+	}
 
-    /**
-     * 
-     */
-    private TourneeTheorique tourneeTheorique;
+	public void setCodePostal(CodePostal paramCodePostal) {
+		codePostal = paramCodePostal;
+	}
 
+	public List<Adresse> getAdresses() {
+		return adresses;
+	}
+
+	public void setAdresses(List<Adresse> paramAdresses) {
+		adresses = paramAdresses;
+	}
+
+	public Livreur getLivreur() {
+		return livreur;
+	}
+
+	public void setLivreur(Livreur paramLivreur) {
+		livreur = paramLivreur;
+	}
+
+	public TourneeTheorique getTourneeTheorique() {
+		return tourneeTheorique;
+	}
+
+	public void setTourneeTheorique(TourneeTheorique paramTourneeTheorique) {
+		tourneeTheorique = paramTourneeTheorique;
+	}
+
+	public Ville(Integer paramId, String paramNom, CodePostal paramCodePostal, Livreur paramLivreur,
+			TourneeTheorique paramTourneeTheorique) {
+		super();
+		id = paramId;
+		nom = paramNom;
+		codePostal = paramCodePostal;
+		livreur = paramLivreur;
+		tourneeTheorique = paramTourneeTheorique;
+	}
+       
 }

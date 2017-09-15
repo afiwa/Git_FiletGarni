@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="FiletGarni_Data_Impl">
+	
+		<jta-data-source>java:jboss/datasources/DS_FiletGarni</jta-data-source>
+		
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Utilisateur</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Salarie</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.NonSalarie</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Adresse</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Ville</class>
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+		</properties>
+		
+	</persistence-unit>
+</persistence>

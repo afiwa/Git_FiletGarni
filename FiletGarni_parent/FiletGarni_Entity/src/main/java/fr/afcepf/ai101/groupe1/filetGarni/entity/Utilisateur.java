@@ -1,41 +1,91 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
 
-/**
- * 
- */
-public class Utilisateur {
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name="utilisateur")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_utilisateur")
+public class Utilisateur implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_utilisateur", nullable = false)
+	private Integer id;
+	
+	@Column(name="nom_utilisateur", nullable = false, length = 50)
+    private String nom;
+	
+	@Column(name="prenom_utilisateur", nullable = false, length = 50)
+    private String prenom;
+	
+	@Column(name="mail_utilisateur", nullable = false, length = 150)
+    private String mail;
+	
+	@Column(name="mdp_utilisateur", nullable = false, length = 50)
+    private String mdp;
+    
     public Utilisateur() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String nom;
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    /**
-     * 
-     */
-    private String prenom;
+	public String getNom() {
+		return nom;
+	}
 
-    /**
-     * 
-     */
-    private String mail;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    /**
-     * 
-     */
-    private String mdp;
+	public String getPrenom() {
+		return prenom;
+	}
 
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+	public Utilisateur(Integer id, String nom, String prenom, String mail, String mdp) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.mdp = mdp;
+	}
 }
