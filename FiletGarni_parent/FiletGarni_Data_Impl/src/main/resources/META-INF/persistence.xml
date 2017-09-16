@@ -9,6 +9,32 @@
 		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.NonSalarie</class>
 		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Adresse</class>
 		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Ville</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Commande</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Consommateur</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Evaluation</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.HorairesOuverture</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Jour</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Livreur</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.PeriodeDAbsence</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Produit</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.ProduitRecette</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Professionnel</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Recette</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.Region</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.SuiviIncident</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.SuiviIndisponibilite</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.TourneeReelleLivraison</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.TourneeReelleProducteur</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.TourneeTheorique</class>
+		<class>fr.afcepf.ai101.groupe1.filetGarni.entity.TypePaiement</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />

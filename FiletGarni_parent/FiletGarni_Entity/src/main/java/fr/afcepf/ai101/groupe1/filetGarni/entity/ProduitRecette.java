@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "produitrecette")
-public class produitRecette implements Serializable{
+public class ProduitRecette implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -32,7 +32,7 @@ public class produitRecette implements Serializable{
     @ManyToMany(mappedBy = "produitRecettes")
     private List<Recette> recettes;
     
-    public produitRecette() {
+    public ProduitRecette() {
     }
 
 	public Integer getId() {
@@ -67,7 +67,7 @@ public class produitRecette implements Serializable{
 		recettes = paramRecettes;
 	}
 
-	public produitRecette(Integer paramId, Double paramQuantiteRecette) {
+	public ProduitRecette(Integer paramId, Double paramQuantiteRecette) {
 		super();
 		id = paramId;
 		quantiteRecette = paramQuantiteRecette;

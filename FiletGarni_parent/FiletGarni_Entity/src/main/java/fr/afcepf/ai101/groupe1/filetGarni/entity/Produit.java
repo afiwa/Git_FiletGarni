@@ -71,7 +71,7 @@ public class Produit implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "id_produitRecette_tproduit", nullable = true, foreignKey = @ForeignKey(name = "FK_produitrecette_tproduit"))
-    private produitRecette produitRecette;
+    private ProduitRecette produitRecette;
     
     public Produit() {
     }
@@ -164,18 +164,18 @@ public class Produit implements Serializable {
 		producteur = paramProducteur;
 	}
 
-	public produitRecette getProduitRecette() {
+	public ProduitRecette getProduitRecette() {
 		return produitRecette;
 	}
 
-	public void setProduitRecette(produitRecette paramProduitRecette) {
+	public void setProduitRecette(ProduitRecette paramProduitRecette) {
 		produitRecette = paramProduitRecette;
 	}
 
 	public Produit(Integer paramId, String paramPhoto, String paramLibelle, Double paramPrix, String paramDescription,
 			Integer paramQuantiteEnStock, Date paramDateCreationProduit, CategorieProduit paramCategorie,
 			LigneCommande paramLgnCommande, Producteur paramProducteur,
-			fr.afcepf.ai101.groupe1.filetGarni.entity.produitRecette paramProduitRecette) {
+			fr.afcepf.ai101.groupe1.filetGarni.entity.ProduitRecette paramProduitRecette) {
 		super();
 		id = paramId;
 		photo = paramPhoto;

@@ -39,7 +39,7 @@ public class Recette implements Serializable{
 	@JoinTable(name = "produitRecette_recette", 
 				joinColumns = @JoinColumn(name = "id_recette", referencedColumnName = "id_recette"),
 				inverseJoinColumns = @JoinColumn(name = "id_produitrecette", referencedColumnName = "id_produitrecette"))
-    private List<produitRecette> produitRecettes;
+    private List<ProduitRecette> produitRecettes;
     
     public Recette() {
     }
@@ -76,11 +76,11 @@ public class Recette implements Serializable{
 		categorieRecettes = paramCategorieRecettes;
 	}
 
-	public List<produitRecette> getProduitRecettes() {
+	public List<ProduitRecette> getProduitRecettes() {
 		return produitRecettes;
 	}
 
-	public void setProduitRecettes(List<produitRecette> paramProduitRecettes) {
+	public void setProduitRecettes(List<ProduitRecette> paramProduitRecettes) {
 		produitRecettes = paramProduitRecettes;
 	}
 

@@ -6,7 +6,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 @Entity
 @DiscriminatorValue("livreur")
@@ -20,8 +19,7 @@ public class Livreur extends Salarie {
     @OneToOne
     private TourneeReelleLivraison tourneeReelleLivraison;
     
-//    @OneToMany(mappedBy="livreur")
-    @Transient
+    @OneToMany(mappedBy="livreur")
     private List<Ville> villes;
     
     

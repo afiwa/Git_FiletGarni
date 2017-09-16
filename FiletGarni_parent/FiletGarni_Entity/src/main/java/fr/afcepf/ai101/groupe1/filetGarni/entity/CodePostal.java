@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "codepostal")
@@ -35,8 +34,7 @@ public class CodePostal implements Serializable{
 	@Column(name="departement_cp", nullable=true, length=10)
     private Integer departement;
    
-//	@OneToMany(mappedBy="codePostal")
-	@Transient
+	@OneToMany(mappedBy="codePostal")
     private List<Ville> villes;
     
 	@ManyToOne
