@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="suivi_incident")
+@Table(name="suiviincident")
 public class SuiviIncident implements Serializable{
     
 	private static final long serialVersionUID = 1L;
@@ -26,19 +26,19 @@ public class SuiviIncident implements Serializable{
 	@Column(name="id_suivi_incident", nullable=false)
 	private Integer id;
 
-	@Column(name="id_suivi_incident", nullable=false)
+	@Column(name="heure_debut_incident", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date heureDebut;
 
-	@Column(name="id_suivi_incident", nullable=false)
+	@Column(name="heure_estimeefin_incident", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date heureEstimeeFin;
 
-	@Column(name="id_suivi_incident", nullable=true)
+	@Column(name="heure_finreelle_incident", nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date heureFinReelle;
 
-	@Column(name="id_suivi_incident", nullable=true)
+	@Column(name="heure_annulation_incident", nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date heureAnnulation;
 

@@ -23,7 +23,7 @@ public class NonSalarie extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;	
 	
-	@Column(name="dateinscription_nonsalarie", nullable = false)
+	@Column(name="dateinscription_nonsalarie", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private java.util.Date dateInscription;
 	
@@ -31,7 +31,7 @@ public class NonSalarie extends Utilisateur {
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateDesinscription;
 	
-	@Column(name="tel1_nonsalarie", nullable = false, length = 20)
+	@Column(name="tel1_nonsalarie", nullable = true, length = 20)
     private String tel1;	
 	
 	@Column(name="tel2_nonsalarie", nullable = true, length = 20)

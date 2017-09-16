@@ -14,13 +14,13 @@ public class Professionnel extends NonSalarie {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="identifiant_professionnel",nullable=false, length=50)
+	@Column(name="identifiant_professionnel",nullable=true, length=50)
 	private String identifiantConnexion;
 
-	@Column(name="raisonsociale_professionnel",nullable=false, length=150)
+	@Column(name="raisonsociale_professionnel",nullable=true, length=150)
     private String raisonSociale;
 
-	@Column(name="siret_professionnel",nullable=false, length=20)
+	@Column(name="siret_professionnel",nullable=true, length=20)
     private String siret;
 
 	@Column(name="iban_professionnel",nullable=true, length=50)

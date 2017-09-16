@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="tournee_theorique")
+@Table(name="tourneetheorique")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_tournee")
 public class TourneeTheorique implements Serializable{

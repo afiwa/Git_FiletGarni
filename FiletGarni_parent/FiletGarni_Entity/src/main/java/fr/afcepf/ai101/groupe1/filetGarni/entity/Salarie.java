@@ -15,7 +15,7 @@ public class Salarie extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name="identifiant_salarie", nullable = false, length = 50)
+	@Column(name="identifiant_salarie", nullable = true, length = 50)
 	private String identifiantConnexion;
     
     public Salarie() {

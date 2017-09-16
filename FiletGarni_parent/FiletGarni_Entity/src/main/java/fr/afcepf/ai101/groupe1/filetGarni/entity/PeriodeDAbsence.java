@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="periode_absence")
+@Table(name="periodeabsence")
 public class PeriodeDAbsence implements Serializable {
 
 	private static final long serialVersionUID = 1L;

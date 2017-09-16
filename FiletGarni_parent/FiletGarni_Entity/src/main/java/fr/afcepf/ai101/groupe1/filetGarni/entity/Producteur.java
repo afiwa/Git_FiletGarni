@@ -16,13 +16,13 @@ public class Producteur extends Professionnel {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "descriptionbreve_producteur", nullable = false, length = 200)
+	@Column(name = "descriptionbreve_producteur", nullable = true, length = 200)
 	private String descriptionBreve;
 	
-	@Column(name = "descriptiondetaillee_producteur", nullable = false, length = 1000)
+	@Column(name = "descriptiondetaillee_producteur", nullable = true, length = 1000)
     private String descriptionDetaillee;
 	
-	@Column(name = "photo_producteur", nullable = false, length = 20)
+	@Column(name = "photo_producteur", nullable = true, length = 20)
     private String photo;
     
 	@OneToMany(mappedBy = "producteur")	
@@ -30,7 +30,7 @@ public class Producteur extends Professionnel {
 	
 	@ManyToMany
 	@JoinTable(name = "categorie_producteur",
-				joinColumns = @JoinColumn(name = "id_producteur", referencedColumnName = "id_producteur"),
+				joinColumns = @JoinColumn(name = "id_producteur", referencedColumnName = "id_utilisateur"),
 				inverseJoinColumns = @JoinColumn(name = "id_categorieproducteur", 
 				referencedColumnName = "id_categorieproducteur"))
     private List<CategorieProducteur> categories;
