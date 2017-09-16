@@ -63,14 +63,18 @@ public class Commande implements Serializable {
 	@OneToMany(mappedBy = "commande")
     private List<LigneCommande> lgnCommandes;
     
-    // TODO ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "id_pointrelais_tcommande", nullable = true, 
+    			foreignKey = @ForeignKey(name = "FK_pointrelais_tcommande"))
     private PointRelais pointRelais;
     
     @ManyToOne
     @JoinColumn(name = "id_consommateur_tcommande", nullable = true, foreignKey = @ForeignKey(name = "FK_consommateur_tcommande"))
     private Consommateur consommateur;
     
-    // TODO ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "id_tourneelivraison_tcommande", nullable = true,
+    			foreignKey = @ForeignKey(name = "FK_tourneelivraison_tcommande"))    
     private TourneeReelleLivraison tourneeReelleLivraison;
 
     public Commande() {

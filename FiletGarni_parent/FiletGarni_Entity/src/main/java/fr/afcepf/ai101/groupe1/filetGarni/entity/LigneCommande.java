@@ -49,7 +49,9 @@ public class LigneCommande implements Serializable{
     @OneToOne
     private Produit produit;
     
-    // TODO ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "id_tourneeproducteur_tlignecommande", nullable = true, 
+    			foreignKey = @ForeignKey(name = "FK_tourneeproducteur_tlignecommande"))
     private TourneeReelleProducteur tourneeReelleProducteur;
     
     @OneToOne

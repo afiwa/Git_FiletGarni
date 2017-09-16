@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-
+@Entity
+@Table(name = "codepostal")
 public class CodePostal implements Serializable{
-
-  
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,7 +35,8 @@ public class CodePostal implements Serializable{
 	@Column(name="departement_cp", nullable=true, length=10)
     private Integer departement;
    
-	@OneToMany(mappedBy="codePostal")
+//	@OneToMany(mappedBy="codePostal")
+	@Transient
     private List<Ville> villes;
     
 	@ManyToOne

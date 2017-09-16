@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="tournee_theorique")
@@ -51,7 +52,8 @@ public class TourneeTheorique implements Serializable{
     @OneToMany(mappedBy="tourneeTheorique")
     private List<SuiviIncident> suivisIncidents;
 
-    @OneToMany(mappedBy="tourneeTheorique")
+//    @OneToMany(mappedBy="tourneeTheorique")
+    @Transient
     private List<Ville> villes;
     
     public Integer getId() {

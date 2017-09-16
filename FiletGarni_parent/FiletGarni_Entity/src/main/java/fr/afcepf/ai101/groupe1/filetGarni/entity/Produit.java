@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -47,16 +49,24 @@ public class Produit implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateCreationProduit;
 	
-	// TODO OneToMany
+	@ManyToMany
+	@JoinTable(name = "conditionnement_produit", 
+				joinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id_produit"),
+				inverseJoinColumns = @JoinColumn(name = "id_conditionnement", 
+				referencedColumnName = "id_conditionnement"))
     private List<Conditionnement> conditionnements;
     
-    // TODO ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "id_categorie_tproduit", nullable = true, 
+    			foreignKey = @ForeignKey(name = "FK_categorie_tproduit"))
     private CategorieProduit categorie;
     
     @OneToOne(mappedBy = "produit")
     private LigneCommande lgnCommande;
     
-    // TODO ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "id_producteur_tproduit", nullable = true, 
+    			foreignKey = @ForeignKey(name = "FK_producteur_tproduit"))
     private Producteur producteur;
     
     @ManyToOne

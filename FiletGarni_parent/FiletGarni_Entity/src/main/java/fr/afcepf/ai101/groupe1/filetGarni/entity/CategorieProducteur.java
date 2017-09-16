@@ -1,31 +1,64 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
-/**
- * 
- */
-public class CategorieProducteur {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name = "categorieproducteur")
+public class CategorieProducteur implements Serializable{
+   
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_categorieproducteur", nullable = false)
+	private Integer id;
+	
+	@Column(name="libelle_categorieproducteur", nullable = false, length = 150)
+    private String libelle;
+	
+	@ManyToMany(mappedBy = "categories")
+    private List<Producteur> producteurs;
+    
     public CategorieProducteur() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String libelle;
+	public void setId(Integer paramId) {
+		id = paramId;
+	}
 
-    /**
-     * 
-     */
-    private Set<Producteur> producteurs;
+	public String getLibelle() {
+		return libelle;
+	}
 
+	public void setLibelle(String paramLibelle) {
+		libelle = paramLibelle;
+	}
+
+	public List<Producteur> getProducteurs() {
+		return producteurs;
+	}
+
+	public void setProducteurs(List<Producteur> paramProducteurs) {
+		producteurs = paramProducteurs;
+	}
+
+	public CategorieProducteur(Integer paramId, String paramLibelle) {
+		super();
+		id = paramId;
+		libelle = paramLibelle;
+	}
+        	
 }

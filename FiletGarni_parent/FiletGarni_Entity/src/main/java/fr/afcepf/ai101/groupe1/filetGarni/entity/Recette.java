@@ -32,7 +32,7 @@ public class Recette implements Serializable{
     private String descriptif;
 	
 	
-	// TODO OneToMany			
+	@OneToMany(mappedBy = "recette")
     private List<CategorieRecette> categorieRecettes;
     
     @ManyToMany

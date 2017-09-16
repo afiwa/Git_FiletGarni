@@ -7,10 +7,8 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="tournee_Reelle_Livraison")
 @DiscriminatorValue("tourneeReelleLivraison")
 public class TourneeReelleLivraison extends TourneeTheorique {
 	

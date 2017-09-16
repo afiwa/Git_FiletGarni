@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "ville")
@@ -29,19 +30,22 @@ public class Ville implements Serializable{
 	private String nom;
 
 
-	@ManyToOne
-	@JoinColumn(name="id_codepostal_tville", nullable=true, foreignKey=@ForeignKey(name="FK_codepostal_tville"))
+//	@ManyToOne
+//	@JoinColumn(name="id_codepostal_tville", nullable=true, foreignKey=@ForeignKey(name="FK_codepostal_tville"))
+	@Transient
 	private CodePostal codePostal;
 
 	@OneToMany(mappedBy = "ville")
 	private List<Adresse> adresses;
 
-	@ManyToOne
-	@JoinColumn(name="id_livreur_tville", nullable=true, foreignKey = @ForeignKey(name="FK_livreur_ville"))
+//	@ManyToOne
+//	@JoinColumn(name="id_livreur_tville", nullable=true, foreignKey = @ForeignKey(name="FK_livreur_tville"))
+	@Transient
 	private Livreur livreur;
 
-	@ManyToOne
-	@JoinColumn(name="id_tourneetheo_tville", nullable=true, foreignKey = @ForeignKey(name="FK_tourneetheo_ville"))
+//	@ManyToOne
+//	@JoinColumn(name="id_tourneetheo_tville", nullable=true, foreignKey = @ForeignKey(name="FK_tourneetheo_ville"))
+	@Transient
 	private TourneeTheorique tourneeTheorique;
 
 

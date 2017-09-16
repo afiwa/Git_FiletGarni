@@ -1,41 +1,88 @@
-package afcepf.ai101.groupe1.filetGarni.entity;
+package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
-/**
- * 
- */
-public class Conditionnement {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-    /**
-     * Default constructor
-     */
+@Entity
+@Table(name = "conditionnement")
+public class Conditionnement implements Serializable {  
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_conditionnement", nullable = false)
+	private Integer id;
+	
+	@Column(name="libelle_conditionnement", nullable = false, length = 50)
+    private String libelle;
+	
+	@Column(name="quantite_conditionnement", nullable = false)
+    private Double quantite;
+	
+	@Column(name="unite_conditionnement", nullable = false, length = 10)
+    private String unite;
+    
+	@ManyToMany(mappedBy = "conditionnements")
+    private List<Produit> produits;
+    
     public Conditionnement() {
     }
 
-    /**
-     * 
-     */
-    private Integer id;
+	public Integer getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String libelle;
+	public void setId(Integer paramId) {
+		id = paramId;
+	}
 
-    /**
-     * 
-     */
-    private String quantite;
+	public String getLibelle() {
+		return libelle;
+	}
 
-    /**
-     * 
-     */
-    private String unite;
+	public void setLibelle(String paramLibelle) {
+		libelle = paramLibelle;
+	}
 
-    /**
-     * 
-     */
-    private Set<Produit> produits;
+	public Double getQuantite() {
+		return quantite;
+	}
 
+	public void setQuantite(Double paramQuantite) {
+		quantite = paramQuantite;
+	}
+
+	public String getUnite() {
+		return unite;
+	}
+
+	public void setUnite(String paramUnite) {
+		unite = paramUnite;
+	}
+
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> paramProduits) {
+		produits = paramProduits;
+	}
+
+	public Conditionnement(Integer paramId, String paramLibelle, Double paramQuantite, String paramUnite) {
+		super();
+		id = paramId;
+		libelle = paramLibelle;
+		quantite = paramQuantite;
+		unite = paramUnite;
+	}
+    
 }
