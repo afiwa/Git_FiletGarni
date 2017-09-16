@@ -1,8 +1,9 @@
 package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
-import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tournee_Reelle_Livraison")
+@DiscriminatorValue("tourneeReelleLivraison")
 public class TourneeReelleLivraison extends TourneeTheorique {
 	
 	private static final long serialVersionUID = 1L;
@@ -40,10 +42,13 @@ public class TourneeReelleLivraison extends TourneeTheorique {
 	public TourneeReelleLivraison() {
     }
 
-	public TourneeReelleLivraison(Livreur paramLivreur) {
-		super();
-		livreur = paramLivreur;
+	public TourneeReelleLivraison(Integer id, String libelle, Date dateTournee, Integer nbKm, Date heureDebut,
+			Date heureFin, Livreur livreur) {
+		super(id, libelle, dateTournee, nbKm, heureDebut, heureFin);
+		this.livreur = livreur;
 	}
+
+	
 	
 	
     

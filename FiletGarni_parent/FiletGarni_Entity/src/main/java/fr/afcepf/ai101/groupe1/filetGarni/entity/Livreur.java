@@ -2,6 +2,7 @@ package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="livreur")
+@DiscriminatorValue("livreur")
 public class Livreur extends Salarie {
     
 	private static final long serialVersionUID = 1L;

@@ -4,8 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -14,6 +17,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @DiscriminatorValue("nonsalarie")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_nonsalarie")
 public class NonSalarie extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;	
@@ -33,13 +38,12 @@ public class NonSalarie extends Utilisateur {
     private String tel2;
     
     @ManyToMany
-    @JoinTable(name = "adresse_nonSalarie", 
-    		joinColumns = @JoinColumn(name="id_nonsalarie",  referencedColumnName = "id_utilisateur"), 
-    		inverseJoinColumns = @JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse"))
+    @JoinTable(name = "adresse_nonSalarie", joinColumns = 
+    @JoinColumn(name="id_nonsalarie",  referencedColumnName = "id_utilisateur"),inverseJoinColumns = 
+    @JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse"))
     private List<Adresse> adresses;
     
-    public NonSalarie() {
-    }
+    
 
 	public java.util.Date getDateInscription() {
 		return dateInscription;
@@ -80,6 +84,9 @@ public class NonSalarie extends Utilisateur {
 	public void setAdresses(List<Adresse> paramAdresses) {
 		adresses = paramAdresses;
 	}
+	
+	public NonSalarie() {
+    }
 
 	public NonSalarie(Date paramDateInscription, Date paramDateDesinscription, String paramTel1, String paramTel2) {
 		super();
