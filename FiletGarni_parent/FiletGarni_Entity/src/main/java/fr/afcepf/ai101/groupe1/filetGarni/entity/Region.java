@@ -26,9 +26,10 @@ public class Region implements Serializable {
     private String libelle;
    
     @OneToMany(mappedBy="region")
-    private List<CodePostal> codePostaux;
+    private List<Ville> villes;
     
-    public Integer getId() {
+    
+	public Integer getId() {
 		return id;
 	}
 
@@ -44,12 +45,12 @@ public class Region implements Serializable {
 		this.libelle = libelle;
 	}
 
-	public List<CodePostal> getCodePostaux() {
-		return codePostaux;
+	public List<Ville> getVilles() {
+		return villes;
 	}
 
-	public void setCodePostaux(List<CodePostal> codePostaux) {
-		this.codePostaux = codePostaux;
+	public void setVilles(List<Ville> villes) {
+		this.villes = villes;
 	}
 
 	public Region() {
@@ -60,7 +61,7 @@ public class Region implements Serializable {
 		this.id = id;
 		this.libelle = libelle;
 	}
-	
+
 	
 
 }

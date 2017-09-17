@@ -28,8 +28,11 @@ public class Adresse implements Serializable{
 	@Column(name="libelle_adresse", nullable = true, length = 50)
     private String libelle;
 	
-	@Column(name="numerorue_adresse", nullable = false, length = 5)
+	@Column(name="numerorue_adresse", nullable = true, length = 5)
     private String numeroRue;
+	
+	@Column(name="nomrue_adresse", nullable = false, length = 150)
+    private String nomRue;
 	
 	@Column(name="latitude_adresse", nullable = false, length = 30)
     private String latitude;
@@ -38,8 +41,8 @@ public class Adresse implements Serializable{
     private String longitude;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_ville_tadresse", nullable = true, foreignKey = @ForeignKey(name = "FK_ville_tadresse"))
-    private Ville ville;
+	@JoinColumn(name = "id_codepostal_tadresse", nullable = true, foreignKey = @ForeignKey(name = "FK_codepostal_tadresse"))
+    private CodePostal codePostal;
 	
 	@ManyToMany(mappedBy = "adresses")
     private List<NonSalarie> nonSalaries;
@@ -74,30 +77,40 @@ public class Adresse implements Serializable{
 	public void setLongitude(String paramLongitude) {
 		longitude = paramLongitude;
 	}
-	public Ville getVille() {
-		return ville;
-	}
-	public void setVille(Ville paramVille) {
-		ville = paramVille;
-	}
+	
 	public List<NonSalarie> getNonSalaries() {
 		return nonSalaries;
 	}
 	public void setNonSalaries(List<NonSalarie> paramNonSalaries) {
 		nonSalaries = paramNonSalaries;
 	}
-
-	public Adresse(Integer paramId, String paramLibelle, String paramNumeroRue, String paramLatitude,
-			String paramLongitude, Ville paramVille) {
-		super();
-		id = paramId;
-		libelle = paramLibelle;
-		numeroRue = paramNumeroRue;
-		latitude = paramLatitude;
-		longitude = paramLongitude;
-		ville = paramVille;
+	    
+    public String getNomRue() {
+		return nomRue;
 	}
-        
-    public Adresse() {
-    }   
+	public void setNomRue(String nomRue) {
+		this.nomRue = nomRue;
+	}
+	public CodePostal getCodePostal() {
+		return codePostal;
+	}
+	public void setCodePostal(CodePostal codePostal) {
+		this.codePostal = codePostal;
+	}
+	public Adresse() {
+    }
+    
+	public Adresse(Integer id, String libelle, String numeroRue, String nomRue, String latitude, String longitude,
+			CodePostal codePostal) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.numeroRue = numeroRue;
+		this.nomRue = nomRue;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.codePostal = codePostal;
+	}   
+    
+    
 }

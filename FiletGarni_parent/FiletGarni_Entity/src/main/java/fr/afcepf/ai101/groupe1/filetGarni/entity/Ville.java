@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,83 +27,104 @@ public class Ville implements Serializable{
 
 	@Column(name="nom_ville", nullable = false, length = 50)
 	private String nom;
+	
+	@Column(name="code_commune_cp", nullable=true, length=10)
+    private String codeCommune;
 
+	@ManyToMany(mappedBy = "villes")
+	private List<CodePostal> codePostaux;
+	
+	@ManyToOne
+	@JoinColumn(name="id_region_tville", nullable=true, foreignKey=
+	@ForeignKey(name="FK_region_tville"))
+    private Region region;
 
 	@ManyToOne
-	@JoinColumn(name="id_codepostal_tville", nullable=true, foreignKey=@ForeignKey(name="FK_codepostal_tville"))
-	private CodePostal codePostal;
-
-	@OneToMany(mappedBy = "ville")
-	private List<Adresse> adresses;
-
-	@ManyToOne
-	@JoinColumn(name="id_livreur_tville", nullable=true, foreignKey = @ForeignKey(name="FK_livreur_tville"))
+	@JoinColumn(name="id_livreur_tville", nullable=true, foreignKey = 
+	@ForeignKey(name="FK_livreur_tville"))
 	private Livreur livreur;
 
 	@ManyToOne
-	@JoinColumn(name="id_tourneetheo_tville", nullable=true, foreignKey = @ForeignKey(name="FK_tourneetheo_ville"))
+	@JoinColumn(name="id_tourneetheo_tville", nullable=true, foreignKey = 
+	@ForeignKey(name="FK_tourneetheo_ville"))
 	private TourneeTheorique tourneeTheorique;
 
-
+	
+	
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer paramId) {
-		id = paramId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNom() {
 		return nom;
 	}
 
-	public void setNom(String paramNom) {
-		nom = paramNom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public CodePostal getCodePostal() {
-		return codePostal;
+	public String getCodeCommune() {
+		return codeCommune;
 	}
 
-	public void setCodePostal(CodePostal paramCodePostal) {
-		codePostal = paramCodePostal;
+	public void setCodeCommune(String codeCommune) {
+		this.codeCommune = codeCommune;
 	}
 
-	public List<Adresse> getAdresses() {
-		return adresses;
+	public List<CodePostal> getCodePostaux() {
+		return codePostaux;
 	}
 
-	public void setAdresses(List<Adresse> paramAdresses) {
-		adresses = paramAdresses;
+	public void setCodePostaux(List<CodePostal> codePostaux) {
+		this.codePostaux = codePostaux;
+	}
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
 	}
 
 	public Livreur getLivreur() {
 		return livreur;
 	}
 
-	public void setLivreur(Livreur paramLivreur) {
-		livreur = paramLivreur;
+	public void setLivreur(Livreur livreur) {
+		this.livreur = livreur;
 	}
 
 	public TourneeTheorique getTourneeTheorique() {
 		return tourneeTheorique;
 	}
 
-	public void setTourneeTheorique(TourneeTheorique paramTourneeTheorique) {
-		tourneeTheorique = paramTourneeTheorique;
+	public void setTourneeTheorique(TourneeTheorique tourneeTheorique) {
+		this.tourneeTheorique = tourneeTheorique;
 	}
 
 	public Ville() {
 	}
 
-	public Ville(Integer paramId, String paramNom, CodePostal paramCodePostal, Livreur paramLivreur,
-			TourneeTheorique paramTourneeTheorique) {
+	public Ville(Integer id, String nom, String codeCommune, Region region, Livreur livreur,
+			TourneeTheorique tourneeTheorique) {
 		super();
-		id = paramId;
-		nom = paramNom;
-		codePostal = paramCodePostal;
-		livreur = paramLivreur;
-		tourneeTheorique = paramTourneeTheorique;
+		this.id = id;
+		this.nom = nom;
+		this.codeCommune = codeCommune;
+		this.region = region;
+		this.livreur = livreur;
+		this.tourneeTheorique = tourneeTheorique;
 	}
+
+	
+	
+	
+
+	
 
 }
