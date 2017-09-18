@@ -5,13 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,8 +33,10 @@ public class Recette implements Serializable{
     private String descriptif;
 	
 	
-	@OneToMany(mappedBy = "recette")
-    private List<CategorieRecette> categorieRecettes;
+	@ManyToOne
+	@JoinColumn(name = "id_categorierecette_trecette", nullable = true, foreignKey = 
+	@ForeignKey(name = "FK_categorierecette_trecette"))
+    private CategorieRecette categorieRecette;
     
     @ManyToMany
 	@JoinTable(name = "produitRecette_recette", 
@@ -41,53 +44,65 @@ public class Recette implements Serializable{
 				inverseJoinColumns = @JoinColumn(name = "id_produitrecette", referencedColumnName = "id_produitrecette"))
     private List<ProduitRecette> produitRecettes;
     
-    public Recette() {
-    }
-
-	public Integer getId() {
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer paramId) {
-		id = paramId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getLibelle() {
 		return libelle;
 	}
 
-	public void setLibelle(String paramLibelle) {
-		libelle = paramLibelle;
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
 	public String getDescriptif() {
 		return descriptif;
 	}
 
-	public void setDescriptif(String paramDescriptif) {
-		descriptif = paramDescriptif;
+
+
+
+
+	public void setDescriptif(String descriptif) {
+		this.descriptif = descriptif;
 	}
 
-	public List<CategorieRecette> getCategorieRecettes() {
-		return categorieRecettes;
+
+
+
+
+	public CategorieRecette getCategorieRecette() {
+		return categorieRecette;
 	}
 
-	public void setCategorieRecettes(List<CategorieRecette> paramCategorieRecettes) {
-		categorieRecettes = paramCategorieRecettes;
+	public void setCategorieRecette(CategorieRecette categorieRecette) {
+		this.categorieRecette = categorieRecette;
 	}
 
 	public List<ProduitRecette> getProduitRecettes() {
 		return produitRecettes;
 	}
 
-	public void setProduitRecettes(List<ProduitRecette> paramProduitRecettes) {
-		produitRecettes = paramProduitRecettes;
+	public void setProduitRecettes(List<ProduitRecette> produitRecettes) {
+		this.produitRecettes = produitRecettes;
 	}
 
-	public Recette(Integer paramId, String paramLibelle, String paramDescriptif) {
+	public Recette() {
+    }
+
+	public Recette(Integer id, String libelle, String descriptif, CategorieRecette categorieRecette) {
 		super();
-		id = paramId;
-		libelle = paramLibelle;
-		descriptif = paramDescriptif;
-	}    
+		this.id = id;
+		this.libelle = libelle;
+		this.descriptif = descriptif;
+		this.categorieRecette = categorieRecette;
+	}
+	
+
+	
 }

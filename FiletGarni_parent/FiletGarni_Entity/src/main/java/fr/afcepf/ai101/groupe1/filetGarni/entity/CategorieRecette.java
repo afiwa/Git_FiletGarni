@@ -1,15 +1,14 @@
 package fr.afcepf.ai101.groupe1.filetGarni.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,43 +25,38 @@ public class CategorieRecette implements Serializable{
 	@Column(name="libelle_categorierecette", nullable = false, length = 50)
     private String libelle;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_recette_tcategorierecette", nullable = true, 
-				foreignKey = @ForeignKey(name = "FK_recette_tcategorierecette"))
-    private Recette recette;
-    
-    public CategorieRecette() {
-    }
+	@OneToMany(mappedBy = "categorieRecette")
+	private List<Recette> recettes;
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer paramId) {
-		id = paramId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getLibelle() {
 		return libelle;
 	}
 
-	public void setLibelle(String paramLibelle) {
-		libelle = paramLibelle;
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
-	public Recette getRecette() {
-		return recette;
+	public List<Recette> getRecettes() {
+		return recettes;
 	}
 
-	public void setRecette(Recette paramRecette) {
-		recette = paramRecette;
+	public void setRecettes(List<Recette> recettes) {
+		this.recettes = recettes;
 	}
 
-	public CategorieRecette(Integer paramId, String paramLibelle, Recette paramRecette) {
+	public CategorieRecette(Integer id, String libelle) {
 		super();
-		id = paramId;
-		libelle = paramLibelle;
-		recette = paramRecette;
+		this.id = id;
+		this.libelle = libelle;
 	}
-
+    
+    
 }
