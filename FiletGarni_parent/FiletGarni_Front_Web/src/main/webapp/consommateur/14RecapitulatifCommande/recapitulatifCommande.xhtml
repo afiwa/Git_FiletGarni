@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
+
+	<ui:define name="title">Recapitulatif de votre commande</ui:define>
+	<ui:define name="headcssscript">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+		<!-- Resource style Breacrumb -->
+		<link
+			href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700'
+			rel='stylesheet' type='text/css' />
+		<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto" />
+
+		<!-- Resource style tout le reste -->
+
+		<!-- Resource style Card -->
+		<link rel='stylesheet prefetch'
+			href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' />
+		<link rel='stylesheet prefetch'
+			href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' />
+
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+
+		<link type="text/css" rel="stylesheet"
+			href="../css/styleBreadCrumbs.css" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+	</ui:define>
+
+	<ui:define name="content">
+		<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
+		<div>
+			<ol class="cd-multi-steps text-center custom-icons">
+				<li class="visited"><a
+					href="..\11Panier\panier.jsf">Panier</a></li>
+				<li class="visited"><a href="..\12Paiement\paiement.jsf">Point relais</a></li>
+				<li class="visited"><a
+					href="..\13Paiement\paiement.jsf">Paiement</a></li>
+				<li class="current"><em>Récapitulatif</em></li>
+			</ol>
+		</div>
+		</section>
+
+
+		<div class="container">
+			<div class="row">
+				<!-- <h1><b>Récapitulatif de votre commande</b></h1> -->
+				<!-- <hr/> -->
+				<h3 class="bg-success">Total de votre commande : 200 €</h3>
+
+				<div class="subBlock">
+					<div class="block customer-info">
+						<div class="form-group col-md-12 bg-primary">
+							<label class="control-label" for="contactinformation">Mes
+								coordonnées</label>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="firstname">Nom</label>
+							<div class="controls">
+								<output id="firstname" name="firstname" type="text"
+									placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="lastname">Prénom</label>
+							<div class="controls">
+								<output id="lastname" name="lastname" type="text" placeholder=""
+									class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="emailaddress">Adresse mail</label>
+							<div class="controls">
+								<output id="email" name="email" type="email" placeholder=""
+									class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<label class="control-label" for="phone">Numéro de
+								téléphone</label>
+							<div class="controls">
+								<output id="phone" name="phone" type="number" placeholder=""
+									class="form-control" required="" />
+							</div>
+						</div>
+					</div>
+					<div class="block shipping-info">
+
+						<div class="form-group col-md-12 bg-primary">
+							<label class="control-label" for="billinginformation">Point
+								relais choisi</label>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="shippingaddress1">Adresse du point relais</label>
+							<div class="controls">
+								<output id="shippingaddress1" name="shippingaddress1"
+									type="text" placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<label class="control-label" for="shippingaddress2">Complément
+								d'adresse</label>
+							<div class="controls">
+								<output id="shippingaddress2" name="shippingaddress2"
+									type="text" placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="shippingcity">Ville</label>
+							<div class="controls">
+								<output id="shippingcity" name="shippingcity" type="text"
+									placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="postcode">Code postal</label>
+							<div class="controls">
+								<output id="postcode" name="postcode" type="text" placeholder=""
+									class="form-control" required="" />
+							</div>
+						</div>
+
+					</div>
+					<div class="block billing-info">
+
+						<div class="form-group col-md-12 bg-primary">
+							<label class="control-label" for="billinginformation">Adresse
+								de facturation</label> <label class="checkbox" for="billinginformation">
+								<output type="checkbox" name="billinginformation"
+									id="billinginformation" value="Use Shipping Address" />
+							</label>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="shippingaddress1">Adresse du propriétaire de la
+								carte</label>
+							<div class="controls">
+								<output id="shippingaddress1" name="shippingaddress1"
+									type="text" placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<label class="control-label" for="shippingaddress2">Complément
+								d'adresse</label>
+
+							<div class="controls">
+								<output id="shippingaddress2 contenu" name="shippingaddress2"
+									type="text" placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="shippingcity">Ville</label>
+							<div class="controls">
+								<output id="shippingcity" name="shippingcity" type="text"
+									placeholder="" class="form-control" required="" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-6 contenu">
+							<span class="required-lbl"></span><label class="control-label"
+								for="postcode">Code postal</label>
+							<div class="controls">
+								<output id="postcode" name="postcode" type="text" placeholder=""
+									class="form-control" required="" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="other-info">
+					<div class="form-group col-md-12 bg-primary">
+						<label class="control-label" for="contactinformation">Informations
+							complémentaires</label>
+					</div>
+	
+					<div class="form-group col-md-12">
+						<div class="control-group">
+							<label class="control-label" for="iaccept"></label>
+							<div class="controls">
+								<label class="checkbox" for="iaccept-0"> <input
+									type="checkbox" name="iaccept" id="iaccept-0"
+									value="I accept the Teams and conditions"> Je m'abonne à
+										la newsLetter du Filet Garni afin de recevoir des informations
+										pertinentes sur les nouveaux produits et les nouvelles des
+										points relais près de chez moi.</input>
+								</label>
+							</div>
+						</div>
+					</div>
+	
+					<div class="form-group col-md-12">
+						<div class="control-group">
+							<label class="control-label" for="iaccept"></label>
+							<div class="controls termsAndConditions">
+								<label class="checkbox" for="iaccept-1"> <input
+									type="checkbox" name="iaccept" id="iaccept-1"
+									value="I accept the Teams and conditions"> J'accepte les
+										<a href="">termes et conditions</a> de Filet Garni.</input>
+								</label>
+							</div>
+						</div>
+					</div>
+	
+<!-- 					<div class="form-group col-md-12 termsAndConditions2"> -->
+						<!-- <div class="control-group confirm-btn"> -->
+						<label class="control-label" for="placeorderbtn"></label>
+<!-- 						<div class="controls "> -->
+							<button id="placeorderbtn" name="placeorderbtn"
+								class="btn btn-primary">Confirmer ma commande</button>
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+		</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+    <script type="text/javascript" src="../jsHamburger/main.js"></script>
+	<script type="text/javascript" src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
+	<script type="text/javascript" src="js/confirmationCommande.js"></script>
+	
+	
+	</ui:define>
+</ui:composition>
+</html>

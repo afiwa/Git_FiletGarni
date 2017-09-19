@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
+	<ui:define name="title">panier</ui:define>
+	<ui:define name="headcssscript">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+
+		<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto" />
+		<link type="text/css" rel="stylesheet" href="css/print_cart.css" />
+		<link type="text/css" rel="stylesheet"
+			href="../css/styleBreadCrumbs.css" />
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="form-client">
+
+			<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
+			<div>
+				<ol class="cd-multi-steps text-center custom-icons">
+					<li class="current"><em>Panier</em></li>
+					<li><em>Point relais</em></li>
+					<li><em>Paiement</em></li>
+					<li><em>Récapitulatif</em></li>
+				</ol>
+			</div>
+			</section>
+
+			<!-- Afficher le contenu du panier -->
+			<div class="shopping-cart">
+				<!-- Title -->
+				<div class="title">Mon panier</div>
+
+				<!-- Product #1 -->
+
+				<div class="item">
+					<div class="buttons">
+						<span class="delete-btn"></span> <span class="like-btn"></span>
+					</div>
+
+					<div class="image">
+						<img
+							src="\..\..\..\0. Ressources\1. Images\images\PhotosProduits\YaourtFramboises.jpg"
+							alt="" />
+					</div>
+
+					<div class="description">
+						<span><b>Oeufs bios tout pétés</b></span> <span>Catégorie
+							pdt</span> <span class="article-price">50 €</span> <span>Boîte de
+							12</span>
+					</div>
+					<div class="quantity">
+						<button class="minus-btn" type="button" name="button">
+							<img src="images\icons_panier\minus.svg" alt="" />
+						</button>
+						<input class="qty" type="text" name="name" value="1" />
+						<button class="plus-btn" type="button" name="button">
+							<img src="images\icons_panier\plus.svg" alt="" />
+						</button>
+					</div>
+					<div class="total-price">
+						<output class="total-article">50 €</output>
+					</div>
+				</div>
+
+				<!-- Product #2 -->
+				<div class="item">
+					<div class="buttons">
+						<span class="delete-btn"></span> <span class="like-btn"></span>
+					</div>
+
+					<div class="image">
+						<img
+							src="..\..\..\0. Ressources\1. Images\images\PhotosProduits\BatonsCannelle-WEB.jpg"
+							alt="" />
+					</div>
+
+					<div class="description">
+						<span><b>Maison Margiela</b></span> <span>Future Sneakers</span> <span
+							class="article-price">50 €</span> <span>1 kilo</span>
+					</div>
+
+					<div class="quantity">
+						<button class="minus-btn" type="button" name="button">
+							<img src="images\icons_panier\minus.svg" alt="" />
+						</button>
+						<input class="qty" type="text" name="name" value="1" />
+						<button class="plus-btn" type="button" name="button">
+							<img src="images\icons_panier\plus.svg" alt="" />
+						</button>
+					</div>
+					<div class="total-price">
+						<span class="total-article">50 €</span>
+					</div>
+				</div>
+
+				<!-- Product #3 -->
+				<div class="item">
+					<div class="buttons">
+						<span class="delete-btn"></span> <span class="like-btn"></span>
+					</div>
+
+					<div class="image">
+						<img
+							src="\..\..\..\src\main\resources\produits\VinRougeNantes.jpg"
+							alt="" />
+					</div>
+
+					<div class="description">
+						<span><b>Our Legacy</b></span> <span>Brushed Scarf</span> <span
+							class="article-price">50 €</span> <span>1 Botte</span>
+					</div>
+					<div class="quantity">
+						<button class="minus-btn" type="button" name="button">
+							<img src="images\icons_panier\minus.svg" alt="" />
+						</button>
+						<input class="qty" type="text" name="name" value="1" />
+						<button class="plus-btn" type="button" name="button">
+							<img src="images\icons_panier\plus.svg" alt="" />
+						</button>
+					</div>
+					<div class="total-price">
+						<span class="total-article">50 €</span>
+					</div>
+				</div>
+
+
+
+				<!-- Afficher le total du panier -->
+				<div class="item">
+					<div class="total-cart">
+						<span class="title" id="dernierTitre">Total de votre
+							commande</span> <span id="total-panier">150 €</span>
+					</div>
+					<br />
+					<div>
+						<a
+							href="..\13Paiement\paiement.jsf"
+							class="payer">Valider</a>
+					</div>
+				</div>
+			</div>
+
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+        <script type="text/javascript" src="js/affichagePanier.js"></script>
+			<script type="text/javascript"
+				src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
+			<script type="text/javascript" src="../jsHamburger/main.js"></script>
+	
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

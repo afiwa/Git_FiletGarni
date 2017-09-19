@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
+
+	<ui:define name="title">Paiement</ui:define>
+	<ui:define name="headcssscript">
+				<meta name="viewport"
+					content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+		<!-- Resource style Breacrumb -->
+		<link
+			href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700'
+			rel='stylesheet' type='text/css' />
+		<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto" />
+
+		<!-- Resource style Card -->
+		<link rel='stylesheet'
+			href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' />
+		<link rel='stylesheet'
+			href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' />
+
+		<!-- Resource style tout le reste -->
+		<link type="text/css" rel="stylesheet"
+			href="../css/styleBreadCrumbs.css" />
+		<link type="text/css" rel="stylesheet" href="css/creditCard.css" />
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+	</ui:define>
+
+	<ui:define name="content">
+		<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
+		<div>
+			<ol class="cd-multi-steps text-center custom-icons">
+				<li class="visited"><a href="..\11Panier\panier.jsf">Panier</a></li>
+				<li class="visited"><a
+					href="..\12PointRelais\pointRelais.jsf">Point relais</a></li>
+				<li class="current"><em>Paiement</em></li>
+				<li><em>Récapitulatif</em></li>
+			</ol>
+		</div>
+		</section>
+
+
+
+		<div class="container">
+			<div class="row">
+				<!-- You can make it whatever width you want. I'm making it full width
+	on <= small devices and 4/12 page width on >= medium devices -->
+				<div class="col-xs-12 col-md-6 col-md-offset-3">
+
+					<!-- CREDIT CARD FORM STARTS HERE -->
+					<div class="panel panel-default credit-card-box">
+						<div class="panel-heading display-table">
+							<div class="row display-tr">
+								<h3 class="panel-title display-td">Détails de paiement</h3>
+								<div class="display-td">
+									<img class="img-responsive pull-right"
+										src="http://i76.imgup.net/accepted_c22e0.png" />
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<form role="form" id="payment-form">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="cardNumber">Numéro de carte</label>
+											<div class="input-group">
+												<input type="tel" class="form-control" name="cardNumber"
+													placeholder="Numéro de Carte valide" required="true" /> <span
+													class="input-group-addon"><i
+													class="fa fa-credit-card"></i></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-7 col-md-7">
+										<div class="form-group">
+											<label for="cardExpiry"><span class="hidden-xs">Date
+													d'expiration</span><span class="visible-xs-inline">Date</span>
+												exp.</label> <input type="tel" class="form-control"
+												name="cardExpiry" placeholder="MM / AAAA"
+												autocomplete="cc-exp" />
+										</div>
+									</div>
+									<div class="col-xs-5 col-md-5 pull-right">
+										<div class="form-group">
+											<label for="cardCVC">Code CVC</label> <input type="tel"
+												class="form-control" name="cardCVC" placeholder="CVC" />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="couponCode">Code de réduction</label> <input
+												type="text" class="form-control" name="couponCode" />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<a
+											href="..\14RecapitulatifCommande\recapitulatifCommande.jsf"><button
+												class="btn btn-success btn-lg btn-block" type="submit">Paiement</button></a>
+									</div>
+								</div>
+								<div class="row" style="display: none;">
+									<div class="col-xs-12">
+										<p class="payment-errors"></p>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- CREDIT CARD FORM ENDS HERE -->
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+		<script
+			src='http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js'></script>
+		<script
+			src='http://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js'></script>
+
+		<script type="text/javascript" src="js/Paiement.js"></script>
+		<script type="text/javascript"
+			src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
+		<script type="text/javascript" src="../jsHamburger/main.js"></script>
+
+	</ui:define>
+
+
+</ui:composition>
+</html>

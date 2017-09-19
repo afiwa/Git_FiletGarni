@@ -1,0 +1,140 @@
+h3.bg-success {
+	padding: 15px;
+	font-weight: bold;
+	margin: 15px 0px 15px 0px;
+	border-radius: 0.15em;
+}
+
+.required-lbl {
+	color: red;
+}
+
+label[for="billinginformation"] {
+	display: inline;
+	float: left;
+	margin: 0px 45px 0px 0px;
+}
+
+.card-expiry {
+	padding-left: 0px;
+}
+
+.confirm-btn {
+	float: right;
+}
+
+.bg-primary {
+	padding: 0.6em;
+	border-radius: .15em;
+	margin: 0.3em 0px 0.3em 0px;
+	background-color: #DA9903;
+}
+
+.bg-success {
+	background-color: var(--couleur-gris-clair);
+}
+
+.btn-primary {
+	background-color: var(--couleur-majeure-vert);
+	border: 0;
+	text-align: center;
+	font-size: 18px;
+	margin: 10px 0% 20px 60%;
+	padding: 0.6em 10% 0.6em 10%;
+	border-radius: 0.15em;
+	width:40%;
+}
+
+.btn-primary:hover {
+	background-color: var(--couleur-majeure-vert);
+	opacity: 0.85;
+}
+
+.btn-primary:focus {
+	background-color: var(--couleur-majeure-vert-dark);
+}
+
+label {
+	margin-bottom: 0px;
+}
+
+.form-group {
+	margin-bottom: 0.25em;
+	min-height: 2em;
+	letter-spacing: 1px;
+	width: 100%;
+}
+
+.contenu {
+	padding: 0px;
+}
+
+.checkbox, .radio {
+	margin-left: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#termsAndConditionsCheck {
+	color: red;
+	font-size: 85%;
+	font-weight: bold;
+}
+
+#termsAndConditionsCheck2 {
+	color: red;
+	font-weight: bold;
+	font-size: 85%;
+	margin-right: 15%;
+	float: right;
+	margin-bottom: 15px;
+}
+
+.subBlock {
+	display: flex;
+	margin-bottom: 1em;
+}
+
+.block {
+	display: block;
+	width: 32%;
+}
+
+.block:nth-child(2) {
+	margin: 0% 2%;
+}
+
+.cd-multi-steps {
+	margin: 2em auto 0em auto
+}
+
+header {
+	margin-bottom: 1em;
+}
+
+@media ( max-width : 1024px) {
+	.subBlock {
+		display: block;
+	}
+	.block, .block:nth-child(2), h3.bg-success, .other-info {
+		width: 90%;
+		margin: 2% 5% 0% 5%;
+	}
+	.cd-multi-steps {
+		margin: 0em auto 0em auto;
+	}
+	.container {
+		width: auto;
+	}
+	.btn-primary {
+		margin: 0px 15% 20px 15%;
+		width: 70%;
+	}
+}
+
+@media ( max-width : 624px) {
+	.btn-primary {
+		margin: 0px 5% 20px 5%;
+		width: 90%;
+	}
+}
