@@ -26,6 +26,9 @@ public class Recette implements Serializable{
 	@Column(name="id_recette", nullable = false)
 	private Integer id;
 	
+	@Column(name="photo_recette", nullable = false, length = 50)
+	private String photo;
+	
 	@Column(name="nbpers_recette", nullable = false, length = 50)
 	private String nbPers;
 	
