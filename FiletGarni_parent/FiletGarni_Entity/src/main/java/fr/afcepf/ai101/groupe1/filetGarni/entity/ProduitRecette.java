@@ -22,6 +22,8 @@ public class ProduitRecette implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_produitrecette", nullable = false)
 	private Integer id;
+	@Column(name="libelle_produitrecette", nullable = false, length=50)
+	private String libelle;
 	
 	@Column(name="quantite_produitrecette", nullable = false)
     private Double quantiteRecette;
