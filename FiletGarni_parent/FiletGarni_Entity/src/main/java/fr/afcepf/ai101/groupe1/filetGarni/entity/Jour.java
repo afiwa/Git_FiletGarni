@@ -57,11 +57,13 @@ public class Jour implements Serializable{
 	public Jour() {
     }
 
-	public Jour(Integer id, String libelle) {
+	public Jour(Integer paramId, String paramLibelle) {
 		super();
-		this.id = id;
-		this.libelle = libelle;
+		id = paramId;
+		libelle = paramLibelle;
 	}
+
+	
 
 	
 }

@@ -72,14 +72,17 @@ public class Professionnel extends NonSalarie {
 	public Professionnel() {
     }
 
-	public Professionnel(String identifiantConnexion, String raisonSociale, String siret, String iban, String bic) {
+	public Professionnel(String paramIdentifiantConnexion, String paramRaisonSociale, String paramSiret,
+			String paramIban, String paramBic) {
 		super();
-		this.identifiantConnexion = identifiantConnexion;
-		this.raisonSociale = raisonSociale;
-		this.siret = siret;
-		this.iban = iban;
-		this.bic = bic;
+		identifiantConnexion = paramIdentifiantConnexion;
+		raisonSociale = paramRaisonSociale;
+		siret = paramSiret;
+		iban = paramIban;
+		bic = paramBic;
 	}
+
+	
     
     
 

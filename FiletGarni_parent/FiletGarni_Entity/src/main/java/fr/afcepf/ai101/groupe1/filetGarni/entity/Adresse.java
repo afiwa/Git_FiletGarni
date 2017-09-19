@@ -99,18 +99,19 @@ public class Adresse implements Serializable{
 	}
 	public Adresse() {
     }
-    
-	public Adresse(Integer id, String libelle, String numeroRue, String nomRue, String latitude, String longitude,
-			CodePostal codePostal) {
+	public Adresse(Integer paramId, String paramLibelle, String paramNumeroRue, String paramNomRue,
+			String paramLatitude, String paramLongitude, CodePostal paramCodePostal) {
 		super();
-		this.id = id;
-		this.libelle = libelle;
-		this.numeroRue = numeroRue;
-		this.nomRue = nomRue;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.codePostal = codePostal;
-	}   
+		id = paramId;
+		libelle = paramLibelle;
+		numeroRue = paramNumeroRue;
+		nomRue = paramNomRue;
+		latitude = paramLatitude;
+		longitude = paramLongitude;
+		codePostal = paramCodePostal;
+	}
+    
+	
     
     
 }

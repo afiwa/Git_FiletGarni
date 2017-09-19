@@ -85,16 +85,16 @@ public class HorairesOuverture implements Serializable {
 		this.pointRelais = pointRelais;
 	}
 
-	public HorairesOuverture(Integer id, String heureDeDébut, String heureDeFin, Jour jour, PointRelais pointRelais) {
+	public HorairesOuverture(Integer paramId, String paramHeureDeDébut, String paramHeureDeFin, Jour paramJour,
+			PointRelais paramPointRelais) {
 		super();
-		this.id = id;
-		this.heureDeDébut = heureDeDébut;
-		this.heureDeFin = heureDeFin;
-		this.jour = jour;
-		this.pointRelais = pointRelais;
+		id = paramId;
+		heureDeDébut = paramHeureDeDébut;
+		heureDeFin = paramHeureDeFin;
+		jour = paramJour;
+		pointRelais = paramPointRelais;
 	}
 
-	
 	
 
 }

@@ -84,12 +84,14 @@ public class CodePostal implements Serializable{
 	public CodePostal() {
     }
 
-	public CodePostal(Integer id, String codePostal, String departement) {
+	public CodePostal(Integer paramId, String paramCodePostal, String paramDepartement) {
 		super();
-		this.id = id;
-		this.codePostal = codePostal;
-		this.departement = departement;
+		id = paramId;
+		codePostal = paramCodePostal;
+		departement = paramDepartement;
 	}
+
+	
 
 	
 	
