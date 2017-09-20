@@ -32,10 +32,10 @@ public class Recette implements Serializable{
 	@Column(name="nbpers_recette", nullable = false, length = 50)
 	private String nbPers;
 	
-	@Column(name="libelle_recette", nullable = false, length = 50)
+	@Column(name="libelle_recette", nullable = false, length = 60)
     private String libelle;
 	
-	@Column(name="descriptif_recette", nullable = false, length = 1500)
+	@Column(name="descriptif_recette", nullable = false, length = 2000)
     private String descriptif;
 	
 	

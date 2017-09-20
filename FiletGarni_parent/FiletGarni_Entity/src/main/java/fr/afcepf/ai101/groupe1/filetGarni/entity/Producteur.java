@@ -19,7 +19,7 @@ public class Producteur extends Professionnel {
 	@Column(name = "descriptionbreve_producteur", nullable = true, length = 200)
 	private String descriptionBreve;
 	
-	@Column(name = "descriptiondetaillee_producteur", nullable = true, length = 1000)
+	@Column(name = "descriptiondetaillee_producteur", nullable = true, length = 2000)
     private String descriptionDetaillee;
 	
 	@Column(name = "photo_producteur", nullable = true, length = 20)
