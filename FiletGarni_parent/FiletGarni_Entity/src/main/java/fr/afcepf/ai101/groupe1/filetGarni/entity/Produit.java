@@ -50,10 +50,9 @@ public class Produit implements Serializable {
     private java.util.Date dateCreationProduit;
 	
 	@ManyToMany
-	@JoinTable(name = "conditionnement_produit", 
-				joinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id_produit"),
-				inverseJoinColumns = @JoinColumn(name = "id_conditionnement", 
-				referencedColumnName = "id_conditionnement"))
+	@JoinTable(name = "conditionnement_produit", joinColumns = 
+	@JoinColumn(name = "id_produit", referencedColumnName = "id_produit"),inverseJoinColumns = 
+	@JoinColumn(name = "id_conditionnement", referencedColumnName = "id_conditionnement"))
     private List<Conditionnement> conditionnements;
     
     @ManyToOne
@@ -65,13 +64,9 @@ public class Produit implements Serializable {
     private LigneCommande lgnCommande;
     
     @ManyToOne
-    @JoinColumn(name = "id_producteur_tproduit", nullable = true, 
-    			foreignKey = @ForeignKey(name = "FK_producteur_tproduit"))
+    @JoinColumn(name = "id_producteur_tproduit", nullable = true, foreignKey = 
+    @ForeignKey(name = "FK_producteur_tproduit"))
     private Producteur producteur;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_produitRecette_tproduit", nullable = true, foreignKey = @ForeignKey(name = "FK_produitrecette_tproduit"))
-    private ProduitRecette produitRecette;
     
     public Produit() {
     }
@@ -164,18 +159,9 @@ public class Produit implements Serializable {
 		producteur = paramProducteur;
 	}
 
-	public ProduitRecette getProduitRecette() {
-		return produitRecette;
-	}
-
-	public void setProduitRecette(ProduitRecette paramProduitRecette) {
-		produitRecette = paramProduitRecette;
-	}
-
 	public Produit(Integer paramId, String paramPhoto, String paramLibelle, Double paramPrix, String paramDescription,
 			Integer paramQuantiteEnStock, Date paramDateCreationProduit, CategorieProduit paramCategorie,
-			LigneCommande paramLgnCommande, Producteur paramProducteur,
-			fr.afcepf.ai101.groupe1.filetGarni.entity.ProduitRecette paramProduitRecette) {
+			LigneCommande paramLgnCommande, Producteur paramProducteur) {
 		super();
 		id = paramId;
 		photo = paramPhoto;
@@ -187,6 +173,7 @@ public class Produit implements Serializable {
 		categorie = paramCategorie;
 		lgnCommande = paramLgnCommande;
 		producteur = paramProducteur;
-		produitRecette = paramProduitRecette;
-	}    
+	}
+
+	
 }

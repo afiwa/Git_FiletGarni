@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,11 +30,13 @@ public class ProduitRecette implements Serializable{
 	@Column(name="quantite_produitrecette", nullable = false, length=50)
     private String quantiteRecette;
 	
-	@OneToMany(mappedBy = "produitRecette")
-    private List<Produit> produits;
-    
     @ManyToMany(mappedBy = "produitRecettes")
     private List<Recette> recettes;
+    
+    @ManyToOne
+    @JoinColumn(name="id_categorie_tproduitrecette", nullable=true, foreignKey=
+    @ForeignKey(name="FK_id_categorie_tproduitrecette"))
+    private CategorieProduit categorie;
     
     public ProduitRecette() {
     }
@@ -49,24 +53,16 @@ public class ProduitRecette implements Serializable{
 		return libelle;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibelle(String paramLibelle) {
+		libelle = paramLibelle;
 	}
 
 	public String getQuantiteRecette() {
 		return quantiteRecette;
 	}
 
-	public void setQuantiteRecette(String quantiteRecette) {
-		this.quantiteRecette = quantiteRecette;
-	}
-
-	public List<Produit> getProduits() {
-		return produits;
-	}
-
-	public void setProduits(List<Produit> paramProduits) {
-		produits = paramProduits;
+	public void setQuantiteRecette(String paramQuantiteRecette) {
+		quantiteRecette = paramQuantiteRecette;
 	}
 
 	public List<Recette> getRecettes() {
@@ -77,12 +73,23 @@ public class ProduitRecette implements Serializable{
 		recettes = paramRecettes;
 	}
 
-	public ProduitRecette(Integer paramId, String paramLibelle, String paramQuantiteRecette) {
+	public CategorieProduit getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(CategorieProduit paramCategorie) {
+		categorie = paramCategorie;
+	}
+
+	public ProduitRecette(Integer paramId, String paramLibelle, String paramQuantiteRecette,
+			CategorieProduit paramCategorie) {
 		super();
 		id = paramId;
 		libelle = paramLibelle;
 		quantiteRecette = paramQuantiteRecette;
+		categorie = paramCategorie;
 	}
 
+     
 	
 }

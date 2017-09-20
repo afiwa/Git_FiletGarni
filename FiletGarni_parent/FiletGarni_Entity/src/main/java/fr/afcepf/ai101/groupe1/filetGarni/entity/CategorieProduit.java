@@ -19,28 +19,31 @@ import javax.persistence.Table;
 public class CategorieProduit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_categorieproduit", nullable = false)
 	private Integer id;
-	
+
 	@Column(name="libelle_categorieproduit", nullable = false, length = 50)
-    private String libelle;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_categorie_tcategorie", nullable = true, 
-				foreignKey = @ForeignKey(name = "FK_categorie_tcategorie"))
-    private CategorieProduit categorie;
-    
-    @OneToMany(mappedBy = "categorie")
-    private List<CategorieProduit> categories;
-    
-     @OneToMany(mappedBy = "categorie")
-    private List<Produit> produits;
-    
-    public CategorieProduit() {
-    }
+	private String libelle;
+
+	@ManyToOne
+	@JoinColumn(name = "id_categorie_tcategorie", nullable = true, 
+	foreignKey = @ForeignKey(name = "FK_categorie_tcategorie"))
+	private CategorieProduit categorie;
+
+	@OneToMany(mappedBy = "categorie")
+	private List<CategorieProduit> categories;
+
+	@OneToMany(mappedBy = "categorie")
+	private List<Produit> produits;
+
+	@OneToMany(mappedBy="categorie")
+	private List<ProduitRecette> listeProduitRecette;
+
+	public CategorieProduit() {
+	}
 
 	public Integer getId() {
 		return id;
@@ -89,5 +92,5 @@ public class CategorieProduit implements Serializable {
 	public void setProduits(List<Produit> paramProduits) {
 		produits = paramProduits;
 	}
-    
+
 }
