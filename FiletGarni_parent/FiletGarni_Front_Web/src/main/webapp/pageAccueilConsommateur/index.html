@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:500" />
+    
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link type="text/css" rel="stylesheet" href="consommateur/css/ownmain.css" />
+    <link rel="stylesheet" href="css/styletab.css" type="text/css" />
+    
+    <!-- ----------------------- CSS FICHE PRODUIT --------------------------------------- -->
+    
+    <link rel="stylesheet" href="fiche_produit/styleTest.css" type="text/css" />
+    <link rel="stylesheet" href="fiche_produit/Fiche_produit.css" type="text/css" />
+    
+    <!------------------------------------------------------------------------------------->
+    
+    <title>Le Filet Garni</title>
+    <style>
+        @font-face {
+            font-family: "fibre";
+            src: url("fibre-font.otf");
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- ------------------------------ MENU ET SOUS MENUS ----------------------------------- -->
+    <header>
+        <a href="#" id="logo"></a>
+        <div id="hamburger">
+            <div id="hamburger-content">
+                <nav>
+                    <ul>
+                        <li><a class="menu" href="#" onmouseover="overFunction(this)">Fruits</a>
+                            <ul class="sous-menu">
+                                <li><a href="#">lien sous menu fruits</a></li>
+                                <li><a href="#">lien sous menu fruits</a></li>
+                                <li><a href="#">lien sous menu fruits</a></li>
+                                <li><a href="#">lien sous menu fruits</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="menu" href="#" onmouseover="overFunction(this)">Légumes</a>
+                            <ul class="sous-menu">
+                                <li><a href="#">lien sous menu Légumes</a></li>
+                                <li><a href="#">lien sous menu Légumes</a></li>
+                                <li><a href="#">lien sous menu Légumes</a></li>
+                                <li><a href="#">lien sous menu Légumes</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="menu" href="#" onmouseover="overFunction(this)">Produits laitiers</a>
+                            <ul class="sous-menu">
+                                <li><a href="#">lien sous menu Produits laitiers</a></li>
+                                <li><a href="#">lien sous menu Produits laitiers</a></li>
+                                <li><a href="#">lien sous menu Produits laitiers</a></li>
+                                <li><a href="#">lien sous menu Produits laitiers</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="menu" href="#" onmouseover="overFunction(this)">Boissons</a>
+                            <ul class="sous-menu">
+                                <li><a href="#">lien sous menu Boissons</a></li>
+                                <li><a href="#">lien sous menu Boissons</a></li>
+                                <li><a href="#">lien sous menu Boissons</a></li>
+                                <li><a href="#">lien sous menu Boissons</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Nos producteurs</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="button button-sign-up">S'inscrire</a>
+                <a href="#" class="button button-sign-in">Se connecter</a>
+            </div>
+            <button id="hamburger-button">&#9776;</button>
+            <div id="hamburger-sidebar">
+                <div id="hamburger-sidebar-header"></div>
+                <div id="hamburger-sidebar-body"></div>
+            </div>
+            <div id="hamburger-overlay"></div>
+        </div>
+    </header>
+
+    <!-- -------------------------- SECTION SELECTION DE LA SEMAINE ------------------ -->
+
+    <section id="selection">
+        <span class="titreSelection"><center>Selection de la semaine</center></span>
+        
+        <figure class="FicheProduit">
+        <img class="image_principale" src="fiche_produit/Basilic.jpg" alt="Basilic">
+        <div class="icons">
+            <a>
+                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+            </a>
+            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+        </div>
+        <figcaption>
+            <h3 class="nomProduit">Basilic</h3>
+            <h3 class="prixProduit">1,50 €</h3>
+            <h2 class="ferme">Ferme de Michel</h2>
+            <h2 class="poids">100 g</h2>
+            <div class="prixKilo">15 €/Kg</div>
+        </figcaption>
+    </figure>
+    
+    <figure class="FicheProduit">
+        <img class="image_principale" src="fiche_produit/Canneberge-WEB.jpg" alt="Canneberge" />
+        <div class="icons">
+            <a>
+                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+            </a>
+            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+        </div>
+        <figcaption>
+            <h3 class="nomProduit">Canneberge</h3>
+            <h3 class="prixProduit">7,90 €</h3>
+            <h2 class="ferme">Ferme du coin</h2>
+            <h2 class="poids">150 g</h2>
+            <div class="prixKilo">52,60 €/kg</div>
+        </figcaption>
+        
+    </figure>
+    <figure class="FicheProduit">
+        <img class="image_principale" src="fiche_produit/Carottes.jpg" alt="Carottes" />
+        <div class="icons">
+            <a>
+                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+            </a>
+            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+        </div>
+        <figcaption>
+            <h3 class="nomProduit">Carottes</h3>
+            <h3 class="prixProduit">2,90 €</h3>
+            <h2 class="ferme">Ferme du coin</h2>
+            <h2 class="poids">500 g</h2>
+            <div class="prixKilo">5,80 €/kg</div>
+        </figcaption>
+    </figure>
+        
+    </section>
+
+    <!-- -------------------------- SECTION RECETTES -------------------------------- -->
+
+    <section id="recettes">
+        <span class="titreRecette"><center>Recettes de la semaine</center></span>
+        <div class="descriptionRecette">
+            <center>Retrouvez ici toutes nos recettes de saison reprenant les produits de nos producteurs !</center>
+        </div>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/plat1.jpeg" style="width:100%">
+                <div class="textRecette"><a href="">Salade de je sais pas quoi</a></div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/plat2.jpeg" style="width:100%">
+                <div class="textRecette"><a href="">Figues coupees a la chevre sur son nid de salade vertes</a></div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/plat3.jpeg" style="width:100%">
+                <div class="textRecette"><a href="">Pates accompagnes de son arc-en-ciel de legumes</a></div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- ---------------------------------- SECTION PRODUCTEURS --------------------------- -->
+
+    <section id="producteurs">
+        <span class="titreProducteur"><center>Nos producteurs</center></span>
+        <div id="carteProducteur"></div>
+        <div class="photoProducteur">
+            <ul>
+                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
+                <li><p>Kevin</p><img src="images/producteur_page_accueil/kevin.png" /></li>
+                <li><p>Laurent</p><img src="images/producteur_page_accueil/laurent.jpg" /></li>
+                <li><p>Maurice</p><img src="images/producteur_page_accueil/maurice.jpg" /></li>
+                <li><p>Michelle</p><img src="images/producteur_page_accueil/michelle.jpg" /></li>
+                <li><p>Nadine</p><img src="images/producteur_page_accueil/nadine.jpg" /></li>
+                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
+                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
+                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
+                <li><p>Kevin</p><img src="images/producteur_page_accueil/kevin.png" /></li>
+                <li><p>Laurent</p><img src="images/producteur_page_accueil/laurent.jpg" /></li>
+                <li><p>Maurice</p><img src="images/producteur_page_accueil/maurice.jpg" /></li>
+                <li><p>Michelle</p><img src="images/producteur_page_accueil/michelle.jpg" /></li>
+                <li><p>Nadine</p><img src="images/producteur_page_accueil/nadine.jpg" /></li>
+                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
+                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- -------------------------- ADD TO CART INTERACTION ------------------------------ -->
+    
+    <div class="cd-cart-container empty">
+        <a href="#0" class="cd-cart-trigger">
+		Panier
+		<ul class="count"> <!-- cart items count -->
+			<li>0</li>
+			<li>0</li>
+		</ul> <!-- .count -->
+	</a>
+
+        <div class="cd-cart">
+            <div class="wrapper">
+                <header>
+                    <h2>Panier</h2>
+                    <span class="undo"><a href="#0">Remettre article</a></span>
+                </header>
+
+                <div class="body">
+                    <ul>
+                        <!-- products added to the cart will be inserted here using JavaScript -->
+                    </ul>
+                </div>
+
+                <footer>
+                    <a href="#0" class="checkout btn"><em>Total - €<span>0</span></em></a>
+                </footer>
+            </div>
+        </div>
+        <!-- .cd-cart -->
+    </div>
+
+    <!-- -------------------------- FOOTER ------------------------------- -->
+
+    <footer id="realfooter">
+        <div id="apropos" class="footer">
+            <ul>
+                <li>
+                    <h3><b>A PROPOS</b></h3>
+                </li>
+                <li class="lienfooter"><a href="" alt="">Qui sommes-nous?</a></li>
+                <li class="lienfooter"><a href="" alt="">Comment rejoindre la coopérative?</a></li>
+                <li class="lienfooter"><a href="" alt="">Conditions générales de vente</a></li>
+                <li class="lienfooter"><a href="" alt="">Mentions légales</a></li>
+                <li class="lienfooter"><a href="" alt="">Signaler un abus</a></li>
+                <li class="lienfooter"><a href="" alt="">Cookies</a></li>
+            </ul>
+        </div>
+        <div id="sav" class="footer">
+            <ul>
+                <li>
+                    <h3><b>AIDE, SERVICE &amp; SAV</b></h3>
+                </li>
+                <li class="lienfooter"><a href="" alt="">Service Après-Vente</a></li>
+                <li class="lienfooter"><a href="" alt="">Besoin d'aide?</a></li>
+            </ul>
+        </div>
+        <div id="fallow" class="footer">
+            <h3><b>NOUS SUIVRE</b></h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img class="socialicons" src="images/social/facebook.png" height="60" width="60" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="socialicons" src="images/social/twitter.png" height="60" width="60" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="socialicons" src="images/social/instagram.png" height="60" width="60" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="socialicons" src="images/social/pinterest.png" height="60" width="60" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+    
+    <!-- ----------------------- SCRIPT FICHE PRODUIT --------------------------------- -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="fiche_produit/Affichage_Produit_Projet3.js"></script>
+    <!-- -------------------------------------------------------------------------------------- -->
+
+    
+</body>
+
+</html>
