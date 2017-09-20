@@ -110,17 +110,18 @@ public class Ville implements Serializable{
 	public Ville() {
 	}
 
-	public Ville(Integer id, String nom, String codeCommune, Region region, Livreur livreur,
-			TourneeTheorique tourneeTheorique) {
+	public Ville(Integer paramId, String paramNom, String paramCodeCommune, Region paramRegion, Livreur paramLivreur,
+			TourneeTheorique paramTourneeTheorique) {
 		super();
-		this.id = id;
-		this.nom = nom;
-		this.codeCommune = codeCommune;
-		this.region = region;
-		this.livreur = livreur;
-		this.tourneeTheorique = tourneeTheorique;
+		id = paramId;
+		nom = paramNom;
+		codeCommune = paramCodeCommune;
+		region = paramRegion;
+		livreur = paramLivreur;
+		tourneeTheorique = paramTourneeTheorique;
 	}
 
+	
 	
 	
 	

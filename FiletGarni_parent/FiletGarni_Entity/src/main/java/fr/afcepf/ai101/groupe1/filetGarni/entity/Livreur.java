@@ -57,5 +57,7 @@ public class Livreur extends Salarie {
 		tourneeReelleLivraison = paramTourneeReelleLivraison;
 	}
 
+	
+
 
 }

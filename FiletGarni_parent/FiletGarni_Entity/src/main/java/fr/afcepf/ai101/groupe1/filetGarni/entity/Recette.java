@@ -101,13 +101,18 @@ public class Recette implements Serializable{
 	public Recette() {
     }
 
-	public Recette(Integer id, String libelle, String descriptif, CategorieRecette categorieRecette) {
+	public Recette(Integer paramId, String paramPhoto, String paramNbPers, String paramLibelle, String paramDescriptif,
+			CategorieRecette paramCategorieRecette) {
 		super();
-		this.id = id;
-		this.libelle = libelle;
-		this.descriptif = descriptif;
-		this.categorieRecette = categorieRecette;
+		id = paramId;
+		photo = paramPhoto;
+		nbPers = paramNbPers;
+		libelle = paramLibelle;
+		descriptif = paramDescriptif;
+		categorieRecette = paramCategorieRecette;
 	}
+
+	
 	
 
 	

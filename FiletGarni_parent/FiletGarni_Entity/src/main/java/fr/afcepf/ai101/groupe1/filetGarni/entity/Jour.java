@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,16 +25,12 @@ public class Jour implements Serializable{
 	@Column(name="libelle_jour", nullable=false, length=10)
     private String libelle;
 
-	@ManyToMany
-	@JoinTable(name="jour_horairesouverture",joinColumns= 
-	@JoinColumn(name="id_jour", referencedColumnName="id_jour"), inverseJoinColumns=
-	@JoinColumn(name="id_horaires", referencedColumnName="id_horaires"))
-    private List<HorairesOuverture> horaires;
+	@OneToMany(mappedBy="jour")
+	private List<HorairesOuverture> horaires;
     
-	@ManyToMany(mappedBy="jours")
-	private List<PointRelais> pointRelaisListe;
-
-    public Integer getId() {
+	
+	
+	public Integer getId() {
 		return id;
 	}
 
@@ -60,22 +54,16 @@ public class Jour implements Serializable{
 		this.horaires = horaires;
 	}
 
-	public List<PointRelais> getPointRelaisListe() {
-		return pointRelaisListe;
-	}
-
-	public void setPointRelaisListe(List<PointRelais> pointRelaisListe) {
-		this.pointRelaisListe = pointRelaisListe;
-	}
-
 	public Jour() {
     }
 
-	public Jour(Integer id, String libelle) {
+	public Jour(Integer paramId, String paramLibelle) {
 		super();
-		this.id = id;
-		this.libelle = libelle;
+		id = paramId;
+		libelle = paramLibelle;
 	}
+
 	
+
 	
 }

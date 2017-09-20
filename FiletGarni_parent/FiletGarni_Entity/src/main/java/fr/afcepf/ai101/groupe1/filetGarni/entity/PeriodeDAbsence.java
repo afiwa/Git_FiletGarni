@@ -97,16 +97,18 @@ public class PeriodeDAbsence implements Serializable {
 	public PeriodeDAbsence() {
     }
 
-	public PeriodeDAbsence(Integer id, Date dateDebut, Date dateFin, String motif, PointRelais pointRelais,
-			Producteur producteur) {
+	public PeriodeDAbsence(Integer paramId, Date paramDateDebut, Date paramDateFin, String paramMotif,
+			PointRelais paramPointRelais, Producteur paramProducteur) {
 		super();
-		this.id = id;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.motif = motif;
-		this.pointRelais = pointRelais;
-		this.producteur = producteur;
+		id = paramId;
+		dateDebut = paramDateDebut;
+		dateFin = paramDateFin;
+		motif = paramMotif;
+		pointRelais = paramPointRelais;
+		producteur = paramProducteur;
 	}
+
+	
 	
 	
 

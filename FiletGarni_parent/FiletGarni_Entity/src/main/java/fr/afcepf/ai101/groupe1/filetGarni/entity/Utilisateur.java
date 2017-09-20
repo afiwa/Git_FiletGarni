@@ -80,12 +80,12 @@ public class Utilisateur implements Serializable{
 		this.mdp = mdp;
 	}
 
-	public Utilisateur(Integer id, String nom, String prenom, String mail, String mdp) {
+	public Utilisateur(Integer paramId, String paramNom, String paramPrenom, String paramMail, String paramMdp) {
 		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.mail = mail;
-		this.mdp = mdp;
+		id = paramId;
+		nom = paramNom;
+		prenom = paramPrenom;
+		mail = paramMail;
+		mdp = paramMdp;
 	}
 }

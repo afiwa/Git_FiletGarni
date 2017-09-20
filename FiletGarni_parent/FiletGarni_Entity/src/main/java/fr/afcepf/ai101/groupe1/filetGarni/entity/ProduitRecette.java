@@ -25,8 +25,8 @@ public class ProduitRecette implements Serializable{
 	@Column(name="libelle_produitrecette", nullable = false, length=50)
 	private String libelle;
 	
-	@Column(name="quantite_produitrecette", nullable = false)
-    private Double quantiteRecette;
+	@Column(name="quantite_produitrecette", nullable = false, length=50)
+    private String quantiteRecette;
 	
 	@OneToMany(mappedBy = "produitRecette")
     private List<Produit> produits;
@@ -45,12 +45,20 @@ public class ProduitRecette implements Serializable{
 		id = paramId;
 	}
 
-	public Double getQuantiteRecette() {
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public String getQuantiteRecette() {
 		return quantiteRecette;
 	}
 
-	public void setQuantiteRecette(Double paramQuantiteRecette) {
-		quantiteRecette = paramQuantiteRecette;
+	public void setQuantiteRecette(String quantiteRecette) {
+		this.quantiteRecette = quantiteRecette;
 	}
 
 	public List<Produit> getProduits() {
@@ -69,9 +77,12 @@ public class ProduitRecette implements Serializable{
 		recettes = paramRecettes;
 	}
 
-	public ProduitRecette(Integer paramId, Double paramQuantiteRecette) {
+	public ProduitRecette(Integer paramId, String paramLibelle, String paramQuantiteRecette) {
 		super();
 		id = paramId;
+		libelle = paramLibelle;
 		quantiteRecette = paramQuantiteRecette;
 	}
+
+	
 }
