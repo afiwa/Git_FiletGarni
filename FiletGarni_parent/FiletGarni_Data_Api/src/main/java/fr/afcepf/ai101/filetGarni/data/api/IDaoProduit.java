@@ -21,5 +21,9 @@ public interface IDaoProduit {
     public java.util.List<Produit> getByProducteur(Producteur producteur);
 
     public java.util.List<Produit> getByNom(String nom);
+    
+    public Produit getById(Integer id_produit);
+    
+    public Produit getByIdWithConditionnement(Integer id_produit);
 
 }

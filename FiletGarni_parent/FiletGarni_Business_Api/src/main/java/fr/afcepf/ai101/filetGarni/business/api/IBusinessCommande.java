@@ -46,4 +46,6 @@ public interface IBusinessCommande {
 
     public Commande getCommandebyId(Integer id_commande);
 
+	public Produit getProduitByIdWithConditionnements(Integer paramId_produit);
+
 }

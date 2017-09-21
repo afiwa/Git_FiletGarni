@@ -1,5 +1,7 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +21,16 @@ public class DaoProduit implements IDaoProduit {
 	
     public DaoProduit() {
     }
+    
+    @Override
+	public Produit getById(Integer paramId_produit) {
+		return (Produit) em.createQuery("SELECT p FROM Produit p WHERE p.id = :pid").setParameter("pid", paramId_produit).getSingleResult();
+	}
+    
+    @Override
+	public Produit getByIdWithConditionnement(Integer paramId_produit) {
+		return (Produit) em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements WHERE p.id = :pid").setParameter("pid", paramId_produit).getSingleResult();
+	}
 
     public void creer() {
         // TODO implement here
@@ -55,5 +67,4 @@ public class DaoProduit implements IDaoProduit {
         // TODO implement here
         return null;
     }
-
 }
