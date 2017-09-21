@@ -6,5 +6,8 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @ManagedBean(name = "mbPageAccueilGenerale")
 public class pageAccueilGeneraleManagedBean {
-
+	
+	public String choisirRegion() {
+		return "/pageAccueilConsommateur/pageAccueilConsommateur.xhtml?faces-redirect=true";
+	}          
 }
