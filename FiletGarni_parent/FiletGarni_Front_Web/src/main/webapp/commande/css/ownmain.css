@@ -41,9 +41,8 @@ body{
     display: none;
 }
 
-.sous-menu li a,.sous-menu .button{
+.sous-menu li a .sous-menu .button{
 	font-size:87%;
-	text-transform: lowercase;
 	color:#555;
 }
 
@@ -98,6 +97,21 @@ a:hover{
 .sous-menu-active li:last-child {
     display: inline;
     border-right-width: 0px;
+}
+
+#catLait{
+	padding-left: 100px;
+    padding-right: 100px;
+}
+
+.catLaitOeufs{
+	padding-left: 100px;
+    padding-right: 100px;
+}
+
+.catRecette{
+	padding-left: 80px;
+    padding-right: 80px;
 }
 
 .lienfooter a {

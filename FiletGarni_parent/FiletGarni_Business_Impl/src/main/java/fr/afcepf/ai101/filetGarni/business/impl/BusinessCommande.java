@@ -81,6 +81,16 @@ public class BusinessCommande implements IBusinessCommande {
         // TODO implement here
         return null;
     }
+    
+	@Override
+	public Produit getProduitById(Integer paramId_produit) {
+		return daoProduit.getById(paramId_produit);
+	}
+	
+	@Override
+	public Produit getProduitByIdWithConditionnements(Integer paramId_produit) {
+		return daoProduit.getByIdWithConditionnement(paramId_produit);
+	}
 
 	@Override
 	public List<Produit> getProduitByNom(String paramNom, Region paramRegion) {
@@ -96,12 +106,6 @@ public class BusinessCommande implements IBusinessCommande {
 
 	@Override
 	public List<Produit> getProduitByProducteur(Region paramRegion, Producteur paramProducteur) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Produit getProduitById(Integer paramId_produit) {
 		// TODO Auto-generated method stub
 		return null;
 	}
