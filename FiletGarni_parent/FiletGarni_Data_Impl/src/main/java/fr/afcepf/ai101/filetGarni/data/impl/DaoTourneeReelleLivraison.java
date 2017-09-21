@@ -5,16 +5,17 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.afcepf.ai101.filetGarni.data.api.IDaoTourneeReelleLivraison;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTourneeReelleProducteur;
 
-@Remote(IDaoTourneeReelleProducteur.class)
+@Remote(IDaoTourneeReelleLivraison.class)
 @Stateless
-public class DaoTourneeReelle implements IDaoTourneeReelleProducteur {
+public class DaoTourneeReelleLivraison implements IDaoTourneeReelleLivraison {
 
 	@PersistenceContext(unitName = "FiletGarni_Data_Impl")
 	private EntityManager em;
 	
-    public DaoTourneeReelle() {
+    public DaoTourneeReelleLivraison() {
     }
 
     public void creer() {

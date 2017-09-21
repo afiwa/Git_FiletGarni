@@ -1056,13 +1056,7 @@ $(document).ready(function() {
                 enableZoom: true,
                 showTooltip: true,
                 onRegionClick: function(element, code, region) {
-                    var message = 'Région : "' +
-                        region +
-                        '" || Id : "' +
-                        code +
-                        '"';
-
-                    alert(message);
+                    window.location = "../pageAccueilConsommateur/pageAccueilConsommateur.jsf"
                 }
             });
         });
