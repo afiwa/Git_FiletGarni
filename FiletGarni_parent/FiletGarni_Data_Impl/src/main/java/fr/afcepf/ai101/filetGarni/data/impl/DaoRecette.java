@@ -17,6 +17,7 @@ public class DaoRecette implements IDaoRecette {
 	
     public DaoRecette() {
     }
+    
 
     public java.util.List<Recette> getByCategorieRecette(Integer id_Categorie_Produit) {
         // TODO implement here
@@ -27,5 +28,12 @@ public class DaoRecette implements IDaoRecette {
         // TODO implement here
         return null;
     }
+
+
+	@Override
+	public Recette getByIdWithAllProduitRecette(Integer paramId_recette) {
+    	return (Recette) em.createQuery("SELECT r FROM Recette r left join fetch r.produitRecettes WHERE r.id = :pid")
+    			.setParameter("pid", paramId_recette).getSingleResult();
+	}
 
 }

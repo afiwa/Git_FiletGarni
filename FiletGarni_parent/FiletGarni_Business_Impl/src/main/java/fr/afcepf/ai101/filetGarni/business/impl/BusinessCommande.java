@@ -165,9 +165,9 @@ public class BusinessCommande implements IBusinessCommande {
 	}
 
 	@Override
-	public Recette getRecetteById(Integer paramId_recette) {
+	public Recette getRecetteByIdWithAllProduitRecette(Integer paramId_recette) {
 		// TODO Auto-generated method stub
-		return null;
+		return daoRecette.getByIdWithAllProduitRecette(paramId_recette);
 	}
 
 	@Override

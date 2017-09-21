@@ -5,9 +5,9 @@
     position: relative;
     display: inline-block;
     overflow: hidden;
-    margin: 30px;
+    margin: 19px;
     min-width: 230px;
-    max-width: 315px;
+    max-width: 347px;
     width: 100%;
     font-size: 16px;
     background-color: #fff;
@@ -30,7 +30,7 @@
 
     max-width: 100%;
     vertical-align: top;
-    width: 315px;
+    width: 346px;
     height: 230px;
     border-bottom: 1px solid #2ABB6D;
 }
@@ -81,6 +81,15 @@
     font-size: 1.4rem;
     font-weight: 400;
     margin: 0 0 4px;
+}
+
+.ferme a {
+	text-decoration: none;
+	color: black;	
+}
+
+.ferme a:hover{
+	color: #2cc547;
 }
 
 .FicheProduit .prixProduit {

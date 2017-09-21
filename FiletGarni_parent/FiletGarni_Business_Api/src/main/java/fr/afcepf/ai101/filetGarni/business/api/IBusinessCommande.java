@@ -42,7 +42,7 @@ public interface IBusinessCommande {
 
     public java.util.List<Recette> getRecetteByCategorie(CategorieRecette categorie);
 
-    public Recette getRecetteById(Integer id_recette);
+    public Recette getRecetteByIdWithAllProduitRecette(Integer id_recette);
 
     public Commande getCommandebyId(Integer id_commande);
 

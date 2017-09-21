@@ -37,68 +37,125 @@
 	<section id="selection">
         <span class="titreSelection"><center>Selection de la semaine</center></span>
         
-        <figure class="FicheProduit">
-        <img class="image_principale" src="../Ressources/Images/Images_produits/#{mbPageAccueilConso.afficherProduit(55).photo}" alt="Cepes" />
-        <div class="icons">
-            <a>
-                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
-            </a>
-            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
-            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
-        </div>
-        <figcaption>
-            <h3 class="nomProduit">#{mbPageAccueilConso.afficherProduit(55).libelle}</h3>
-            <h3 class="prixProduit">
-            <h:outputLabel value="#{mbPageAccueilConso.afficherProduit(55).prix}" >
-            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-            </h:outputLabel>
-			 €
-			 </h3>
-            <h2 class="ferme"><a href="">#{mbPageAccueilConso.afficherProduit(55).producteur.raisonSociale}</a></h2>
-            <h2 class="poids">
-            	#{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).quantite}
-            	 #{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).unite}
-            
-            </h2>
-            <div class="prixKilo">15 €/Kg</div>
-        </figcaption>
-    </figure>
-    
-    <figure class="FicheProduit">
-        <img class="image_principale" src="fiche_produit/Canneberge-WEB.jpg" alt="Canneberge" />
-        <div class="icons">
-            <a>
-                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
-            </a>
-            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
-            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
-        </div>
-        <figcaption>
-            <h3 class="nomProduit">Canneberge</h3>
-            <h3 class="prixProduit">7,90 €</h3>
-            <h2 class="ferme">Ferme du coin</h2>
-            <h2 class="poids">150 g</h2>
-            <div class="prixKilo">52,60 €/kg</div>
-        </figcaption>
-        
-    </figure>
-    <figure class="FicheProduit">
-        <img class="image_principale" src="fiche_produit/Carottes.jpg" alt="Carottes" />
-        <div class="icons">
-            <a>
-                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
-            </a>
-            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
-            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
-        </div>
-        <figcaption>
-            <h3 class="nomProduit">Carottes</h3>
-            <h3 class="prixProduit">2,90 €</h3>
-            <h2 class="ferme">Ferme du coin</h2>
-            <h2 class="poids">500 g</h2>
-            <div class="prixKilo">5,80 €/kg</div>
-        </figcaption>
-    </figure>
+	    <figure class="FicheProduit">
+	        <img class="image_principale" src="../Ressources/Images/Images_produits/#{mbPageAccueilConso.afficherProduit(55).photo}" alt="Cepes" />
+	        <div class="icons">
+	            <a>
+	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+	            </a>
+	            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+	            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+	        </div>
+	        <figcaption>
+	            <h3 class="nomProduit">#{mbPageAccueilConso.afficherProduit(55).libelle}</h3>
+	            <h3 class="prixProduit">
+	            	#{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).libelle}	
+				 </h3>
+	            <h2 class="ferme"><a href="">#{mbPageAccueilConso.afficherProduit(55).producteur.raisonSociale}</a></h2>
+	            <h2 class="poids">
+	            	<h:outputLabel value="#{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).quantite}" >
+		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+		            </h:outputLabel>
+	            	#{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).unite}           
+	            </h2>
+	            <div class="prixKilo">
+		            <h:outputLabel value="#{mbPageAccueilConso.afficherProduit(55).prix}" >
+		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+		            </h:outputLabel>
+					 €
+	            </div>
+	        </figcaption>
+	    </figure>
+	    
+	    <figure class="FicheProduit">
+	        <img class="image_principale" src="../Ressources/Images/Images_produits/#{mbPageAccueilConso.afficherProduit(79).photo}" alt="Cepes" />
+	        <div class="icons">
+	            <a>
+	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+	            </a>
+	            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+	            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+	        </div>
+	        <figcaption>
+	            <h3 class="nomProduit">#{mbPageAccueilConso.afficherProduit(79).libelle}</h3>
+	            <h3 class="prixProduit">
+	            	#{mbPageAccueilConso.afficherProduit(79).conditionnements.get(0).libelle}	
+				 </h3>
+	            <h2 class="ferme"><a href="">#{mbPageAccueilConso.afficherProduit(79).producteur.raisonSociale}</a></h2>
+	            <h2 class="poids">
+	            	<h:outputLabel value="#{mbPageAccueilConso.afficherProduit(79).conditionnements.get(0).quantite}" >
+		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+		            </h:outputLabel>
+	            	#{mbPageAccueilConso.afficherProduit(79).conditionnements.get(0).unite}           
+	            </h2>
+	            <div class="prixKilo">
+		            <h:outputLabel value="#{mbPageAccueilConso.afficherProduit(79).prix}" >
+		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+		            </h:outputLabel>
+					 €
+	            </div>
+	        </figcaption>
+	    </figure>
+	    
+	    <figure class="FicheProduit">
+	        <img class="image_principale" src="../Ressources/Images/Images_produits/#{mbPageAccueilConso.afficherProduit(77).photo}" alt="Cepes" />
+	        <div class="icons">
+	            <a>
+	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+	            </a>
+	            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+	            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+	        </div>
+	        <figcaption>
+	            <h3 class="nomProduit">#{mbPageAccueilConso.afficherProduit(77).libelle}</h3>
+	            <h3 class="prixProduit">
+	            	#{mbPageAccueilConso.afficherProduit(77).conditionnements.get(0).libelle}	
+				 </h3>
+	            <h2 class="ferme"><a href="">#{mbPageAccueilConso.afficherProduit(77).producteur.raisonSociale}</a></h2>
+	            <h2 class="poids">
+	            	<h:outputLabel value="#{mbPageAccueilConso.afficherProduit(77).conditionnements.get(0).quantite}" >
+		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+		            </h:outputLabel>
+	            	#{mbPageAccueilConso.afficherProduit(77).conditionnements.get(0).unite}           
+	            </h2>
+	            <div class="prixKilo">
+		            <h:outputLabel value="#{mbPageAccueilConso.afficherProduit(77).prix}" >
+		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+		            </h:outputLabel>
+					 €
+	            </div>
+	        </figcaption>
+	    </figure>
+	    
+	    	    <figure class="FicheProduit">
+	        <img class="image_principale" src="../Ressources/Images/Images_produits/#{mbPageAccueilConso.afficherProduit(54).photo}" alt="Cepes" />
+	        <div class="icons">
+	            <a>
+	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+	            </a>
+	            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+	            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+	        </div>
+	        <figcaption>
+	            <h3 class="nomProduit">#{mbPageAccueilConso.afficherProduit(54).libelle}</h3>
+	            <h3 class="prixProduit">
+	            	#{mbPageAccueilConso.afficherProduit(54).conditionnements.get(0).libelle}	
+				 </h3>
+	            <h2 class="ferme"><a href="">#{mbPageAccueilConso.afficherProduit(54).producteur.raisonSociale}</a></h2>
+	            <h2 class="poids">
+	            	<h:outputLabel value="#{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).quantite}" >
+		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+		            </h:outputLabel>
+	            	#{mbPageAccueilConso.afficherProduit(54).conditionnements.get(0).unite}           
+	            </h2>
+	            <div class="prixKilo">
+		            <h:outputLabel value="#{mbPageAccueilConso.afficherProduit(54).prix}" >
+		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+		            </h:outputLabel>
+					 €
+	            </div>
+	        </figcaption>
+	    </figure>
         
     </section>
 
@@ -112,20 +169,20 @@
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <div class="numbertext">1 / 3</div>
-                <img src="images/plat1.jpeg" style="width:100%" />
-                <div class="textRecette"><a href="">Salade de je sais pas quoi</a></div>
+                <img src="../Ressources/Images/Images_recette/#{mbPageAccueilConso.afficherRecette(3).photo}" style="width:100%" />
+                <div class="textRecette"><a href="">#{mbPageAccueilConso.afficherRecette(3).libelle}</a></div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">2 / 3</div>
-                <img src="images/plat2.jpeg" style="width:100%" />
-                <div class="textRecette"><a href="">Figues coupees a la chevre sur son nid de salade vertes</a></div>
+                <img src="../Ressources/Images/Images_recette/#{mbPageAccueilConso.afficherRecette(2).photo}" style="width:100%" />
+                <div class="textRecette"><a href="">#{mbPageAccueilConso.afficherRecette(2).libelle}</a></div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">3 / 3</div>
-                <img src="images/plat3.jpeg" style="width:100%" />
-                <div class="textRecette"><a href="">Pates accompagnes de son arc-en-ciel de legumes</a></div>
+                <img src="../Ressources/Images/Images_recette/#{mbPageAccueilConso.afficherRecette(10).photo}" style="width:100%" />
+                <div class="textRecette"><a href="">#{mbPageAccueilConso.afficherRecette(10).libelle}</a></div>
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>

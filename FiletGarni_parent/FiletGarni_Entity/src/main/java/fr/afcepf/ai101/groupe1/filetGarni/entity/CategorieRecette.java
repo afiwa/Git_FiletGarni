@@ -57,6 +57,12 @@ public class CategorieRecette implements Serializable{
 		this.id = id;
 		this.libelle = libelle;
 	}
+
+	public CategorieRecette() {
+		super();
+	}
+	
+	
     
     
 }
