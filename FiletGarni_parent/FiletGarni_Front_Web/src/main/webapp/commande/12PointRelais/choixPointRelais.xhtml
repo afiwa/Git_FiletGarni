@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html" lang="fr">
 
 <ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
 
@@ -32,7 +32,7 @@
 	</ui:define>
 	<ui:define name="content">
 	
-	</ui:define>
+	
 	<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
 		<div>
 			<ol class="cd-multi-steps text-center custom-icons">
@@ -46,7 +46,7 @@
 		</section>
 		
 		
-    <h:form>
+    <h:form id="form-choix-pr">
         <div id="choix">
 
             <div id="box-info">
@@ -55,7 +55,9 @@
 
                     <div id="box-info-domicile-adresse">
                         <div class="box-info-adresse-titre">
-                        	<input class="box-info-rbchoix" type="radio" name="adresse" value="domicile"/> Domicile</div>
+                        	<input class="box-info-rbchoix" type="radio" name="adresse" value="domicile"/>
+                        	
+                        	 Domicile<img class="box-info-icon-adresse" src="images/maison64.png" /></div>
                         <div id="box-info-domicile-adresse-rue">2 boulevard thibault de champagnes </div>
                         <div class="box-info-form-adresse">
                             <div id="box-info-domicile-adresse-ville">Bussy-saint-georges</div>
@@ -66,7 +68,9 @@
                 <div id="box-info-travail">
 
                     <div id="box-info-travail-adresse">
-                        <div class="box-info-adresse-titre"><input class="box-info-rbchoix" type="radio" name="adresse" value="travail"/>Travail</div>
+                        <div class="box-info-adresse-titre"><input class="box-info-rbchoix" type="radio" name="adresse" value="travail"/>
+                        
+                        Travail<img class="box-info-icon-adresse" src="images/travail64.png" /></div>
                         <div id="box-info-domicile-adresse-rue">2 boulevard thibault de champagnes </div>
                         <div class="box-info-form-adresse">
                             <div id="box-info-domicile-adresse-ville">Bussy-saint-georges</div>
@@ -190,6 +194,8 @@
     <script type="text/javascript"
 			src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
 		<script type="text/javascript" src="../jsHamburger/main.js"></script>
+    </ui:define>
+    
 		
 	</ui:composition>
 	</html>
