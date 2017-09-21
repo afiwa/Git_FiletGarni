@@ -16,10 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@DiscriminatorValue("nonsalarie")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_nonsalarie")
-public class NonSalarie extends Utilisateur {
+public abstract class NonSalarie extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;	
 	

@@ -8,10 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@DiscriminatorValue("salarie")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_salarie")
-public class Salarie extends Utilisateur {
+public abstract class Salarie extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;
 	
