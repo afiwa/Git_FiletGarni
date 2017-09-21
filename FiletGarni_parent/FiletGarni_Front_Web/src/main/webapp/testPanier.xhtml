@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
+
+	<ui:define name="title">TestPanier</ui:define>
+	<ui:define name="headcssscript">
+		<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto" />
+		<link type="text/css" rel="stylesheet" href="commande/css/main.css" />
+		<link type="text/css" rel="stylesheet"
+			href="commande/css/ownmain.css" />
+	</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+			<section>
+			<div>
+				<label>ID produit 1</label>
+				<h:inputText class="idPdt" value="#{mbTestPanier.idPdt}"></h:inputText>
+				<label>Quantité produit 1</label>
+				<h:inputText class="quantite" value="#{mbTestPanier.qte}"></h:inputText>
+			</div>
+			<div>
+				<label>ID produit 2</label>
+				<h:inputText class="idPdt" value="#{mbTestPanier.idPdt2}"></h:inputText>
+				<label>Quantité produit 2</label>
+				<h:inputText class="quantite" value="#{mbTestPanier.qte2}"></h:inputText>
+			</div>
+			<h:commandButton class="button" value="Valider Panier!"
+				action="#{mbTestPanier.validerPanier()}" /> </section>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
