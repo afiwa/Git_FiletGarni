@@ -9,6 +9,8 @@ public interface IDaoUtilisateur {
     public void modifier();
 
     public void supprimer();
+    
+    public Utilisateur seConnecter(String mail, String mdp);
 
     public Utilisateur getByID(Integer id);
 

@@ -23,8 +23,18 @@ public class DaoProfessionnel implements IDaoProfessionnel {
     }
 
     public Professionnel seConnecter(String identifiantConnexion, String mdp) {
-        // TODO implement here
-        return null;
+    	
+    		Professionnel pro = null;
+    		try { 
+    			pro = em.createQuery( "SELECT p FROM Professionnel p " + "WHERE p.identifiantConnexion = :pidentifiant " + "AND p.mdp = :pmdp", Professionnel.class)
+    					.setParameter("pidentifiant", identifiantConnexion)
+    					.setParameter("pmdp", mdp)
+    					.getSingleResult();
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    		return pro;
+    	
     }
 
 }
