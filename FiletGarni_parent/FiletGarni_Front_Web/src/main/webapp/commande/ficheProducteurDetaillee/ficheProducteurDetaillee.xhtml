@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
+
+	<ui:define name="title">METTRE LE NOM DU PRDUCTEUR ICI</ui:define>
+	<ui:define name="headcssscript">
+	<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+		<link type="text/css" rel="stylesheet"
+			href="Fiche_producteur_detaillee.css" />
+				<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+		
+		
+
+		<style>
+@font-face {
+	font-family: "fibre";
+	src: url("fibre-font.otf");
+}
+</style>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formProducteurDetaille">
+			<section class="ficheProducteurDetaillee">
+			<button class="btnRetour" src="#" style="vertical-align: middle">
+				<span>Retour </span>
+			</button>
+			<div class="entete">
+				<span class="titreProducteur">La ruche urbaine</span>
+			</div>
+			<div class="imgCoordonnees">
+				<img class="imgProducteur" src="producteur-miel3.jpg" alt="michelle" />
+				<div class="descriptionProd">
+					<h3 class="coordonneesProducteur">
+						<span>Coordonnées</span>
+					</h3>
+					
+					<ul class="coordonnees">
+						<li class="coordonnee">Martin Georges</li>
+						<li class="coordonnee">01 29 41 45 10</li>
+						<li class="coordonnee">rucheurbaines@gmail.com</li>
+						<li class="coordonnee">10 rue des Ecoles 92330 SCEAUX</li>
+					</ul>
+				
+
+					<h3 class="descriptionBreve">
+						<span>Apiculteur récoltant</span>
+					</h3>
+					<p class="descriptionDetaillee">Apiculteur récoltant, je gère
+						aujourd'hui 80 ruches et contribue à une apiculture locale et
+						respectueuse de l’environnement en Ile-de-France. Notre miel est
+						produit sur 3 sites : le Parc de Sceaux, le Château de Courances
+						et la forêt de Fontainebleau, où notre production est en cours de
+						certification biologique.</p>
+				</div>
+			</div>
+
+			<div class="refFicheProduit">
+				<h2 class="titreFicheProduit">
+					<span>Retrouvez les produits de Martin</span>
+					<!--IMPORTER LES FICHES PRODUITS AVEC LE ADD TO CART-->
+				</h2>
+			</div>
+			</section>
+
+
+
+
+
+
+			<script
+				src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+				<script type="text/javascript" src="../jsHamburger/main.js"></script>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
