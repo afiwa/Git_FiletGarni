@@ -1,0 +1,106 @@
+.ulChoixRecette {
+    font-family: roboto !important;
+    grid-row: 1 !important;
+    grid-column: 1 !important;
+    height: 78% !important;
+    width: 100% !important;
+     margin: auto;
+    width: 620px;
+}
+.ulChoixRecette  {
+   
+}
+
+.ulChoixRecette li {
+    list-style: none;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+}
+
+.ulChoixRecette .liTest a {
+    text-transform: uppercase;
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    border: 3px solid #2ABB6D;
+    letter-spacing: 1px;
+    padding: 10px 15px 10px 25px;
+    display: block;
+    width: 150px;
+    z-index: 5000;
+    
+}
+
+.ulChoixRecette  .liTest a i {
+    font-size: 12px !important;
+    position: absolute;
+    right: 10px;
+    top: 14px;
+}
+
+.ulChoixRecette .drop-down {
+    position: absolute;
+    padding: 0;
+    display: none;
+    margin: 0;
+    left: 0;
+    z-index: 0;
+}
+ 
+li.listeCat {
+    position: relative;
+    float: none;
+    background-color: white;
+    margin-left: 0px !important; 
+}
+
+.ulChoixRecette .drop-down li a {
+    border-top: none;
+    width: 150px;
+}
+
+.ulChoixRecette .liTest .drop-down li a:hover {
+    background: #2ABB6D;
+    color: #FFF;
+}
+
+.ulChoixRecette .liTest .drop-down li:nth-of-type(1) a {
+    border-top: none;
+}
+
+.ulChoixRecette .item {
+    color: black;
+}
+
+.ulChoixRecette .accent {
+    width: 0%;
+    height: 100%;
+    background: #2ABB6D;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.ulChoixRecette .animate {
+    width: 100%;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.ulChoixRecette .item:hover {
+    color: #FFF;
+    background-color: #2ABB6D;
+    
+}
+
+
+
