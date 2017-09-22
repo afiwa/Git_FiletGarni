@@ -1,5 +1,8 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,13 +26,26 @@ public class DaoPointRelais implements IDaoPointRelais {
         return null;
     }
 
-    public java.util.List<PointRelais> getByHoraireOuverture(java.util.Date debut, java.util.Date fin) {
+    @SuppressWarnings("unchecked")
+	public java.util.List<PointRelais> getByHoraireOuverture(java.util.Date debut, java.util.Date fin) {
         // TODO implement here
-        return null;
+        return em.createQuery("SELECT p"
+		+ "FROM PointRelais p "
+		+ "left join fetch p.horairesouverture").getResultList();
     }
 
-    public void getByHoraireOuvertureAndJour() {
-        // TODO implement here
-    }
+	@Override
+	public void getByHoraireOuvertureAndJour(String jour, Date debut, Date fin) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PointRelais> getAll() {
+		return em.createQuery("SELECT p"
+				+ "FROM PointRelais p "
+				+ "left join fetch p.adresses").getResultList();
+	}
 
 }

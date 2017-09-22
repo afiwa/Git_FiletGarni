@@ -1,7 +1,5 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
-import java.util.List;
-
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
