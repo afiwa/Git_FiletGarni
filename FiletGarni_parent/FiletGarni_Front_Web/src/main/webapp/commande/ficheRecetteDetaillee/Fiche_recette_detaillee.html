@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche recette détaillée</title>
+    <link rel="stylesheet" href="Fiche_recette_detaillee.css">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <link rel="stylesheet" href="test_panier2/styleTest.css" type="text/css"/>
+    <link rel="stylesheet" href="test_panier2/Fiche_produit.css" type="text/css" />
+
+
+    <style>
+        @font-face {
+            font-family: "fibre";
+            src: url("fibre-font.otf");
+        }
+
+    </style>
+</head>
+
+<body>
+    <section class="ficheRecetteDetaillee">
+        <button class="btnRetour" src="#" style="vertical-align:middle"><span>Retour </span></button>
+        <div class="entete">
+            <span class="titreRecette">Crevettes et brocolis en carpaccio</span>
+        </div>
+        <div class=nbpers><span class=nbpers>Pour 4 personnes</span></div>
+        <div class="imgIngredients">
+            <img class="imageRecette" src="brocolicrevette.jpg" alt="recetteBrocolis">
+            <h2 class="titreIngredient">
+            <span>Ingrédients</span>
+            </h2>
+            <ul class="ingredients">
+                <li class="ingredientProd">300g de brocolis</li>
+                <li class="ingredientProd">150g de carottes</li>
+                <li class="ingredient">250g de crevettes roses cuites</li>
+                <li class="ingredient">3 cuillères à soupe d'huile d'olive</li>
+                <li class="ingredient">1 cuillère à soupe de jus d'orange</li>
+                <li class="ingredientProd">1 citron non traité</li>
+                <li class="ingredient">2 pincées de piment d'Espelette</li>
+                <li class="ingredient">Sel</li>
+                <li class="ingredient">Poivre</li>
+            </ul>
+        </div>
+        <div class="preparation">
+            <h2 class="titrePreparation">
+            <span>Réalisation</span>
+            </h2>
+            <p>Temps de preparation : 10 min. Temps de cuisson : 1 min. Détacher les brocolis en bouquets, les plonger 30 secondes dans de l’eau bouillante salée, les égoutter aussitôt, puis les plonger dans un saladier d’eau glacée, les laisser refroidir environ 5 minutes et les égoutter à nouveau. Peler les carottes et les râper en minces filets. Décortiquer les crevettes. Râper la moitié du zeste du citron sur une râpe fine au-dessus d’un bol. Mélanger le jus d’orange et 2 cuillerées à soupe de jus de citron dans le bol, ajouter l’huile, saler et fouetter le mélange.Détailler les bouquets de brocolis en lamelles (les plus minces possible) et les poser à plat sur quatre assiettes. Ajouter les crevettes, napper de sauce et poivrer juste avant de déguster.</p>
+        </div>
+<!------------------IMPORT FICHE RECETTE--------------------->
+        <div class="refFicheProduit">
+            <h2 class="titreFicheProduit">
+            <span>Retrouvez les ingrédients de votre recette</span>
+            </h2>
+            <figure class="FicheProduit">
+                <img class="image_principale" src="test_panier2/Basilic.jpg" alt="Basilic">
+                <div class="icons">
+                    <a>
+                        <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+                    </a>
+                    <input class="image_minus" type="image" src="test_panier2/minus4.png" />
+                    <input class="image_plus" type="image" src="test_panier2/plus4.png" />
+                </div>
+                <figcaption>
+                    <h3 class="nomProduit">Basilic</h3>
+                    <h3 class="prixProduit">1,50 €</h3>
+                    <h2 class="ferme">Ferme de Michel</h2>
+                    <h2 class="poids">100 g</h2>
+                    <div class="prixKilo">15 €/Kg</div>
+                </figcaption>
+            </figure>
+            <figure class="FicheProduit">
+                <img class="image_principale" src="test_panier2/Basilic.jpg" alt="Basilic">
+                <div class="icons">
+                    <a>
+                        <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+                    </a>
+                    <input class="image_minus" type="image" src="test_panier2/minus4.png" />
+                    <input class="image_plus" type="image" src="test_panier2/plus4.png" />
+                </div>
+                <figcaption>
+                    <h3 class="nomProduit">Basilic</h3>
+                    <h3 class="prixProduit">1,50 €</h3>
+                    <h2 class="ferme">Ferme de Michel</h2>
+                    <h2 class="poids">100 g</h2>
+                    <div class="prixKilo">15 €/Kg</div>
+                </figcaption>
+            </figure>
+            <figure class="FicheProduit">
+                <img class="image_principale" src="test_panier2/Basilic.jpg" alt="Basilic">
+                <div class="icons">
+                    <a>
+                        <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+                    </a>
+                    <input class="image_minus" type="image" src="test_panier2/minus4.png" />
+                    <input class="image_plus" type="image" src="test_panier2/plus4.png" />
+                </div>
+                <figcaption>
+                    <h3 class="nomProduit">Basilic</h3>
+                    <h3 class="prixProduit">1,50 €</h3>
+                    <h2 class="ferme">Ferme de Michel</h2>
+                    <h2 class="poids">100 g</h2>
+                    <div class="prixKilo">15 €/Kg</div>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="cd-cart-container empty">
+            <a href="#0" class="cd-cart-trigger">
+		Panier
+		<ul class="count"> <!-- cart items count -->
+			<li>0</li>
+			<li>0</li>
+		</ul> <!-- .count -->
+	</a>
+            <div class="cd-cart">
+                <div class="wrapper">
+                    <header>
+                        <h2>Panier</h2>
+                        <span class="undo"><a href="#0">Remettre article</a></span>
+                    </header>
+
+                    <div class="body">
+                        <ul>
+                            <!-- products added to the cart will be inserted here using JavaScript -->
+                        </ul>
+                    </div>
+
+                    <footer>
+                        <a href="#0" class="checkout btn"><em>Total - €<span>0</span></em></a>
+                    </footer>
+                </div>
+            </div>
+            <!-- .cd-cart -->
+        </div>
+        <!-- cd-cart-container -->
+    </section>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script type="text/javascript" src="test_panier2/Affichage_Produit_Projet3.js"></script>
+</body>
+
+</html>

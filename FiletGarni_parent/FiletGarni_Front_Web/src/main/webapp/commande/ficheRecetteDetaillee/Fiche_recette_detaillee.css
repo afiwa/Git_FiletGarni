@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/*---------------------SECTION-----------------------------*/
+
+.ficheRecetteDetaillee {
+    font-family: roboto;
+    display: grid;
+}
+
+
+/*---------------BOUTON RETOUR------------------------------*/
+
+.btnRetour {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #2abb6d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 23px;
+    padding: 5px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 15px;
+    margin-left: 23px;
+    font-family: 'Roboto', sans-serif;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.btnRetour span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btnRetour span:after {
+    content: '\00ab';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 50px;
+    transition: 0.5s;
+    margin-right: 80px;
+}
+
+.btnRetour:hover span {
+    padding-left: 25px;
+}
+
+.btnRetour:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+/* -------------Titre de la recette------------------------*/
+
+.entete {
+    grid-row: 2;
+    grid-column: 1;
+    margin: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.titreRecette {
+    font-family: "fibre";
+    font-size: 35px;
+}
+
+
+/*------------------NB personnes---------------------------*/
+
+.nbpers {
+    grid-row: 3;
+    grid-column: 1;
+    margin: 10px;
+    color: #6abb6d;
+    font-weight: bold;
+}
+
+
+/*-------------------Div IMG et INGREDIANTS----------------*/
+
+.imgIngredients {
+    grid-row: 4;
+    grid-column: 1;
+    display: grid;
+    margin: 15px;
+}
+
+.imageRecette {
+    width: 800px;
+    height: auto;
+    grid-row: 1;
+    grid-column: 1;
+    border-radius: 3px;
+}
+
+.ingredients {
+    grid-row: 1;
+    grid-column: 2;
+    list-style-type: square;
+    margin-top: 50px;
+    list-style-type: square !important;
+    margin-left: -226px;
+}
+
+.titreIngredient {
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 0px;
+    margin-left: -276px;
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url(https://www.lecomptoirlocal.fr/img/style/lines/trait.png);
+    background-repeat: repeat-x;
+    background-size: 19px;
+    background-position: center 2%;
+    text-align: left;
+    font-weight: normal;
+}
+
+.titreIngredient span {
+    background-color: #FEFEFC;
+    padding-right: 30px;
+    font-size: 23px;
+}
+
+.ingredient {
+    line-height: 180%;
+    display: list-item;
+}
+
+.ingredientProd {
+    line-height: 180%;
+    display: list-item;
+}
+
+.ingredientProd:hover {
+    color: #2ABB6D;
+    cursor: pointer;
+}
+
+
+/*-------------------------PREPARATION DE LA RECETTE-------*/
+
+.preparation {
+    grid-row: 5;
+    grid-column: 1;
+    margin: 15px;
+}
+
+.titrePreparation {
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url(https://www.lecomptoirlocal.fr/img/style/lines/trait.png);
+    background-repeat: repeat-x;
+    background-size: 19px;
+    background-position: center 64%;
+    text-align: left;
+    font-weight: normal;
+}
+
+.titrePreparation span {
+    background-color: #FEFEFC;
+    padding-right: 30px;
+    font-size: 23px;
+}
+
+.preparation p {
+    line-height: 150%;
+    text-align: justify;
+}
+
+
+/*---------------------FICHE RECETTE----------------------*/
+
+.refFicheProduit {
+    grid-row: 6;
+    grid-column: 1;
+}
+
+.titreFicheProduit {
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url(https://www.lecomptoirlocal.fr/img/style/lines/trait.png);
+    background-repeat: repeat-x;
+    background-size: 19px;
+    background-position: center 64%;
+    text-align: center;
+    font-weight: normal;
+}
+
+.titreFicheProduit span {
+    background-color: #FEFEFC;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 23px;
+}
+
+.refFicheProduit .FicheProduit {
+    margin: 23px;
+}
