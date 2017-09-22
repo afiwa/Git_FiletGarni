@@ -1,5 +1,6 @@
 package fr.afcepf.ai101.filetGarni.business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -7,8 +8,10 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieProduit;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieRecette;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoCodePostal;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCommande;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoConditionnement;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoConsommateur;
@@ -20,9 +23,11 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoProduitRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTypePaiement;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoUtilisateur;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoVille;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
@@ -30,6 +35,7 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Region;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Ville;
 
 @Remote(IBusinessCommande.class)
 @Stateless
@@ -76,6 +82,15 @@ public class BusinessCommande implements IBusinessCommande {
 
     @EJB
     private IDaoProducteur daoProducteur;
+    
+    @EJB
+    private IDaoVille daoVille;
+    
+    @EJB
+    private IDaoCodePostal daoCodePostal;
+    
+    @EJB
+    private IDaoCategorieProducteur daoCategorieProducteur;
 
     public java.util.List<Produit> getProduitByRegion(Region region) {
         // TODO implement here
@@ -112,7 +127,26 @@ public class BusinessCommande implements IBusinessCommande {
 	
 	@Override
 	public List<Producteur> getAllProducteurs() {
-		return daoProducteur.getAll();
+		List<Producteur> producteurs = new ArrayList<>();		
+		CodePostal codePostal = new CodePostal();
+		List<Ville> villes = new ArrayList<>();		
+		List<CategorieProducteur> categories = new ArrayList<>();
+		
+		producteurs = daoProducteur.getAll();
+		
+		for (Producteur producteur : producteurs) {
+			System.out.println(producteur.getIdentifiantConnexion());
+			codePostal = daoCodePostal.getByAdresse(producteur.getAdresses().get(0));
+			System.out.println(codePostal.getCodePostal() + " => " + codePostal.getId());
+			villes = daoVille.getByCodePostal(codePostal);
+			System.out.println(villes.size());
+			codePostal.setVilles(villes);
+			producteur.getAdresses().get(0).setCodePostal(codePostal);	
+			categories = daoCategorieProducteur.getCategoriesByProducteur(producteur);
+			producteur.setCategories(categories);
+			
+		}
+		return producteurs;
 	}
 
 	@Override

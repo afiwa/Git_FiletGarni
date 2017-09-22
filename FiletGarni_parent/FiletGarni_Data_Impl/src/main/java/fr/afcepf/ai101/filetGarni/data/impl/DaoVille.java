@@ -29,9 +29,9 @@ public class DaoVille implements IDaoVille {
         return null;
     }
 
-    public java.util.List<Ville> getByCodePostal(CodePostal codePostal) {
-        // TODO implement here
-        return null;
+    @SuppressWarnings("unchecked")
+	public java.util.List<Ville> getByCodePostal(CodePostal codePostal) {
+        return em.createQuery("SELECT c.villes FROM CodePostal c WHERE c.id = :pid").setParameter("pid", codePostal.getId()).getResultList();
     }
 
 }

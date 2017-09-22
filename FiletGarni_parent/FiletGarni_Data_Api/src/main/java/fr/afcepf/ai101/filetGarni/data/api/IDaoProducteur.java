@@ -10,5 +10,7 @@ public interface IDaoProducteur {
     public java.util.List<Producteur> getByCategorie(CategorieProducteur categorieProducteur);
     
     public List<Producteur> getAll();
+    
+    public List<Producteur> getAllWithCategories();
 
 }

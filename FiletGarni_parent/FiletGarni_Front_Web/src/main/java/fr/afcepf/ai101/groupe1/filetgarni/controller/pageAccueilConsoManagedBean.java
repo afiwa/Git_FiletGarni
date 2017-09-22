@@ -18,6 +18,8 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 public class pageAccueilConsoManagedBean {
 	private List<Producteur> tousLesProducteurs = new ArrayList<>();
 	
+	private List<Producteur> tousLesProducteursWithCategories = new ArrayList<>();
+	
 	@EJB
 	IBusinessCommande businessCommande;
 	
@@ -47,8 +49,8 @@ public class pageAccueilConsoManagedBean {
 			nom = producteur.getNom();
 			prenom = producteur.getPrenom();
 			photo = producteur.getPhoto();
-//			ville = producteur.getAdresses().get(0).getCodePostal().getVilles().get(0).getNom();
-//			cp = producteur.getAdresses().get(0).getCodePostal().getCodePostal();
+			ville = producteur.getAdresses().get(0).getCodePostal().getVilles().get(0).getNom();
+			cp = producteur.getAdresses().get(0).getCodePostal().getCodePostal();
 			numRue = producteur.getAdresses().get(0).getNumeroRue();
 			nomRue = producteur.getAdresses().get(0).getNomRue();
 			if(numRue != null) {
@@ -57,15 +59,15 @@ public class pageAccueilConsoManagedBean {
 			else {
 				adresse = nomRue;
 			}
-//			categorie = producteur.getCategories().get(0).getLibelle();	
+			categorie = producteur.getCategories().get(0).getLibelle();	
 			jsonProducteurs += "{"
-					+"position:'" + position + "',"
-					+"nom:'" + nom + "',"
+					+"position:" + position + ","
+					+"nom:\"" + nom + "\","
 					+"prenom:'" + prenom + "',"
-					+"adresse:'" + adresse + "',"
-//					+"ville:" + ville + ","
-//					+"cp:" + cp + ","
-//					+"categorie:" + categorie + ","
+					+"adresse:\"" + adresse + "\","
+					+"ville:\"" + ville + "\","
+					+"cp:'" + cp + "',"
+					+"categorie:\"" + categorie + "\","
 					+"photo:'" + photo+"'"
 					+"},"; 
 		}

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCodePostal;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Adresse;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Ville;
 
@@ -19,11 +20,6 @@ public class DaoCodePostal implements IDaoCodePostal {
     public DaoCodePostal() {
     }
 
-    public java.util.List<CodePostal> getByCP(String codePostal) {
-        // TODO implement here
-        return null;
-    }
-
     public java.util.List<CodePostal> getByDepartement(Integer departement) {
         // TODO implement here
         return null;
@@ -34,4 +30,19 @@ public class DaoCodePostal implements IDaoCodePostal {
         return null;
     }
 
+	@Override
+	public CodePostal getByAdresse(Adresse paramAdresse) {
+		System.out.println("######################################################");
+		System.out.println("######################################################");
+		System.out.println("######################################################");
+		System.out.println("######################################################");
+		System.out.println(paramAdresse);
+		System.out.println(paramAdresse.getId());
+		System.out.println("######################################################");
+		System.out.println("######################################################");
+		System.out.println("######################################################");
+		System.out.println("######################################################");
+		return (CodePostal) em.createQuery("SELECT a.codePostal FROM Adresse a WHERE a.id = :pid")
+				.setParameter("pid", paramAdresse.getId()).getSingleResult();
+	}
 }

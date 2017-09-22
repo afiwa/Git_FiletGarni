@@ -31,4 +31,10 @@ public class DaoProducteur implements IDaoProducteur {
         return null;
     }
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Producteur> getAllWithCategories() {
+		return em.createQuery("SELECT p FROM Producteur p left join fetch p.categories").getResultList();
+	}
+
 }

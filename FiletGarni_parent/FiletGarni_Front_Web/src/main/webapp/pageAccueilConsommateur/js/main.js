@@ -213,30 +213,32 @@ function myMap() {
 
     var carteProducteur = new google.maps.Map(document.getElementById("carteProducteur"), mapOptions);
 
+    var tabProd = [];
     producteurs.forEach(function (feature) {
         var marker = new google.maps.Marker({
             position: feature.position,
             icon: 'images/marker.png',
             map: carteProducteur
         });
+        
         var contentString = 
         '<div class="cd-tabs">'+
 	        '<nav>'+
 	            '<ul class="cd-tabs-navigation">'+
-	                '<li><a data-content="info" class="selected" href="#0">Information</a></li>'+
+	                '<li><a data-content="info" class="selected" href="#0">Informations</a></li>'+
 	            '</ul>'+
 	            '<!-- cd-tabs-navigation -->'+
 	        '</nav>'+
 
 	        '<ul class="cd-tabs-content">'+
 	            '<li data-content="info" class="selected">'+
-	                '<img class="photo" src="../Ressources/Images/Images_producteur/'+feature.photo+'"/>'+
+	                '<img class="photo" src="../Ressources/Images/Images_producteurs/'+feature.photo+'"/>'+
 	                '<h3 class="historique-pr-nom">'+feature.prenom+' '+feature.nom+'</h3>'+
-//	                '<div class="historique-pr-ville">'+feature.ville+
-//	                    '<div class="historique-pr-cp">'+feature.cp+'</div>'+
+	                '<div class="historique-pr-ville">'+feature.ville+
+	                    '<div class="historique-pr-cp">'+feature.cp+'</div>'+
 	                '</div>'+
 	                '<div class="historique-pr-adresse">'+feature.adresse+'</div>'+
-//	                '<div class="categorie_producteur">'+feature.categorie+'</div>'+
+	                '<div class="categorie_producteur">'+feature.categorie+'</div>'+
 	            '</li>'+
 	        '</ul>'+
 	        '<!-- cd-tabs-content -->'+
@@ -245,7 +247,15 @@ function myMap() {
 		var infowindow = new google.maps.InfoWindow({
 		content: contentString
 		});
+		
+		var objetProd = {
+				marker: marker,
+				infowindow: infowindow};
+		tabProd.push(objetProd);
        marker.addListener('click', function () {
+    	   tabProd.forEach(function (objet){
+    		   objet.infowindow.close(carteProducteur, objet.marker);
+    	   });
             infowindow.open(carteProducteur, marker);
         });
 

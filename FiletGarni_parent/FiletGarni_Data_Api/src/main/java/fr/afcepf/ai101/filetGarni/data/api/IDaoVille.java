@@ -10,5 +10,5 @@ public interface IDaoVille {
     public java.util.List<Ville> getByDepartement(Integer departement);
 
     public java.util.List<Ville> getByCodePostal(CodePostal codePostal);
-
+    
 }
