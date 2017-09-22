@@ -12,9 +12,6 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 @SessionScoped
 @ManagedBean(name = "mbPageAccueilConso")
 public class pageAccueilConsoManagedBean {
-
-	@EJB
-	LigneCommande ligneCommande;
 	
 	@EJB
 	IBusinessCommande businessCommande;
