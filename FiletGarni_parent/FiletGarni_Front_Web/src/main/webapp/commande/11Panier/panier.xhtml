@@ -16,6 +16,12 @@
 		<link type="text/css" rel="stylesheet" href="../css/styleBreadCrumbs.css" />
 		<link type="text/css" rel="stylesheet" href="../css/main.css" />
 		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+		
+<!-- 	MOJARRA IS NOT DEFINED  
+https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behaviour-mojarra-is-not-defined
+-->
+			<h:outputScript library="javax.faces" name="jsf.js" target="head" />
+
 
 	</ui:define>
 
@@ -39,10 +45,19 @@
 				<div class="title">Mon panier</div>
 
 				<!-- Product #1 -->
-            <ui:repeat var="ligneCommande" value="#{mbTestPanier.ligneCommandes}"> 
+            <ui:repeat var="ligneCommande" value="#{mbTestPanier.ligneCommandes}" >
 				<div class="item">
 					<div class="buttons">
-						<span class="delete-btn"></span> <span class="like-btn"></span>
+						<span class="delete-btn">
+						<h:commandLink>
+                     		<f:ajax listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande.produit.id)}"
+							event="click"
+							execute="@form"
+							render="item"/> 	
+						</h:commandLink>
+						</span> 
+						
+						<span class="like-btn"></span>
 					</div>
 
 					<div class="image">
@@ -50,11 +65,9 @@
 							src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
 							alt="" />
 					</div>
-
 		<div class="description">
-
                          <span><b><h:outputLabel value="#{ligneCommande.produit.libelle.toString()}"/></b></span>
-                         <span><h:outputLabel value="#{ligneCommande.produit.prix}">
+                         <span><h:outputLabel value="#{ligneCommande.produit.prix}" class="article-price" >
                          			<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                          		</h:outputLabel> €
                          </span>
@@ -68,25 +81,30 @@
                          
                     </div>
                     <div class="quantity">
-                     	<h:commandButton class="minus-btn" name="button" value="" >
-                     		<img src="images\icons_panier\minus.svg" alt="" />
-                     		<f:ajax listener="#{mbRecapPanier.diminuerQuantite()}"
+                     	<h:commandLink class="minus-btn" type="button" name="button">
+                      		<img src="images\icons_panier\minus.svg" alt="" />
+                     		<f:ajax listener="#{mbRecapPanier.diminuerQuantite(ligneCommande.produit.id)}"
 									event="click"
 									execute="@form"
-									render="quantite prixLigneCmd total-panier#{ligneCommande.produit.id}"/> 	
-                     	</h:commandButton>
+									render=""/> 	
+                     	</h:commandLink>
                         
 		                    <h:inputText id="quantite" class="qty" name="name" value="#{ligneCommande.quantiteCommandee}" >
-		                    	<f:convertNumber  minFractionDigits="0" maxFractionDigits="0"/>/>
+		                    	<f:convertNumber  minFractionDigits="0" maxFractionDigits="0"/>
 		                    </h:inputText>
-                        <button class="plus-btn" type="button" name="button">
+		                    
+                       	<h:commandLink class="plus-btn" type="button" name="button">
                             <img src="images\icons_panier\plus.svg" alt="" />
-                        </button>
+                           		<f:ajax listener="#{mbTestPanier.augmenterQuantite(ligneCommande.produit.id)}"
+								event="click"
+								execute="@form"
+								render=""/>
+                        </h:commandLink>
                     </div>
 					<div class="total-price">
-						<h:outputLabel id="prixLigneCmd" class="total-article" value="#{mbRecapPanier.totalLigneCmd}"></h:outputLabel> €
+						<h:outputLabel id="prixLigneCmd#{ligneCommande.produit.id}" class="total-article" value="#{ligneCommande.produit.prix}"></h:outputLabel>
 					</div>
-				</div>
+</div>
 			</ui:repeat>  
 
 				
@@ -94,7 +112,7 @@
 				<div class="item">
 					<div class="total-cart">
 						<span class="title" id="dernierTitre">Total de votre
-							commande</span> <h:outputLabel id="total-panier#{ligneCommande.produit.id}" value="#{mbRecapPanier.totalCommande}"></h:outputLabel> €
+							commande</span> <h:outputLabel class="total-panier" value="#{mbRecapPanier.totalCommande}"></h:outputLabel> €
 					</div>
 					<br />
 					<div>

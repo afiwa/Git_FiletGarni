@@ -1,16 +1,16 @@
 $(document).ready(function () {
     /* Remplir ici le panier, le prix du total panier */
-    /* DEBUT Mise à jour du prix total panier */
+    /* DEBUT Mise ï¿½ jour du prix total panier */
     // var $prixPanier = 0;
     // $(this).find('#total-panier').html($prixPanier + ' \u20ac');
     
-    /* FIN Mise à jour du prix total panier */
+    /* FIN Mise ï¿½ jour du prix total panier */
 });
 
 
 $('.minus-btn').on('click', function(e) {
     e.preventDefault();
-	/* DEBUT Mise à jour du prix total article */
+	/* DEBUT Mise ï¿½ jour du prix total article */
 	var $input = $(this).closest('div').find('input');
 	var value = parseInt($input.val());
     if (value > 0) {
@@ -20,12 +20,14 @@ $('.minus-btn').on('click', function(e) {
     } else {
         value = 0;
     }
-
+    console.log("diminution !");
 });
+
+
 
 $('.plus-btn').on('click', function(e) {
     e.preventDefault();
-	/* DEBUT Mise à jour du prix total article */
+	/* DEBUT Mise ï¿½ jour du prix total article */
 	var $input = $(this).closest('div').find('input');
 	var value = parseInt($input.val());
     if (value < 100) {
@@ -40,7 +42,12 @@ $('.qty').on('keyup', function() {
 	var element = $(this);
 	var valeur = $(this).val();
 		console.log(valeur);
+		
+		console.log("changement de sens!");
+		alert($('#form-client\\:propertyId').val());
+		
 	majTotalArticle($(this), $(this).val());
+
 });
 
 $('.like-btn').on('click', function() {
@@ -57,25 +64,26 @@ $('.delete-btn').on('click', function() {
 
 function majTotalArticle(element, value) {
 
-	/* Récupérer prix de l'article, prix total des articles, total du panier et difference de prix avant-après*/
+	/* Rï¿½cupï¿½rer prix de l'article, prix total des articles, total du panier et difference de prix avant-aprï¿½s*/
 	var parent = element.parent().parent();
-	var prixArticle = parseInt(parent.find('.article-price').text().replace(' \u20ac',''));
-	var prixTotalArticleAncien = parseInt(parent.find('.total-article').text().replace(' \u20ac',''));
+	var prixArticle = parseFloat(parent.find('.article-price').text().replace(' \u20ac',''));
+	var prixTotalArticleAncien = parseFloat(parent.find('.total-article').text().replace(' \u20ac',''));
 	var prixTotalArticleNouveau = prixArticle * value;
 	var differenceDePrix = -prixTotalArticleAncien + prixTotalArticleNouveau ;
 
-	/*Renseigner la nouvelle valeur de total article et écrire prixTotal dans son HTML */
+	/*Renseigner la nouvelle valeur de total article et ï¿½crire prixTotal dans son HTML */
 	parent.find('.total-article').html(prixTotalArticleNouveau + ' \u20ac');
 
-	/* Mettre à jour le total Panier */
+	/* Mettre ï¿½ jour le total Panier */
 	majTotalPanier(differenceDePrix);
 }
 
 function majTotalPanier(valeur) {
-	console.log("maj panier");
+	console.log("maj panier avec "+valeur);
 	console.log(valeur);
-	/* DEBUT Mise à jour du prix total panier */
-	var $prixPanier = parseInt($('#total-panier').text().replace(' \u20ac',''));
+	/* DEBUT Mise ï¿½ jour du prix total panier */
+	var $prixPanier = parseFloat($('.total-panier').text().replace(' \u20ac',''));
 	$prixPanier += valeur;
-	$('#total-panier').html($prixPanier + ' \u20ac');
+	$('.total-panier').html($prixPanier + ' \u20ac');
+	console.log("ok");
 }
