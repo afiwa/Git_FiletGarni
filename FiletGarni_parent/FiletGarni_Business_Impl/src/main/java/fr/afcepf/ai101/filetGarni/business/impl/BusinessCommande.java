@@ -109,29 +109,10 @@ public class BusinessCommande implements IBusinessCommande {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public Commande creerUneCommande() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LigneCommande ajouterLigneCommande(LigneCommande paramLigneCommande, Commande paramCommande) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LigneCommande modifierUneLigneDeCommande(LigneCommande paramLigneCommande, Double paramQuantite) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Commande affecterLePointRelais(Commande paramCommande, PointRelais paramPointrelais) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Producteur> getAllProducteurs() {
+		return daoProducteur.getAll();
 	}
 
 	@Override
@@ -171,11 +152,32 @@ public class BusinessCommande implements IBusinessCommande {
 	}
 
 	@Override
-	public Commande getCommandebyId(Integer paramId_commande) {
+	public Commande creerUneCommande() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public LigneCommande ajouterLigneCommande(LigneCommande paramLigneCommande, Commande paramCommande) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public LigneCommande modifierUneLigneDeCommande(LigneCommande paramLigneCommande, Double paramQuantite) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public Commande affecterLePointRelais(Commande paramCommande, PointRelais paramPointrelais) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Commande getCommandebyId(Integer paramId_commande) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

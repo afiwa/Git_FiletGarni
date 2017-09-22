@@ -1,5 +1,7 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +21,11 @@ public class DaoProducteur implements IDaoProducteur {
     public DaoProducteur() {
     }
 
+    @SuppressWarnings("unchecked")
+	public List<Producteur> getAll() {
+    	return em.createQuery("SELECT p FROM Producteur as p left join fetch p.adresses").getResultList();
+    }
+    
     public java.util.List<Producteur> getByCategorie(CategorieProducteur categorieProducteur) {
         // TODO implement here
         return null;

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:component>
+	 <figure class="FicheProduit">
+	        <img class="image_principale" src="../Ressources/Images/Images_produits/#{produit.photo}" alt="#{produit.libelle}" />
+	        <div class="icons">
+	            <a>
+	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+	            </a>
+	            <input class="image_minus" type="image" src="fiche_produit/minus4.png" />
+	            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
+	        </div>
+	        <figcaption>
+	            <h3 class="nomProduit">#{produit.libelle}</h3>
+	            <h3 class="prixProduit">
+	            	#{produit.conditionnements.get(0).libelle}	
+				 </h3>
+	            <h2 class="ferme"><a href="">#{produit.producteur.raisonSociale}</a></h2>
+	            <h2 class="poids">
+	            	<h:outputLabel value="#{produit.conditionnements.get(0).quantite}" >
+		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+		            </h:outputLabel>
+	            	#{produit.conditionnements.get(0).unite}           
+	            </h2>
+	            <div class="prixKilo">
+		            <h:outputLabel value="#{produit.prix}" >
+		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+		            </h:outputLabel>
+					 €
+	            </div>
+	        </figcaption>
+	    </figure>
+	</ui:component> 
+</html>

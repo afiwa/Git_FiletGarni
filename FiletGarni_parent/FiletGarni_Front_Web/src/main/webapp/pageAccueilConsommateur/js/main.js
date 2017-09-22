@@ -205,73 +205,10 @@ function myMap() {
 
     /* ------------------------------- MULTIPLE MARKERS ------------------------*/
 
-    var producteurs = [
-        {
-            position: new google.maps.LatLng(48.814732, 2.74823)
-    },
-        {
-            position: new google.maps.LatLng(48.839594, 2.576569)
-    },
-        {
-            position: new google.maps.LatLng(48.774474, 2.562149)
-    },
-        {
-            position: new google.maps.LatLng(48.860559, 2.326904)
-    },
-        {
-            position: new google.maps.LatLng(48.861462, 2.210175)
-    },
-        {
-            position: new google.maps.LatLng(48.832543, 2.222534)
-    },
-        {
-            position: new google.maps.LatLng(48.790038, 2.263733)
-    },
-        {
-            position: new google.maps.LatLng(48.817173, 2.432648)
-    },
-        {
-            position: new google.maps.LatLng(48.767414, 2.596069)
-    },
-        {
-            position: new google.maps.LatLng(48.778275, 2.973724)
-    },
-        {
-            position: new google.maps.LatLng(49.02112, 3.031403)
-    },
-        {
-            position: new google.maps.LatLng(48.960745, 2.814423)
-    },
-        {
-            position: new google.maps.LatLng(48.767414, 1.851746)
-    }
-];
+    
 
 
-   var contentString = '<div class="cd-tabs">'+
-                    '<nav>'+
-                        '<ul class="cd-tabs-navigation">'+
-                            '<li><a data-content="info" class="selected" href="#0">Information</a></li>'+
-                        '</ul>'+
-                        '<!-- cd-tabs-navigation -->'+
-                    '</nav>'+
-
-                    '<ul class="cd-tabs-content">'+
-                        '<li data-content="info" class="selected">'+
-                            '<img class="photo" src="images/producteurs/kevin.jpg"/>'+
-                            '<h3 class="historique-pr-nom">Le Point relou</h3>'+
-                            '<div class="historique-pr-ville">Bussy-saint-georges'+
-                                '<div class="historique-pr-cp">77600</div>'+
-                            '</div>'+
-                            '<div class="historique-pr-adresse">2 boulvard thibault de champagne</div>'+
-                        '</li>'+
-                    '</ul>'+
-                    '<!-- cd-tabs-content -->'+
-                '</div>'+
-                '<!-- cd-tabs -->';
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
+   
 
 
     var carteProducteur = new google.maps.Map(document.getElementById("carteProducteur"), mapOptions);
@@ -282,6 +219,32 @@ function myMap() {
             icon: 'images/marker.png',
             map: carteProducteur
         });
+        var contentString = 
+        '<div class="cd-tabs">'+
+	        '<nav>'+
+	            '<ul class="cd-tabs-navigation">'+
+	                '<li><a data-content="info" class="selected" href="#0">Information</a></li>'+
+	            '</ul>'+
+	            '<!-- cd-tabs-navigation -->'+
+	        '</nav>'+
+
+	        '<ul class="cd-tabs-content">'+
+	            '<li data-content="info" class="selected">'+
+	                '<img class="photo" src="../Ressources/Images/Images_producteur/'+feature.photo+'"/>'+
+	                '<h3 class="historique-pr-nom">'+feature.prenom+' '+feature.nom+'</h3>'+
+//	                '<div class="historique-pr-ville">'+feature.ville+
+//	                    '<div class="historique-pr-cp">'+feature.cp+'</div>'+
+	                '</div>'+
+	                '<div class="historique-pr-adresse">'+feature.adresse+'</div>'+
+//	                '<div class="categorie_producteur">'+feature.categorie+'</div>'+
+	            '</li>'+
+	        '</ul>'+
+	        '<!-- cd-tabs-content -->'+
+	    '</div>'+
+	    '<!-- cd-tabs -->';
+		var infowindow = new google.maps.InfoWindow({
+		content: contentString
+		});
        marker.addListener('click', function () {
             infowindow.open(carteProducteur, marker);
         });

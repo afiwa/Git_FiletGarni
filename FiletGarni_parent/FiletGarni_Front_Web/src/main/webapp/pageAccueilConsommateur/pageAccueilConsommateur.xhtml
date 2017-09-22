@@ -203,24 +203,15 @@
         <span class="titreProducteur"><center>Nos producteurs</center></span>
         <div id="carteProducteur"></div>
         <div class="photoProducteur">
-            <ul>
-                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
-                <li><p>Kevin</p><img src="images/producteur_page_accueil/kevin.png" /></li>
-                <li><p>Laurent</p><img src="images/producteur_page_accueil/laurent.jpg" /></li>
-                <li><p>Maurice</p><img src="images/producteur_page_accueil/maurice.jpg" /></li>
-                <li><p>Michelle</p><img src="images/producteur_page_accueil/michelle.jpg" /></li>
-                <li><p>Nadine</p><img src="images/producteur_page_accueil/nadine.jpg" /></li>
-                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
-                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
-                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
-                <li><p>Kevin</p><img src="images/producteur_page_accueil/kevin.png" /></li>
-                <li><p>Laurent</p><img src="images/producteur_page_accueil/laurent.jpg" /></li>
-                <li><p>Maurice</p><img src="images/producteur_page_accueil/maurice.jpg" /></li>
-                <li><p>Michelle</p><img src="images/producteur_page_accueil/michelle.jpg" /></li>
-                <li><p>Nadine</p><img src="images/producteur_page_accueil/nadine.jpg" /></li>
-                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
-                <li><p>Charles</p><img src="images/producteur_page_accueil/charles.jpg" /></li>
-            </ul>
+        	<ui:repeat var="producteur" value="#{mbPageAccueilConso.tousLesProducteurs}">
+	        	<ul>
+	                <li>	                
+	                	<p><h:outputLabel value="#{producteur.prenom}"/></p>	                
+	                	<img src="../Ressources/Images/Images_producteurs/#{producteur.photo}" />
+	                </li>
+	            </ul>     	
+        	</ui:repeat>
+
         </div>
     </section>
 
@@ -254,11 +245,16 @@
             </div>
         </div>
         <!-- .cd-cart -->
+       
     </div>
 	
 	<script type="text/javascript" src="js/main.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw&amp;callback=myMap"></script>
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
+	<script type="text/javascript">
+	var producteurs = [#{mbPageAccueilConso.jsonProducteur()}];
+	myMap();
+	</script>
+     
     <!-- SCRIPT FICHE PRODUIT -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="fiche_produit/Affichage_Produit_Projet3.js"></script>

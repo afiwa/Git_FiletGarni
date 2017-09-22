@@ -1,5 +1,7 @@
 package fr.afcepf.ai101.filetGarni.business.api;
 
+import java.util.List;
+
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
@@ -32,6 +34,8 @@ public interface IBusinessCommande {
 
     public Commande affecterLePointRelais(Commande commande, PointRelais pointrelais);
 
+    public List<Producteur> getAllProducteurs();
+    
     public java.util.List<Producteur> getProducteurByRegion(Region region);
 
     public java.util.List<Producteur> getProducteurbyCategorie(CategorieProducteur categorie);
