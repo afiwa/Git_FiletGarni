@@ -223,7 +223,7 @@ function myMap() {
     producteurs.forEach(function (feature) {
         var marker = new google.maps.Marker({
             position: feature.position,
-            icon: 'img/marker.png',
+            icon: 'images/marker.png',
             map: cartePointRelais
         });
         
@@ -232,13 +232,32 @@ function myMap() {
        marker.addListener('click', function () {
            
            tabMarker.forEach(function (mark){
-                mark.setIcon('img/marker.png');
+                mark.setIcon('images/marker.png');
             });
            
-            marker.setIcon('img/marker-select2.png');
+            marker.setIcon('images/marker-select2.png');
             
         });
 
+       
+    });
+    
+    var marker = new google.maps.Marker({
+    	position: new google.maps.LatLng(48.817173, 2.452648),
+        icon: 'images/maison1.png',
+        map: cartePointRelais
+    });
+    
+    var marker = new google.maps.Marker({
+    	position: new google.maps.LatLng(48.827173, 2.432648),
+        icon: 'images/maison2.png',
+        map: cartePointRelais
+    });
+    
+    var marker = new google.maps.Marker({
+    	position: new google.maps.LatLng(48.817173, 2.442648),
+        icon: 'images/travail.png',
+        map: cartePointRelais
     });
 }
 /*

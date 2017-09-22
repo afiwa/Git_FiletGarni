@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
+<<<<<<< HEAD
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
+=======
+import javax.faces.bean.SessionScoped;
+
+>>>>>>> Antoine
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
