@@ -1,12 +1,12 @@
 package fr.afcepf.ai101.groupe1.filetgarni.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
@@ -22,33 +22,23 @@ public class ManagedBeanTestPanier implements Serializable{
 	private IBusinessCommande buPdt;
 	private Integer idPdt;
 	private Integer idPdt2;
-	private Integer qte;
-	private Integer qte2;
-	private Produit pdt;
+	private Double qte;
+	private Double qte2;
+	private Produit pdt  = new Produit();
+	private Produit pdt2 = new Produit();
+	private List<LigneCommande> ligneCommandes= new ArrayList<LigneCommande>();
+	
 	
 	public String validerPanier() {
-		System.out.println("valider Panier");
-        HttpSession session = (HttpSession)
-                FacesContext.getCurrentInstance()
-                .getExternalContext().getSession(true);
-        
-        session.setAttribute("IdProduit", idPdt);
-        System.out.println("produit id :"+ idPdt);
-        session.setAttribute("QuantiteProduit", qte);
-        System.out.println("qte produit : "+ qte);
-        System.out.println("redirection !!!");
-        return "/commande/11Panier/panier.xhtml?faces-redirect=true";
+		pdt = buPdt.getProduitByIdWithConditionnements(idPdt);
+		pdt2 = buPdt.getProduitByIdWithConditionnements(idPdt2);
+		LigneCommande lgn1 = new LigneCommande(null, qte, null, null, null, null, null, pdt, null, null);
+		LigneCommande lgn2 = new LigneCommande(null, qte2, null, null, null, null, null, pdt2, null, null);
+		ligneCommandes.add(lgn1);
+		ligneCommandes.add(lgn2);
+		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
 	
-	public String validerPanierAvecMb() {
-		System.out.println("valider Panier AVEC MB");
-		pdt = buPdt.getProduitById(idPdt);
-		
-//		lgnCmd = new LigneCommande(null, qte, null, null, null, null, null, );
-		
-        return "/commande/11Panier/panier.xhtml?faces-redirect=true";
-	}
-
 
 	public IBusinessCommande getBuPdt() {
 		return buPdt;
@@ -67,11 +57,11 @@ public class ManagedBeanTestPanier implements Serializable{
 		this.idPdt = idPdt;
 	}
 
-	public Integer getQte() {
+	public Double getQte() {
 		return qte;
 	}
 
-	public void setQte(Integer qte) {
+	public void setQte(Double qte) {
 		this.qte = qte;
 	}
 
@@ -87,11 +77,11 @@ public class ManagedBeanTestPanier implements Serializable{
 		this.idPdt2 = idPdt2;
 	}
 
-	public Integer getQte2() {
+	public Double getQte2() {
 		return qte2;
 	}
 
-	public void setQte2(Integer qte2) {
+	public void setQte2(Double qte2) {
 		this.qte2 = qte2;
 	}
 
@@ -102,5 +92,29 @@ public class ManagedBeanTestPanier implements Serializable{
 	public void setPdt(Produit pdt) {
 		this.pdt = pdt;
 	}
+
+
+	public Produit getPdt2() {
+		return pdt2;
+	}
+
+
+	public void setPdt2(Produit pdt2) {
+		this.pdt2 = pdt2;
+	}
+
+
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+
+
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+
+	
+
+	
 	
 }
