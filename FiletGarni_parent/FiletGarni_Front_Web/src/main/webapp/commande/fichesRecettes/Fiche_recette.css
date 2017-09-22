@@ -9,6 +9,7 @@
     font-family: "fibre";
     font-size: 35px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .descriptionRecette {
@@ -138,6 +139,10 @@
     position: relative;
     margin: auto;
     margin-top: 20px;
+}
+
+.slideshow-container img {
+	border-radius: 3px;
 }
 
 .mySlides {
