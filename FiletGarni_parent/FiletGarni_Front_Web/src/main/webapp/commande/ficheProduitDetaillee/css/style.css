@@ -296,6 +296,8 @@ a {
 } /* vertical align baseline */
 img {
 	max-width: 100%;
+	border-radius: 3px;
+	
 }
 /*end reset*/
 @font-face {
@@ -318,7 +320,8 @@ body {
 .desc1 {
 	font-family: 'Roboto', sans-serif;
 	display: block;
-	float: right;
+	float: left;
+    margin-left: 50px;
 }
 
 .desc1 h3 {
@@ -461,6 +464,7 @@ body {
 	transition: all 0.3s ease-in-out;
 	margin-top: 27px;
 	margin-bottom: 20px;
+	border-radius: 3px;
 }
 
 .btnAjoutPanier:hover {
@@ -666,6 +670,11 @@ body {
 /* end tabs */
 
 /* ---------------------------- CSS AVIS ---------------------------- */
+.avisClient {
+	margin-bottom: 20px;
+	width: 1131px;
+}
+
 .content-3 {
 	font-size: 12pt;
 	overflow: auto;
