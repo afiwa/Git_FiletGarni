@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+/*---------------------SECTION-----------------------------*/
+
+.ficheProducteurDetaillee{
+    font-family: roboto;
+    display: grid;
+    
+}
+
+/*---------------BOUTON RETOUR------------------------------*/
+.btnRetour {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #2abb6d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 23px;
+    padding: 5px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 20px;
+    font-family: 'Roboto', sans-serif;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.btnRetour span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btnRetour span:after {
+    content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 50px;
+  transition: 0.5s;
+  margin-right:80px;
+}
+
+.btnRetour:hover span {
+  padding-left: 25px;
+}
+
+.btnRetour:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* -------------Titre de la recette------------------------*/
+.entete {
+    grid-row: 2;
+    grid-column: 1;
+    margin: 15px;
+    
+}
+
+.titreProducteur{
+    font-family: "fibre";
+    font-size: 35px;
+}
+
+/*-----------------IMAGE ET COORDONNEES--------------------*/
+.imgCoordonnees{
+    grid-row: 3;
+    grid-column: 1;
+    display: grid;
+    margin: 15px;
+}
+
+.imgProducteur {
+    width: 800px;
+    height: auto;
+    grid-row: 1;
+    grid-column: 1;
+    border-radius: 3px;   
+}
+
+.descriptionProd {
+    grid-row: 1;
+    grid-column: 2;
+    display: grid;
+}
+
+.coordonneesProducteur {
+    grid-row: 1;
+    grid-column: 1;
+    
+    color: ;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 15px;
+    
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url(https://www.lecomptoirlocal.fr/img/style/lines/trait.png);
+    background-repeat: repeat-x;
+    background-size: 19px;
+    background-position: center 9%;
+    text-align: left;
+    font-weight: normal;
+}
+
+.coordonneesProducteur span {
+    background-color: #FEFEFC;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 23px;
+}
+
+.coordonnees {
+    grid-row: 2 !important;
+    grid-column: 1  !important;
+    list-style-type: square  !important;
+    margin-left: 50px;
+}
+
+.coordonnee {
+    line-height: 120%  !important;
+    margin: 15px  !important;
+    display: list-item;
+}
+
+
+
+/*-------------------DESCRIPTION FERME----------------------*/
+
+.description {
+    grid-row: 3;
+    grid-column: 1;
+    margin: 15px;
+}
+
+.descriptionBreve {
+    font-size: 20px;
+    font-weight: 600;
+    
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url(https://www.lecomptoirlocal.fr/img/style/lines/trait.png);
+    background-repeat: repeat-x;
+    background-size: 19px;
+    background-position: center 9%;
+    text-align: left;
+    font-weight: normal;
+}
+
+.descriptionBreve span {
+    background-color: #FEFEFC;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 23px;
+}
+
+.descriptionDetaillee {
+    line-height: 150%;
+    text-align: justify;
+    margin-left: 50px;
+}
+
+/*---------------------FICHE RECETTE----------------------*/
+.refFicheProduit{
+    grid-row: 6;
+    grid-column: 1;
+}
+
+.titreFicheProduit span {
+    background-color: #FEFEFC;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 23px;
+}
+
+
+
+.titreFicheProduit {
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url(https://www.lecomptoirlocal.fr/img/style/lines/trait.png);
+    background-repeat: repeat-x;
+    background-size: 19px;
+    background-position: center 64%;
+    text-align: center;
+    font-weight: normal;
+}
+
+.refFicheProduit .FicheProduit {
+    margin-left: 50px;
+}
