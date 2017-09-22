@@ -98,6 +98,22 @@ public class Recette implements Serializable{
 		this.produitRecettes = produitRecettes;
 	}
 
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String paramPhoto) {
+		photo = paramPhoto;
+	}
+
+	public String getNbPers() {
+		return nbPers;
+	}
+
+	public void setNbPers(String paramNbPers) {
+		nbPers = paramNbPers;
+	}
+
 	public Recette() {
     }
 

@@ -7,5 +7,7 @@ public interface IDaoRecette {
     public java.util.List<Recette> getByCategorieRecette(Integer id_Categorie_Produit);
 
     public java.util.List<Recette> getAll();
+    
+    public Recette getByIdWithAllProduitRecette(Integer id_recette);
 
 }
