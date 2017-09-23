@@ -136,7 +136,7 @@
   font-weight: 300;
 }
  
-.shopping-cart button[class*=btn] {
+.shopping-cart a[class*=btn] {
   width: 30px;
   height: 30px;
   background-color: #E1E8EE;
@@ -145,7 +145,7 @@
   cursor: pointer;
 }
 
-.shopping-cart a[class*=payer]{
+.shopping-cart input[class*=payer]{
 	text-align: center;
 	font-size: 18px;
 	
@@ -162,11 +162,11 @@
 	border: none;
 }
 
-.shopping-cart a[class*=payer]:hover{
+.shopping-cart input[class*=payer]:hover{
   opacity:0.9;
 }
 
-.shopping-cart a[class*=payer]:focus{
+.shopping-cart input[class*=payer]:focus{
   background-color:var(--couleur-majeure-vert-dark);
 }
 
@@ -177,7 +177,7 @@
   margin-top: 2px;
 }
  
-.shopping-cart button:focus,
+.shopping-cart a:focus,
 input:focus {
   outline:0;
 }

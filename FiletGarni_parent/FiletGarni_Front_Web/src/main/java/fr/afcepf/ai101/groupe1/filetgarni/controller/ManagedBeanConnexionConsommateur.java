@@ -27,7 +27,7 @@ public class ManagedBeanConnexionConsommateur implements Serializable {
 		consommateurConnecte = buCnx.seConnecterConsommateur(mail, mdp);
 		if(consommateurConnecte != null) {
 			System.out.println("Je suis connecté");
-			page = "/commande/11Panier/panier.xhtml?faces-redirect=true";
+			page = "/commande/13Paiement/paiement.xhtml?faces-redirect=true";
 			return page;
 		}else {
 			System.out.println("je suis null, je connais plus mes identifiants");

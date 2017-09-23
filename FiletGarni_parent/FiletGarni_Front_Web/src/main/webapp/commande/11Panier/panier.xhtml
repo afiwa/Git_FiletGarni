@@ -26,7 +26,7 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form id="form-client">
+		<h:form id="form-panier">
 
 			<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
 			<div>
@@ -45,18 +45,19 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 				<div class="title">Mon panier</div>
 
 				<!-- Product #1 -->
-				<ui:repeat var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
+				<ui:repeat id="repeater" var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
 					<div id="item" class="item">
 						<div class="buttons">
-							<span class="delete-btn"> 
-								<h:commandLink>
+<!-- 							<span class="delete-btn">  -->
+								<h:commandLink class="delete-btn">
 									<f:ajax
-										listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande.produit.id)}"
+										listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
 										event="click" 
-										execute="@form" 
-										render="item" />
+										render="repeater"
+										execute="@form"  />
 								</h:commandLink>
-							</span> <span class="like-btn"></span>
+<!-- 							</span>  -->
+							<span class="like-btn"></span>
 						</div>
 
 						<div class="image">
@@ -84,10 +85,10 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 						<div class="quantity">
 							<h:commandLink class="minus-btn" type="button" name="button">
 								<img src="images\icons_panier\minus.svg" alt="" />
-								<f:ajax	listener="#{mbRecapPanier.diminuerQuantite(ligneCommande)}" 
+								<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}" 
 										event="click" 
 										execute="@form" 
-										render="quantite prixLigneCmd" />
+										render="quantite prixLigneCmd prixTotalPanier" />
 							</h:commandLink>
 
 							<h:inputText id="quantite" class="qty" name="name" value="#{ligneCommande.quantiteCommandee}">
@@ -96,17 +97,16 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 
 							<h:commandLink class="plus-btn" type="button" name="button">
 								<img src="images\icons_panier\plus.svg" alt="" />
-								<f:ajax	listener="#{mbRecapPanier.augmenterQuantite(ligneCommande.produit.id)}"
+								<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, 1, ligneCommande.quantiteCommandee)}"
 										event="click" 
 										execute="@form" 
-										render="quantite prixLigneCmd" />
+										render="quantite prixLigneCmd prixTotalPanier" />
 							</h:commandLink>
 						</div>
 						<div class="total-price">
 							<h:outputLabel id="prixLigneCmd"	class="total-article" value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
 								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-							</h:outputLabel>
-<!-- 							#{ligneCommande.produit.id} -->
+							</h:outputLabel><span> €</span>
 						</div>
 					</div>
 				</ui:repeat>
@@ -116,17 +116,19 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 				<div class="item">
 					<div class="total-cart">
 						<span class="title" id="dernierTitre">Total de votre commande</span>
-						<h:outputLabel class="total-panier"	value="#{mbRecapPanier.totalCommande}"></h:outputLabel>€
+						<h:outputLabel id="prixTotalPanier" class="total-panier"	value="#{mbTestPanier.totalMontantCommande}">
+							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+						</h:outputLabel>€
 					</div>
 					<br />
 					<div>
-						<a href="..\13Paiement\paiement.jsf" class="payer">Valider</a>
-					</div>
+						<h:commandButton class="payer" action="#{mbRecapPanier.RedirectConnexionOuPointRelais()}" value="Valider"></h:commandButton>
+					</div>       
 				</div>
 			</div>
 
 			<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- 			<script type="text/javascript" src="js/affichagePanier.js"></script> -->
+			<script type="text/javascript" src="js/affichagePanier.js"></script>
 			<script type="text/javascript" src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
 			<script type="text/javascript" src="../jsHamburger/main.js"></script>
 
