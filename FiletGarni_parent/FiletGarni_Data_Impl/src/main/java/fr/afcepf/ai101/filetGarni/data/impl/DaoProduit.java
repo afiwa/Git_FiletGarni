@@ -29,6 +29,16 @@ public class DaoProduit implements IDaoProduit {
 	public Produit getByIdWithConditionnement(Integer paramId_produit) {
 		return (Produit) em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements WHERE p.id = :pid").setParameter("pid", paramId_produit).getSingleResult();
 	}
+    
+    @SuppressWarnings("unchecked")
+	public java.util.List<Produit> getAllWithConditionnements() {
+        return em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements").getResultList();
+    }
+    
+    @SuppressWarnings("unchecked")
+	public java.util.List<Produit> getByCategorieWithConditionnements(CategorieProduit categorieProduit) {
+        return em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements WHERE p.categorie = :pcategorie").setParameter("pcategorie", categorieProduit).getResultList();
+    }
 
     public void creer() {
         // TODO implement here
@@ -44,17 +54,7 @@ public class DaoProduit implements IDaoProduit {
 
     public void rechercher() {
         // TODO implement here
-    }
-
-    public java.util.List<Produit> getAll() {
-        // TODO implement here
-        return null;
-    }
-
-    public java.util.List<Produit> getByCategorie(CategorieProduit categorieProduit) {
-        // TODO implement here
-        return null;
-    }
+    } 
 
     public java.util.List<Produit> getByProducteur(Producteur producteur) {
         // TODO implement here

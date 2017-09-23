@@ -5,7 +5,19 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 
 public interface IDaoProduit {
+    
+    public Produit getById(Integer id_produit);
+    
+    public Produit getByIdWithConditionnement(Integer id_produit);
 
+    public java.util.List<Produit> getAllWithConditionnements();
+
+    public java.util.List<Produit> getByCategorieWithConditionnements(CategorieProduit categorieProduit);
+
+    public java.util.List<Produit> getByProducteur(Producteur producteur);
+
+    public java.util.List<Produit> getByNom(String nom);  
+    
     public void creer();
 
     public void modifier();
@@ -13,17 +25,5 @@ public interface IDaoProduit {
     public void supprimer();
 
     public void rechercher();
-
-    public java.util.List<Produit> getAll();
-
-    public java.util.List<Produit> getByCategorie(CategorieProduit categorieProduit);
-
-    public java.util.List<Produit> getByProducteur(Producteur producteur);
-
-    public java.util.List<Produit> getByNom(String nom);
-    
-    public Produit getById(Integer id_produit);
-    
-    public Produit getByIdWithConditionnement(Integer id_produit);
 
 }

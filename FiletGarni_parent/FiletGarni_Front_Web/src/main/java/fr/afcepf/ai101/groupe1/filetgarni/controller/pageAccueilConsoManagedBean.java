@@ -16,8 +16,8 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 @SessionScoped
 @ManagedBean(name = "mbPageAccueilConso")
 public class pageAccueilConsoManagedBean {
-	private List<Producteur> tousLesProducteurs = new ArrayList<>();
 	
+	private List<Producteur> tousLesProducteurs = new ArrayList<>();	
 	private List<Producteur> tousLesProducteursWithCategories = new ArrayList<>();
 	
 	@EJB

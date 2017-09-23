@@ -92,11 +92,12 @@ public class BusinessCommande implements IBusinessCommande {
     @EJB
     private IDaoCategorieProducteur daoCategorieProducteur;
 
-    public java.util.List<Produit> getProduitByRegion(Region region) {
-        // TODO implement here
-        return null;
-    }
-    
+
+	@Override
+	public List<Produit> getAllProduits() {
+        return daoProduit.getAllWithConditionnements();
+	}
+	
 	@Override
 	public Produit getProduitById(Integer paramId_produit) {
 		return daoProduit.getById(paramId_produit);
@@ -114,9 +115,8 @@ public class BusinessCommande implements IBusinessCommande {
 	}
 
 	@Override
-	public List<Produit> getProduitByCategorie(CategorieProduit paramCategorie, Region paramRegion) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getProduitByCategorie(CategorieProduit paramCategorie) {
+		return daoProduit.getByCategorieWithConditionnements(paramCategorie);
 	}
 
 	@Override
@@ -214,4 +214,6 @@ public class BusinessCommande implements IBusinessCommande {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 }
