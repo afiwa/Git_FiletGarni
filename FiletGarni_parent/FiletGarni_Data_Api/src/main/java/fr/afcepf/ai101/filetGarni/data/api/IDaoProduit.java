@@ -12,7 +12,7 @@ public interface IDaoProduit {
 
     public java.util.List<Produit> getAllWithConditionnements();
 
-    public java.util.List<Produit> getByCategorieWithConditionnements(CategorieProduit categorieProduit);
+    public java.util.List<Produit> getByIdCategorie(Integer id_categorieProduit);
 
     public java.util.List<Produit> getByProducteur(Producteur producteur);
 

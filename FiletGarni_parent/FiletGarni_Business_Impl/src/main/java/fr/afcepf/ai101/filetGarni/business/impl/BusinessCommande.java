@@ -29,6 +29,7 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
@@ -57,7 +58,7 @@ public class BusinessCommande implements IBusinessCommande {
     private IDaoProduit daoProduit;
 
     @EJB
-    private IDaoCategorieProduit daoCategorie;
+    private IDaoCategorieProduit daoCategorieProduit;
 
     @EJB
     private IDaoRecette daoRecette;
@@ -98,6 +99,35 @@ public class BusinessCommande implements IBusinessCommande {
         return daoProduit.getAllWithConditionnements();
 	}
 	
+	private List<Produit> produits = new ArrayList<>();
+	
+	@Override
+	public List<Produit> getProduitByIdCategorie(Integer id_categorieProduit, Boolean premierPassage) {
+		List<CategorieProduit> categories = daoCategorieProduit.getCategoriesByIdCategorie(id_categorieProduit);
+		List<Conditionnement> conditionnements;
+		if (premierPassage) {
+			produits.clear();
+		}
+		if (categories.isEmpty()) {
+			List<Produit> produitsAAjouter = new ArrayList<>();
+			produitsAAjouter = daoProduit.getByIdCategorie(id_categorieProduit);
+			if(!produitsAAjouter.isEmpty()) {
+				for (Produit produit : produitsAAjouter) {
+					conditionnements = daoConditionnement.getByProduit(produit);
+					produit.setConditionnements(conditionnements);
+					produits.add(produit);
+					System.out.println(produit.getLibelle());
+				}
+			}			
+				return produits;
+		} else {
+			for (CategorieProduit categorieProduit : categories) {
+				getProduitByIdCategorie(categorieProduit.getId(),false);
+			}
+		}
+		return produits;
+	}
+	
 	@Override
 	public Produit getProduitById(Integer paramId_produit) {
 		return daoProduit.getById(paramId_produit);
@@ -112,11 +142,6 @@ public class BusinessCommande implements IBusinessCommande {
 	public List<Produit> getProduitByNom(String paramNom, Region paramRegion) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public List<Produit> getProduitByCategorie(CategorieProduit paramCategorie) {
-		return daoProduit.getByCategorieWithConditionnements(paramCategorie);
 	}
 
 	@Override

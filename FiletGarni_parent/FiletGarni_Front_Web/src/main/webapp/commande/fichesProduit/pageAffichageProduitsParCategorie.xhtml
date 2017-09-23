@@ -16,10 +16,10 @@
 		
 		<ui:define name="content">
 			<h:form id="form-produits">
-				<ui:repeat var="produit" value="#{mbPageAffichageProduits.tousLesProduits}">
+				<ui:repeat var="produit" value="#{mbPageAffichageProduits.produitsParCategorie}">
 					<ui:include src="../../WEB-INF/components/produit.xhtml"/>
 				</ui:repeat>
-		
+				
 				<!-- ADD TO CART INTERACTION -->
     
 			    <div class="cd-cart-container empty">

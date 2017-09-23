@@ -20,7 +20,7 @@ public interface IBusinessCommande {
 
     public java.util.List<Produit> getProduitByNom(String nom , Region region);
 
-    public java.util.List<Produit> getProduitByCategorie(CategorieProduit categorie);
+    public java.util.List<Produit> getProduitByIdCategorie(Integer id_categorieProduit, Boolean premierPassage);
 
     public java.util.List<Produit> getProduitByProducteur(Region region, Producteur producteur);
 

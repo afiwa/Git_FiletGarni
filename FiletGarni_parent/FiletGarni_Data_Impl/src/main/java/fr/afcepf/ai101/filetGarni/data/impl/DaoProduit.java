@@ -35,9 +35,10 @@ public class DaoProduit implements IDaoProduit {
         return em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements").getResultList();
     }
     
+    @Override
     @SuppressWarnings("unchecked")
-	public java.util.List<Produit> getByCategorieWithConditionnements(CategorieProduit categorieProduit) {
-        return em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements WHERE p.categorie = :pcategorie").setParameter("pcategorie", categorieProduit).getResultList();
+	public java.util.List<Produit> getByIdCategorie(Integer id_categorieProduit) {
+        return em.createQuery("SELECT c.produits FROM CategorieProduit c WHERE c.id = :pid").setParameter("pid", id_categorieProduit).getResultList();
     }
 
     public void creer() {
