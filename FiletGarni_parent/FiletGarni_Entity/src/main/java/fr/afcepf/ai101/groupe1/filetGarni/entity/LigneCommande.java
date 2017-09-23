@@ -204,8 +204,8 @@ public class LigneCommande implements Serializable{
 
 
 
-	public void getMontantLgnCommande() {
-        // TODO implement here
+	public Double getMontantLgnCommande(Double paramPrix) {
+        return (produit.getPrix())*quantiteCommandee;
     }
 
 }

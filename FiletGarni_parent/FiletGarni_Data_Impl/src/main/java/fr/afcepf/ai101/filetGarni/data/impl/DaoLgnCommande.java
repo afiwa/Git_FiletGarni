@@ -19,7 +19,7 @@ public class DaoLgnCommande implements IDaoLgnCommande {
     }
 
     public void creerUnePremiereLigneCommande() {
-        // TODO implement here
+        em.persist("INSERT INTO `lignecommande` (`id_lignecommande`, `date_validationrecupclient_lignecommande`, `date_validationrecuplivreur_lignecommande`, `date_validationprepproducteur_lignecommande`, `quantitecommande_lignecommande`, `quantitelivree_lignecommande`, `id_commande_tlignecommande`, `indispo_id_suiviindispo`, `produit_id_produit`, `id_tourneeproducteur_tlignecommande`) VALUES (NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL);");
     }
 
     public LigneCommande ajouter(Integer id_commande) {

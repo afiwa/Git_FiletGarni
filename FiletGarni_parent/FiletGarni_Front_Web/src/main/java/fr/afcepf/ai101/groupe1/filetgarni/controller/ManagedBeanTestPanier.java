@@ -28,6 +28,8 @@ public class ManagedBeanTestPanier implements Serializable{
 	private Produit pdt  = new Produit();
 	private Produit pdt2 = new Produit();
 	private List<LigneCommande> ligneCommandes= new ArrayList<LigneCommande>();
+//	private Double montantLgnCommande;
+//	private Double montantTotal;
 
 	public String validerPanier() {
 		pdt = buPdt.getProduitByIdWithConditionnements(idPdt);
@@ -36,6 +38,7 @@ public class ManagedBeanTestPanier implements Serializable{
 		LigneCommande lgn2 = new LigneCommande(null, qte2, null, null, null, null, null, pdt2, null, null);
 		ligneCommandes.add(lgn1);
 		ligneCommandes.add(lgn2);
+	
 		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
 

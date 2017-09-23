@@ -205,5 +205,19 @@ public class Commande implements Serializable {
 		pointRelais = paramPointRelais;
 		consommateur = paramConsommateur;
 		tourneeReelleLivraison = paramTourneeReelleLivraison;
-	}            
+	}
+
+	public Commande(Integer paramId, Date paramDatePaiement, Date paramDateValidation, Date paramDateLivraisonPrevue,
+			TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur) {
+		super();
+		id = paramId;
+		datePaiement = paramDatePaiement;
+		dateValidation = paramDateValidation;
+		dateLivraisonPrevue = paramDateLivraisonPrevue;
+		typePaiement = paramTypePaiement;
+		pointRelais = paramPointRelais;
+		consommateur = paramConsommateur;
+	}  
+	
+	
 }

@@ -24,69 +24,28 @@ public class ManagedBeanRecapPanier implements Serializable {
 	@EJB
 	private IBusinessCommande buCmd;
 	private Double totalCommande = 2000d;
-	
-	public IBusinessCommande getBuCmd() {
-		return buCmd;
-	}
-
-	public void setBuCmd(IBusinessCommande buCmd) {
-		this.buCmd = buCmd;
-	}
-
-	public Double getTotalCommande() {
-		return totalCommande;
-	}
-
-	public void setTotalCommande(Double totalCommande) {
-		this.totalCommande = totalCommande;
-	}
-
-	public Double getTotalLigneCmde() {
-		return totalLigneCmde;
-	}
-
-	public void setTotalLigneCmde(Double totalLigneCmde) {
-		this.totalLigneCmde = totalLigneCmde;
-	}
-
-	public List<Produit> getListePdts() {
-		return listePdts;
-	}
-
-	public void setListePdts(List<Produit> listePdts) {
-		this.listePdts = listePdts;
-	}
 	private Double totalLigneCmde = 0d;
+	private List<Produit> listePdts;
 
 
-	//	public augmenterQuantite() {
-	//		
-	//	}
-
-	public void diminuerQuantite(Integer id) {
-		monMbTestPanier.getLigneCommandes().get(id).setQuantiteCommandee(
-				monMbTestPanier.getLigneCommandes().get(id).getQuantiteCommandee()-1);
+	public void diminuerQuantite(LigneCommande lgnCommande) {
+		lgnCommande.setQuantiteCommandee(lgnCommande.getQuantiteCommandee()-1);
+//		monMbTestPanier.getLigneCommandes().setQuantiteCommandee(
+//				monMbTestPanier.getLigneCommandes().get(id).getQuantiteCommandee()-1);
+		
 	}
 	
 	public void augmenterQuantite(Integer id) {
 		monMbTestPanier.getLigneCommandes().get(id).setQuantiteCommandee(
 				monMbTestPanier.getLigneCommandes().get(id).getQuantiteCommandee()+1);
+		
 	}
-	//	public supprimerLigneCommande() {
-	//		
-	//	}
-	private List<Produit> listePdts;
-
+	
+	
 	public List<Produit> afficherListeProduitsPanier(){
 		return listePdts;
 	}
 
-	public void testPanier() {
-
-	}
-
-	
-	
 	
 	// SOURCE A ETUDIER !
 	// SOURCE A ETUDIER !
@@ -134,7 +93,44 @@ public class ManagedBeanRecapPanier implements Serializable {
 		//			}
 		//		}
 	}
+	
+	
+	
+	public IBusinessCommande getBuCmd() {
+		return buCmd;
+	}
 
+	public void setBuCmd(IBusinessCommande buCmd) {
+		this.buCmd = buCmd;
+	}
+
+	public Double getTotalCommande() {
+		return totalCommande;
+	}
+
+	public void setTotalCommande(Double totalCommande) {
+		this.totalCommande = totalCommande;
+	}
+
+	public Double getTotalLigneCmde() {
+		return totalLigneCmde;
+	}
+
+	public void setTotalLigneCmde(Double totalLigneCmde) {
+		this.totalLigneCmde = totalLigneCmde;
+	}
+
+	public List<Produit> getListePdts() {
+		return listePdts;
+	}
+
+	public void setListePdts(List<Produit> listePdts) {
+		this.listePdts = listePdts;
+	}
+
+	public void testPanier() {
+
+	}
 
 
 }

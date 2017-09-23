@@ -1,5 +1,7 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
+import java.sql.Date;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,9 +21,11 @@ public class DaoCommande implements IDaoCommande {
     public DaoCommande() {
     }
 
-    public void creer() {
-        // TODO implement here
-    }
+//    public Commande creer(Integer paramId, Date paramDatePaiement, Date paramDateValidation, Date paramDateLivraisonPrevue, Integer paramTypePaiement, Integer paramPointRelais, Integer paramConsommateur) {
+//    	Commande nouvelleCommande = new Commande(paramId, paramDatePaiement, paramDateValidation, paramDateLivraisonPrevue, paramTypePaiement, paramPointRelais, paramConsommateur);
+//    	em.persist(nouvelleCommande);
+//        return nouvelleCommande;
+//    }
 
     public void supprimer() {
         // TODO implement here
@@ -73,5 +77,11 @@ public class DaoCommande implements IDaoCommande {
         // TODO implement here
         return null;
     }
+
+	@Override
+	public Commande creer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
