@@ -1,4 +1,5 @@
 var coordonnee;
+var pointrelais;
 /*
 var options = {
     url: "json/communes_idf.json",
@@ -175,68 +176,62 @@ function myMap() {
 
     /* ------------------------------- MULTIPLE MARKERS ------------------------*/
 
-    var producteurs = [
-        {
-            position: new google.maps.LatLng(48.814732, 2.74823)
-    },
-        {
-            position: new google.maps.LatLng(48.839594, 2.576569)
-    },
-        {
-            position: new google.maps.LatLng(48.774474, 2.562149)
-    },
-        {
-            position: new google.maps.LatLng(48.860559, 2.326904)
-    },
-        {
-            position: new google.maps.LatLng(48.861462, 2.210175)
-    },
-        {
-            position: new google.maps.LatLng(48.832543, 2.222534)
-    },
-        {
-            position: new google.maps.LatLng(48.790038, 2.263733)
-    },
-        {
-            position: new google.maps.LatLng(48.817173, 2.432648)
-    },
-        {
-            position: new google.maps.LatLng(48.767414, 2.596069)
-    },
-        {
-            position: new google.maps.LatLng(48.778275, 2.973724)
-    },
-        {
-            position: new google.maps.LatLng(49.02112, 3.031403)
-    },
-        {
-            position: new google.maps.LatLng(48.960745, 2.814423)
-    },
-        {
-            position: new google.maps.LatLng(48.767414, 1.851746)
-    }
-];
-
-    var tabMarker = [];
+    var mapPR = new Map();
     var cartePointRelais = new google.maps.Map(document.getElementById("cartePointRelais"), mapOptions);
 
-    producteurs.forEach(function (feature) {
+    pointrelais.forEach(function (feature) {
         var marker = new google.maps.Marker({
             position: feature.position,
             icon: 'images/marker.png',
             map: cartePointRelais
         });
         
-        tabMarker.push(marker);
+        mapPR.set(marker,feature);
         
-       marker.addListener('click', function () {
+        marker.addListener('click', function () {
            
-           tabMarker.forEach(function (mark){
-                mark.setIcon('images/marker.png');
-            });
-           
+           for(var [markers, pointrelais] of mapPR){
+        	   markers.setIcon('images/marker.png');
+           }
             marker.setIcon('images/marker-select2.png');
-            
+            let myEncart = document.getElementById("historique-choix");
+            var contentString = 
+            	'<div class="cd-tabs">'+
+            		'<nav>'+
+            			'<ul class="cd-tabs-navigation">'+
+            				'<li><a data-content="adresse" class="selected" href="#0">Adresse</a></li>'+
+            				'<li><a data-content="horaire" href="#0">Horaire </a></li>'+
+            			'</ul>'+
+            	'<!-- cd-tabs-navigation -->'+
+            		'</nav>'+
+            		'<ul class="cd-tabs-content">'+
+            			'<li data-content="adresse" class="selected">'+
+            				'<h3 class="historique-pr-nom">'+mapPR.get(marker).nom+'</h3>'+
+            				'<div class="historique-pr-ville">'+mapPR.get(marker).ville +
+            				'<div class="historique-pr-cp">'+mapPR.get(marker).cp+'</div>'+
+            				'</div>'+
+            				'<div class="historique-pr-adresse">'+mapPR.get(marker).adresse+'</div>'+
+            			'</li>'+
+
+           				'<li data-content="horaire">'+
+           					'<div class="historique-pr-horaire-lundi">Lundi : 8h30 - 19h</div>'+
+           					'<div class="historique-pr-horaire-mardi">Mardi : 8h30 - 19h</div>'+
+           					'<div class="historique-pr-horaire-mercredi">Mercredi : 8h30 - 19h</div>'+
+           					'<div class="historique-pr-horaire-jeudi">Jeudi : 8h30 - 19h</div>'+
+           					'<div class="historique-pr-horaire-vendredi">Vendredi : 8h30 - 19h</div>'+
+           					'<div class="historique-pr-horaire-samedi">Samedi : 8h30 - 19h</div>'+
+           					'<div class="historique-pr-horaire-dimanche">Dimanche : 8h30 - 19h</div>'+
+           				'</li>'+
+           			'</ul>'+
+            	'<!-- cd-tabs-content -->'+
+            	'</div>'+
+            	'<!-- cd-tabs -->';
+            if(myEncart.hasChildNodes()){
+            	let child = myEncart.firstChild;
+            	myEncart.removeChild(child);
+            }
+            myEncart.insertAdjacentHTML('afterbegin', contentString);
+           initTab();
         });
 
        
@@ -244,19 +239,13 @@ function myMap() {
     
     var marker = new google.maps.Marker({
     	position: new google.maps.LatLng(48.817173, 2.452648),
-        icon: 'images/maison1.png',
-        map: cartePointRelais
-    });
-    
-    var marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(48.827173, 2.432648),
-        icon: 'images/maison2.png',
+        icon: 'images/maison32.png',
         map: cartePointRelais
     });
     
     var marker = new google.maps.Marker({
     	position: new google.maps.LatLng(48.817173, 2.442648),
-        icon: 'images/travail.png',
+        icon: 'images/travail32.png',
         map: cartePointRelais
     });
 }
@@ -269,3 +258,58 @@ output.innerHTML = slider.value; // Display the default slider value
 slider.oninput = function() {
     output.innerHTML = this.value;
 }*/
+
+
+
+function initTab(){
+var tabs = $('.cd-tabs');
+	
+	tabs.each(function(){
+		var tab = $(this),
+			tabItems = tab.find('ul.cd-tabs-navigation'),
+			tabContentWrapper = tab.children('ul.cd-tabs-content'),
+			tabNavigation = tab.find('nav');
+
+		tabItems.on('click', 'a', function(event){
+			event.preventDefault();
+			var selectedItem = $(this);
+			if( !selectedItem.hasClass('selected') ) {
+				var selectedTab = selectedItem.data('content'),
+					selectedContent = tabContentWrapper.find('li[data-content="'+selectedTab+'"]'),
+					slectedContentHeight = selectedContent.innerHeight();
+				
+				tabItems.find('a.selected').removeClass('selected');
+				selectedItem.addClass('selected');
+				selectedContent.addClass('selected').siblings('li').removeClass('selected');
+				//animate tabContentWrapper height when content changes 
+				tabContentWrapper.animate({
+					'height': slectedContentHeight
+				}, 200);
+			}
+		});
+
+		//hide the .cd-tabs::after element when tabbed navigation has scrolled to the end (mobile version)
+		checkScrolling(tabNavigation);
+		tabNavigation.on('scroll', function(){ 
+			checkScrolling($(this));
+		});
+	});
+	
+	$(window).on('resize', function(){
+		tabs.each(function(){
+			var tab = $(this);
+			checkScrolling(tab.find('nav'));
+			tab.find('.cd-tabs-content').css('height', 'auto');
+		});
+	});
+
+	function checkScrolling(tabs){
+		var totalTabWidth = parseInt(tabs.children('.cd-tabs-navigation').width()),
+		 	tabsViewport = parseInt(tabs.width());
+		if( tabs.scrollLeft() >= totalTabWidth - tabsViewport) {
+			tabs.parent('.cd-tabs').addClass('is-ended');
+		} else {
+			tabs.parent('.cd-tabs').removeClass('is-ended');
+		}
+	}
+}
