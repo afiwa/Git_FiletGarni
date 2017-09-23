@@ -26,20 +26,19 @@ public class pageAffichageProduitsManagedBean {
 		recupererTousLesProduits();	
 	}
 	
-	public void recupererTousLesProduits() {
+	public String recupererTousLesProduits() {
 		tousLesProduits = businessCommande.getAllProduits();
+		return "/commande/fichesProduit/pageAffichageProduits.xhtml?faces-redirect=true";
 	}
 	
 	public String recupererProduitsParCategorie(Integer id_categorie) {
 		produitsParCategorie = businessCommande.getProduitByIdCategorie(id_categorie, true);
-		System.out.println(produitsParCategorie.size());
-		System.out.println(id_categorie);
-		return "/commande/pageAffichageProduitsParCategorie.xhtml?faces-redirect=true";
+		return "/commande/fichesProduit/pageAffichageProduitsParCategorie.xhtml?faces-redirect=true";
 	}
 	
-	public String afficherPageTousLesProduits() {
-		return "/commande/pageAffichageProduits.xhtml?faces-redirect=true";
-	}
+//	public String afficherPageTousLesProduits() {
+//		return "/commande/pageAffichageProduits.xhtml?faces-redirect=true";
+//	}
 	
 	
 	// Get et Set

@@ -23,8 +23,10 @@
             <div id="hamburger-content">
                 <nav>
                     <ul>
-                    	<li><h:commandLink action="#{mbPageAffichageProduits.afficherPageTousLesProduits()}" 
-                    					   value="Tous les produits" class="menu"/></li>
+                    	<li>
+                    	<h:commandLink action="#{mbPageAffichageProduits.recupererTousLesProduits()}" 
+	                        				   value="Tous les produits" class="menu"/>
+                    	</li>
                         <li>
                         	<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(1)}" 
                         				   value="Fruits"
