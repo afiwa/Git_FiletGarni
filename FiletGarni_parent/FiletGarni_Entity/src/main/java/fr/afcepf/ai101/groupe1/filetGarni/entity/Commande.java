@@ -219,5 +219,12 @@ public class Commande implements Serializable {
 		consommateur = paramConsommateur;
 	}  
 	
+	public double getMontantCommande() {
+		double prixTotal = 0;
+		for(LigneCommande lgnCmd : lgnCommandes) {
+			prixTotal += lgnCmd.getMontantLgnCommande( lgnCmd.getProduit().getPrix() );
+		}
+		return prixTotal;	
+	}
 	
 }

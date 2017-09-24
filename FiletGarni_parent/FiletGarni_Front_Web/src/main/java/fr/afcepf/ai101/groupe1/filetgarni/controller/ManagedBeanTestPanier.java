@@ -2,7 +2,6 @@ package fr.afcepf.ai101.groupe1.filetgarni.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -28,19 +27,22 @@ public class ManagedBeanTestPanier implements Serializable{
 	private Produit pdt  = new Produit();
 	private Produit pdt2 = new Produit();
 	private List<LigneCommande> ligneCommandes= new ArrayList<LigneCommande>();
-//	private Double montantLgnCommande;
-//	private Double montantTotal;
+	private Double totalMontantCommande;
+	
 
-	public String validerPanier() {
+	public String testRemplirAfficherPanier() {
 		pdt = buPdt.getProduitByIdWithConditionnements(idPdt);
 		pdt2 = buPdt.getProduitByIdWithConditionnements(idPdt2);
 		LigneCommande lgn1 = new LigneCommande(null, qte, null, null, null, null, null, pdt, null, null);
 		LigneCommande lgn2 = new LigneCommande(null, qte2, null, null, null, null, null, pdt2, null, null);
 		ligneCommandes.add(lgn1);
 		ligneCommandes.add(lgn2);
-	
+		calculTotalMontantCommande();
+
 		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
+	
+	
 
 
 	public IBusinessCommande getBuPdt() {
@@ -115,64 +117,47 @@ public class ManagedBeanTestPanier implements Serializable{
 	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
 	}
-
-	public void diminuerQuantite(Integer id) {
-		ligneCommandes.get(id).setQuantiteCommandee(
-				ligneCommandes.get(id).getQuantiteCommandee()-1);
-	}
 	
-	public void augmenterQuantite(Integer id) {
-		ligneCommandes.get(id).setQuantiteCommandee(
-				ligneCommandes.get(id).getQuantiteCommandee()+1);
-	}
 
-	// SOURCE A ETUDIER !
-	// SOURCE A ETUDIER !
-	//  http://adfwebcentermoments.blogspot.fr/2011/05/delete-rows-using-managed-bean-adf.html
-	// SOURCE A ETUDIER !
-	// SOURCE A ETUDIER !
-	public void supprimerLgnCmd(Integer idProduitASupprimer) {
 
-		List<LigneCommande> ligneCommandesAParcourir = ligneCommandes;
-		for(LigneCommande lgnCmd : ligneCommandesAParcourir ) {
-			if((lgnCmd.getProduit().getId() == idProduitASupprimer)) {
-				ligneCommandes.remove(lgnCmd);
-				break;
+	public void modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Integer qteCommandee) {
+		System.out.println("Fonction diminuer quantite ligne commande.");
+		if(chiffreModificateur == -1 && qteCommandee == 1) {
+		} else {
+			for(LigneCommande lgnCmd : ligneCommandes ) {
+				if(lgnCmd.getProduit().getId().equals(lgnCommandeTemp.getProduit().getId())) {
+					lgnCmd.setQuantiteCommandee(lgnCmd.getQuantiteCommandee()+(chiffreModificateur));
+					calculTotalMontantCommande();
+				}
 			}
 		}
-		//		try { 
-		//			List malist = Collections.synchronizedList(ligneCommandes);
-		//			List malistCopie = new ArrayList();
-		//			malistCopie.addAll(maList);
-		//			synchronized(malistCopie){ 
-
-		//				ListIterator<LigneCommande> iterator = ligneCommandes.listIterator();
-		//				LigneCommande temp;
-		//				while(iterator.hasNext()) {
-		//					temp = iterator.next();
-		//					if((temp.getId().equals(idProduitASupprimer))) {
-		//						ligneCommandes.remove(temp);
-		//						break;
-		//					}
-		//				}
-//		System.out.println("supprimer pdt:"+idProduitASupprimer);
-//		LigneCommande lgnCmd = new LigneCommande();
-//		boolean removedStatus = false;
-//
-//		for (Iterator<LigneCommande> itr= ligneCommandes.iterator();itr.hasNext();) {
-//			lgnCmd = (LigneCommande) itr.next();
-//			if (lgnCmd.getId().equals(idProduitASupprimer)) {
-//				ligneCommandes.remove(lgnCmd);
-//				itr.remove();
-//				ligneCommandes.get(0).setQuantiteCommandee(0d);
-//				removedStatus = true;
-//				break;
-//			}
-//		}
-//		System.out.println(removedStatus);
 
 
 	}
 
+	public String supprimerLgnCmd(LigneCommande ligneCommandeTempASupprimer) {
+		System.out.println("test");
+		ligneCommandes.remove(ligneCommandeTempASupprimer);
+		calculTotalMontantCommande();
+		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
+	}
+	
+	public Double getTotalMontantCommande() {
+		return totalMontantCommande;
+	}
+
+
+	public void setTotalMontantCommande(Double totalMontantCommande) {
+		this.totalMontantCommande = totalMontantCommande;
+	}
+
+
+	public void calculTotalMontantCommande() {
+		totalMontantCommande = 0d;
+		for(LigneCommande lgnCmd : ligneCommandes) {
+			totalMontantCommande = totalMontantCommande + lgnCmd.getMontantLgnCommande(lgnCmd.getProduit().getPrix());
+		}
+	}
+	
 
 }
