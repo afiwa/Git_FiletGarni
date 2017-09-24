@@ -47,7 +47,9 @@
 	            <input class="image_plus" type="image" src="fiche_produit/plus4.png" />
 	        </div>
 	        <figcaption>
-	            <h3 class="nomProduit">#{mbPageAccueilConso.afficherProduit(55).libelle}</h3>
+	        <h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(55)}"
+	        					value="#{mbPageAccueilConso.afficherProduit(55).libelle}"
+	        					class="nomProduit"/>
 	            <h3 class="prixProduit">
 	            	#{mbPageAccueilConso.afficherProduit(55).conditionnements.get(0).libelle}	
 				 </h3>

@@ -30,4 +30,12 @@ public class PageFicheProduitDetailleManagedBean {
 		produitSelectionne = paramProduitSelectionne;
 	}
 	
+	public IBusinessCommande getBusinessCommande() {
+		return businessCommande;
+	}
+
+	public void setBusinessCommande(IBusinessCommande paramBusinessCommande) {
+		businessCommande = paramBusinessCommande;
+	}
+	
 }

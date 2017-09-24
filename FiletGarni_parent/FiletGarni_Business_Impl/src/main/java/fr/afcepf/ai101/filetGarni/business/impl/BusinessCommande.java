@@ -121,7 +121,6 @@ public class BusinessCommande implements IBusinessCommande {
 					conditionnements = daoConditionnement.getByProduit(produit);
 					produit.setConditionnements(conditionnements);
 					produits.add(produit);
-					System.out.println(produit.getLibelle());
 				}
 			}			
 				return produits;
