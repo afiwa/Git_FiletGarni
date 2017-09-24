@@ -201,6 +201,18 @@ public class LigneCommande implements Serializable{
 		tourneeReelleProducteur = paramTourneeReelleProducteur;
 		indispo = paramIndispo;
 	}
+	
+	
+
+
+
+	public LigneCommande(Integer paramId, Double paramQuantiteCommandee, Commande paramCommande, Produit paramProduit) {
+		super();
+		id = paramId;
+		quantiteCommandee = paramQuantiteCommandee;
+		commande = paramCommande;
+		produit = paramProduit;
+	}
 
 
 

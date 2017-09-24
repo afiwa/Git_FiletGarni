@@ -7,8 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
+import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeMarion;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 
@@ -19,7 +18,7 @@ public class ManagedBeanTestPanier implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private IBusinessCommande buPdt;
+	private IBusinessCommandeMarion buPdt;
 	private Integer idPdt;
 	private Integer idPdt2;
 	private Double qte;
@@ -42,17 +41,34 @@ public class ManagedBeanTestPanier implements Serializable{
 		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
 	
-	
+	public void modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Integer qteCommandee) {
+		System.out.println("Fonction diminuer quantite ligne commande.");
+		if(chiffreModificateur == -1 && qteCommandee == 1) {
+		} else {
+			for(LigneCommande lgnCmd : ligneCommandes ) {
+				if(lgnCmd.getProduit().getId().equals(lgnCommandeTemp.getProduit().getId())) {
+					lgnCmd.setQuantiteCommandee(lgnCmd.getQuantiteCommandee()+(chiffreModificateur));
+					calculTotalMontantCommande();
+				}
+			}
+		}
+	}
+
+	public String supprimerLgnCmd(LigneCommande ligneCommandeTempASupprimer) {
+		System.out.println("test");
+		ligneCommandes.remove(ligneCommandeTempASupprimer);
+		calculTotalMontantCommande();
+		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
+	}
 
 
-	public IBusinessCommande getBuPdt() {
+	public IBusinessCommandeMarion getBuPdt() {
 		return buPdt;
 	}
 
-	public void setBuPdt(IBusinessCommande buPdt) {
-		this.buPdt = buPdt;
+	public void setBuPdt(IBusinessCommandeMarion paramBuPdt) {
+		buPdt = paramBuPdt;
 	}
-
 
 	public Integer getIdPdt() {
 		return idPdt;
@@ -116,30 +132,6 @@ public class ManagedBeanTestPanier implements Serializable{
 
 	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
-	}
-	
-
-
-	public void modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Integer qteCommandee) {
-		System.out.println("Fonction diminuer quantite ligne commande.");
-		if(chiffreModificateur == -1 && qteCommandee == 1) {
-		} else {
-			for(LigneCommande lgnCmd : ligneCommandes ) {
-				if(lgnCmd.getProduit().getId().equals(lgnCommandeTemp.getProduit().getId())) {
-					lgnCmd.setQuantiteCommandee(lgnCmd.getQuantiteCommandee()+(chiffreModificateur));
-					calculTotalMontantCommande();
-				}
-			}
-		}
-
-
-	}
-
-	public String supprimerLgnCmd(LigneCommande ligneCommandeTempASupprimer) {
-		System.out.println("test");
-		ligneCommandes.remove(ligneCommandeTempASupprimer);
-		calculTotalMontantCommande();
-		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
 	
 	public Double getTotalMontantCommande() {

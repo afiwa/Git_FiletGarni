@@ -48,4 +48,9 @@ public class DaoPointRelais implements IDaoPointRelais {
 				+ "left join fetch p.adresses").getResultList();
 	}
 
+	@Override
+	public PointRelais getById(Integer paramIdPointRelais) {
+		return (PointRelais) em.createQuery("select pr from PointRelais pr where pr.id = :pId").setParameter(":pId", paramIdPointRelais);
+	}
+
 }

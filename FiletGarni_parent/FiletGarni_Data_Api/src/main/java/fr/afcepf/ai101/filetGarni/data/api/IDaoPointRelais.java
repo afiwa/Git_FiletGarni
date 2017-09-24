@@ -13,4 +13,6 @@ public interface IDaoPointRelais {
     public void getByHoraireOuvertureAndJour(String jour,java.util.Date debut, java.util.Date fin);
 
     public List<PointRelais> getAll();
+    
+    public PointRelais getById(Integer paramIdPointRelais);
 }

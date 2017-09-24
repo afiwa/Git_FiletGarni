@@ -1,7 +1,5 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
-import java.sql.Date;
-
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -9,9 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.Consommateur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.TypePaiement;
 
 @Remote(IDaoCommande.class)
 @Stateless
@@ -23,10 +19,8 @@ public class DaoCommande implements IDaoCommande {
     public DaoCommande() {
     }
 
-    public Commande creer(Integer paramId, Date paramDatePaiement, Date paramDateValidation, Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur) {
-    	Commande nouvelleCommande = new Commande(paramId, paramDatePaiement, paramDateValidation, paramDateLivraisonPrevue, paramTypePaiement, paramPointRelais, paramConsommateur);
-    	em.persist(nouvelleCommande);
-        return nouvelleCommande;
+    public void creer(Commande paramNouvelleCommande) {
+    	em.persist(paramNouvelleCommande);
     }
 
     public void supprimer() {
@@ -80,10 +74,5 @@ public class DaoCommande implements IDaoCommande {
         return null;
     }
 
-	@Override
-	public Commande creer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
