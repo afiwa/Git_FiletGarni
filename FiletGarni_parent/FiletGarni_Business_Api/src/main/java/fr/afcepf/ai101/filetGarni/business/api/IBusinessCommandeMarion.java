@@ -44,6 +44,8 @@ public interface IBusinessCommandeMarion {
     
     public PointRelais getPRById(Integer paramIdPR);
     
+    public Integer getQuantiteEnStock(Integer paramIdProduit);
+    
     //fin ajout
 
     public LigneCommande ajouterLigneCommande(LigneCommande ligneCommande, Commande commande);

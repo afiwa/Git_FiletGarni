@@ -21,6 +21,7 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoNonSalarie;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoPointRelais;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProduit;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoProduitMarion;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProduitRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTypePaiement;
@@ -60,6 +61,10 @@ public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 
     @EJB
     private IDaoProduit daoProduit;
+    
+    //Marion
+    @EJB
+    private IDaoProduitMarion daoProduitMarion;
 
     @EJB
     private IDaoCategorieProduit daoCategorieProduit;
@@ -252,6 +257,11 @@ public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 		return daoPointRelais.getById(paramIdPR);
 	}
 	
+	@Override
+	public Integer getQuantiteEnStock(Integer paramIdProduit) {
+		return daoProduitMarion.getQuantiteEnStock(paramIdProduit);
+	}
+	
 	//fin ajout Marion
 	
 	public LigneCommande créerUneLigneCommande() {
@@ -281,6 +291,8 @@ public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 	
 

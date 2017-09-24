@@ -50,7 +50,7 @@ public class DaoPointRelais implements IDaoPointRelais {
 
 	@Override
 	public PointRelais getById(Integer paramIdPointRelais) {
-		return (PointRelais) em.createQuery("select pr from PointRelais pr where pr.id = :pId").setParameter(":pId", paramIdPointRelais);
+		return (PointRelais) em.createQuery("select u from Utilisateur u where id = :pId").setParameter("pId", paramIdPointRelais).getSingleResult();
 	}
 
 }
