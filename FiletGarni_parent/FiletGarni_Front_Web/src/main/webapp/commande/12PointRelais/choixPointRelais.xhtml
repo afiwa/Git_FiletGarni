@@ -58,7 +58,7 @@
                         	<input class="box-info-rbchoix" type="radio" name="adresse" value="domicile"/>
                         	
                         	 Domicile<img class="box-info-icon-adresse" src="images/maison64.png" /></div>
-                        <div id="box-info-domicile-adresse-rue"><!-- #{mbChoixPRConso.adresseDomicile} --></div>
+                        <div id="box-info-domicile-adresse-rue"></div>
                         <div class="box-info-form-adresse">
                             <div id="box-info-domicile-adresse-ville">Bussy-saint-georges</div>
                             <div id="box-info-domicile-adresse-cp">77600</div>
@@ -71,7 +71,7 @@
                         <div class="box-info-adresse-titre"><input class="box-info-rbchoix" type="radio" name="adresse" value="travail"/>
                         
                         Travail<img class="box-info-icon-adresse" src="images/travail64.png" /></div>
-                        <div id="box-info-domicile-adresse-rue"><!-- #{mbChoixPRConso.adresseTravail} --> </div>
+                        <div id="box-info-domicile-adresse-rue"></div>
                         <div class="box-info-form-adresse">
                             <div id="box-info-domicile-adresse-ville">Bussy-saint-georges</div>
                             <div id="box-info-domicile-adresse-cp">77600</div>
@@ -143,38 +143,9 @@
             <div id="historique">
                 <h2>Votre point relais choisi</h2>
 
-                <div id="historique-choix" class="cd-tabs">
-                    <nav>
-                        <ul class="cd-tabs-navigation">
-                            <li><a data-content="adresse" class="selected" href="#0">Adresse</a></li>
-                            <li><a data-content="horaire" href="#0">Horaire </a></li>
-
-                        </ul>
-                        <!-- cd-tabs-navigation -->
-                    </nav>
-
-                    <ul class="cd-tabs-content">
-                        <li data-content="adresse" class="selected">
-                            <h3 class="historique-pr-nom">Le Point relou</h3>
-                            <div class="historique-pr-ville">Bussy-saint-georges
-                                <div class="historique-pr-cp">77600</div>
-                            </div>
-                            <div class="historique-pr-adresse">2 boulvard thibault de champagne</div>
-                        </li>
-
-                        <li data-content="horaire">
-                            <div class="historique-pr-horaire-lundi">Lundi : 8h30 - 19h</div>
-                            <div class="historique-pr-horaire-mardi">Mardi : 8h30 - 19h</div>
-                            <div class="historique-pr-horaire-mercredi">Mercredi : 8h30 - 19h</div>
-                            <div class="historique-pr-horaire-jeudi">Jeudi : 8h30 - 19h</div>
-                            <div class="historique-pr-horaire-vendredi">Vendredi : 8h30 - 19h</div>
-                            <div class="historique-pr-horaire-samedi">Samedi : 8h30 - 19h</div>
-                            <div class="historique-pr-horaire-dimanche">Dimanche : 8h30 - 19h</div>
-                        </li>
-                    </ul>
-                    <!-- cd-tabs-content -->
+                <div id="historique-choix">
+                
                 </div>
-                <!-- cd-tabs -->
                 <div id="historique-validation">
                     <button class="buttonValide" style="vertical-align:middle"><span>Je valide mon choix </span></button>
                 </div>
@@ -188,8 +159,13 @@
     <!-- Resource js page -->
     <script src="js/jquery.easy-autocomplete.js"></script> 
     <script type="text/javascript" src="js/choixpointrelais.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw&amp;callback=myMap"></script>
     <script src="js/maintable.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
+    <script type="text/javascript">
+	var pointrelais = [#{mbChoixPRConso.jsonPointRelais()}];
+	myMap();
+	</script>
+    
     <!-- Resource js communes -->
     <script type="text/javascript"
 			src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>

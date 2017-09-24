@@ -29,7 +29,7 @@ public class DaoPointRelais implements IDaoPointRelais {
     @SuppressWarnings("unchecked")
 	public java.util.List<PointRelais> getByHoraireOuverture(java.util.Date debut, java.util.Date fin) {
         // TODO implement here
-        return em.createQuery("SELECT p"
+        return em.createQuery("SELECT p "
 		+ "FROM PointRelais p "
 		+ "left join fetch p.horairesouverture").getResultList();
     }
@@ -43,8 +43,8 @@ public class DaoPointRelais implements IDaoPointRelais {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PointRelais> getAll() {
-		return em.createQuery("SELECT p"
-				+ "FROM PointRelais p "
+		return em.createQuery("SELECT p "
+				+ "FROM PointRelais as p "
 				+ "left join fetch p.adresses").getResultList();
 	}
 
