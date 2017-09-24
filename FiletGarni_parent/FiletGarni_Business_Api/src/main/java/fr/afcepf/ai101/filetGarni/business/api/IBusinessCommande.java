@@ -38,7 +38,7 @@ public interface IBusinessCommande {
     
     public java.util.List<Producteur> getProducteurByRegion(Region region);
 
-    public java.util.List<Producteur> getProducteurbyCategorie(CategorieProducteur categorie);
+    public java.util.List<Producteur> getProducteurbyIdCategorie(Integer id_categorie);
 
     public Producteur getProducteurById(Integer id_producteur);
 

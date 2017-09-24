@@ -25,11 +25,6 @@ public class DaoProducteur implements IDaoProducteur {
 	public List<Producteur> getAll() {
     	return em.createQuery("SELECT p FROM Producteur as p left join fetch p.adresses").getResultList();
     }
-    
-    public java.util.List<Producteur> getByCategorie(CategorieProducteur categorieProducteur) {
-        // TODO implement here
-        return null;
-    }
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -37,4 +32,10 @@ public class DaoProducteur implements IDaoProducteur {
 		return em.createQuery("SELECT p FROM Producteur p left join fetch p.categories").getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Producteur> getByIdCategorie(Integer paramId_categorie) {
+		return em.createQuery("SELECT c.producteurs FROM CategorieProducteur c WHERE c.id = :pid")
+				.setParameter("pid", paramId_categorie).getResultList();
+	}
 }

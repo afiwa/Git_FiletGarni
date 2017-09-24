@@ -126,14 +126,35 @@
                         	<h:commandLink action="#{mbPageAffichageProducteurs.afficherTousLesProducteurs()}" 
 	                        				   value="Nos producteurs" class="menu"
 	                        				   onmouseover="overFunction(this)"/>
-                        	<ul class="sous-menu">
-                                <li><a href="#">Apiculteurs</a></li>
-                                <li><a href="#">Producteurs de fruits</a></li>
-                                <li><a href="#">Maraîchers</a></li>
-                                <li><a href="#">Producteurs d'œufs</a></li>
-                                <li><a href="#">Producteurs de lait</a></li>
-                                <li><a href="#">Brasseurs</a></li>
-                                <li><a href="#">Vignerons</a></li>
+                        	<ul class="sous-menu">                        	
+                        		<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(1)}" 
+                        				   value="Apiculteurs"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(2)}" 
+                        				   value="Producteurs de fruits"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(3)}" 
+                        				   value="Maraîchers"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(4)}" 
+                        				   value="Producteurs d'œufs"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(7)}" 
+                        				   value="Producteurs de lait"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(5)}" 
+                        				   value="Brasseurs"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(6)}" 
+                        				   value="Vignerons"/>
+								</li>
                             </ul>
                         </li>
                     </ul>
