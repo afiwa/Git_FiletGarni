@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeChoixPointRelais;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.HorairesOuverture;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 
 @SessionScoped
@@ -39,6 +40,8 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 		String nomRue;
 		String ville;
 		String cp;
+		List<String> jour = new ArrayList<>();
+		List<String> horaire= new ArrayList<>();
 		//System.out.println(tousLesPointRelais.size());
 		for (PointRelais pr : tousLesPointRelais) {
 			longitude = pr.getAdresses().get(0).getLongitude();
@@ -49,6 +52,10 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 			cp = pr.getAdresses().get(0).getCodePostal().getCodePostal();
 			numRue = pr.getAdresses().get(0).getNumeroRue();
 			nomRue = pr.getAdresses().get(0).getNomRue();
+			for(HorairesOuverture ho :pr.getListeHorairesOuverture()) {
+				jour.add(ho.getJour().getLibelle());
+				horaire.add(ho.getHeureDeDébut()+" - "+ho.getHeureDeFin());
+			}
 			if(numRue != null) {
 				adresse = numRue + " " + nomRue;
 			}
@@ -62,7 +69,13 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 					.append("ville:\"" + ville + "\",")
 					.append("cp:'" + cp + "',")
 					.append("distance: 0")
-					.append("},");
+					.append("horaires : { ");
+					for(int i = 0; i<= jour.size();i++) {
+						jsonPointRelais.append("horaire"+i+": {")
+						.append("jour:"+jour.get(i)+",horaire :"+horaire.get(i)+"},");
+					}
+					jsonPointRelais.deleteCharAt(jsonPointRelais.length()-1);
+					jsonPointRelais.append("},");
 		}
 		
 		jsonPointRelais.deleteCharAt(jsonPointRelais.length()-1);		

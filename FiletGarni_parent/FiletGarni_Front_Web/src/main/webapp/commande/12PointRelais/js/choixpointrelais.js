@@ -249,6 +249,10 @@ function myMap() {
         map: cartePointRelais
     });
 }
+
+function initMarker(){
+	
+}
 /*
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");

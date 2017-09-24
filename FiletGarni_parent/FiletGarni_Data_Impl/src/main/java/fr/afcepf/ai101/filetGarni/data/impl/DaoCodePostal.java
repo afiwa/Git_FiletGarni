@@ -32,16 +32,6 @@ public class DaoCodePostal implements IDaoCodePostal {
 
 	@Override
 	public CodePostal getByAdresse(Adresse paramAdresse) {
-		System.out.println("######################################################");
-		System.out.println("######################################################");
-		System.out.println("######################################################");
-		System.out.println("######################################################");
-		System.out.println(paramAdresse);
-		System.out.println(paramAdresse.getId());
-		System.out.println("######################################################");
-		System.out.println("######################################################");
-		System.out.println("######################################################");
-		System.out.println("######################################################");
 		return (CodePostal) em.createQuery("SELECT a.codePostal FROM Adresse a WHERE a.id = :pid")
 				.setParameter("pid", paramAdresse.getId()).getSingleResult();
 	}
