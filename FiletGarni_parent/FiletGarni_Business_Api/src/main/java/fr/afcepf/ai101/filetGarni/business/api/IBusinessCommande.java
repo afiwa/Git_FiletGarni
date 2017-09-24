@@ -16,11 +16,11 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Region;
 
 public interface IBusinessCommande {
 
-    public java.util.List<Produit> getProduitByRegion(Region region);
+    public java.util.List<Produit> getAllProduits();
 
     public java.util.List<Produit> getProduitByNom(String nom , Region region);
 
-    public java.util.List<Produit> getProduitByCategorie(CategorieProduit categorie, Region region);
+    public java.util.List<Produit> getProduitByIdCategorie(Integer id_categorieProduit, Boolean premierPassage);
 
     public java.util.List<Produit> getProduitByProducteur(Region region, Producteur producteur);
 
