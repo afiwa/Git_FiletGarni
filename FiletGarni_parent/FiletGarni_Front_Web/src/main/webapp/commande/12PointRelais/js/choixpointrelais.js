@@ -1,5 +1,9 @@
 var coordonnee;
 var pointrelais;
+var consommateur;
+var cartePointRelais;
+var mapPR = new Map();
+
 /*
 var options = {
     url: "json/communes_idf.json",
@@ -62,9 +66,10 @@ $("#code_postal").easyAutocomplete(options2);
 
 
 function myMap() {
+
     var mapOptions = {
-        center: new google.maps.LatLng(48.84992, 2.637041),
-        zoom: 10,
+        center: consommateur[0].positionDomicile,
+        zoom: 12,
 
         /*---------------------------- STYLE CARTE ----------------------------*/
         styles: [
@@ -176,8 +181,8 @@ function myMap() {
 
     /* ------------------------------- MULTIPLE MARKERS ------------------------*/
 
-    var mapPR = new Map();
-    var cartePointRelais = new google.maps.Map(document.getElementById("cartePointRelais"), mapOptions);
+    
+    cartePointRelais = new google.maps.Map(document.getElementById("cartePointRelais"), mapOptions);
 
     pointrelais.forEach(function (feature) {
         var marker = new google.maps.Marker({
@@ -187,6 +192,8 @@ function myMap() {
         });
         
         mapPR.set(marker,feature);
+        
+        initInfoDistance(feature.distanceDomicile,marker);
         
         marker.addListener('click', function () {
            
@@ -213,15 +220,11 @@ function myMap() {
             				'<div class="historique-pr-adresse">'+mapPR.get(marker).adresse+'</div>'+
             			'</li>'+
 
-           				'<li data-content="horaire">'+
-           					'<div class="historique-pr-horaire-lundi">Lundi : 8h30 - 19h</div>'+
-           					'<div class="historique-pr-horaire-mardi">Mardi : 8h30 - 19h</div>'+
-           					'<div class="historique-pr-horaire-mercredi">Mercredi : 8h30 - 19h</div>'+
-           					'<div class="historique-pr-horaire-jeudi">Jeudi : 8h30 - 19h</div>'+
-           					'<div class="historique-pr-horaire-vendredi">Vendredi : 8h30 - 19h</div>'+
-           					'<div class="historique-pr-horaire-samedi">Samedi : 8h30 - 19h</div>'+
-           					'<div class="historique-pr-horaire-dimanche">Dimanche : 8h30 - 19h</div>'+
-           				'</li>'+
+           				'<li data-content="horaire">';
+           				$.each(mapPR.get(marker).listehoraires, function(idx,obj){
+           					contentString = contentString + '<div class="historique-pr-horaire">' + obj.jour +' : ' + obj.debut +'  - ' + obj.fin +' </div>';
+           				});
+           				contentString = contentString +'</li>'+
            			'</ul>'+
             	'<!-- cd-tabs-content -->'+
             	'</div>'+
@@ -237,22 +240,71 @@ function myMap() {
        
     });
     
-    var marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(48.817173, 2.452648),
-        icon: 'images/maison32.png',
-        map: cartePointRelais
-    });
-    
-    var marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(48.817173, 2.442648),
-        icon: 'images/travail32.png',
-        map: cartePointRelais
+    consommateur.forEach(function (feature) {
+    	console.log(feature.positionDomicile);
+    	var marker = new google.maps.Marker({
+    		position: feature.positionDomicile,
+    		icon: 'images/maison32.png',
+    		map: cartePointRelais
+    	});
+    	console.log(feature.positionTravail);
+    	var marker = new google.maps.Marker({
+    		position: feature.positionTravail,
+    		icon: 'images/travail32.png',
+    		map: cartePointRelais
+    	});
     });
 }
 
 function initMarker(){
 	
 }
+
+function initInfoDistance(distance,marker){
+	
+	var contentDistance = '<div class="infoMarker">'+
+	distance+'Km'+
+'</div>';
+
+var infowWindow = new google.maps.InfoWindow({
+content:contentDistance
+});
+
+marker.addListener('mouseover', function () {
+
+infowWindow.open(cartePointRelais,marker);
+
+});
+
+marker.addListener('mouseout', function () {
+
+infowWindow.close(cartePointRelais,marker);
+
+});
+
+}
+
+$(document).ready(function(){
+	$("#box-info,input[name='box-info-rbchoix']").change(function(){
+		console.log($("input[name='box-info-rbchoix']:checked").context.activeElement.value);
+		if(($("input[name='box-info-rbchoix']:checked").context.activeElement.value)==='domicile'){
+			cartePointRelais.setCenter(consommateur[0].positionDomicile);
+			for(var [markers, pointrelais] of mapPR){
+					console.log(pointrelais.distanceDomicile);
+			 	   initInfoDistance(pointrelais.distanceDomicile,markers);
+			    }
+		}else if(($("input[name='box-info-rbchoix']:checked").context.activeElement.value)==='travail'){
+			cartePointRelais.setCenter(consommateur[0].positionTravail);
+			for(var [markers, pointrelais] of mapPR){
+				console.log();
+			 	   initInfoDistance(pointrelais.distanceTravail,markers);
+			    }
+		}
+		
+	});
+});
+
+
 /*
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
