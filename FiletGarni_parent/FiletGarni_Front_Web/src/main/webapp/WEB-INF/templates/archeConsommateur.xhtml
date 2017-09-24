@@ -122,7 +122,10 @@
 								</li>
                             </ul>
                     	</li>
-                        <li><a class="menu" href="#" onmouseover="overFunction(this)">Nos producteurs</a>
+                        <li>
+                        	<h:commandLink action="#{mbPageAffichageProducteurs.afficherTousLesProducteurs()}" 
+	                        				   value="Nos producteurs" class="menu"
+	                        				   onmouseover="overFunction(this)"/>
                         	<ul class="sous-menu">
                                 <li><a href="#">Apiculteurs</a></li>
                                 <li><a href="#">Producteurs de fruits</a></li>

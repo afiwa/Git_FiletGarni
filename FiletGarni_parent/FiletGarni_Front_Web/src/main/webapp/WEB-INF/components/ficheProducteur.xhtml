@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:component>
+		<figure class="FicheProducteur">
+	        <img class="image_producteur_principale" src="../../Ressources/Images/Images_producteurs/#{producteur.photo}" alt="#{producteur.raisonSociale}"/>
+	        <figcaption>
+	            <div class="nomFerme">#{producteur.raisonSociale}</div>
+	            <div class="descriptionFerme">
+	            	#{producteur.descriptionBreve}, 
+	            	#{producteur.getAdresses().get(0).getCodePostal().getVilles().get(0).getNom()}
+	            </div>
+	        </figcaption>
+    	</figure>
+	</ui:component>
+</html>
