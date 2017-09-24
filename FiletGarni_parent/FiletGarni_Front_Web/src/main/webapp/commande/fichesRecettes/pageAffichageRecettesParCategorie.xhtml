@@ -9,8 +9,8 @@
 		<link type="text/css" rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
 		<link rel="stylesheet" href="Fiche_recette.css" type="text/css" />
-		<!-- <link rel="stylesheet" href="choix_menu_fiche_recette/css/style.css"
-			type="text/css" /> -->
+		<link rel="stylesheet" href="choix_menu_fiche_recette/css/style.css"
+			type="text/css" />
 		<link type="text/css" rel="stylesheet" href="../css/main.css" />
 		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
 		<style>
@@ -72,11 +72,11 @@
 
 				<!--Fiche recette-->
 				<section class="sectionRecette">
-					<div class="ListeDesRecettes">
-						<ui:repeat var="recette" value="#{mbPageAffichageRecettes.toutesLesRecettes}">
-							<ui:include src="../../WEB-INF/components/ficheRecette.xhtml"/>
-						</ui:repeat>
-					</div>
+				<div class="ListeDesRecettes">
+					<ui:repeat var="recette" value="#{mbPageAffichageRecettes.recettesParCategorie}">
+						<ui:include src="../../WEB-INF/components/ficheRecette.xhtml"/>
+					</ui:repeat>
+				</div>
 				</section>
 			</div>
 			<script type="text/javascript" src="Fiche_recette.js"></script>

@@ -44,7 +44,7 @@ public interface IBusinessCommande {
 
     public java.util.List<Recette> getAllRecettes();
 
-    public java.util.List<Recette> getRecetteByCategorie(CategorieRecette categorie);
+    public java.util.List<Recette> getRecetteByCategorie(Integer id_categorie);
 
     public Recette getRecetteByIdWithAllProduitRecette(Integer id_recette);
 

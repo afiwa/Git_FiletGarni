@@ -24,7 +24,7 @@
                 <nav>
                     <ul>
                     	<li>
-                    	<h:commandLink action="#{mbPageAffichageProduits.recupererTousLesProduits()}" 
+                    		<h:commandLink action="#{mbPageAffichageProduits.recupererTousLesProduits()}" 
 	                        				   value="Tous les produits" class="menu"/>
                     	</li>
                         <li>
@@ -103,7 +103,25 @@
 								</li>
                             </ul>
                         </li>
-                        <li><a class="menu" href="#">Recettes</a></li>
+                        <li>
+                    		<h:commandLink action="#{mbPageAffichageRecettes.afficherToutesLesRecettes()}" 
+	                        				   value="Recettes" class="menu"
+	                        				   onmouseover="overFunction(this)"/>
+	                        <ul class="sous-menu">
+                                <li>
+                                	<h:commandLink action="#{mbPageAffichageRecettes.afficherRecettesParCategorie(1)}" 
+                        				   value="Entrées"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageRecettes.afficherRecettesParCategorie(2)}" 
+                        				   value="Plats"/>
+								</li>
+								<li>
+                                	<h:commandLink action="#{mbPageAffichageRecettes.afficherRecettesParCategorie(3)}" 
+                        				   value="Desserts"/>
+								</li>
+                            </ul>
+                    	</li>
                         <li><a class="menu" href="#" onmouseover="overFunction(this)">Nos producteurs</a>
                         	<ul class="sous-menu">
                                 <li><a href="#">Apiculteurs</a></li>

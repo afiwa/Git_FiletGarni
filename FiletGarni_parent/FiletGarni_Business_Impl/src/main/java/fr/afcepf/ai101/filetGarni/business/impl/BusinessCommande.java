@@ -194,19 +194,20 @@ public class BusinessCommande implements IBusinessCommande {
 
 	@Override
 	public List<Recette> getAllRecettes() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Recette> recettes = new ArrayList<>();
+		recettes = daoRecette.getAllWithAllProduitRecette();
+		System.out.println(recettes.size());
+		return recettes;
+		
 	}
 
 	@Override
-	public List<Recette> getRecetteByCategorie(CategorieRecette paramCategorie) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Recette> getRecetteByCategorie(Integer id_categorie) {
+		return daoRecette.getByIdCategorieRecette(id_categorie);
 	}
 
 	@Override
 	public Recette getRecetteByIdWithAllProduitRecette(Integer paramId_recette) {
-		// TODO Auto-generated method stub
 		return daoRecette.getByIdWithAllProduitRecette(paramId_recette);
 	}
 
