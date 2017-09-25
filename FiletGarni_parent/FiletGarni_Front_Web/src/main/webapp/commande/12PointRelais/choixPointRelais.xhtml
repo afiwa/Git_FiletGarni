@@ -46,7 +46,6 @@
 		</section>
 		
 		
-    <h:form id="form-choix-pr">
         <div id="choix">
 
             <div id="box-info">
@@ -55,7 +54,7 @@
 
                     <div id="box-info-domicile-adresse">
                         <div class="box-info-adresse-titre">
-                        	<input class="box-info-rbchoix" type="radio" name="adresse" value="domicile"/>
+                        	<input class="box-info-rbchoix" type="radio" name="adresse" value="domicile" checked="checked"/>
                         	
                         	 Domicile<img class="box-info-icon-adresse" src="images/maison64.png" /></div>
                         <div id="box-info-domicile-adresse-rue"></div>
@@ -90,20 +89,8 @@
                 </div>
                 <span id="box-info-sous-titre">Selectionnez le rayon que vous souhaitez ainsi que le jour et l'heure  afin d'affiner votre recherche </span>
                 <div id="box-info-slidecontainer">
-                    <input type="range" min="0" max="50" step="5" class="slider" id="myRange" list="tickmarks"/>
-                    <datalist id="tickmarks">
-                        <option label="0Km">0</option>
-                        <option>5</option>
-                        <option label="10Km">10</option>
-                        <option>15</option>
-                        <option label="20Km">20</option>
-                        <option>25</option>
-                        <option label="30Km">30</option>
-                        <option>35</option>
-                        <option label="40Km">40</option>
-                        <option>45</option>
-                        <option label="50Km">50</option>
-                    </datalist>
+                    <input type="range" min="0" max="20" step="1" class="slider" id="myRange" list="tickmarks"/>
+
                 </div>
                 <div id="box-info-jour">
                     <span>Jour</span>
@@ -151,14 +138,13 @@
                 </div>
             </div>
         </div>
-    </h:form>
     <!-- Resource from Internet -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     
     <!-- Resource js page -->
     <script src="js/jquery.easy-autocomplete.js"></script> 
-    <script type="text/javascript" src="js/choixpointrelais.js"></script>
+    <script type="text/javascript" src="js/choixpointrelais_v2.js"></script>
     <script src="js/maintable.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
     <script type="text/javascript">

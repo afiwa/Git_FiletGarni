@@ -48,6 +48,7 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 	
 	public String jsonPointRelais() {
 		StringBuilder jsonPointRelais = new StringBuilder();
+		String id;
 		String longitude;
 		String latitude;
 		String position;
@@ -64,6 +65,7 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 		List<String> horairefin= new ArrayList<>();
 
 		for (PointRelais pr : tousLesPointRelais) {
+			id = pr.getId().toString();
 			longitude = pr.getAdresses().get(0).getLongitude();
 			latitude = pr.getAdresses().get(0).getLatitude();
 			position = "new google.maps.LatLng("+latitude+","+longitude+")";
@@ -105,6 +107,7 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 				adresse = nomRue;
 			}	
 			jsonPointRelais.append("{")
+					.append("id:" + id + ",")
 					.append("position:" + position + ",")
 					.append("nom:\"" + nom + "\",")
 					.append("adresse:\"" + adresse + "\",")
@@ -112,7 +115,7 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 					.append("cp:'" + cp + "',")
 					.append("distanceDomicile: "+distanceDomicile.toString() +",")
 					.append("distanceTravail: "+distanceTravail.toString() +",")
-					.append("distance: 0,")
+					
 					.append("listehoraires : { ");
 					for(int i = 0; i< jour.size();i++) {
 						jsonPointRelais.append("horaire"+i+": {")
@@ -121,8 +124,10 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 						.append("fin :'"+horairefin.get(i)+"'},");
 					}
 					jsonPointRelais.deleteCharAt(jsonPointRelais.length()-1);
-					jsonPointRelais.append("}");
-					jsonPointRelais.append("},");
+					jsonPointRelais.append("},")
+									.append("infowindow: 0 ,")
+									.append("contentString: 0 ,")
+									.append("},");
 		}
 		
 		jsonPointRelais.deleteCharAt(jsonPointRelais.length()-1);		
