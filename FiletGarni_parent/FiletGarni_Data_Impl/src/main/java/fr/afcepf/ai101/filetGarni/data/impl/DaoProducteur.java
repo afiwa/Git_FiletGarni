@@ -38,4 +38,11 @@ public class DaoProducteur implements IDaoProducteur {
 		return em.createQuery("SELECT c.producteurs FROM CategorieProducteur c WHERE c.id = :pid")
 				.setParameter("pid", paramId_categorie).getResultList();
 	}
+
+	@Override
+	public Producteur getByIdWithAdresses(Integer paramId_producteur) {
+		return (Producteur) em.createQuery("SELECT p FROM Producteur p left join fetch p.adresses WHERE p.id = :pid")
+								.setParameter("pid", paramId_producteur)
+								.getSingleResult();
+	}
 }

@@ -14,7 +14,7 @@ public class PageFicheProduitDetailleManagedBean {
 	private Produit produitSelectionne = new Produit();
 	
 	@EJB
-	IBusinessCommande businessCommande;
+	private IBusinessCommande businessCommande;
 
 	public String afficherFicheProduitDetaille(Integer id_produit) {
 		produitSelectionne = businessCommande.getProduitByIdWithConditionnements(id_produit);

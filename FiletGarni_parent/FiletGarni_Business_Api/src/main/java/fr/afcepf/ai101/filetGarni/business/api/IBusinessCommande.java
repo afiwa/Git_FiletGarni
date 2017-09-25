@@ -22,7 +22,7 @@ public interface IBusinessCommande {
 
     public java.util.List<Produit> getProduitByIdCategorie(Integer id_categorieProduit, Boolean premierPassage);
 
-    public java.util.List<Produit> getProduitByProducteur(Region region, Producteur producteur);
+    public java.util.List<Produit> getProduitsByIdProducteur(Integer id_producteur);
 
     public Produit getProduitById(Integer id_produit);
 

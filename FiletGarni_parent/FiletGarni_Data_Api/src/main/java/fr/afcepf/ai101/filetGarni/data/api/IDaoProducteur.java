@@ -12,5 +12,7 @@ public interface IDaoProducteur {
     public List<Producteur> getAll();
     
     public List<Producteur> getAllWithCategories();
+    
+    public Producteur getByIdWithAdresses(Integer id_producteur);
 
 }

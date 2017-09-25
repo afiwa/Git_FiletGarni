@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
 
-	<ui:define name="title">METTRE LE NOM DU PRDUCTEUR ICI</ui:define>
+	<ui:define name="title">#{mbFicheProducteurDetaille.producteurSelectionne.raisonSociale}</ui:define>
 	<ui:define name="headcssscript">
 	<link type="text/css" rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
@@ -31,39 +31,47 @@
 				<span>Retour </span>
 			</button>
 			<div class="entete">
-				<span class="titreProducteur">La ruche urbaine</span>
+				<span class="titreProducteur">#{mbFicheProducteurDetaille.producteurSelectionne.raisonSociale}</span>
 			</div>
 			<div class="imgCoordonnees">
-				<img class="imgProducteur" src="producteur-miel3.jpg" alt="michelle" />
+				<img class="imgProducteur" 
+					src="../../Ressources/Images/Images_producteurs/#{mbFicheProducteurDetaille.producteurSelectionne.photo}" 
+					alt="#{mbFicheProducteurDetaille.producteurSelectionne.raisonSociale}" />
 				<div class="descriptionProd">
 					<h3 class="coordonneesProducteur">
 						<span>Coordonnées</span>
 					</h3>
 					
 					<ul class="coordonnees">
-						<li class="coordonnee">Martin Georges</li>
-						<li class="coordonnee">01 29 41 45 10</li>
-						<li class="coordonnee">rucheurbaines@gmail.com</li>
-						<li class="coordonnee">10 rue des Ecoles 92330 SCEAUX</li>
+						<li class="coordonnee">
+							#{mbFicheProducteurDetaille.producteurSelectionne.prenom}
+							 #{mbFicheProducteurDetaille.producteurSelectionne.nom}
+						</li>
+						<li class="coordonnee">#{mbFicheProducteurDetaille.producteurSelectionne.tel1}</li>
+						<li class="coordonnee">#{mbFicheProducteurDetaille.producteurSelectionne.mail}</li>
+						<li class="coordonnee">
+							#{mbFicheProducteurDetaille.producteurSelectionne.adresses.get(0).numeroRue}
+							 #{mbFicheProducteurDetaille.producteurSelectionne.adresses.get(0).nomRue}
+							 #{mbFicheProducteurDetaille.producteurSelectionne.adresses.get(0).codePostal.codePostal}
+							 #{mbFicheProducteurDetaille.producteurSelectionne.adresses.get(0).codePostal.villes.get(0).nom}
+						</li>
 					</ul>
 				
 
 					<h3 class="descriptionBreve">
-						<span>Apiculteur récoltant</span>
+						<span>#{mbFicheProducteurDetaille.producteurSelectionne.descriptionBreve}</span>
 					</h3>
-					<p class="descriptionDetaillee">Apiculteur récoltant, je gère
-						aujourd'hui 80 ruches et contribue à une apiculture locale et
-						respectueuse de l’environnement en Ile-de-France. Notre miel est
-						produit sur 3 sites : le Parc de Sceaux, le Château de Courances
-						et la forêt de Fontainebleau, où notre production est en cours de
-						certification biologique.</p>
+					<p class="descriptionDetaillee">#{mbFicheProducteurDetaille.producteurSelectionne.descriptionDetaillee}</p>
 				</div>
 			</div>
 
 			<div class="refFicheProduit">
 				<h2 class="titreFicheProduit">
-					<span>Retrouvez les produits de Martin</span>
+					<span>Retrouvez les produits de #{mbFicheProducteurDetaille.producteurSelectionne.prenom}</span>
 					<!--IMPORTER LES FICHES PRODUITS AVEC LE ADD TO CART-->
+					<ui:repeat var="produit" value="#{mbFicheProducteurDetaille.produitsProducteur}">
+						<ui:include src="../../WEB-INF/components/produit.xhtml" />
+					</ui:repeat>					
 				</h2>
 			</div>
 			</section>
