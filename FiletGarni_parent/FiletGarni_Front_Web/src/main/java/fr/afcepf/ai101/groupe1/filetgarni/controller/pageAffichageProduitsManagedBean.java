@@ -10,14 +10,15 @@ import javax.faces.bean.SessionScoped;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.ProduitRecette;
 
 @SessionScoped
 @ManagedBean(name = "mbPageAffichageProduits")
 public class pageAffichageProduitsManagedBean {
 	
 	private List<Produit> tousLesProduits = new ArrayList<>();
-	private List<Produit> produitsParCategorie = new ArrayList<>();	
-	
+	private List<Produit> produitsParCategorie = new ArrayList<>();
+
 	@EJB
 	IBusinessCommande businessCommande;
 	

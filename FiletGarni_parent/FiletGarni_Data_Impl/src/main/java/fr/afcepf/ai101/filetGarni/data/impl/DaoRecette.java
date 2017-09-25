@@ -18,15 +18,17 @@ public class DaoRecette implements IDaoRecette {
     public DaoRecette() {
     }
     
-
-    public java.util.List<Recette> getByCategorieRecette(Integer id_Categorie_Produit) {
-        // TODO implement here
-        return null;
+    @Override
+    @SuppressWarnings("unchecked")
+	public java.util.List<Recette> getByIdCategorieRecette(Integer id_categorie) {
+        return em.createQuery("SELECT c.recettes FROM CategorieRecette c WHERE c.id = :pid")
+        						.setParameter("pid", id_categorie).getResultList();
     }
 
-    public java.util.List<Recette> getAll() {
-        // TODO implement here
-        return null;
+    @SuppressWarnings("unchecked")
+	@Override
+    public java.util.List<Recette> getAllWithAllProduitRecette() {
+        return em.createQuery("SELECT distinct r FROM Recette r left join fetch r.produitRecettes").getResultList();
     }
 
 

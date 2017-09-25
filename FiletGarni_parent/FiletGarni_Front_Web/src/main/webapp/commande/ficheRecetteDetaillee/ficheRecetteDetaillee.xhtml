@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
-	<ui:define name="title">METTRE LE NOM DE LA RECETTE ICI</ui:define>
+	<ui:define name="title">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}</ui:define>
 
 	<ui:define name="headcssscript">
 		<meta name="viewport"
@@ -25,66 +25,66 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form id="form-FicheRecetteDetaillee">
 
 			<section class="ficheRecetteDetaillee">
 			<button class="btnRetour" src="#" style="vertical-align: middle">
 				<span>Retour </span>
 			</button>
 			<div class="entete">
-				<span class="titreRecette">Crevettes et brocolis en carpaccio</span>
+				<span class="titreRecette">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}</span>
 			</div>
 			<div class="nbpers">
-				<span class="nbpers">Pour 4 personnes</span>
+				<span class="nbpers">#{mbFicheRecetteDetaillee.recetteSelectionnee.nbPers}</span>
 			</div>
 			<div class="imgIngredients">
-				<img class="imageRecette" src="brocolicrevette.jpg"
-					alt="recetteBrocolis" />
+				<img class="imageRecette" 
+					src="../../Ressources/Images/Images_recette/#{mbFicheRecetteDetaillee.recetteSelectionnee.photo}"
+					alt="#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}" />
 					<h2 class="titreIngredient">
 						<span>Ingrédients</span>
 					</h2>
 					<ul class="ingredients">
-						<li class="ingredientProd">300g de brocolis</li>
-						<li class="ingredientProd">150g de carottes</li>
-						<li class="ingredient">250g de crevettes roses cuites</li>
-						<li class="ingredient">3 cuillères à soupe d'huile d'olive</li>
-						<li class="ingredient">1 cuillère à soupe de jus d'orange</li>
-						<li class="ingredientProd">1 citron non traité</li>
-						<li class="ingredient">2 pincées de piment d'Espelette</li>
-						<li class="ingredient">Sel</li>
-						<li class="ingredient">Poivre</li>
+						<ui:repeat var="produitRecetteBdd" 
+									value="#{mbFicheRecetteDetaillee.produitsRecettesBdd}">
+							<li class="ingredientProd">
+								<h:outputLabel 
+									value="#{produitRecette.libelle} : #{produitRecette.quantiteRecette}"/>	
+							</li>									
+						</ui:repeat>
+						<ui:repeat var="produitRecetteNonBdd" 
+								value="#{mbFicheRecetteDetaillee.produitsRecettesNonBdd}"></ui:repeat>
+						<li class="ingredient">
+								<h:outputLabel 
+									value="#{produitRecette.libelle} : #{produitRecette.quantiteRecette}"/>	
+						</li>	
 					</ul>
 			</div>
 			<div class="preparation">
 				<h2 class="titrePreparation">
 					<span>Réalisation</span>
 				</h2>
-				<p>Temps de preparation : 10 min. <br/> Temps de cuisson : 1 min. <br/>
-					Détacher les brocolis en bouquets, les plonger 30 secondes dans de
-					l’eau bouillante salée, les égoutter aussitôt, puis les plonger
-					dans un saladier d’eau glacée, les laisser refroidir environ 5
-					minutes et les égoutter à nouveau. Peler les carottes et les râper
-					en minces filets. Décortiquer les crevettes. Râper la moitié du
-					zeste du citron sur une râpe fine au-dessus d’un bol. Mélanger le
-					jus d’orange et 2 cuillerées à soupe de jus de citron dans le bol,
-					ajouter l’huile, saler et fouetter le mélange.Détailler les
-					bouquets de brocolis en lamelles (les plus minces possible) et les
-					poser à plat sur quatre assiettes. Ajouter les crevettes, napper de
-					sauce et poivrer juste avant de déguster.</p>
+				<p>#{mbFicheRecetteDetaillee.tempsPreparation}<br/>#{mbFicheRecetteDetaillee.tempsCuisson}<br/>
+					#{mbFicheRecetteDetaillee.descriptifRecette}
+				</p>
 			</div>
 			<!-- IMPORT FICHE RECETTE -->
 			<div class="refFicheProduit">
 				<h2 class="titreFicheProduit">
 					<span>Retrouvez les ingrédients de votre recette</span>
 				</h2>
+<!-- 				<ui:repeat var="produitRecetteBdd" 
+						   value="#{mbFicheRecetteDetaillee.produitsRecettesBdd}">
+						<ui:repeat var="produit" 
+							   value="#{mbPageAffichageProduits.recupererProduitsParCategorie(produitRecetteBdd.categorie.id)}">
+							<ui:include src="../../WEB-INF/components/produit.xhtml" />					
+						</ui:repeat>
+				</ui:repeat> -->
 			</div>
 			</section>
 
 			<script
 				src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 			<script type="text/javascript" src="../jsHamburger/main.js"></script>
-		</h:form>
 	</ui:define>
 </ui:composition>
-
 </html>

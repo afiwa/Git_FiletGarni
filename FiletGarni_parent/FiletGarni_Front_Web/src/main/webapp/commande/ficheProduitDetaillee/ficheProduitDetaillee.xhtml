@@ -6,7 +6,7 @@
 
 <ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
 
-	<ui:define name="title">METTRE LE NOM DU PRODUIT ICI</ui:define>
+	<ui:define name="title">"#{mbPageProduitDetaille.produitSelectionne.libelle}"</ui:define>
 	<ui:define name="headcssscript">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		
@@ -25,7 +25,6 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form id="form-client">
 		
 		<button class="btnRetour" src="#" style="vertical-align:middle"><span>Retour </span></button>
     <div class="main_bg">
@@ -43,7 +42,8 @@
                                             </div>
                                         </div>
                                         <div class="product-image">
-                                            <img src="img/Carottes.jpg" alt="Sports Bike" title="Sports Bike" />
+                                            <img src="../../Ressources/Images/Images_produits/#{mbPageProduitDetaille.produitSelectionne.photo}" 
+                                            	 alt="#{mbPageProduitDetaille.produitSelectionne.libelle}" />
                                         </div>
 
                                     </div>
@@ -52,9 +52,14 @@
                         </div>
                         <div class="span1_of_1_des">
                             <div class="desc1">
-                                <h3>Belles carottes oranges - 1 botte </h3>
-                                <p>Produit chez NOM DE LA FERME par NOM DU PRODUCTEUR</p>
-                                <h5>399 €</h5>
+                                <h3>
+	                                #{mbPageProduitDetaille.produitSelectionne.libelle} - 
+	                                #{mbPageProduitDetaille.produitSelectionne.conditionnements.get(0).libelle} 
+                                </h3>
+                                <p>Produit chez #{mbPageProduitDetaille.produitSelectionne.producteur.raisonSociale}
+                                	 par #{mbPageProduitDetaille.produitSelectionne.producteur.prenom}
+                                	  #{mbPageProduitDetaille.produitSelectionne.producteur.nom}</p>
+                                <h5>#{mbPageProduitDetaille.produitSelectionne.prix}</h5>
                                 <div class="available">
 
                                     <ul>
@@ -94,23 +99,24 @@
 
                             <div class="content">
                                 <div class="content-1">
-                                    <p class="para top"><span>LOREM IPSUM</span> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
+                                    <p class="para top"><span></span>#{mbPageProduitDetaille.produitSelectionne.description}</p>
                                     <ul>
-                                        <li>Research</li>
-                                        <li>Design and Development</li>
-                                        <li>Porting and Optimization</li>
-                                        <li>System integration</li>
-                                        <li>Verification, Validation and Testing</li>
-                                        <li>Maintenance and Support</li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
                                     </ul>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="content-2">
-                                    <p class="para"><span>WELCOME </span> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
+                                    <p class="para"><span>#{mbPageProduitDetaille.produitSelectionne.producteur.raisonSociale}</span>
+                                    	#{mbPageProduitDetaille.produitSelectionne.producteur.descriptionDetaillee}</p>
                                     <ul class="qua_nav">
-                                        <li>Multimedia Systems</li>
-                                        <li>Digital media adapters</li>
-                                        <li>Set top boxes for HDTV and IPTV Player applications on various Operating Systems and Hardware Platforms</li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
                                     </ul>
                                 </div>
                                 <div class="content-3">
@@ -124,11 +130,10 @@
         <i class="ion-star"></i>
         <i class="ion-star"></i>
       </span>
-      <strong>Ullamco laboris!</strong>
-      <span>, June 2</span>
-      <span>By <em>Wolfman</em></span>
-      <span>Verified Purchase</span>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <strong>Un délice!</strong>
+      <span> 22 Août 2017</span>
+      <span>Par <em>Afiwa</em></span>
+      <p>Le produit était tout simplement divin. Merci à Filet Garni de nous permettre d'accéder facilement aux produits de nos producteurs locaux.</p>
     </header>
   </blockquote> 
          
@@ -141,10 +146,10 @@
         <i class="ion-star"></i>
         <i class="ion-star"></i>
       </span>
-      <strong>Voluptate velit cillum essunt</strong>
-      <span>, May 17</span>
-      <span>By <em>Theo K</em></span>
-      <p>Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+      <strong>Très bon !</strong>
+      <span> 30 Juillet 2017</span>
+      <span>Par <em>Antoine</em></span>
+      <p>Très satisfait. Le produit était bien frais et je n'avais que quelques mètres à faire pour aller le chercher à mon point relais préféré!</p>
     </header>
   </blockquote>
                                     
@@ -157,76 +162,12 @@
         <i class="ion-star"></i>
         <i class="ion-star"></i>
       </span>
-      <strong>Occaecat? No deserunt!!</strong>
-      <span>, May 8</span>
-      <span>By <em>Jeff Thomas</em> (Bent River, AB)</span>
-      <p>Sint occaecat cupidatat NON proident, sunt in culpa qui officia deserunt mollit!</p>
+      <strong>Très déçu.</strong>
+      <span> 10 Juin 2017</span>
+      <span>Par <em>Virginie</em></span>
+      <p>Le goût du produit était tout simplement décevant et pour la livraison, n'en parlons pas! Le gérant du point relais était très désagréable et la moitié de mes produits étaient abîmés.</p>
     </header>
-  </blockquote>
-                                    
-  <blockquote>
-    <header class="avisClient">
-      <span data-rating='5'>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-      </span>
-      <strong>Ullamco ut aliquip</strong>
-      <span>, April 28</span>
-      <span>By <em>Linda</em></span>
-      <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </header>
-  </blockquote>
-                                    
-  <blockquote>
-    <header class="avisClient">
-      <span data-rating='3'>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-      </span>
-      <strong>Reprehenderit in eu fugiat nulla!</strong>
-      <span>, April 3</span>
-      <span>By <em>Michael "Mikko"</em> (California, USA)</span>
-      <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </header>
-  </blockquote>
-
-  <blockquote>
-    <header class="avisClient">
-      <span data-rating='4'>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-      </span>
-      <strong>Laboris ni si laborum.</strong>
-      <span>, February 16</span>
-      <span>By <em>Paul</em> (Perth, Ontario)</span>
-      <p>Pretosund us velit esse cillum dolore eu fugiat nulla pariatur noparatur sint coleomusa.</p>
-    </header>
-  </blockquote>
-  
-  <blockquote>
-    <header class="avisClient">
-      <span data-rating='5'>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-        <i class="ion-star"></i>
-      </span>
-      <strong>PROIDENT! Sunt in culpa qui officia :)</strong>
-      <span>, January 30</span>
-      <span>By <em>FastestCowboy</em></span>
-      <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </header>
-  </blockquote>
+  </blockquote>                                    
                                 </div>
                             </div>
                         </section>
@@ -246,7 +187,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 				
 	<script type="text/javascript" src="../jsHamburger/main.js"></script>
-		</h:form>
 	</ui:define>
 </ui:composition>
 

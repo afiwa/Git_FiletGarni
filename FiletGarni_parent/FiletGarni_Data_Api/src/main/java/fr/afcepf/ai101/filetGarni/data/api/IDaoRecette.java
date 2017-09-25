@@ -4,9 +4,9 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 
 public interface IDaoRecette {
 
-    public java.util.List<Recette> getByCategorieRecette(Integer id_Categorie_Produit);
+    public java.util.List<Recette> getByIdCategorieRecette(Integer id_categorie);
 
-    public java.util.List<Recette> getAll();
+    public java.util.List<Recette> getAllWithAllProduitRecette();
     
     public Recette getByIdWithAllProduitRecette(Integer id_recette);
 

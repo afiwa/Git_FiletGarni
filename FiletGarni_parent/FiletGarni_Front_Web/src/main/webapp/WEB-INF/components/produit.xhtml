@@ -6,7 +6,10 @@
 
 	<ui:component>
 	 <figure class="FicheProduit">
-	        <img class="image_principale" src="../../Ressources/Images/Images_produits/#{produit.photo}" alt="#{produit.libelle}" />
+	 		<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}">
+	        	<h:graphicImage value="../../Ressources/Images/Images_produits/#{produit.photo}" 
+	        	 				class="image_principale"/>
+	        </h:commandLink>
 	        <div class="icons">
 	            <a>
 	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
@@ -15,7 +18,9 @@
 	            <input class="image_plus" type="image" src="plus4.png" />
 	        </div>
 	        <figcaption>
-	            <h3 class="nomProduit">#{produit.libelle}</h3>
+	        	<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"
+	        					value="#{produit.libelle}"
+	        					class="nomProduit"/>
 	            <h3 class="prixProduit">
 	            	#{produit.conditionnements.get(0).libelle}	
 				 </h3>

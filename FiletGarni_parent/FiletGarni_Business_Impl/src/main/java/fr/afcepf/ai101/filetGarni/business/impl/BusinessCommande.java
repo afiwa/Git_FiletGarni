@@ -8,6 +8,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoAdresse;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieProduit;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieRecette;
@@ -24,6 +25,7 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTypePaiement;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoUtilisateur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoVille;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Adresse;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
@@ -92,6 +94,9 @@ public class BusinessCommande implements IBusinessCommande{
     
     @EJB
     private IDaoCategorieProducteur daoCategorieProducteur;
+    
+    @EJB
+    private IDaoAdresse daoAdresse;
 
     @Override
 	public List<Produit> getAllProduits() {
@@ -115,7 +120,6 @@ public class BusinessCommande implements IBusinessCommande{
 					conditionnements = daoConditionnement.getByProduit(produit);
 					produit.setConditionnements(conditionnements);
 					produits.add(produit);
-					System.out.println(produit.getLibelle());
 				}
 			}			
 				return produits;
@@ -136,15 +140,21 @@ public class BusinessCommande implements IBusinessCommande{
 	public Produit getProduitByIdWithConditionnements(Integer paramId_produit) {
 		return daoProduit.getByIdWithConditionnement(paramId_produit);
 	}
-
+	
 	@Override
-	public List<Produit> getProduitByNom(String paramNom, Region paramRegion) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getProduitsByIdProducteur(Integer paramId_producteur) {
+		List<Produit> produits = new ArrayList<>();
+		produits = daoProduit.getByIdProducteur(paramId_producteur);
+		List<Conditionnement> conditionnements = new ArrayList<>();
+		for (Produit produit : produits) {
+			conditionnements = daoConditionnement.getByProduit(produit);
+			produit.setConditionnements(conditionnements);			
+		}		
+		return produits;
 	}
 
 	@Override
-	public List<Produit> getProduitByProducteur(Region paramRegion, Producteur paramProducteur) {
+	public List<Produit> getProduitByNom(String paramNom, Region paramRegion) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -159,11 +169,8 @@ public class BusinessCommande implements IBusinessCommande{
 		producteurs = daoProducteur.getAll();
 		
 		for (Producteur producteur : producteurs) {
-			System.out.println(producteur.getIdentifiantConnexion());
 			codePostal = daoCodePostal.getByAdresse(producteur.getAdresses().get(0));
-			System.out.println(codePostal.getCodePostal() + " => " + codePostal.getId());
 			villes = daoVille.getByCodePostal(codePostal);
-			System.out.println(villes.size());
 			codePostal.setVilles(villes);
 			producteur.getAdresses().get(0).setCodePostal(codePostal);	
 			categories = daoCategorieProducteur.getCategoriesByProducteur(producteur);
@@ -180,32 +187,55 @@ public class BusinessCommande implements IBusinessCommande{
 	}
 
 	@Override
-	public List<Producteur> getProducteurbyCategorie(CategorieProducteur paramCategorie) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Producteur> getProducteurbyIdCategorie(Integer paramId_categorie) {
+		List<Producteur> producteurs = new ArrayList<>();
+		List<Adresse> adresses = new ArrayList<>();
+		CodePostal codePostal = new CodePostal();
+		List<Ville> villes = new ArrayList<>();		
+		List<CategorieProducteur> categories = new ArrayList<>();
+		
+		producteurs = daoProducteur.getByIdCategorie(paramId_categorie);
+		
+		for (Producteur producteur : producteurs) {
+			adresses = daoAdresse.getByNonSalarie(producteur);
+			producteur.setAdresses(adresses);
+			codePostal = daoCodePostal.getByAdresse(producteur.getAdresses().get(0));
+			villes = daoVille.getByCodePostal(codePostal);
+			codePostal.setVilles(villes);
+			producteur.getAdresses().get(0).setCodePostal(codePostal);	
+			categories = daoCategorieProducteur.getCategoriesByProducteur(producteur);
+			producteur.setCategories(categories);			
+		}
+		return producteurs;
 	}
 
 	@Override
 	public Producteur getProducteurById(Integer paramId_producteur) {
-		// TODO Auto-generated method stub
-		return null;
+		Producteur producteur = new Producteur();
+		producteur = daoProducteur.getByIdWithAdresses(paramId_producteur);
+		CodePostal codePostal = daoCodePostal.getByAdresse(producteur.getAdresses().get(0));
+		List<Ville> villes = daoVille.getByCodePostal(codePostal);
+		codePostal.setVilles(villes);
+		producteur.getAdresses().get(0).setCodePostal(codePostal);		
+		return producteur;
 	}
 
 	@Override
 	public List<Recette> getAllRecettes() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Recette> recettes = new ArrayList<>();
+		recettes = daoRecette.getAllWithAllProduitRecette();
+		System.out.println(recettes.size());
+		return recettes;
+		
 	}
 
 	@Override
-	public List<Recette> getRecetteByCategorie(CategorieRecette paramCategorie) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Recette> getRecetteByCategorie(Integer id_categorie) {
+		return daoRecette.getByIdCategorieRecette(id_categorie);
 	}
 
 	@Override
 	public Recette getRecetteByIdWithAllProduitRecette(Integer paramId_recette) {
-		// TODO Auto-generated method stub
 		return daoRecette.getByIdWithAllProduitRecette(paramId_recette);
 	}
 
@@ -243,6 +273,7 @@ public class BusinessCommande implements IBusinessCommande{
 		return null;
 	}
 
+<<<<<<< HEAD
 	
 
 	
@@ -250,3 +281,6 @@ public class BusinessCommande implements IBusinessCommande{
 	
 
 }
+=======
+}
+>>>>>>> Afiwa

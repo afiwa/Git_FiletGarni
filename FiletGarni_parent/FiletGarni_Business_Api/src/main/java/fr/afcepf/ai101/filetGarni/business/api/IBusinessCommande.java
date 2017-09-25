@@ -21,7 +21,7 @@ public interface IBusinessCommande {
 
     public java.util.List<Produit> getProduitByIdCategorie(Integer id_categorieProduit, Boolean premierPassage);
 
-    public java.util.List<Produit> getProduitByProducteur(Region region, Producteur producteur);
+    public java.util.List<Produit> getProduitsByIdProducteur(Integer id_producteur);
 
     public Produit getProduitById(Integer id_produit);
 
@@ -37,13 +37,13 @@ public interface IBusinessCommande {
     
     public java.util.List<Producteur> getProducteurByRegion(Region region);
 
-    public java.util.List<Producteur> getProducteurbyCategorie(CategorieProducteur categorie);
+    public java.util.List<Producteur> getProducteurbyIdCategorie(Integer id_categorie);
 
     public Producteur getProducteurById(Integer id_producteur);
 
     public java.util.List<Recette> getAllRecettes();
 
-    public java.util.List<Recette> getRecetteByCategorie(CategorieRecette categorie);
+    public java.util.List<Recette> getRecetteByCategorie(Integer id_categorie);
 
     public Recette getRecetteByIdWithAllProduitRecette(Integer id_recette);
 

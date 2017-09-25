@@ -20,9 +20,9 @@
 .sectionRecette {
     grid-row: 3;
     grid-column: 1;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 100%;
+   /*  display: grid; */
+/*     grid-template-columns: 20% 80%;
+    grid-template-rows: 100%; */
     /*text-align: center;*/
     margin-top: -70px;
     font-family: roboto;
@@ -53,8 +53,8 @@
 }
 
 .ListeDesRecettes {
-    grid-row: 1;
-    grid-column: 2;
+/*     grid-row: 1;
+    grid-column: 2; */
     height: 50%;
         margin-top: 90px;
     margin-bottom: 90px;
