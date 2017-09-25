@@ -182,6 +182,12 @@ a{color:inherit;text-decoration:none}
 	text-align:center;
 }
 
+#warningConnexion{
+	color:var(--couleur-orange-clair);
+	color:#FF4C39;
+	
+}
+
 @media (max-width:640px){
 	.login-wrap{
 		/* background-position:right; */

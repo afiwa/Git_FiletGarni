@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/archeProducteur.xhtml">
+	<ui:define name="title">Commandes du jour</ui:define>
+	<ui:define name="headcssscript">
+		<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link type="text/css" rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto" />
+		<link type="text/css" rel="stylesheet"
+			href="../css/archeProducteur.css" />
+		<link type="text/css" rel="stylesheet"
+			href="css/main.css" />
+		<link type="text/css" rel="stylesheet"
+			href="css/print_cart.css" />
+	</ui:define>
+
+
+	<ui:define name="content">
+
+		<!-- Afficher le contenu du panier -->
+		<div class="shopping-cart">
+			<!-- Title -->
+			<div class="title">Commandes du jour</div>
+			<table class="enTete">
+				<tr>
+					<b><td>Date d'enlèvement</td></b>
+					<td>N° de commande</td>
+					<td>Nb d'articles</td>
+					<td>Montant total (€ T.T.C.)</td>
+					<td>Marquer comme prêt</td>
+					<td>Afficher détails</td>
+				</tr>
+			</table>
+			<!-- Commande #1 -->
+
+			<div class="commande id1">
+				<table class="resumeCommande">
+					<tr class="resumeCommande">
+						<td id="#dateEnlevement">21/08/2017</td>
+						<td id="#numCmd">CL-2017-numCmd</td>
+						<td id="#nbARticles">15</td>
+						<td><span id="#totalCommande">350</span><span>€</span></td>
+						<td class="validerCmd" id="btnCmdPrete" for="validerCmd"><input
+							type="checkbox" name="validerCmd" class="validerCmd"
+							id="validerCmd" value="" /></td>
+						<td id="btnToggle"><img id="dropDownArrow"
+							src="images/DropDown-button.svg" /></td>
+					</tr>
+				</table>
+
+				<div class="toggler">
+
+					<!-- <table class="item"> -->
+					<!-- <tr> -->
+					<!-- <td>Produit</td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- </tr> -->
+					<!-- </table> -->
+
+
+					<div class="item">
+						<div class="image">
+							<img
+								src="..\..\..\0. Ressources\1. Images\images\PhotosProduits\YaourtFramboises.jpg"
+								alt="" />
+						</div>
+
+						<div class="description titreEtCategorie">
+							<span class="article-titre"><b>Oeufs bios tout pétés</b></span> <span
+								class="article-categorie">Catégorie pdt</span>
+						</div>
+						<div class="description conditionnement">
+							<span class="article-conditionnement"><span>Boîte</span><span>12</span><span>unites</span>
+								<span> </span><span class="article-quantite">10</span><span>
+									X </span> <span class="article-price">50</span><span>€</span> </span>
+						</div>
+						<div class="total-price">
+							<output class="total-article">50 €</output>
+						</div>
+						<div>
+							<input type="checkbox" class="pdtIndispo" id="pdtPret"
+								value="Produit indisponible" /> <label id="lblPdtIndispo"
+								for="pdtPret">Produit prêt</label>
+						</div>
+						<div class="descripion produitIndispo">
+
+							<input type="checkbox" class="pdtIndispo" id="pdtIndispo"
+								value="Produit indisponible" /> <label id="lblPdtIndispo"
+								for="pdtIndispo">Produit indisponible</label>
+							<!-- <div class="quantity quantiteDisponible"> -->
+							<select name="qteDispo" id="qteIndispo" value="QUant">
+								<option select="disabled">Qté disponible</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+							</select>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Fin affichage contenu commande -->
+
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+		<!-- Jquery UI (pour le toogle, entre autres) SOURCE : https://jqueryui.com/toggle/ -->
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+		<!--    <script>
+         if (!window.jQuery) document.write('<script src="panier/panier/js/jquery-3.0.0.min.js"><\/script>');
+    </script>-->
+
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/affichageCommandes.js"></script>
+	</ui:define>
+</ui:composition>
+</html>

@@ -50,9 +50,9 @@ $(document).ready(function () {
 //
 //});
 
-$('.like-btn').on('click', function() {
-    $(this).toggleClass('is-active');
-});
+//$('.like-btn').on('click', function() {
+//    $(this).toggleClass('is-active');
+//});
 
 //$('.delete-btn').on('click', function() {
 //	var totalArticle = parseInt($(this).parent().parent().find('.total-article').text().replace(' \u20ac',''));

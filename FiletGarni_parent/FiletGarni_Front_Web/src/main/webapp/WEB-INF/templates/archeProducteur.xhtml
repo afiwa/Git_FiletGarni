@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" lang="fr">
+
+
+<h:head>
+	<title><ui:insert name="title"></ui:insert></title>
+	<ui:insert name="headcssscript"></ui:insert>
+</h:head>
+
+<body>
+	<h:form id="form-producteur">
+
+		<ul class="menuProducteur">
+			<li class="absences"><a href="#news">Gestion des absences</a></li>
+			<li class="compte"><a href="#news">Mon compte</a></li>
+			<li class="gestionCat"><a href="#news">Gestion du catalogue</a></li>
+			<li class="cmdAPreparer"><a href="javascript:void(0)"
+				class="dropbtn">Commandes à préparer</a>
+				<div class="cmdAPreparer-content">
+					<a href="#">Commandes du jour</a> <a href="#">Commandes de la
+						semaine</a>
+				</div></li>
+			<li class="tabBord"><a href="#home">Tableau de bord</a></li>
+		</ul>
+		<ui:insert name="content"></ui:insert>
+	</h:form>
+</body>
+</html>
