@@ -34,31 +34,23 @@
     position: relative;
     display: inline-block;
     overflow: hidden;
-    margin: 8px;
+    margin: 10px;
     min-width: 320px;
-    /* max-width: 400px;
-    max-height: 260px;
-    width: ;*/
+    max-width: 505px;
     font-size: 16px;
     background-color: #fff;
     color: #111;
     line-height: 1.2em;
     text-align: left;
     border: 1px solid #2ABB6D;
-   /* width: 20%;*/
-    width: 400px;
     height: 354px;
-    /* float: left;*/
-    margin-left: 5px;
+
 }
 
 .ListeDesRecettes {
-/*     grid-row: 1;
-    grid-column: 2; */
-    height: 50%;
-        margin-top: 90px;
-    margin-bottom: 90px;
-    margin-left: -64px;
+    margin-top: 90px;
+    margin-bottom: 16px;
+
 }
 
 .image_recette_principale {
@@ -81,9 +73,22 @@
 .FicheRecette .TitreRecette {
     grid-column: 1;
     grid-row: 1;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: lighter;
     margin: 0 0 1px;
+}
+
+.FicheRecette .TitreRecette a {
+	text-decoration: none;
+	color: black;
+	
+}
+
+
+.FicheRecette .TitreRecette a:hover {
+	text-decoration: none;
+	color: #2ABB6D;
+	
 }
 
 .FicheRecette .NbPersRecette {

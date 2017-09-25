@@ -8,8 +8,8 @@
     position: relative;
     display: inline-block;
     overflow: hidden;
-    margin: 8px;
-    margin-left: 16px;
+    margin: 10px;
+    margin-left: 33px;
     min-width: 230px;
     max-width: 475px;
     width: 100%;
@@ -43,6 +43,17 @@
     font-weight: 400;
     margin: 0 0 4px;
 }
+
+.FicheProducteur .nomFerme a{
+	text-decoration: none;
+	color: black;
+}
+
+.FicheProducteur .nomFerme a:hover{
+	text-decoration: none;
+	color: #2ABB6D;
+}
+
 
 .FicheProducteur .descriptionFerme {
     grid-column: 1;
