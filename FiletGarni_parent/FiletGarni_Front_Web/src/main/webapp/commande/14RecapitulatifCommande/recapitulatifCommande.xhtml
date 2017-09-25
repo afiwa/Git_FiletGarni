@@ -38,11 +38,10 @@
 		<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
 		<div>
 			<ol class="cd-multi-steps text-center custom-icons">
-				<li class="visited"><a
-					href="..\11Panier\panier.jsf">Panier</a></li>
-				<li class="visited"><a href="..\12Paiement\paiement.jsf">Point relais</a></li>
-				<li class="visited"><a
-					href="..\13Paiement\paiement.jsf">Paiement</a></li>
+				<li class="visited"><a href="..\11Panier\panier.jsf">Panier</a></li>
+				<li class="visited"><a href="..\12Paiement\paiement.jsf">Point
+						relais</a></li>
+				<li class="visited"><a href="..\13Paiement\paiement.jsf">Paiement</a></li>
 				<li class="current"><em>Récapitulatif</em></li>
 			</ol>
 		</div>
@@ -53,8 +52,13 @@
 			<div class="row">
 				<!-- <h1><b>Récapitulatif de votre commande</b></h1> -->
 				<!-- <hr/> -->
-				<h3 class="bg-success">Total de votre commande : 200 €</h3>
-
+				<h3 class="bg-success">
+					Merci de votre confiance. Votre commande a bien été enregistrée et
+					sera livrée le
+					<!-- 					<h:outputLabel value="#{mbTestPanier.commande.dateLivraisonPrevue}"/> -->
+					Total de votre commande :
+					<!-- 				 <h:outputLabel value="#{mbTestPanier.commande.getMontantCmde()}"/>€ -->
+				</h3>
 				<div class="subBlock">
 					<div class="block customer-info">
 						<div class="form-group col-md-12 bg-primary">
@@ -196,54 +200,126 @@
 						<label class="control-label" for="contactinformation">Informations
 							complémentaires</label>
 					</div>
-	
+
 					<div class="form-group col-md-12">
 						<div class="control-group">
 							<label class="control-label" for="iaccept"></label>
 							<div class="controls">
 								<label class="checkbox" for="iaccept-0"> <input
 									type="checkbox" name="iaccept" id="iaccept-0"
-									value="I accept the Teams and conditions"> Je m'abonne à
-										la newsLetter du Filet Garni afin de recevoir des informations
-										pertinentes sur les nouveaux produits et les nouvelles des
-										points relais près de chez moi.</input>
+									value="I accept the Teams and conditions"> Je m'abonne
+										à la newsLetter du Filet Garni afin de recevoir des
+										informations pertinentes sur les nouveaux produits et les
+										nouvelles des points relais près de chez moi.</input>
 								</label>
 							</div>
 						</div>
 					</div>
-	
+
 					<div class="form-group col-md-12">
 						<div class="control-group">
 							<label class="control-label" for="iaccept"></label>
 							<div class="controls termsAndConditions">
 								<label class="checkbox" for="iaccept-1"> <input
 									type="checkbox" name="iaccept" id="iaccept-1"
-									value="I accept the Teams and conditions"> J'accepte les
-										<a href="">termes et conditions</a> de Filet Garni.</input>
+									value="I accept the Teams and conditions"> J'accepte
+										les <a href="">termes et conditions</a> de Filet Garni.</input>
 								</label>
 							</div>
 						</div>
 					</div>
-	
-<!-- 					<div class="form-group col-md-12 termsAndConditions2"> -->
-						<!-- <div class="control-group confirm-btn"> -->
-						<label class="control-label" for="placeorderbtn"></label>
-<!-- 						<div class="controls "> -->
-							<button id="placeorderbtn" name="placeorderbtn"
-								class="btn btn-primary">Confirmer ma commande</button>
-<!-- 						</div> -->
-<!-- 					</div> -->
+
+					<!-- 					<div class="form-group col-md-12 termsAndConditions2"> -->
+					<!-- <div class="control-group confirm-btn"> -->
+					<label class="control-label" for="placeorderbtn"></label>
+					<!-- 						<div class="controls "> -->
+					<button id="placeorderbtn" name="placeorderbtn"
+						class="btn btn-primary">Retour à l'accueil</button>
+					<!-- 						</div> -->
+					<!-- 					</div> -->
 				</div>
 			</div>
 		</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	
-    <script type="text/javascript" src="../jsHamburger/main.js"></script>
-	<script type="text/javascript" src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
-	<script type="text/javascript" src="js/confirmationCommande.js"></script>
-	
-	
+		<!-- Product # -->
+		<ui:repeat id="repeater" var="ligneCommande"
+			value="#{mbTestPanier.ligneCommandes}">
+			<div id="item" class="item">
+				<div class="buttons">
+					<!-- 							<span class="delete-btn">  -->
+					<h:commandLink class="delete-btn">
+						<f:ajax listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
+							event="click" execute="@form" render="form-conso" />
+					</h:commandLink>
+					<!-- 							</span>  -->
+					<span class="like-btn"></span>
+				</div>
+
+				<div class="image">
+					<img class="image"
+						src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
+						alt="" />
+				</div>
+
+				<div class="description">
+					<span><b><h:outputLabel
+								value="#{ligneCommande.produit.libelle.toString()}" /></b></span> <span>
+						<h:outputLabel value="#{ligneCommande.produit.prix}"
+							class="article-price">
+							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+						</h:outputLabel> €
+					</span> <span> <h:outputLabel
+							value="#{ligneCommande.produit.conditionnements.get(0).libelle} " />
+						<h:outputLabel
+							value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
+							<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+						</h:outputLabel> <h:outputLabel
+							value="#{ligneCommande.produit.conditionnements.get(0).unite}" />
+					</span>
+
+				</div>
+				<div class="quantity">
+					<h:commandLink class="minus-btn" type="button" name="button">
+						<img src="images\icons_panier\minus.svg" alt="" />
+						<f:ajax
+							listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}"
+							event="click" execute="@form"
+							render="quantite prixLigneCmd form-conso:prixTotalPanier" />
+					</h:commandLink>
+
+					<h:inputText id="quantite" class="qty" name="name"
+						value="#{ligneCommande.quantiteCommandee}">
+						<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+					</h:inputText>
+
+					<h:commandLink class="plus-btn" type="button" name="button">
+						<img src="images\icons_panier\plus.svg" alt="" />
+						<f:ajax
+							listener="#{mbTestPanier.modifierQuantite(ligneCommande, 1, ligneCommande.quantiteCommandee)}"
+							event="click" execute="@form"
+							render="quantite prixLigneCmd form-conso:prixTotalPanier" />
+					</h:commandLink>
+				</div>
+				<div class="total-price">
+					<h:outputLabel id="prixLigneCmd" class="total-article"
+						value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
+						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+					</h:outputLabel>
+					<span> €</span>
+				</div>
+			</div>
+		</ui:repeat>
+
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+		<script type="text/javascript" src="../jsHamburger/main.js"></script>
+		<script type="text/javascript"
+			src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
+		<script type="text/javascript" src="js/confirmationCommande.js"></script>
+
+
 	</ui:define>
 </ui:composition>
 </html>

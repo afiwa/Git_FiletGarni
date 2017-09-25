@@ -6,7 +6,17 @@
 	--couleur-quatre-vert:#76C52C;
 	--couleur-cinq-vert:#A2BB2A;
 	
+	--couleur-majeure-jaune : #F1C40F;	
+	--couleur-deux-jaune :  #DAC503;
+	--couleur-trois-jaune : #F7F903;
+	--couleur-quatre-jaune :  #DA9903;
+	--couleur-cinq-jaune :  #F99603;
+
+	--couleur-gris-pale:#f8f8f8;
 	--couleur-gris-clair:#EEE;
+	
+	--couleur-orange-clair:#FF4C39;
+	--couleur-orange-dark:#BB382A;
 }
 
 header{
