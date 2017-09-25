@@ -28,7 +28,6 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoVille;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Adresse;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement;
@@ -273,14 +272,5 @@ public class BusinessCommande implements IBusinessCommande{
 		return null;
 	}
 
-<<<<<<< HEAD
-	
-
-	
-
-	
-
 }
-=======
-}
->>>>>>> Afiwa
+
