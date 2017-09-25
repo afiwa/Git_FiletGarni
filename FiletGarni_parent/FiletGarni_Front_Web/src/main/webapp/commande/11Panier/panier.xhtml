@@ -47,16 +47,15 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 				<ui:repeat id="repeater" var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
 					<div id="item" class="item">
 						<div class="buttons">
-<!-- 							<span class="delete-btn">  -->
+							<span class="delete-btn"> 
 								<h:commandLink class="delete-btn">
 									<f:ajax
 										listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
 										event="click" 
 										execute="@form" 
-										render="form-conso" />
+										render="form-conso:item" />
 								</h:commandLink>
-<!-- 							</span>  -->
-							<span class="like-btn"></span>
+							</span> 
 						</div>
 
 						<div class="image">
@@ -103,7 +102,7 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 							</h:commandLink>
 						</div>
 						<div class="total-price">
-							<h:outputLabel id="prixLigneCmd"	class="total-article" value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
+							<h:outputLabel id="prixLigneCmd" class="total-article" value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
 								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 							</h:outputLabel><span> €</span>
 						</div>

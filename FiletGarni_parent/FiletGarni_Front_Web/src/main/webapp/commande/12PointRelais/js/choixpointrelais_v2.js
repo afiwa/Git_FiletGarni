@@ -264,6 +264,7 @@ $(document).ready(function(){
 	choixDepart = $("input[name=adresse]:checked").val();
 	console.log(choixDepart);
 	$("input[name=adresse]").change(function(){
+		console.log(mapPR.get(markerSelected).id);
 		choixDepart = $("input[name=adresse]:checked").val();
 		setMarkerVisible(distanceMax);
 		changeCenterOfMap();
@@ -424,7 +425,16 @@ var options = {
     theme: "round"
 };
 
+
+
 $("#nom_ville").easyAutocomplete(options);
+
+$(".buttonValide").on('click', function (){
+	console.log(mapPR.get(markerSelected).id);
+	let id_pr = mapPR.get(markerSelected).id;
+	console.log('####################'+id_pr+'#####################');
+	window.location = "choixPointRelais.xhtml?toto="+id_pr+"";
+});
 /*
 var options2 = {
     url: "json/communes_idf.json",
@@ -453,4 +463,5 @@ var options2 = {
 };
 $("#code_postal").easyAutocomplete(options2);
 */
+
 

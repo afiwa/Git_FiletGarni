@@ -41,19 +41,7 @@ public class ManagedBeanTestPanier implements Serializable{
 		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
 	
-//	public void modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Integer qteCommandee) {
-//		System.out.println("Fonction diminuer quantite ligne commande.");
-//		if(chiffreModificateur == -1 && qteCommandee == 1) {
-//		} else {
-//			for(LigneCommande lgnCmd : ligneCommandes ) {
-//				if(lgnCmd.getProduit().getId().equals(lgnCommandeTemp.getProduit().getId())) {
-//					lgnCmd.setQuantiteCommandee(lgnCmd.getQuantiteCommandee()+(chiffreModificateur));
-//					calculTotalMontantCommande();
-//				}
-//			}
-//		}
-//	}
-	
+
 	public void modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Integer qteCommandee) {
 		if(chiffreModificateur == -1 && qteCommandee == 1) {
 		} else {

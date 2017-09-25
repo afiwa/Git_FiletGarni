@@ -6,11 +6,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeChoixPointRelais;
+import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeMarion;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Consommateur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.HorairesOuverture;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
@@ -20,9 +24,15 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Utilisateur;
 @ManagedBean(name="mbChoixPRConso")
 public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 
+	@EJB
+	private IBusinessCommandeMarion buCmde;
+	
+
+	
 	private static final long serialVersionUID = 1L;
 
 	private List<PointRelais> tousLesPointRelais = new ArrayList<>();
+	private PointRelais pointRelais = new PointRelais();
 	
 	/*@ManagedProperty(value = "mbConnecterConso")
 	private ManagedBeanConnexionConsommateur mbConnecterConso;*/
@@ -148,9 +158,30 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 		return jsonConsommateur.toString();
 	}
 	
+	public void affectationToto() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
+				.getExternalContext().getRequest();
+		System.out.println("#################"+request.getParameter("toto")+"######################");
+		if(request.getParameter("toto") != null) {
+			Integer id_pr = Integer.parseInt(request.getParameter("toto"));
+			System.out.println(id_pr);
+			pointRelais = buCmde.getPRById(id_pr);
+			ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) FacesContext.getCurrentInstance()
+					.getApplication().getNavigationHandler();
+			nav.performNavigation("/commande/13Paiement/paiement.xhtml?faces-redirect=true");
+		}
+	}
+	
+	public String choisirPointRelais() {
+		//pointRelais = 
+		return "/commande/13Paiement/paiement.xhtml?faces-redirect=true";
+	}
+	
 	public void recupererTousLesPointRelais() {
 		tousLesPointRelais = businessPr.getAllPointRelais();
 	}
+	
+	
 
 	public List<PointRelais> getToutpointrelais() {
 		return tousLesPointRelais;

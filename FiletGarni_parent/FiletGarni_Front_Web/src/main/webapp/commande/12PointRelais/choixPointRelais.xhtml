@@ -3,7 +3,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html" lang="fr">
-
+<f:metadata>
+	<f:event listener="#{mbChoixPRConso.affectationToto()}" type="preRenderView"></f:event>
+</f:metadata>
 <ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
 
 	<ui:define name="title">Choix du point relais</ui:define>
