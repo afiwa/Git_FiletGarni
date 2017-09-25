@@ -162,6 +162,7 @@ public class ManagedBeanTestPanier implements Serializable{
 		for(LigneCommande lgnCmd : ligneCommandes) {
 			totalMontantCommande = totalMontantCommande + lgnCmd.getMontantLgnCommande(lgnCmd.getProduit().getPrix());
 		}
+		System.out.println(totalMontantCommande);
 	}
 	
 

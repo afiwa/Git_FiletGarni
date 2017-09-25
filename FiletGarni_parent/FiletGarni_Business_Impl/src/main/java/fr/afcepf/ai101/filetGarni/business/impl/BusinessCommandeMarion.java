@@ -230,16 +230,16 @@ public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 	
 	//Ajout Marion
 	@Override
-	public Commande creerUneCommande(Integer paramId, Date paramDatePaiement, Date paramDateValidation, Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur) {
-    	Commande nouvelleCommande = new Commande(paramId, paramDatePaiement, paramDateValidation, paramDateLivraisonPrevue, paramTypePaiement, paramPointRelais, paramConsommateur);
-		return nouvelleCommande;
+	public Integer creerUneCommande(Integer paramIdCommande, Date paramDatePaiement, Date paramDateValidation, Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur) {
+    	Commande nouvelleCommande = new Commande(paramIdCommande,paramDatePaiement, paramDateValidation, paramDateLivraisonPrevue, paramTypePaiement, paramPointRelais, paramConsommateur);
+		return daoCommande.creer(nouvelleCommande);
 	}
 	
 	@Override
-	public LigneCommande creerUneLigneCommande(Integer paramId, Double paramQuantiteCommandee, Commande paramCommande,
+	public void creerUneLigneCommande(Integer paramIdLgnCommande, Double paramQuantiteCommandee, Commande paramCommande,
 			Produit paramProduit) {
-		LigneCommande nouvelleLigneCommande = new LigneCommande(paramId, paramQuantiteCommandee, paramCommande, paramProduit);
-		return nouvelleLigneCommande;
+		LigneCommande nouvelleLigneCommande = new LigneCommande(paramIdLgnCommande, paramQuantiteCommandee, paramCommande, paramProduit);
+		daoLgnCommande.creerUneLigneCommande(nouvelleLigneCommande);
 	}
 	
 	@Override
@@ -264,6 +264,15 @@ public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 	
 	//fin ajout Marion
 	
+	//ModifMarion
+	
+	@Override
+	public Commande getCommandebyId(Integer paramId_commande) {
+		return daoCommande.getById(paramId_commande);
+	}
+	
+	//fin modif Marion
+	
 	public LigneCommande créerUneLigneCommande() {
 		return null;
 	}
@@ -282,12 +291,6 @@ public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 
 	@Override
 	public Commande affecterLePointRelais(Commande paramCommande, PointRelais paramPointrelais) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Commande getCommandebyId(Integer paramId_commande) {
 		// TODO Auto-generated method stub
 		return null;
 	}

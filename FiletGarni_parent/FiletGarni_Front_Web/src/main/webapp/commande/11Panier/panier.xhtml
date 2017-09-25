@@ -26,7 +26,6 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form id="form-panier">
 
 			<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
 			<div>
@@ -53,8 +52,8 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 									<f:ajax
 										listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
 										event="click" 
-										render="repeater"
-										execute="@form"  />
+										execute="@form" 
+										render="form-conso" />
 								</h:commandLink>
 <!-- 							</span>  -->
 							<span class="like-btn"></span>
@@ -88,7 +87,7 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 								<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}" 
 										event="click" 
 										execute="@form" 
-										render="quantite prixLigneCmd prixTotalPanier" />
+										render="quantite prixLigneCmd form-conso:prixTotalPanier" />
 							</h:commandLink>
 
 							<h:inputText id="quantite" class="qty" name="name" value="#{ligneCommande.quantiteCommandee}">
@@ -100,7 +99,7 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 								<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, 1, ligneCommande.quantiteCommandee)}"
 										event="click" 
 										execute="@form" 
-										render="quantite prixLigneCmd prixTotalPanier" />
+										render="quantite prixLigneCmd form-conso:prixTotalPanier" />
 							</h:commandLink>
 						</div>
 						<div class="total-price">
@@ -133,7 +132,6 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 			<script type="text/javascript" src="../jsHamburger/main.js"></script>
 
 
-		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

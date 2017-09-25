@@ -5,8 +5,8 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 
 public interface IDaoCommande {
 
-    public void creer(Commande c);
-
+    public Integer creer(Commande c);
+    
     public void supprimer();
 
     public void rechercher();

@@ -31,12 +31,11 @@ public interface IBusinessCommandeMarion {
     public Commande creerUneCommande();
     
     //Ajout Marion
-    public Commande creerUneCommande(Integer paramId, Date paramDatePaiement, Date paramDateValidation,
-			Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais,
-			Consommateur paramConsommateur);
+    public Integer creerUneCommande(Integer paramIdCommande, Date paramDatePaiement, Date paramDateValidation, 
+    		Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur);
     
-    public LigneCommande creerUneLigneCommande(Integer paramId, Double paramQuantiteCommandee,
-    		Commande paramCommande, Produit paramProduit);
+    public void creerUneLigneCommande(Integer paramIdLgnCommande, Double paramQuantiteCommandee, Commande paramCommande,
+			Produit paramProduit);
     
     public TypePaiement getTypePaiementById(Integer paramIdTypePaiement);
     

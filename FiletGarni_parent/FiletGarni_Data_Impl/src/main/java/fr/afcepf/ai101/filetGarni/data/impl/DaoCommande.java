@@ -19,8 +19,10 @@ public class DaoCommande implements IDaoCommande {
     public DaoCommande() {
     }
 
-    public void creer(Commande paramNouvelleCommande) {
+    public Integer creer(Commande paramNouvelleCommande) {
     	em.persist(paramNouvelleCommande);
+    	em.flush();
+    	return paramNouvelleCommande.getId();
     }
 
     public void supprimer() {
@@ -32,8 +34,7 @@ public class DaoCommande implements IDaoCommande {
     }
 
     public Commande getById(Integer idCommande) {
-        // TODO implement here
-        return null;
+        return (Commande) em.createQuery("select c from Commande c where c.id = :pId").setParameter("pId", idCommande).getSingleResult();
     }
 
     public void validerCmde() {
