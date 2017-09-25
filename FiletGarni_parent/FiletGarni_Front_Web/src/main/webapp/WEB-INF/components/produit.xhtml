@@ -12,10 +12,25 @@
 	        </h:commandLink>
 	        <div class="icons">
 	            <a>
-	                <i class="ion-android-cart cd-add-to-cart"><span class="nbArticle">0</span></i>
+	                <i class="ion-android-cart cd-add-to-cart">
+	                	<h:outputLabel id="quantitePanierProduit" value="{mbTestPanier.quantite}"></h:outputLabel>
+	                	<span class="nbArticle">0</span>
+	                </i>
 	            </a>
-	            <input class="image_minus" type="image" src="minus4.png" />
+	            
+	            
+	            	<input class="image_minus" type="image" src="minus4.png" />
+	            		
+				
+	           <h:commandLink> 
 	            <input class="image_plus" type="image" src="plus4.png" />
+	            	<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}" 
+								event="click" 
+								execute="@form" 
+								render="" />
+				</h:commandLink>
+				
+				
 	        </div>
 	        <figcaption>
 	        	<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"

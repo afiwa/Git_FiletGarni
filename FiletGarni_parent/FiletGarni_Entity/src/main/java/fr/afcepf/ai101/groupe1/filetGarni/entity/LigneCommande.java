@@ -176,6 +176,13 @@ public class LigneCommande implements Serializable{
 		commande = paramCommande;
 		produit = paramProduit;
 	}
+	
+	public LigneCommande(Integer paramId, Double paramQuantiteCommandee, Produit paramProduit) {
+		super();
+		id = paramId;
+		quantiteCommandee = paramQuantiteCommandee;
+		produit = paramProduit;
+	}
 
 
 	public Double getMontantLgnCommande(Double paramPrix) {

@@ -19,31 +19,39 @@ public class ManagedBeanTestPanier implements Serializable{
 
 	@EJB
 	private IBusinessCommandeMarion buPdt;
-	private Integer idPdt;
-	private Integer idPdt2;
-	private Double qte;
-	private Double qte2;
+//	private Integer idPdt;
+//	private Integer idPdt2;
+//	private Double qte;
+//	private Double qte2;
+	private Double quantite;
 	private Produit pdt  = new Produit();
-	private Produit pdt2 = new Produit();
+//	private Produit pdt2 = new Produit();
+	private LigneCommande ligneCommande;
 	private List<LigneCommande> ligneCommandes= new ArrayList<LigneCommande>();
 	private Double totalMontantCommande;
 	
-
-	public String testRemplirAfficherPanier() {
-		pdt = buPdt.getProduitByIdWithConditionnements(idPdt);
-		pdt2 = buPdt.getProduitByIdWithConditionnements(idPdt2);
-		LigneCommande lgn1 = new LigneCommande(null, qte, null, null, null, null, null, pdt, null, null);
-		LigneCommande lgn2 = new LigneCommande(null, qte2, null, null, null, null, null, pdt2, null, null);
-		ligneCommandes.add(lgn1);
-		ligneCommandes.add(lgn2);
+	public String remplirPanier(Integer chiffreModificateur) {
+		if (quantite<1) {
+			ligneCommande = new LigneCommande(null, quantite, pdt);
+			ligneCommandes.add(ligneCommande);
+		}else {
+			ligneCommande.setQuantiteCommandee(modifierQuantite(ligneCommande, chiffreModificateur, quantite));
+		}
+//		pdt = buPdt.getProduitByIdWithConditionnements(idPdt);
+//		pdt2 = buPdt.getProduitByIdWithConditionnements(idPdt2);
+//		LigneCommande lgn1 = new LigneCommande(null, qte, null, null, null, null, null, pdt, null, null);
+//		LigneCommande lgn2 = new LigneCommande(null, qte2, null, null, null, null, null, pdt2, null, null);
+//		ligneCommandes.add(lgn1);
+//		ligneCommandes.add(lgn2);
 		calculTotalMontantCommande();
 
 		return "/commande/11Panier/panier.xhtml?faces-redirect=true";
 	}
 	
 
-	public void modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Integer qteCommandee) {
-		if(chiffreModificateur == -1 && qteCommandee == 1) {
+	public Double modifierQuantite(LigneCommande lgnCommandeTemp, Integer chiffreModificateur, Double qteCommandee) {
+		
+		if(chiffreModificateur == -1 && qteCommandee == 1d) {
 		} else {
 			for(LigneCommande lgnCmd : ligneCommandes ) {
 				if(lgnCmd.getProduit().getId().equals(lgnCommandeTemp.getProduit().getId()) && 
@@ -53,6 +61,7 @@ public class ManagedBeanTestPanier implements Serializable{
 				}
 			}
 		}
+		return ligneCommande.getQuantiteCommandee();
 	}
 
 	public String supprimerLgnCmd(LigneCommande ligneCommandeTempASupprimer) {

@@ -27,24 +27,24 @@ $('.image_plus').on('click', function (e) {
 });
 
 //decremente le panier
-$('.image_minus').on('click', function (e) {
-    console.log("function");
-    e.preventDefault();
-    var $this = $(this);
-    var $parent = $this.parent();
-    var nombreArticle = parseInt($parent.find('.nbArticle').text().replace('0', '0'));
-
-    if (nombreArticle > 0) {
-        nombreArticle -= 1;
-
-        $parent.find('.nbArticle').html(nombreArticle);
-
-    } else {
-        value = 0;
-    }
-    $input.val(value);
-
-});
+//$('.image_minus').on('click', function (e) {
+//    console.log("function");
+//    e.preventDefault();
+//    var $this = $(this);
+//    var $parent = $this.parent();
+//    var nombreArticle = parseInt($parent.find('.nbArticle').text().replace('0', '0'));
+//
+//    if (nombreArticle > 0) {
+//        nombreArticle -= 1;
+//
+//        $parent.find('.nbArticle').html(nombreArticle);
+//
+//    } else {
+//        value = 0;
+//    }
+//    $input.val(value);
+//
+//});
 
 
 
