@@ -76,31 +76,21 @@ public class LigneCommande implements Serializable{
 		id = paramId;
 	}
 
-
-
 	public Double getQuantiteCommandee() {
 		return quantiteCommandee;
 	}
-
-
 
 	public void setQuantiteCommandee(Double paramQuantiteCommandee) {
 		quantiteCommandee = paramQuantiteCommandee;
 	}
 
-
-
 	public Double getQuantiteLivree() {
 		return quantiteLivree;
 	}
 
-
-
 	public void setQuantiteLivree(Double paramQuantiteLivree) {
 		quantiteLivree = paramQuantiteLivree;
 	}
-
-
 
 	public java.util.Date getDateValidationPreparationProducteur() {
 		return dateValidationPreparationProducteur;
@@ -118,72 +108,49 @@ public class LigneCommande implements Serializable{
 		return dateRecuperationLivreur;
 	}
 
-
-
 	public void setDateRecuperationLivreur(java.util.Date paramDateRecuperationLivreur) {
 		dateRecuperationLivreur = paramDateRecuperationLivreur;
 	}
-
-
 
 	public java.util.Date getDateRecuperationClient() {
 		return dateRecuperationClient;
 	}
 
-
-
 	public void setDateRecuperationClient(java.util.Date paramDateRecuperationClient) {
 		dateRecuperationClient = paramDateRecuperationClient;
 	}
-
-
 
 	public Commande getCommande() {
 		return commande;
 	}
 
-
-
 	public void setCommande(Commande paramCommande) {
 		commande = paramCommande;
 	}
-
-
 
 	public Produit getProduit() {
 		return produit;
 	}
 
-
-
 	public void setProduit(Produit paramProduit) {
 		produit = paramProduit;
 	}
-
-
 
 	public TourneeReelleProducteur getTourneeReelleProducteur() {
 		return tourneeReelleProducteur;
 	}
 
-
-
 	public void setTourneeReelleProducteur(TourneeReelleProducteur paramTourneeReelleProducteur) {
 		tourneeReelleProducteur = paramTourneeReelleProducteur;
 	}
-
-
 
 	public SuiviIndisponibilite getIndispo() {
 		return indispo;
 	}
 
-
-
 	public void setIndispo(SuiviIndisponibilite paramIndispo) {
 		indispo = paramIndispo;
 	}
-
 
 	public LigneCommande(Integer paramId, Double paramQuantiteCommandee, Double paramQuantiteLivree,
 			Date paramDateValidationPreparationProducteur, Date paramDateRecuperationLivreur,
@@ -201,7 +168,14 @@ public class LigneCommande implements Serializable{
 		tourneeReelleProducteur = paramTourneeReelleProducteur;
 		indispo = paramIndispo;
 	}
-
+	
+	public LigneCommande(Integer paramId, Double paramQuantiteCommandee, Commande paramCommande, Produit paramProduit) {
+		super();
+		id = paramId;
+		quantiteCommandee = paramQuantiteCommandee;
+		commande = paramCommande;
+		produit = paramProduit;
+	}
 
 
 	public Double getMontantLgnCommande(Double paramPrix) {

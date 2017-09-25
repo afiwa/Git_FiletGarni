@@ -4,7 +4,7 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 
 public interface IDaoLgnCommande {
 
-    public void creerUnePremiereLigneCommande();
+    public void creerUneLigneCommande(LigneCommande paramLgnCmde);
 
     public LigneCommande ajouter(Integer id_commande);
 

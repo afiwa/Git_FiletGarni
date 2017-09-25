@@ -1,13 +1,14 @@
 package fr.afcepf.ai101.filetGarni.business.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
+import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeMarion;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieProduit;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCategorieRecette;
@@ -17,8 +18,10 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoConditionnement;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoConsommateur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoLgnCommande;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoNonSalarie;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoPointRelais;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProduit;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoProduitMarion;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProduitRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoRecette;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTypePaiement;
@@ -30,19 +33,21 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Consommateur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Region;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.TypePaiement;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Ville;
 
-@Remote(IBusinessCommande.class)
+@Remote(IBusinessCommandeMarion.class)
 @Stateless
-public class BusinessCommande implements IBusinessCommande{
+public class BusinessCommandeMarion implements IBusinessCommandeMarion{
 
-	public BusinessCommande() {
+	public BusinessCommandeMarion() {
     }
 
     @EJB
@@ -56,6 +61,10 @@ public class BusinessCommande implements IBusinessCommande{
 
     @EJB
     private IDaoProduit daoProduit;
+    
+    //Marion
+    @EJB
+    private IDaoProduitMarion daoProduitMarion;
 
     @EJB
     private IDaoCategorieProduit daoCategorieProduit;
@@ -93,7 +102,11 @@ public class BusinessCommande implements IBusinessCommande{
     @EJB
     private IDaoCategorieProducteur daoCategorieProducteur;
 
-    @Override
+    //ajout dépendance Marion
+    @EJB
+    private IDaoPointRelais daoPointRelais;
+
+	@Override
 	public List<Produit> getAllProduits() {
         return daoProduit.getAllWithConditionnements();
 	}
@@ -214,7 +227,52 @@ public class BusinessCommande implements IBusinessCommande{
 		// TODO Auto-generated method stub
 		return null;
 	}
-		
+	
+	//Ajout Marion
+	@Override
+	public Integer creerUneCommande(Integer paramIdCommande, Date paramDatePaiement, Date paramDateValidation, Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur) {
+    	Commande nouvelleCommande = new Commande(paramIdCommande,paramDatePaiement, paramDateValidation, paramDateLivraisonPrevue, paramTypePaiement, paramPointRelais, paramConsommateur);
+		return daoCommande.creer(nouvelleCommande);
+	}
+	
+	@Override
+	public void creerUneLigneCommande(Integer paramIdLgnCommande, Double paramQuantiteCommandee, Commande paramCommande,
+			Produit paramProduit) {
+		LigneCommande nouvelleLigneCommande = new LigneCommande(paramIdLgnCommande, paramQuantiteCommandee, paramCommande, paramProduit);
+		daoLgnCommande.creerUneLigneCommande(nouvelleLigneCommande);
+	}
+	
+	@Override
+	public TypePaiement getTypePaiementById(Integer paramIdTypePaiement) {
+		return daoTypePaiement.getById(paramIdTypePaiement);
+	}
+	
+	@Override
+	public Consommateur getConsoById(Integer paramIdConso) {
+		return daoConsommateur.getById(paramIdConso);
+	}
+
+	@Override
+	public PointRelais getPRById(Integer paramIdPR) {
+		return daoPointRelais.getById(paramIdPR);
+	}
+	
+	@Override
+	public Integer getQuantiteEnStock(Integer paramIdProduit) {
+		return daoProduitMarion.getQuantiteEnStock(paramIdProduit);
+	}
+	
+	//fin ajout Marion
+	
+	//ModifMarion
+	
+	@Override
+	public Commande getCommandebyId(Integer paramId_commande) {
+		return daoCommande.getById(paramId_commande);
+	}
+	
+	//fin modif Marion
+	
 	public LigneCommande créerUneLigneCommande() {
 		return null;
 	}
@@ -237,11 +295,7 @@ public class BusinessCommande implements IBusinessCommande{
 		return null;
 	}
 
-	@Override
-	public Commande getCommandebyId(Integer paramId_commande) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	
 

@@ -29,7 +29,7 @@ public class Commande implements Serializable {
 	@Column(name="id_commande", nullable = false)
 	private Integer id;
 	
-	@Column(name = "date_creation_commande", nullable = false)
+	@Column(name = "date_creation_commande", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateCreationCommande;
 	
@@ -219,6 +219,7 @@ public class Commande implements Serializable {
 		consommateur = paramConsommateur;
 	}  
 	
+		
 	public double getMontantCommande() {
 		double prixTotal = 0;
 		for(LigneCommande lgnCmd : lgnCommandes) {

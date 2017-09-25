@@ -18,9 +18,15 @@ public class DaoConsommateur implements IDaoConsommateur {
     public DaoConsommateur() {
     }
 
+    @Override
     public Consommateur seConnecter(String mail, String mdp) {
         // TODO implement here
         return null;
     }
+
+	@Override
+	public Consommateur getById(Integer paramIdConso) {
+		return (Consommateur) em.createQuery("select c from Consommateur c where c.id = :pId").setParameter("pId", paramIdConso).getSingleResult();
+	}
 
 }

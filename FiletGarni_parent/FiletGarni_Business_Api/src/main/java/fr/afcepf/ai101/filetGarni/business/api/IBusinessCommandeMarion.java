@@ -1,19 +1,22 @@
 package fr.afcepf.ai101.filetGarni.business.api;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Consommateur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Recette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Region;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.TypePaiement;
 
 
-public interface IBusinessCommande {
+public interface IBusinessCommandeMarion {
 
     public java.util.List<Produit> getAllProduits();
 
@@ -27,6 +30,23 @@ public interface IBusinessCommande {
 
     public Commande creerUneCommande();
     
+    //Ajout Marion
+    public Integer creerUneCommande(Integer paramIdCommande, Date paramDatePaiement, Date paramDateValidation, 
+    		Date paramDateLivraisonPrevue, TypePaiement paramTypePaiement, PointRelais paramPointRelais, Consommateur paramConsommateur);
+    
+    public void creerUneLigneCommande(Integer paramIdLgnCommande, Double paramQuantiteCommandee, Commande paramCommande,
+			Produit paramProduit);
+    
+    public TypePaiement getTypePaiementById(Integer paramIdTypePaiement);
+    
+    public Consommateur getConsoById(Integer paramIdConso);
+    
+    public PointRelais getPRById(Integer paramIdPR);
+    
+    public Integer getQuantiteEnStock(Integer paramIdProduit);
+    
+    //fin ajout
+
     public LigneCommande ajouterLigneCommande(LigneCommande ligneCommande, Commande commande);
 
     public LigneCommande modifierUneLigneDeCommande(LigneCommande ligneCommande, Double quantite);
