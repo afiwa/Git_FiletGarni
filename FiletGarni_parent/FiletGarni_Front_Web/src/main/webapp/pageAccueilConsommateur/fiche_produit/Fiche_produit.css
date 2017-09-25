@@ -5,7 +5,8 @@
     position: relative;
     display: inline-block;
     overflow: hidden;
-    margin: 19px;
+    margin: 14px;
+    margin-top: 30px;
     min-width: 230px;
     max-width: 347px;
     width: 100%;
@@ -15,6 +16,7 @@
     line-height: 1.2em;
     text-align: left;
     border: 1px solid #2ABB6D;
+    border-radius: 3px;
 }
 
 .FicheProduit *,
