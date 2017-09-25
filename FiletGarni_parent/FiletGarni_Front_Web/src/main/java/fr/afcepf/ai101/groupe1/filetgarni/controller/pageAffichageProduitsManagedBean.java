@@ -10,7 +10,6 @@ import javax.faces.bean.SessionScoped;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.ProduitRecette;
 
 @SessionScoped
 @ManagedBean(name = "mbPageAffichageProduits")
@@ -36,7 +35,10 @@ public class pageAffichageProduitsManagedBean {
 		produitsParCategorie = businessCommande.getProduitByIdCategorie(id_categorie, true);
 		return "/commande/fichesProduit/pageAffichageProduitsParCategorie.xhtml?faces-redirect=true";
 	}
-	
+	public List<Produit> recupererListeProduitsParCategorie(Integer id_categorie) {
+		produitsParCategorie = businessCommande.getProduitByIdCategorie(id_categorie, true);
+		return produitsParCategorie ;
+	}
 //	public String afficherPageTousLesProduits() {
 //		return "/commande/pageAffichageProduits.xhtml?faces-redirect=true";
 //	}

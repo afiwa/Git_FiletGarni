@@ -13,8 +13,10 @@
 		<link type="text/css" rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
 		<link rel="stylesheet" href="Fiche_recette_detaillee.css" />
-			<link type="text/css" rel="stylesheet" href="../css/main.css" />
-			<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+		<link type="text/css" rel="stylesheet" href="../fichesProduit/styleTest.css" />
+		<link type="text/css" rel="stylesheet" href="../fichesProduit/Fiche_produit.css" />
 		<style>
         @font-face {
             font-family: "fibre";
@@ -27,9 +29,11 @@
 	<ui:define name="content">
 
 			<section class="ficheRecetteDetaillee">
-			<button class="btnRetour" src="#" style="vertical-align: middle">
+			<h:commandButton action="#{mbFicheRecetteDetaillee.retournerPagePrecedente()}" value="Retour"
+							class="btnRetour" />
+			<!-- <button class="btnRetour" src="#" style="vertical-align: middle">
 				<span>Retour </span>
-			</button>
+			</button> -->
 			<div class="entete">
 				<span class="titreRecette">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}</span>
 			</div>
@@ -48,15 +52,16 @@
 									value="#{mbFicheRecetteDetaillee.produitsRecettesBdd}">
 							<li class="ingredientProd">
 								<h:outputLabel 
-									value="#{produitRecette.libelle} : #{produitRecette.quantiteRecette}"/>	
+									value="#{produitRecetteBdd.libelle} : #{produitRecetteBdd.quantiteRecette}"/>	
 							</li>									
 						</ui:repeat>
 						<ui:repeat var="produitRecetteNonBdd" 
-								value="#{mbFicheRecetteDetaillee.produitsRecettesNonBdd}"></ui:repeat>
-						<li class="ingredient">
-								<h:outputLabel 
-									value="#{produitRecette.libelle} : #{produitRecette.quantiteRecette}"/>	
-						</li>	
+								value="#{mbFicheRecetteDetaillee.produitsRecettesNonBdd}">
+							<li class="ingredient">
+								<h:outputLabel
+									value="#{produitRecetteNonBdd.libelle} : #{produitRecetteNonBdd.quantiteRecette}"/>	
+							</li>
+						</ui:repeat>	
 					</ul>
 			</div>
 			<div class="preparation">
@@ -66,25 +71,61 @@
 				<p>#{mbFicheRecetteDetaillee.tempsPreparation}<br/>#{mbFicheRecetteDetaillee.tempsCuisson}<br/>
 					#{mbFicheRecetteDetaillee.descriptifRecette}
 				</p>
+	<!-- 			<p>#{mbFicheRecetteDetaillee.recetteSelectionnee.descriptif}</p> -->
 			</div>
 			<!-- IMPORT FICHE RECETTE -->
 			<div class="refFicheProduit">
 				<h2 class="titreFicheProduit">
 					<span>Retrouvez les ingrédients de votre recette</span>
 				</h2>
-<!-- 				<ui:repeat var="produitRecetteBdd" 
+ 				<ui:repeat var="produitRecetteBdd" 
 						   value="#{mbFicheRecetteDetaillee.produitsRecettesBdd}">
 						<ui:repeat var="produit" 
-							   value="#{mbPageAffichageProduits.recupererProduitsParCategorie(produitRecetteBdd.categorie.id)}">
-							<ui:include src="../../WEB-INF/components/produit.xhtml" />					
+							   value="#{mbPageAffichageProduits.recupererListeProduitsParCategorie(produitRecetteBdd.categorie.id)}">
+							<ui:include src="/WEB-INF/components/produit.xhtml" />					
 						</ui:repeat>
-				</ui:repeat> -->
+				</ui:repeat>
 			</div>
+			
+			<!-- ADD TO CART INTERACTION -->
+    
+			    <div class="cd-cart-container empty">
+			        <a href="#0" class="cd-cart-trigger">
+						Panier
+						<ul class="count"> <!-- cart items count -->
+							<li>0</li>
+							<li>0</li>
+						</ul> <!-- .count -->
+					</a>
+			
+			        <div class="cd-cart">
+			            <div class="wrapper">
+			                <header>
+			                    <h2>Panier</h2>
+			                    <span class="undo"><a href="#0">Remettre article</a></span>
+			                </header>
+			
+			                <div class="body">
+			                    <ul>
+			                        <!-- products added to the cart will be inserted here using JavaScript -->
+			                    </ul>
+			                </div>
+			
+			                <footer>
+			                    <a href="#0" class="checkout btn"><em>Total - €<span>0</span></em></a>
+			                </footer>
+			            </div>
+			        </div>
+			        </div>
+			        <!-- .cd-cart -->
+			        
 			</section>
 
 			<script
 				src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 			<script type="text/javascript" src="../jsHamburger/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    		<script type="text/javascript" src="../../pageAccueilConsommateur/fiche_produit/Affichage_Produit_Projet3.js"></script>
 	</ui:define>
 </ui:composition>
 </html>
