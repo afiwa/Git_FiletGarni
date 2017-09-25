@@ -6,10 +6,16 @@
 
 	<ui:component>
 		<figure class="FicheRecette"> 
-			<img class="image_recette_principale" 
-				 src="../../Ressources/Images/Images_recette/#{recette.photo}" alt="#{recette.libelle}" /> 
+		<h:commandLink action="#{mbFicheRecetteDetaillee.afficherFicheRecetteDetaillee(recette.id)}">
+				<h:graphicImage value="../../Ressources/Images/Images_recette/#{recette.photo}" 
+								class="image_recette_principale"
+								alt="#{recette.libelle}"/>
+			</h:commandLink>
 			<figcaption>
-				<div class="TitreRecette">#{recette.libelle}</div>
+				<div class="TitreRecette">
+	            	<h:commandLink action="#{mbFicheRecetteDetaillee.afficherFicheRecetteDetaillee(recette.id)}" 
+	            					value="#{recette.libelle}"/>	            
+	            </div>
 				<div class="NbPersRecette">#{recette.nbPers}</div>
 			</figcaption> 
 		</figure>
