@@ -23,8 +23,8 @@
 
 					<div class="body">
 						<ul>
-							<ui:repeat id="repeater" var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
-								<li class="product">
+							<ui:repeat id="repeater-addToCart" var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
+								<li id="item" class="product">
 									<div class="product-image">
 										<a href="#0">
 											<img src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}" alt="placeholder"/>
