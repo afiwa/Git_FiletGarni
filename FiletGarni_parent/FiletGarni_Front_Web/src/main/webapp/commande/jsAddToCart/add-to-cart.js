@@ -1,3 +1,10 @@
+$(".hover").mouseleave(
+    function () {
+        $(this).removeClass("hover");
+    }
+);
+
+
 jQuery(document).ready(function ($) {
     var cartWrapper = $('.cd-cart-container');
     //product id - you don't need a counter in your real project but you can use your real product id
@@ -70,7 +77,7 @@ jQuery(document).ready(function ($) {
         });
 
         //reinsert item deleted from the cart
-        undo.on('click', 'a', function (event) {
+        /*undo.on('click', 'a', function (event) {
             clearInterval(undoTimeoutId);
             event.preventDefault();
             cartList.find('.deleted').addClass('undo-deleted').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
@@ -78,7 +85,7 @@ jQuery(document).ready(function ($) {
                 quickUpdateCart();
             });
             undo.removeClass('visible');
-        });
+        });*/
     }
     function removeProduct(product) {
         clearInterval(undoTimeoutId);
