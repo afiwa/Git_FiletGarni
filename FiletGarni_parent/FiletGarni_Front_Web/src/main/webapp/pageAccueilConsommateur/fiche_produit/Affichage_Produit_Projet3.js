@@ -7,24 +7,24 @@ $(".hover").mouseleave(
 
 
 // Incremente le panier
-$('.image_plus').on('click', function (e) {
-    console.log("function");
-    e.preventDefault();
-    var $this = $(this);
-    var $parent = $this.parent();
-    var nombreArticle = parseInt($parent.find('.nbArticle').text().replace('0', '0'));
-
-    if (nombreArticle < 100) {
-        nombreArticle += 1;
-
-        $parent.find('.nbArticle').html(nombreArticle);
-
-    } else {
-        value = 100;
-    }
-    $input.val(value);
-
-});
+//$('.image_plus').on('click', function (e) {
+//    console.log("function");
+//    e.preventDefault();
+//    var $this = $(this);
+//    var $parent = $this.parent();
+//    var nombreArticle = parseInt($parent.find('.nbArticle').text().replace('0', '0'));
+//
+//    if (nombreArticle < 100) {
+//        nombreArticle += 1;
+//
+//        $parent.find('.nbArticle').html(nombreArticle);
+//
+//    } else {
+//        value = 100;
+//    }
+//    $input.val(value);
+//
+//});
 
 //decremente le panier
 //$('.image_minus').on('click', function (e) {
@@ -55,7 +55,7 @@ $('.image_plus').on('click', function (e) {
 jQuery(document).ready(function ($) {
     var cartWrapper = $('.cd-cart-container');
     //product id - you don't need a counter in your real project but you can use your real product id
-    var productId = 0;
+    var productId;
     var Produit;
     var ImageProduit;
     var NomProduit;
@@ -83,6 +83,8 @@ jQuery(document).ready(function ($) {
         addToCartBtn.on('click', function (event) {
             //recup fiche produit
             Produit = $(this).parent().parent().parent();
+            //recup id produit
+            productId = Produit.find('.id-produit').attr('value');
             //recup img
             ImageProduit = Produit.find('.image_principale').attr('src');
             //recup le nb article
@@ -175,7 +177,7 @@ jQuery(document).ready(function ($) {
         //this is just a product placeholder
         //you should insert an item with the selected product info
         //replace productId, productName, price and url with your real product info
-        productId = productId + 1;
+    	
         var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src=' + ImageProduit + ' alt="placeholder"></a></div><div class="product-details"><h3><a href="#0" id="product-name">' + NomProduit + '</a></h3><span class="price">' + PrixProduit + '</span><div class="actions"><a href="#0" class="delete-item">Supprimer</a><div class="quantity"><label for="cd-product-' + productId + '">Quantite</label><span class="select"><select id="cd-product-' + productId + '" name="quantity">'+ quantiteParDefaut(NbArticle)+'</select></span></div></div></div></li>');
         cartList.prepend(productAdded);
     }
