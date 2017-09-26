@@ -33,13 +33,13 @@ public class ManagedBeanPaiement implements Serializable {
 	private Integer id_paiement = 1;
 	private Integer id_pointRelais = 1;
 
-	public String validerCommande() {
+	/*public String validerCommande() {
 		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), new Date(), buCmde.getTypePaiementById(id_paiement),buCmde.getPRById(id_pointRelais), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
 		for(LigneCommande l : monMbTestPanier.getLigneCommandes()) {
 			buCmde.creerUneLigneCommande(null, l.getQuantiteCommandee(), buCmde.getCommandebyId(idNouvelleCommande), l.getProduit());
 		}
 		return "/commande/14RecapitulatifCommande/recapitulatifCommande.xhtml";
-	}
+	}*/
 
 	public Date calculDateLivraison() {
 		Date dateLivraison= new Date();

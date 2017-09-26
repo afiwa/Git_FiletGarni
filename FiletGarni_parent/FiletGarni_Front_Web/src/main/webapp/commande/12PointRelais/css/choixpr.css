@@ -2,6 +2,10 @@ header{
     margin-bottom: auto;
 }
 
+#global{
+	margin-top: 64px;
+}
+
 #choix{
     height: 43em;
     background-color: #fff;
@@ -16,9 +20,8 @@ header{
     grid-template-rows:60% 40%;
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
-
 
 .cd-multi-steps{
     margin-top: 1em;
@@ -31,13 +34,14 @@ header{
     grid-row:1/ span 2;
     display:grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows:20% 30% 10% 13% 12% 15%;
+    grid-template-rows:20% 35% 10% 13% 12% 15%;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     text-align: center;
+    margin-bottom: 52px;
 }
 
 #box-info-titre{
@@ -56,6 +60,13 @@ header{
 
 .box-info-adresse-titre{
     padding-bottom: 10px;
+    display: ;
+}
+
+.box-info-icon-adresse {
+	grid-row:	;
+    grid-column: ;
+    padding-left: ;	
 }
 
 #box-info-domicile{
@@ -73,14 +84,17 @@ header{
     grid-row:3;
     float:right;
     padding-right: 1em;
+    display: flex;
 }
 
 .box-info-form-adresse{
-    display: inline-block;
+    display: block;
 }
 
 .box-info-rbchoix{
     padding-right: 5px;
+    grid-row: 2;
+    grid-column: 1;
 }
 
 #box-info-ville input, #box-info-cp input, #box-info-jour select, #box-info-heure select {
@@ -149,14 +163,14 @@ header{
 }
 
 #box-info-jour{
-    grid-column:1;
+    grid-column:2;
     grid-row:6;
     height: 50%;
     justify-self: center;
 }
 
 #box-info-heure{
-    grid-column:2;
+    grid-column:1;
     grid-row:6;
     height: 50%;
     justify-self: center;
@@ -165,7 +179,7 @@ header{
 #historique{
     grid-column:2;
     grid-row:2;
-    margin-bottom: 20px;
+    margin-bottom: 120px;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -173,7 +187,7 @@ header{
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     justify-self: center;
     display:grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 70% 30%;
     grid-template-rows:17% 83%;
 }
 
@@ -185,7 +199,7 @@ header{
     font-weight: 500;
     text-transform: uppercase;
     transition-duration: .3s;
-    padding-top: 15px;
+    padding-top: 43px;
     padding-bottom: 15px;
     grid-column:1 / span 2;
     grid-row:1;
@@ -195,13 +209,15 @@ header{
     grid-column:1;
     grid-row:2;
     width: 100%;
+    margin-top: 50px;
 }
 
 #historique-validation{
     grid-column:2;
     grid-row:2;
-    height: 50%;
-    margin: auto;
+    width: 0%;
+    height: 0%;
+    margin: 50px;
 }
 
 /*
@@ -302,17 +318,17 @@ header{
 
 .buttonValide {
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: #f4511e;
   border: none;
   color: #FFFFFF;
   text-align: center;
   font-size: 28px;
-  padding: 20px;
-  width: 200px;
+  padding: 13px;
+  width: 188px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
+  margin-top: 130px;
 }
 
 .buttonValide span {
@@ -326,7 +342,7 @@ header{
   content: '\00bb';
   position: absolute;
   opacity: 0;
-  top: 0;
+  top: -28px;
   right: -20px;
   transition: 0.5s;
 }

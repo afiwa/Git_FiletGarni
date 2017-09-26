@@ -166,8 +166,8 @@ function initMarkerAndMapPR(){
             	'<div class="cd-tabs">'+
             		'<nav>'+
             			'<ul class="cd-tabs-navigation">'+
-            				'<li><a data-content="adresse" class="selected" href="#0">Adresse</a></li>'+
-            				'<li><a data-content="horaire" href="#0">Horaire </a></li>'+
+            				'<li><a data-content="adresse" class="selected" href="#0" style="padding-left: 40px;">Adresse</a></li>'+
+            				'<li><a data-content="horaire" href="#0" style="padding-left: 40px;">Horaire </a></li>'+
             			'</ul>'+
             	'<!-- cd-tabs-navigation -->'+
             		'</nav>'+

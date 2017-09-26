@@ -179,6 +179,7 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 	
 	public void recupererTousLesPointRelais() {
 		tousLesPointRelais = businessPr.getAllPointRelais();
+		System.out.println(tousLesPointRelais);
 	}
 	
 	
