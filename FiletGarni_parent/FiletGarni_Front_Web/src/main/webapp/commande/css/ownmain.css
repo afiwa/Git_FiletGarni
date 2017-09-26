@@ -35,7 +35,7 @@ body{
 }
 
 #logo{
-	background-image: url("../images/Logo-Filet-Garni-COMMANDE-small.png");
+/*  	background-image: url("../../Ressources/Images/Logos/Logo-Filet-Garni-COMMANDE-small.png"); */
 	width:111px;
 	height:48px;
 	border-radius:0%;
