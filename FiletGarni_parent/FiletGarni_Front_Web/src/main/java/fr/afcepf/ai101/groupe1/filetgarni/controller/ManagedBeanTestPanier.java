@@ -80,7 +80,7 @@ public class ManagedBeanTestPanier implements Serializable{
 		buPdt = paramBuPdt;
 	}
 
-	public Integer getIdPdt() {
+	/*public Integer getIdPdt() {
 		return idPdt;
 	}
 
@@ -151,7 +151,7 @@ public class ManagedBeanTestPanier implements Serializable{
 
 	public void setTotalMontantCommande(Double totalMontantCommande) {
 		this.totalMontantCommande = totalMontantCommande;
-	}
+	} */
 
 
 	public void calculTotalMontantCommande() {
