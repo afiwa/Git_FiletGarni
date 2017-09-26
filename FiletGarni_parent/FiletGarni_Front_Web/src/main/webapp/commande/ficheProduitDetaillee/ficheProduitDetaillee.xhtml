@@ -6,7 +6,7 @@
 
 <ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
 
-	<ui:define name="title">"#{mbPageProduitDetaille.produitSelectionne.libelle}"</ui:define>
+	<ui:define name="title">#{mbPageProduitDetaille.produitSelectionne.libelle}</ui:define>
 	<ui:define name="headcssscript">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		
@@ -25,8 +25,11 @@
 	</ui:define>
 
 	<ui:define name="content">
-		
-		<button class="btnRetour" src="#" style="vertical-align:middle"><span>Retour </span></button>
+		<div class="btnRetour" >
+			<h:commandButton action="#{mbPageProduitDetaille.retournerPagePrecedente()}" value="Retour"							
+							style="background-color: #2abb6d; vertical-align: middle; border: none; color: #fff; font-size: 28px" />
+            <span></span>
+         </div>
     <div class="main_bg">
         <div class="wrap">
             <div class="main">
@@ -54,12 +57,25 @@
                             <div class="desc1">
                                 <h3>
 	                                #{mbPageProduitDetaille.produitSelectionne.libelle} - 
-	                                #{mbPageProduitDetaille.produitSelectionne.conditionnements.get(0).libelle} 
+	                                #{mbPageProduitDetaille.produitSelectionne.conditionnements.get(0).libelle}
+	                                 <h:outputLabel value="#{mbPageProduitDetaille.produitSelectionne.conditionnements.get(0).quantite}" >
+						            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+						            </h:outputLabel>
+	                                 #{mbPageProduitDetaille.produitSelectionne.conditionnements.get(0).unite}
+	                                 
                                 </h3>
-                                <p>Produit chez #{mbPageProduitDetaille.produitSelectionne.producteur.raisonSociale}
-                                	 par #{mbPageProduitDetaille.produitSelectionne.producteur.prenom}
-                                	  #{mbPageProduitDetaille.produitSelectionne.producteur.nom}</p>
-                                <h5>#{mbPageProduitDetaille.produitSelectionne.prix}</h5>
+                                <h:commandLink 
+                                	action="#{mbFicheProducteurDetaille.afficherFicheProducteurDetaille(mbPageProduitDetaille.produitSelectionne.producteur.id)}">	                                                              
+	                                <p>Produit chez #{mbPageProduitDetaille.produitSelectionne.producteur.raisonSociale}
+	                                	 par #{mbPageProduitDetaille.produitSelectionne.producteur.prenom}
+	                                	  #{mbPageProduitDetaille.produitSelectionne.producteur.nom}</p>
+                               	</h:commandLink>
+                                <h5>
+	                                <h:outputLabel value="#{mbPageProduitDetaille.produitSelectionne.prix}" >
+			            				<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+			           				 </h:outputLabel>
+						 			€
+                                </h5>
                                 <div class="available">
 
                                     <ul>
