@@ -4,7 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml">
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml" xmlns:customer="http://java.sun.com/jsf/composite/components/customer">
+
 	<ui:define name="title">InscriptionConnection</ui:define>
 	<ui:define name="headcssscript">
 		<meta name="viewport"
@@ -19,9 +20,11 @@
 
 	<ui:define name="content">
 		<h:form name="form-connexion">
+		<div id="warningConnexion">
+			<label id="warningConnexion">Veuillez vous connecter pour finaliser votre commande.</label>
+		</div>
 			<div class="login-wrap">
 				<div class="login-html">
-						<label id="warningConnexion">Vous n'êtes pas connecté. Veuillez vous connecter pour finaliser votre commande.</label>
 
 					<input id="tab-1" type="radio" name="tab" class="sign-in"
 						checked="checked" /><label for="tab-1" class="tab">Connexion</label>

@@ -1,5 +1,7 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -64,5 +66,11 @@ public class DaoLgnCommande implements IDaoLgnCommande {
     public void signalerRetardLivraison() {
         // TODO implement here
     }
+    
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LigneCommande> getLignesCommandeByIdCommmande(Integer id_commande) {
+		return em.createQuery("select l from LigneCommande l where l.commande.id = :pId").setParameter("pId", id_commande).getResultList();
+	}
 
 }

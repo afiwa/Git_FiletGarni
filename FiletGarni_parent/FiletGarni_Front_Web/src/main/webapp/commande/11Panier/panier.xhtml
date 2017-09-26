@@ -27,7 +27,7 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 
 	<ui:define name="content">
 
-		<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
+		<section class="cd-multi-steps">
 		<div>
 			<ol class="cd-multi-steps text-center custom-icons">
 				<li class="current"><em>Panier</em></li>
@@ -38,15 +38,13 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 		</div>
 		</section>
 
-		<!-- Afficher le contenu du panier -->
+		Afficher le contenu du panier
 		<div class="shopping-cart">
-			<!-- Title -->
 			<div class="title">Mon panier</div>
 
-			<!-- Product # -->
 			<h:panelGroup layout="block" id="lgnCmdes">
 				<ui:repeat layout="inline" id="repeater" var="ligneCommande"
-					value="#{mbTestPanier.ligneCommandes}">
+					value="##{mbTestPanier.ligneCommandes}">
 					<div id="item" class="item">
 						<div class="buttons">
 							<span class=""> <h:commandLink class="delete-btn">
@@ -71,12 +69,13 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 									<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 								</h:outputLabel> €
 							</span> <span> <h:outputLabel
-									value="#{ligneCommande.produit.conditionnements.get(0).libelle} " />
+									value="#{ligneCommande.produit.conditionnements.get(0).libelle.toString()} " />
 								<h:outputLabel
 									value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
 									<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
 								</h:outputLabel> <h:outputLabel
-									value="#{ligneCommande.produit.conditionnements.get(0).unite}" />
+								
+									value="#{ligneCommande.produit.conditionnements.get(0).unite.toString()}" />
 							</span>
 
 						</div>
@@ -117,7 +116,7 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 				</ui:repeat>
 			</h:panelGroup>
 
-			<!-- Afficher le total du panier -->
+<!-- 			Afficher le total du panier -->
 			<div class="item total-cart">
 				<div class="total-cart">
 					<span class="title" id="dernierTitre">Total de votre
@@ -135,14 +134,15 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 						value="Valider"></h:commandButton>
 				</div>
 			</div>
+
 		</div>
 
-		<!-- 		<script -->
-		<!-- 			src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
-		<!-- 		<script type="text/javascript" src="js/affichagePanier.js"></script> -->
-		<!-- 		<script type="text/javascript" -->
-		<!-- 			src="../jsBreadCrumbs/styleBreadCrumbs.js"></script> -->
-		<!-- 		<script type="text/javascript" src="../jsHamburger/main.js"></script> -->
+				<script
+					src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+				<script type="text/javascript" src="js/affichagePanier.js"></script>
+				<script type="text/javascript"
+					src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
+				<script type="text/javascript" src="../jsHamburger/main.js"></script>
 
 
 	</ui:define>

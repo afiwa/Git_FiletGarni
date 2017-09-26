@@ -271,6 +271,11 @@ public class BusinessCommande implements IBusinessCommande{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<LigneCommande> getAllLigneCommandesByIdCommande(Integer id_commande) {
+		return daoLgnCommande.getLignesCommandeByIdCommmande(id_commande);
+	}
 
 }
 

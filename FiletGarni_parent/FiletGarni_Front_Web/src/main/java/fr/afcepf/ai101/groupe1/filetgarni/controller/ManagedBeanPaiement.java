@@ -1,15 +1,19 @@
 package fr.afcepf.ai101.groupe1.filetgarni.controller;
 
+import java.io.Console;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeMarion;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
@@ -29,16 +33,36 @@ public class ManagedBeanPaiement implements Serializable {
 
 	@EJB
 	private IBusinessCommandeMarion buCmde;
-	
+	private IBusinessCommande buCmde2;
+
+	private Commande commande = new Commande();
 	private Integer id_paiement = 1;
 	private Integer id_pointRelais = 1;
 
 	public String validerCommande() {
-		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), new Date(), buCmde.getTypePaiementById(id_paiement),buCmde.getPRById(id_pointRelais), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
+		System.out.println("je valide ma commande");
+		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), new Date(), buCmde.getTypePaiementById(id_paiement), buCmde.getPRById(id_pointRelais), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
+		System.out.println("##### id cmd : "+idNouvelleCommande);
 		for(LigneCommande l : monMbTestPanier.getLigneCommandes()) {
 			buCmde.creerUneLigneCommande(null, l.getQuantiteCommandee(), buCmde.getCommandebyId(idNouvelleCommande), l.getProduit());
 		}
-		return "/commande/14RecapitulatifCommande/recapitulatifCommande.xhtml";
+		System.out.println("##### id cmd : "+idNouvelleCommande);
+
+		// Dans l'idéal, il faudrait aller récupérer 
+		
+		commande = buCmde.getCommandebyId(idNouvelleCommande);
+		List<LigneCommande> listTemp = new ArrayList<LigneCommande>();
+		for(LigneCommande lgnCmd : monMbTestPanier.getLigneCommandes()) {
+			listTemp.add(lgnCmd);
+		}
+		commande.setLgnCommandes(listTemp);
+
+//		System.out.println("montant cmd : "+commande.getMontantCommande());
+
+//		commande.setLgnCommandes(buCmde2.getCommandebyId(idNouvelleCommande).getLgnCommandes());
+//		System.out.println("##### id cmd : "+idNouvelleCommande);
+
+		return "/commande/14RecapitulatifCommande/recapitulatifCommande.xhtml?faces-redirect=true";
 	}
 
 	public Date calculDateLivraison() {
@@ -101,8 +125,13 @@ public class ManagedBeanPaiement implements Serializable {
 		id_pointRelais = paramId_pointRelais;
 	}
 	
-	
+	public Commande getCommande() {
+		return commande;
+	}
 
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
 
 
 }

@@ -18,9 +18,6 @@
 		<link type="text/css" rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto" />
 
-		<!-- Resource style tout le reste -->
-
-		<!-- Resource style Card -->
 		<link rel='stylesheet prefetch'
 			href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' />
 		<link rel='stylesheet prefetch'
@@ -32,6 +29,9 @@
 		<link type="text/css" rel="stylesheet"
 			href="../css/styleBreadCrumbs.css" />
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
+		<link type="text/css" rel="stylesheet"
+			href="../11Panier/css/print_cart.css" />
+
 	</ui:define>
 
 	<ui:define name="content">
@@ -55,23 +55,25 @@
 				<h3 class="bg-success">
 					Merci de votre confiance. Votre commande a bien été enregistrée et
 					sera livrée le
-					<!-- 					<h:outputLabel value="#{mbTestPanier.commande.dateLivraisonPrevue}"/> -->
+					<h:outputLabel value="#{mbPaiement.commande.dateLivraisonPrevue}" />
 					Total de votre commande :
-					<!-- 				 <h:outputLabel value="#{mbTestPanier.commande.getMontantCmde()}"/>€ -->
+					<h:outputLabel value="#{mbTestPanier.totalMontantCommande}" />
+					€
 				</h3>
 				<div class="subBlock">
 					<div class="block customer-info">
 						<div class="form-group col-md-12 bg-primary">
 							<label class="control-label" for="contactinformation">Mes
-								coordonnées</label>
+								coordonnées de contact</label>
 						</div>
 
 						<div class="form-group col-md-6 contenu">
 							<span class="required-lbl"></span><label class="control-label"
 								for="firstname">Nom</label>
 							<div class="controls">
-								<output id="firstname" name="firstname" type="text"
-									placeholder="" class="form-control" required="" />
+								<h:outputLabel id="lastname" name="lastname" type="text"
+									placeholder="" class="form-control"
+									value="#{mbConnecterConso.consommateurConnecte.nom.toString()}" />
 							</div>
 						</div>
 
@@ -79,8 +81,9 @@
 							<span class="required-lbl"></span><label class="control-label"
 								for="lastname">Prénom</label>
 							<div class="controls">
-								<output id="lastname" name="lastname" type="text" placeholder=""
-									class="form-control" required="" />
+								<h:outputLabel id="lastname" name="lastname" type="text"
+									placeholder="" class="form-control"
+									value="#{mbConnecterConso.consommateurConnecte.prenom.toString()}" />
 							</div>
 						</div>
 
@@ -88,19 +91,12 @@
 							<span class="required-lbl"></span><label class="control-label"
 								for="emailaddress">Adresse mail</label>
 							<div class="controls">
-								<output id="email" name="email" type="email" placeholder=""
-									class="form-control" required="" />
+								<h:outputLabel id="email" name="email" type="email"
+									placeholder="" class="form-control"
+									value="#{mbConnecterConso.consommateurConnecte.mail.toString()}" />
 							</div>
 						</div>
 
-						<div class="form-group col-md-6 contenu">
-							<label class="control-label" for="phone">Numéro de
-								téléphone</label>
-							<div class="controls">
-								<output id="phone" name="phone" type="number" placeholder=""
-									class="form-control" required="" />
-							</div>
-						</div>
 					</div>
 					<div class="block shipping-info">
 
@@ -140,8 +136,8 @@
 							<span class="required-lbl"></span><label class="control-label"
 								for="postcode">Code postal</label>
 							<div class="controls">
-								<output id="postcode" name="postcode" type="text" placeholder=""
-									class="form-control" required="" />
+								<h:outputLabel id="postcode" name="postcode" type="text" placeholder=""
+									class="form-control" value="" />
 							</div>
 						</div>
 
@@ -241,74 +237,80 @@
 			</div>
 		</div>
 
-		<!-- Product # -->
-		<ui:repeat id="repeater" var="ligneCommande"
-			value="#{mbTestPanier.ligneCommandes}">
-			<div id="item" class="item">
-				<div class="buttons">
-					<!-- 							<span class="delete-btn">  -->
-					<h:commandLink class="delete-btn">
-						<f:ajax listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
-							event="click" execute="@form" render="form-conso" />
-					</h:commandLink>
-					<!-- 							</span>  -->
-					<span class="like-btn"></span>
-				</div>
+		<!-- 				Afficher le contenu du panier -->
+		<div class="shopping-cart">
+			<div class="title">Mon panier</div>
 
-				<div class="image">
-					<img class="image"
-						src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
-						alt="" />
-				</div>
+			<h:panelGroup layout="block" id="lgnCmdes">
 
-				<div class="description">
-					<span><b><h:outputLabel
-								value="#{ligneCommande.produit.libelle.toString()}" /></b></span> <span>
-						<h:outputLabel value="#{ligneCommande.produit.prix}"
-							class="article-price">
+				<ui:repeat id="repeater" var="ligneCommande"
+					value="#{mbPaiement.commande.lgnCommandes}">
+					<div id="item" class="item">
+
+						<div class="image">
+							<img class="image"
+								src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
+								alt="" />
+						</div>
+
+						<div class="description">
+							<span><b><h:outputLabel
+										value="#{commande.
+ 								produit.libelle.toString()}" /></b></span>
+							<span> <h:outputLabel
+									value="#{ligneCommande.produit.prix}" class="article-price">
+									<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+								</h:outputLabel> €
+							</span> <span> <h:outputLabel
+									value="#{ligneCommande.produit.conditionnements.get(0).libelle} " />
+								<h:outputLabel
+									value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
+									<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+								</h:outputLabel> <h:outputLabel
+									value="#{ligneCommande.produit.conditionnements.get(0).unite}" />
+							</span>
+
+						</div>
+						<div class="quantity">
+
+							<h:inputText id="quantite" class="qty" name="name"
+								value="#{ligneCommande.quantiteCommandee}">
+								<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+							</h:inputText>
+
+						</div>
+						<div class="total-price">
+							<h:outputLabel id="prixLigneCmd" class="total-article"
+								value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
+								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+							</h:outputLabel>
+							<span> €</span>
+						</div>
+					</div>
+				</ui:repeat>
+<!-- 				Afficher le total du panier -->
+			<div class="item total-cart">
+					<div class="total-cart">
+						<span class="title" id="dernierTitre">Total de votre
+							commande</span>
+						<h:outputLabel id="prixTotalPanier" class="total-panier"
+							value="#{mbTestPanier.totalMontantCommande}">
 							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-						</h:outputLabel> €
-					</span> <span> <h:outputLabel
-							value="#{ligneCommande.produit.conditionnements.get(0).libelle} " />
-						<h:outputLabel
-							value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
-							<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
-						</h:outputLabel> <h:outputLabel
-							value="#{ligneCommande.produit.conditionnements.get(0).unite}" />
-					</span>
-
+						</h:outputLabel>
+						€
+					</div>
+					<br />
+					<div>
+						<h:commandButton class="payer"
+							action="#{mbRecapPanier.RedirectConnexionOuPointRelais()}"
+							value="Valider"></h:commandButton>
+					</div>
 				</div>
-				<div class="quantity">
-					<h:commandLink class="minus-btn" type="button" name="button">
-						<img src="images\icons_panier\minus.svg" alt="" />
-						<f:ajax
-							listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}"
-							event="click" execute="@form"
-							render="quantite prixLigneCmd form-conso:prixTotalPanier" />
-					</h:commandLink>
+			</h:panelGroup>
+		</div>
 
-					<h:inputText id="quantite" class="qty" name="name"
-						value="#{ligneCommande.quantiteCommandee}">
-						<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
-					</h:inputText>
 
-					<h:commandLink class="plus-btn" type="button" name="button">
-						<img src="images\icons_panier\plus.svg" alt="" />
-						<f:ajax
-							listener="#{mbTestPanier.modifierQuantite(ligneCommande, 1, ligneCommande.quantiteCommandee)}"
-							event="click" execute="@form"
-							render="quantite prixLigneCmd form-conso:prixTotalPanier" />
-					</h:commandLink>
-				</div>
-				<div class="total-price">
-					<h:outputLabel id="prixLigneCmd" class="total-article"
-						value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
-						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-					</h:outputLabel>
-					<span> €</span>
-				</div>
-			</div>
-		</ui:repeat>
+
 
 
 		<script
