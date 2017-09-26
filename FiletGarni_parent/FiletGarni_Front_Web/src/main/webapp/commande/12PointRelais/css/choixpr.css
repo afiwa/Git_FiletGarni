@@ -342,13 +342,13 @@ header{
   content: '\00bb';
   position: absolute;
   opacity: 0;
-  top: -28px;
+  top: -26px;
   right: -20px;
   transition: 0.5s;
 }
 
 .buttonValide:hover span {
-  padding-right: 25px;
+  padding-left: 25px;
 }
 
 .buttonValide:hover span:after {
