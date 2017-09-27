@@ -1056,7 +1056,7 @@ $(document).ready(function() {
                 enableZoom: true,
                 showTooltip: true,
                 onRegionClick: function(element, code, region) {
-                    window.location = "../pageAccueilConsommateur/pageAccueilConsommateur.jsf"
+                    window.location = "../commande/pageAccueilConsommateur/pageAccueilConsommateur.jsf"
                 }
             });
         });
