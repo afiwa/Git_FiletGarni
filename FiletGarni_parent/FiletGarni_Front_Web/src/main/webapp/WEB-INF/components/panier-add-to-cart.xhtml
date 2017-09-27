@@ -1,83 +1,98 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:component>
-
-		<div class="cd-cart-container">
-			<a href="#0" class="cd-cart-trigger"> Panier
+<ui:component>
+	
+	<h:panelGroup styleClass="cd-cart-container" >
+	
+		<a href="#0" class="cd-cart-trigger"> Panier
+			<h:panelGroup  id="pastille" layout="block">
 				<ul class="count">
-					<!-- cart items count -->
-					<li>0</li>
-					<li>0</li>
-				</ul> <!-- .count -->
-			</a>
+					<li><h:outputText value="#{mbTestPanier.quantiteTotalePanier}"></h:outputText></li>
+				</ul>
+			</h:panelGroup>
+		</a>
+	
 
-			<div class="cd-cart">
-				<div class="wrapper">
-					<header>
-					<h2>Panier</h2>
-					<span class="undo"><a href="#0">Remettre article</a></span> </header>
+		<div class="cd-cart">
+			<div class="wrapper">
+				<header>
+				<h2>Panier</h2>
+				<span class="undo"><a href="#0">Remettre article</a></span> </header>
 
-					<div class="body">
-						<ul>
-							<ui:repeat id="repeater-addToCart" var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
-								<li id="item" class="product">
-									<div class="product-image">
-										<a href="#0">
-											<img src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}" alt="placeholder"/>
-										</a>
-									</div>
-									<div class="product-details">
-										<h3><h:outputLabel id="product-name" value="#{ligneCommande.produit.libelle.toString()}" /></h3>
-										
-										<h:outputLabel class="price" value="#{ligneCommande.produit.prix.toString()}" />
-										<div class="actions">
-											<h:commandLink class="delete-item" value="Supprimer">
-												<f:ajax
-													listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
-													event="click" 
-													execute="@form" 
-													render="form-conso:item" />
-											</h:commandLink>
+				<div class="body">
+					<ul>
+						<h:panelGroup id="grosPanier">
+						<ui:repeat id="repeater-addToCart" var="ligneCommande"
+							value="#{mbTestPanier.ligneCommandes}">
+							<li id="item" class="product">
+								<div class="product-image">
+									<a href="#0"> <img
+										src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
+										alt="placeholder" />
+									</a>
+								</div>
+								<div class="product-details">
+									<h3>
+										<h:outputLabel id="product-name"
+											value="#{ligneCommande.produit.libelle.toString()}" />
+									</h3>
+
+									<h:outputLabel id="prixLgnCmde" class="price"
+										value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}" >
+										<f:convertNumber minFractionDigits="2" maxFractionDigits="2" /> €
+									</h:outputLabel>
+									<div class="actions">
+										<h:commandLink class="delete-item" value="Supprimer">
+											<f:ajax
+												listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
+												event="click" execute="@form" render="grosPanier prixLgnCmde :form-conso:prixTotalPanier :form-conso:affichageProduit" />
+										</h:commandLink>
+
+										<div class="quantity">
+											<label for="cd-product-#{ligneCommande.produit.id}">Quantite</label>
+											<span class="select"> 
+												<h:selectOneMenu id="listeDeroulanteQuantite" value= "#{ligneCommande.quantiteCommandee}"> 
+   														<f:ajax event="change" execute="@this" render="grosPanier prixLgnCmde :form-conso:prixTotalPanier  :form-conso:affichageProduit" 
+   														listener="#{mbTestPanier.modifierLgnCmd(ligneCommande)}"></f:ajax>
+   														<f:selectItem itemValue = "1" itemLabel = "1" /> 
+  														<f:selectItem itemValue = "2" itemLabel = "2" /> 
+  														<f:selectItem itemValue = "3" itemLabel = "3" /> 
+  														<f:selectItem itemValue = "4" itemLabel = "4" /> 
+  														<f:selectItem itemValue = "5" itemLabel = "5" /> 
+  														<f:selectItem itemValue = "6" itemLabel = "6" /> 
+  														<f:selectItem itemValue = "7" itemLabel = "7" /> 
+  														<f:selectItem itemValue = "8" itemLabel = "8" /> 
+  														<f:selectItem itemValue = "9" itemLabel = "9" /> 
+											</h:selectOneMenu> 	
 											
-											<div class="quantity">
-												<label for="cd-product-#{ligneCommande.produit.id}">Quantite</label>
-												<span class="select">
-													<select id="cd-product-#{ligneCommande.produit.id}" name="quantity">
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-													</select>
-												</span>
-											</div>
+											</span>
+
 										</div>
 									</div>
-								</li>
-							</ui:repeat>
-						</ul>
-					</div>
-
-					<footer> <h:commandLink class="checkout btn">
-						<em>Total - 
-						<h:outputLabel id="prixTotalPanier" class="total-panier" value="#{mbTestPanier.totalMontantCommande}">
-							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-						</h:outputLabel>
-						€</em>
-						</h:commandLink>
-					</footer>
+								</div>
+							</li>
+						</ui:repeat>
+						</h:panelGroup>
+					</ul>
 				</div>
-			</div>
-			<!-- .cd-cart -->
 
+				<footer> 
+				<h:commandLink class="checkout btn" action="#{mbTestPanier.validerPanier()}">
+					
+					<em>Total - 
+						<h:outputLabel id="prixTotalPanier"	class="total-panier" value="#{mbTestPanier.totalMontantCommande}">
+							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+						</h:outputLabel> €
+					</em>
+				</h:commandLink> </footer>
+			</div>
 		</div>
-	</ui:component> 
+		<!-- .cd-cart -->
+
+	</h:panelGroup>
+</ui:component>
 </html>

@@ -114,11 +114,11 @@ function toggleCart(bool) {
         undo.removeClass('visible');
         cartList.find('.deleted').remove();
 
-        setTimeout(function () {
-            cartBody.scrollTop(0);
-            //check if cart empty to hide it
-            if (Number(cartCount.find('li').eq(0).text()) == 0) cartWrapper.addClass('empty');
-        }, 500);
+//        setTimeout(function () {
+//            cartBody.scrollTop(0);
+//            //check if cart empty to hide it
+//            if (Number(cartCount.find('li').eq(0).text()) == 0) cartWrapper.addClass('empty');
+//        }, 500);
     } else {
         cartWrapper.addClass('cart-open');
     }

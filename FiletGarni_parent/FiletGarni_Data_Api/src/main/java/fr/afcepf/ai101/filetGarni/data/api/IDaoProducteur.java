@@ -14,5 +14,7 @@ public interface IDaoProducteur {
     public List<Producteur> getAllWithCategories();
     
     public Producteur getByIdWithAdresses(Integer id_producteur);
+    
+    public Producteur getByIdProduit(Integer id_produit);
 
 }

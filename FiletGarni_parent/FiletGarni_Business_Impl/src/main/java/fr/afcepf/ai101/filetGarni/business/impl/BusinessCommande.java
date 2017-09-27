@@ -218,6 +218,19 @@ public class BusinessCommande implements IBusinessCommande{
 		producteur.getAdresses().get(0).setCodePostal(codePostal);		
 		return producteur;
 	}
+	
+	@Override
+	public Producteur getProducteurByIdProduit(Integer paramId_produit) {
+		Producteur producteur = new Producteur();
+		producteur = daoProducteur.getByIdProduit(paramId_produit);
+		List<Adresse> adresses = daoAdresse.getByNonSalarie(producteur);
+		producteur.setAdresses(adresses);
+		CodePostal codePostal = daoCodePostal.getByAdresse(producteur.getAdresses().get(0));
+		List<Ville> villes = daoVille.getByCodePostal(codePostal);
+		codePostal.setVilles(villes);
+		producteur.getAdresses().get(0).setCodePostal(codePostal);		
+		return producteur;
+	}
 
 	@Override
 	public List<Recette> getAllRecettes() {

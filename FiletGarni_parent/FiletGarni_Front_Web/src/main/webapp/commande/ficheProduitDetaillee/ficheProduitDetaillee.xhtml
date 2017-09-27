@@ -27,7 +27,7 @@
 	<ui:define name="content">
 		<div class="btnRetour" >
 			<h:commandButton action="#{mbPageProduitDetaille.retournerPagePrecedente()}" value="Retour"							
-							style="background-color: #2abb6d; vertical-align: middle; border: none; color: #fff; font-size: 28px" />
+							style="background-color: #2abb6d;vertical-align: middle;border: none;color: #fff;font-size: 23px;margin-left: 30px;" />
             <span></span>
          </div>
     <div class="main_bg">
@@ -80,18 +80,21 @@
 
                                     <ul>
                                         <li>Quantité :
-                                            <select>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-                                    <option>6</option>
-									<option>7</option>
-									<option>8</option>
-									<option>9</option>
-									<option>10</option>
-								</select>
+                                           <h:selectOneMenu id="listeDeroulanteFicheProduit" value= "#{mbTestPanier.remplirPanierByList()}"> 
+   														<f:ajax event="change" 
+   																execute="@this" 
+   																render="grosPanier prixLgnCmde :form-conso:prixTotalPanier :form-conso:affichageProduit" 
+   																listener="#{mbTestPanier.modifierLgnCmd(ligneCommande)}"></f:ajax>
+   														<f:selectItem itemValue = "1" itemLabel = "1" /> 
+  														<f:selectItem itemValue = "2" itemLabel = "2" /> 
+  														<f:selectItem itemValue = "3" itemLabel = "3" /> 
+  														<f:selectItem itemValue = "4" itemLabel = "4" /> 
+  														<f:selectItem itemValue = "5" itemLabel = "5" /> 
+  														<f:selectItem itemValue = "6" itemLabel = "6" /> 
+  														<f:selectItem itemValue = "7" itemLabel = "7" /> 
+  														<f:selectItem itemValue = "8" itemLabel = "8" /> 
+  														<f:selectItem itemValue = "9" itemLabel = "9" /> 
+											</h:selectOneMenu> 	
                                         </li>
                                     </ul>
                                     <input type="button" class="btnAjoutPanier" value="Ajouter au panier" />
