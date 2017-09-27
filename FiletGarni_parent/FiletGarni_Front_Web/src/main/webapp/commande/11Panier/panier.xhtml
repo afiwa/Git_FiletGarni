@@ -38,13 +38,12 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 		</div>
 		</section>
 
-		Afficher le contenu du panier
 		<div class="shopping-cart">
 			<div class="title">Mon panier</div>
 
 			<h:panelGroup layout="block" id="lgnCmdes">
 				<ui:repeat layout="inline" id="repeater" var="ligneCommande"
-					value="##{mbTestPanier.ligneCommandes}">
+					value="#{mbTestPanier.ligneCommandes}">
 					<div id="item" class="item">
 						<div class="buttons">
 							<span class=""> <h:commandLink class="delete-btn">

@@ -52,6 +52,25 @@ public class BusinessCommandeChoixPointRelais implements IBusinessCommandeChoixP
 		
 		return pointrelais;
 	}
+	
+//	@Override
+//	public PointRelais getPRById(Integer paramIdPR) {
+//		PointRelais pointRelais = new PointRelais();
+//		CodePostal codePostal = new CodePostal();
+//		List<Ville> villes = new ArrayList<>();
+//		List<HorairesOuverture> horaire = new ArrayList<>();
+//
+//			codePostal = daoCodePostal.getByAdresse(pr.getAdresses().get(0));
+//			villes = daoVille.getByCodePostal(codePostal);
+//			horaire = daoHoraire.getByPointRelais(pointRelais);
+//			codePostal.setVilles(villes);
+//			pointrelais.getAdresses().get(0).setCodePostal(codePostal);
+//			pointrelais.setListeHorairesOuverture(horaire);
+//		
+//		return pointrelais;
+//		
+//		return daoPointRelais.getById(paramIdPR);
+//	}
 
 
 	public double DistanceEntreDeuxPointRelais(double lat_a_degre,double lon_a_degre,double lat_b_degre,double lon_b_degre){

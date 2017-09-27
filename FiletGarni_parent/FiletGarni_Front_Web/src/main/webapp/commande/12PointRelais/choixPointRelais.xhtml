@@ -42,8 +42,7 @@
 		<div>
 			<ol class="cd-multi-steps text-center custom-icons">
 				<li class="visited"><a href="..\11Panier\panier.jsf">Panier</a></li>
-				<li class="current"><a href="..\12PointRelais\pointRelais.jsf">Point
-						relais</a></li>
+				<li class="current"><a>Point relais</a></li>
 				<li><em>Paiement</em></li>
 				<li><em>Récapitulatif</em></li>
 			</ol>
@@ -166,116 +165,10 @@
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
 		<script type="text/javascript">
 		
-		
-        <div id="choix">
-
-            <div id="box-info">
-                <h2 id="box-info-titre">Selectionner votre adresse ou une ville à laquelle vous souhaitez passer récuperer votre commande</h2>
-                <div id="box-info-domicile">
-
-                    <div id="box-info-domicile-adresse">
-                        <div class="box-info-adresse-titre">
-                        	<input class="box-info-rbchoix" type="radio" name="adresse" value="domicile" checked="checked"/>
-                        	
-                        	 Domicile<img class="box-info-icon-adresse" src="images/maison64.png" /></div>
-                        <div id="box-info-domicile-adresse-rue"></div>
-                        <div class="box-info-form-adresse">
-                            <div id="box-info-domicile-adresse-ville">Bussy-saint-georges</div>
-                            <div id="box-info-domicile-adresse-cp">77600</div>
-                        </div>
-                    </div>
-                </div>
-                <div id="box-info-travail">
-
-                    <div id="box-info-travail-adresse">
-                        <div class="box-info-adresse-titre"><input class="box-info-rbchoix" type="radio" name="adresse" value="travail"/>
-                        
-                        Travail<img class="box-info-icon-adresse" src="images/travail64.png" /></div>
-                        <div id="box-info-domicile-adresse-rue"></div>
-                        <div class="box-info-form-adresse">
-                            <div id="box-info-domicile-adresse-ville">Bussy-saint-georges</div>
-                            <div id="box-info-domicile-adresse-cp">77600</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="box-info-ville">
-                    <span>Ville</span>
-                    <input id="nom_ville" placeholder="ex : Montrouge"/>
-                </div>
-
-                <div id="box-info-cp">
-                    <span>Code postal</span>
-                    <input id="code_postal" placeholder="ex : 92120" />
-                </div>
-                <span id="box-info-sous-titre">Selectionnez le rayon que vous souhaitez ainsi que le jour et l'heure  afin d'affiner votre recherche </span>
-                <div id="box-info-slidecontainer">
-                    <input type="range" min="0" max="20" step="1" class="slider" id="myRange" list="tickmarks"/>
-
-                </div>
-                <div id="box-info-jour">
-                    <span>Jour</span>
-                    <select type="jour">
-                    <option value="lundi">lundi</option>
-                    <option value="mardi">mardi</option>
-                    <option value="mercredi">mercredi</option>
-                    <option value="jeudi">jeudi</option>
-                    <option value="vendredi">vendredi</option>
-                    <option value="samedi">samedi</option>
-                    <option value="dimanche">dimanche</option>
-                </select>
-                </div>
-                <div id="box-info-heure">
-                    <span>Heure</span>
-                    <select type="heure">
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                </select>
-                </div>
-            </div>
-            
-            <div id="cartePointRelais">
-            </div>
-            
-            <div id="historique">
-                <h2>Votre point relais choisi</h2>
-
-                <div id="historique-choix">
-                
-                </div>
-                <div id="historique-validation">
-                    <input type="button" class="buttonValide" value="Je valide mon choix" style="vertical-align:middle"></input>
-                
-                    	<h:commandButton class="buttonValide" style="vertical-align:middle" action="#{mbPaiement.validerCommande()}"><span>Je valide mon choix </span></h:commandButton>
-                </div>
-            </div>
-        </div>
-    <!-- Resource from Internet -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    
-    <!-- Resource js page -->
-    <script src="js/jquery.easy-autocomplete.js"></script> 
-    <script type="text/javascript" src="js/choixpointrelais_v2.js"></script>
-    <script src="js/maintable.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
-    <script type="text/javascript">
 	var pointrelais = [#{mbChoixPRConso.jsonPointRelais()}];
 	var consommateur = [#{mbChoixPRConso.jsonConsommateur()}];
 	myMap();
-	</script>
-	</script>
+		</script>
 
 		<!-- Resource js communes -->
 		<script type="text/javascript"

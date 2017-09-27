@@ -9,4 +9,6 @@ public interface IBusinessPointRelais {
 
     public Commande validerRecuperationConsommateur(Integer id_commande);
 
+//    public PointRelais getPointRelaisById(Integer id_point_relais);
+    
 }
