@@ -147,13 +147,13 @@
                             return {
                                 pommes: "#F1C40F",
                                 poires: "#018AB6",
-                                chataignes: "#A2BB2A"
+                                châtaignes: "#A2BB2A"
                             }[c];
                         }
 
                         // compute total for each state.
                         fData.forEach(function(d) {
-                            d.total = d.freq.pommes + d.freq.poires + d.freq.chataignes;
+                            d.total = d.freq.pommes + d.freq.poires + d.freq.châtaignes;
                         });
 
                         // function to handle histogram.
@@ -401,7 +401,7 @@
                         }
 
                         // calculate total frequency by segment for all state.
-                        var tF = ['pommes', 'poires', 'chataignes'].map(function(d) {
+                        var tF = ['pommes', 'poires', 'châtaignes'].map(function(d) {
                             return {
                                 type: d,
                                 freq: d3.sum(fData.map(function(t) {
@@ -429,84 +429,84 @@
                         freq: {
                             pommes: 600,
                             poires: 340,
-                            chataignes: 450
+                            châtaignes: 450
                         }
                     }, {
                         State: 'FEV',
                         freq: {
                             pommes: 700,
                             poires: 410,
-                            chataignes: 100
+                            châtaignes: 100
                         }
                     }, {
                         State: 'MAR',
                         freq: {
                             pommes: 1200,
                             poires: 708,
-                            chataignes: 60
+                            châtaignes: 60
                         }
                     }, {
                         State: 'AVR',
                         freq: {
                             pommes: 1600,
                             poires: 1150,
-                            chataignes: 240
+                            châtaignes: 240
                         }
                     }, {
                         State: 'MAI',
                         freq: {
                             pommes: 1600,
                             poires: 0,
-                            chataignes: 190
+                            châtaignes: 190
                         }
                     }, {
                         State: 'JUN',
                         freq: {
                             pommes: 1600,
                             poires: 700,
-                            chataignes: 100
+                            châtaignes: 100
                         }
                     }, {
                         State: 'JUL',
                         freq: {
                             pommes: 1800,
                             poires: 450,
-                            chataignes: 240
+                            châtaignes: 240
                         }
                     }, {
                         State: 'AOU',
                         freq: {
                             pommes: 440,
                             poires: 300,
-                            chataignes: 120
+                            châtaignes: 120
                         }
                     }, {
                         State: 'SEP',
                         freq: {
                             pommes: 2480,
                             poires: 1800,
-                            chataignes: 700
+                            châtaignes: 700
                         }
                     }, {
                         State: 'OCT',
                         freq: {
                             pommes: 2600,
                             poires: 1380,
-                            chataignes: 470
+                            châtaignes: 470
                         }
                     }, {
                         State: 'NOV',
                         freq: {
                             pommes: 2300,
                             poires: 1000,
-                            chataignes: 580
+                            châtaignes: 580
                         }
                     }, {
                         State: 'DEC',
                         freq: {
                             pommes: 1900,
                             poires: 780,
-                            chataignes: 880
+                            châtaignes: 880
                         }
                     }];
 

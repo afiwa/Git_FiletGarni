@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/WEB-INF/templates/archeProducteur.xhtml">
+	<ui:define name="title">Modifiez ou supprimez votre produit du catalogue</ui:define>
+	<ui:define name="headcssscript">
+		<link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+		<link type="text/css" rel="stylesheet" href="ficheDetailleeCat.css" />
+		<link type="text/css" rel="stylesheet"
+			href="../css/archeProducteur.css" />
+	</ui:define>
+
+
+	<ui:define name="content">
+
+
+
+		<!-- 	<body id="ficheDetaillee">  -->
+		<section class="modifierProduit">
+		<div class="btnRetour">
+			<input type="submit" name="form-conso:j_idt72" value="Retour"
+				style="background-color: #F1C40F; vertical-align: middle; border: none; color: #fff; font-size: 20px; margin-left: 30px;" />
+			<span></span>
+		</div>
+		<div class="titreModifCat">Modifiez ou supprimez votre produit</div>
+		<div class="imgModifCat">
+			<img class="imageCat"
+				src="../../Ressources/Images/Images_produits/#{mbProducteurGestionCatalogue.produitSelectionne.photo}"
+				alt="#{mbProducteurGestionCatalogue.produitSelectionne.libelle}" />
+		</div>
+		<div class="titreEtConditionnement">
+			<span class="nomProduit">Nom du produit <input
+				class="spanInputNom" type="text" name="nomProduit"
+				value="#{mbProducteurGestionCatalogue.produitSelectionne.libelle}" /></span> <span
+				class="condProduit"><span class="spanConditionnement">Conditionnement</span>
+					 <select class="choiceBox" type="conditionnement">
+						<ui:repeat var="conditionnement"
+							value="#{mbProducteurProduitDetaille.conditionnements}">
+							<option value="conditionnement">
+								<h:outputLabel value="#{conditionnement.quantite}">
+								<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+								</h:outputLabel>
+								#{conditionnement.unite} 
+								#{conditionnement.libelle}
+							</option>
+						</ui:repeat>
+				</select>
+			</span>
+		</div>
+		<div class="descRapide">
+			Sélectionnez la catégorie de votre produit<span class="descriptionRapide">
+				<select>
+				<ui:repeat var="categorie" value="#{mbProducteurProduitDetaille.categories}">
+					<option value="categorie">
+						#{categorie.libelle} 
+					</option>
+				</ui:repeat>
+				</select>
+			</span>
+		</div>
+		<div class="stockCat">
+			Stock <input class="nbStock" type="text" name="stock" value="#{mbProducteurGestionCatalogue.produitSelectionne.quantiteEnStock}" />
+		</div>
+		<div class="prixCat">
+			Prix <h:inputText class="prixProduit" type="text" name="prix" value="#{mbProducteurGestionCatalogue.produitSelectionne.prix}">
+			<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+			</h:inputText>
+			€
+		</div>
+		
+		<div class="lngDesc">
+			Description détaillée (max : 1500 caractères)<br />
+			<h:inputText value="#{mbProducteurGestionCatalogue.produitSelectionne.description}" name="FirstName" cols="100" rows="5"
+				style="margin: 0px; width: 100%; height: 115px; padding-left: 20px;"></h:inputText>
+		</div>
+
+		<div class="btnModSup">
+			<button class="button button1">Modifier</button>
+			<button class="button button1">Supprimer</button>
+		</div>
+		</section>
+	</ui:define>
+	<!-- 	</body> -->
+
+
+</ui:composition>
+</html>

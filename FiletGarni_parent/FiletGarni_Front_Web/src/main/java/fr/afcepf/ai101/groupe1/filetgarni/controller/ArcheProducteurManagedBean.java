@@ -16,7 +16,7 @@ public class ArcheProducteurManagedBean {
 	}
 	
 	public String afficherCatalogueProducteur() {
-		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.jsf.xhtml?faces-redirect=true";
+		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
 	}
 	
 
