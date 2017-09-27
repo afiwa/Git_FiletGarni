@@ -9,5 +9,9 @@ public class pageAccueilGeneraleManagedBean {
 	
 	public String choisirRegion() {
 		return "/pageAccueilConsommateur/pageAccueilConsommateur.xhtml?faces-redirect=true";
-	}          
+	}
+	
+	public String redirectionPageAccueilGenerale() {
+		return "/pageAccueilGenerale/pageAccueilGenerale.xhtml?faces-redirect=true";
+	}
 }

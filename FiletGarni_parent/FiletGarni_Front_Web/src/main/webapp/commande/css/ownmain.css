@@ -26,7 +26,7 @@ header{
 }
 
 header li {
-	padding-left:3em;
+	padding-left:2em;
 	margin-left:0;
 }
 
@@ -35,7 +35,7 @@ body{
 }
 
 #logo{
-	background-image: url("../images/Logo-Filet-Garni-COMMANDE-small.png");
+/*  	background-image: url("../../Ressources/Images/Logos/Logo-Filet-Garni-COMMANDE-small.png"); */
 	width:111px;
 	height:48px;
 	border-radius:0%;
@@ -93,6 +93,17 @@ body{
     background-color:var(--couleur-majeure-vert);
 }
 
+.menu:hover {
+	background-color:var(--couleur-majeure-vert);
+	color:#ffffff;
+}
+
+.menu after:hover {
+	background-color:#ffffff;
+	color:black;
+}
+
+
 a:hover{
 	color:#333;
 	text-decoration:none;
@@ -115,6 +126,21 @@ a:hover{
 }
 
 .catLaitOeufs{
+	padding-left: 100px;
+    padding-right: 100px;
+}
+
+.catFruits{
+	padding-left: 100px;
+    padding-right: 100px;
+}
+
+.catBoissons{
+	padding-left: 100px;
+    padding-right: 100px;
+}
+
+.catRecettes{
 	padding-left: 100px;
     padding-right: 100px;
 }

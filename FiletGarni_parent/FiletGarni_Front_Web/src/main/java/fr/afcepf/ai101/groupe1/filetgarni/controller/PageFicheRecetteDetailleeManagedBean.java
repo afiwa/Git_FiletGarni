@@ -22,21 +22,21 @@ public class PageFicheRecetteDetailleeManagedBean {
 	private String descriptifRecette = "";
 	private List<ProduitRecette> produitsRecettesBdd = new ArrayList<>();
 	private List<ProduitRecette> produitsRecettesNonBdd = new ArrayList<>();
-	private String backurl;
+	private String url;
 	
 	@EJB
 	IBusinessCommande businessCommande;
 	
 	public String afficherFicheRecetteDetaillee(Integer paramid_recette) {
-		String url = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+		url = FacesContext.getCurrentInstance().getViewRoot().getViewId();
 		recetteSelectionnee = businessCommande.getRecetteByIdWithAllProduitRecette(paramid_recette);
 		separationDescriptifRecette(recetteSelectionnee);
 		recupererProduitRecetteBdd(recetteSelectionnee);		
-		return "/commande/ficheRecetteDetaillee/ficheRecetteDetaillee.xhtml?faces-redirect=true&backurl=" + url;
+		return "/commande/ficheRecetteDetaillee/ficheRecetteDetaillee.xhtml?faces-redirect=true";
 	}
 	
 	public String retournerPagePrecedente() {
-		return backurl + "?faces-redirect=true";
+		return url + "?faces-redirect=true";
 	}
 	
 	public void separationDescriptifRecette(Recette paramRecetteSelectionnee) {
@@ -135,12 +135,14 @@ public class PageFicheRecetteDetailleeManagedBean {
 		produitsRecettesNonBdd = paramProduitsRecettesNonBdd;
 	}
 
-	public String getBackurl() {
-		return backurl;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setBackurl(String paramBackurl) {
-		backurl = paramBackurl;
+	public void setUrl(String paramUrl) {
+		url = paramUrl;
 	}	
+	
+	
 
 }

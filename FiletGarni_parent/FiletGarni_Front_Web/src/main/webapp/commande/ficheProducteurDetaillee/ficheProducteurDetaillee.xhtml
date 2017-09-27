@@ -11,10 +11,10 @@
 			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
 		<link type="text/css" rel="stylesheet"
 			href="Fiche_producteur_detaillee.css" />
-				<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
 		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
-		
-		
+		<link type="text/css" rel="stylesheet" href="../fichesProduit/styleTest.css" />
+		<link type="text/css" rel="stylesheet" href="../fichesProduit/Fiche_produit.css" />				
 
 		<style>
 @font-face {
@@ -26,9 +26,8 @@
 
 	<ui:define name="content">
 			<section class="ficheProducteurDetaillee">
-			<button class="btnRetour" src="#" style="vertical-align: middle">
-				<span>Retour </span>
-			</button>
+			<h:commandButton action="#{mbFicheProducteurDetaille.retournerPagePrecedente()}" value="Retour"
+							class="btnRetour" />
 			<div class="entete">
 				<span class="titreProducteur">#{mbFicheProducteurDetaille.producteurSelectionne.raisonSociale}</span>
 			</div>
@@ -67,22 +66,56 @@
 			<div class="refFicheProduit">
 				<h2 class="titreFicheProduit">
 					<span>Retrouvez les produits de #{mbFicheProducteurDetaille.producteurSelectionne.prenom}</span>
+				</h2>
 					<!--IMPORTER LES FICHES PRODUITS AVEC LE ADD TO CART-->
 					<ui:repeat var="produit" value="#{mbFicheProducteurDetaille.produitsProducteur}">
 						<ui:include src="../../WEB-INF/components/produit.xhtml" />
-					</ui:repeat>					
-				</h2>
+					</ui:repeat>									
 			</div>
+			
+			
 			</section>
 
 
-
+<!-- ADD TO CART INTERACTION -->
+    
+			    <div class="cd-cart-container empty">
+			        <a href="#0" class="cd-cart-trigger">
+						Panier
+						<ul class="count"> <!-- cart items count -->
+							<li>0</li>
+							<li>0</li>
+						</ul> <!-- .count -->
+					</a>
+			
+			        <div class="cd-cart">
+			            <div class="wrapper">
+			                <header>
+			                    <h2>Panier</h2>
+			                    <span class="undo"><a href="#0">Remettre article</a></span>
+			                </header>
+			
+			                <div class="body">
+			                    <ul>
+			                        <!-- products added to the cart will be inserted here using JavaScript -->
+			                    </ul>
+			                </div>
+			
+			                <footer>
+			                    <a href="#0" class="checkout btn"><em>Total - €<span>0</span></em></a>
+			                </footer>
+			            </div>
+			        </div>
+			        </div>
+			        <!-- .cd-cart -->
 
 
 
 			<script
 				src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-				<script type="text/javascript" src="../jsHamburger/main.js"></script>
+			<script type="text/javascript" src="../jsHamburger/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    		<script type="text/javascript" src="../../pageAccueilConsommateur/fiche_produit/Affichage_Produit_Projet3.js"></script>
 	</ui:define>
 
 </ui:composition>

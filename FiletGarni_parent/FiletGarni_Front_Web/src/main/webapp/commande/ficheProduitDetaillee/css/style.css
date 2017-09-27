@@ -29,10 +29,10 @@
 	content: '\00ab';
 	position: absolute;
 	opacity: 0;
-	top: 0;
-	right: 50px;
+	top: -20px;
+	right: 10px;
 	transition: 0.5s;
-	margin-right: 80px;
+	margin-left: 80px;
 }
 
 .btnRetour:hover span {
@@ -356,6 +356,11 @@ body {
 	color: #555555;
 	line-height: 1.8em;
 }
+
+.desc1 p:hover {
+	color: #2ABB6D;
+}
+
 /* start available */
 .available {
 	margin-top: 10px;

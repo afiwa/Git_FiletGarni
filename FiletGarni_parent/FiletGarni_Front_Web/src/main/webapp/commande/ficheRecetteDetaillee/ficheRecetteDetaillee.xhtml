@@ -31,9 +31,6 @@
 			<section class="ficheRecetteDetaillee">
 			<h:commandButton action="#{mbFicheRecetteDetaillee.retournerPagePrecedente()}" value="Retour"
 							class="btnRetour" />
-			<!-- <button class="btnRetour" src="#" style="vertical-align: middle">
-				<span>Retour </span>
-			</button> -->
 			<div class="entete">
 				<span class="titreRecette">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}</span>
 			</div>
@@ -51,8 +48,10 @@
 						<ui:repeat var="produitRecetteBdd" 
 									value="#{mbFicheRecetteDetaillee.produitsRecettesBdd}">
 							<li class="ingredientProd">
-								<h:outputLabel 
-									value="#{produitRecetteBdd.libelle} : #{produitRecetteBdd.quantiteRecette}"/>	
+								<h:commandLink 
+									action="#{mbPageAffichageProduits.recupererProduitsParCategorie(produitRecetteBdd.categorie.id)}" 
+									value="#{produitRecetteBdd.libelle} : #{produitRecetteBdd.quantiteRecette}"
+									class="ingredientProd"/>	
 							</li>									
 						</ui:repeat>
 						<ui:repeat var="produitRecetteNonBdd" 
