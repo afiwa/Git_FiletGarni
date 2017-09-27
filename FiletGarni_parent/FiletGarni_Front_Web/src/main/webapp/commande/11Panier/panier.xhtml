@@ -27,35 +27,32 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 
 	<ui:define name="content">
 
-			<section class="cd-multi-steps"> <!-- <h2>Etapes de votre commande</h2> -->
-			<div>
-				<ol class="cd-multi-steps text-center custom-icons">
-					<li class="current"><em>Panier</em></li>
-					<li><em>Point relais</em></li>
-					<li><em>Paiement</em></li>
-					<li><em>Récapitulatif</em></li>
-				</ol>
-			</div>
-			</section>
+		<section class="cd-multi-steps">
+		<div>
+			<ol class="cd-multi-steps text-center custom-icons">
+				<li class="current"><em>Panier</em></li>
+				<li><em>Point relais</em></li>
+				<li><em>Paiement</em></li>
+				<li><em>Récapitulatif</em></li>
+			</ol>
+		</div>
+		</section>
 
-			<!-- Afficher le contenu du panier -->
-			<div class="shopping-cart">
-				<!-- Title -->
-				<div class="title">Mon panier</div>
+		Afficher le contenu du panier
+		<div class="shopping-cart">
+			<div class="title">Mon panier</div>
 
-				<!-- Product # -->
-				<ui:repeat id="repeater" var="ligneCommande" value="#{mbTestPanier.ligneCommandes}">
+			<h:panelGroup layout="block" id="lgnCmdes">
+				<ui:repeat layout="inline" id="repeater" var="ligneCommande"
+					value="##{mbTestPanier.ligneCommandes}">
 					<div id="item" class="item">
 						<div class="buttons">
-							<span class="delete-btn"> 
-								<h:commandLink class="delete-btn">
+							<span class=""> <h:commandLink class="delete-btn">
 									<f:ajax
 										listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
-										event="click" 
-										execute="@form" 
-										render="form-conso:item" />
+										event="click" execute="@form" render="form-conso:lgnCmdes form-conso:prixTotalPanier" />
 								</h:commandLink>
-							</span> 
+							</span>
 						</div>
 
 						<div class="image">
@@ -63,72 +60,89 @@ https://stackoverflow.com/questions/19958107/programatically-adding-ajax-behavio
 								src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
 								alt="" />
 						</div>
-						
+
 						<div class="description">
-							<span><b><h:outputLabel	value="#{ligneCommande.produit.libelle.toString()}" /></b></span> 
-							<span>
-								<h:outputLabel value="#{ligneCommande.produit.prix}" class="article-price">
-								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-								</h:outputLabel> € 
-							</span> 
-							<span>  
-								<h:outputLabel value="#{ligneCommande.produit.conditionnements.get(0).libelle} " />
-								<h:outputLabel value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
+							<span><b><h:outputLabel
+										value="#{ligneCommande.produit.libelle.toString()}" /></b></span> <span>
+								<h:outputLabel value="#{ligneCommande.produit.prix}"
+									class="article-price">
+									<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+								</h:outputLabel> €
+							</span> <span> <h:outputLabel
+									value="#{ligneCommande.produit.conditionnements.get(0).libelle.toString()} " />
+								<h:outputLabel
+									value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
 									<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
-								</h:outputLabel> 
-								<h:outputLabel value="#{ligneCommande.produit.conditionnements.get(0).unite}" />
+								</h:outputLabel> <h:outputLabel
+								
+									value="#{ligneCommande.produit.conditionnements.get(0).unite.toString()}" />
 							</span>
 
 						</div>
 						<div class="quantity">
-							<h:commandLink class="minus-btn" type="button" name="button">
-								<img src="images\icons_panier\minus.svg" alt="" />
-								<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}" 
-										event="click" 
-										execute="@form" 
-										render="quantite prixLigneCmd form-conso:prixTotalPanier" />
+							<h:commandLink type="button" name="" class="BtnQte">
+								<img src="images\icons_panier\minus.png" alt="" class="minusBtn" />
+								<f:ajax
+									listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}"
+									event="click" execute="@form"
+									render="form-conso:lgnCmdes form-conso:quantite form-conso:prixLigneCmd form-conso:prixTotalPanier" />
 							</h:commandLink>
 
-							<h:inputText id="quantite" class="qty" name="name" value="#{ligneCommande.quantiteCommandee}">
-								<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
-							</h:inputText>
-
-							<h:commandLink class="plus-btn" type="button" name="button">
-								<img src="images\icons_panier\plus.svg" alt="" />
-								<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, 1, ligneCommande.quantiteCommandee)}"
-										event="click" 
-										execute="@form" 
-										render="quantite prixLigneCmd form-conso:prixTotalPanier" />
+							<div class="qte">
+								<h:inputText id="quantite" class="qty" name="name"
+									value="#{ligneCommande.quantiteCommandee}">
+									<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+								</h:inputText>
+							</div>
+							
+							<h:commandLink type="button" name="" class="BtnQte">
+								<img src="images\icons_panier\plus.png" alt="" class="plusBtn" />
+								<f:ajax
+									listener="#{mbTestPanier.modifierQuantite(ligneCommande, 1, ligneCommande.quantiteCommandee)}"
+									event="click" execute="@form"
+									render="form-conso:lgnCmdes form-conso:quantite form-conso:prixLigneCmd form-conso:prixTotalPanier" />
 							</h:commandLink>
+
+
 						</div>
 						<div class="total-price">
-							<h:outputLabel id="prixLigneCmd" class="total-article" value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
+							<h:outputLabel id="prixLigneCmd" class="total-article"
+								value="#{ligneCommande.getMontantLgnCommande(ligneCommande.produit.prix)}">
 								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-							</h:outputLabel><span> €</span>
+							</h:outputLabel>
+							<span> €</span>
 						</div>
 					</div>
 				</ui:repeat>
+			</h:panelGroup>
 
-
-				<!-- Afficher le total du panier -->
-				<div class="item">
-					<div class="total-cart">
-						<span class="title" id="dernierTitre">Total de votre commande</span>
-						<h:outputLabel id="prixTotalPanier" class="total-panier"	value="#{mbTestPanier.totalMontantCommande}">
-							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-						</h:outputLabel>€
-					</div>
-					<br />
-					<div>
-						<h:commandButton class="payer" action="#{mbRecapPanier.RedirectConnexionOuPointRelais()}" value="Valider"></h:commandButton>
-					</div>       
+<!-- 			Afficher le total du panier -->
+			<div class="item total-cart">
+				<div class="total-cart">
+					<span class="title" id="dernierTitre">Total de votre
+						commande</span>
+					<h:outputLabel id="prixTotalPanier" class="total-panier"
+						value="#{mbTestPanier.totalMontantCommande}">
+						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+					</h:outputLabel>
+					€
+				</div>
+				<br />
+				<div>
+					<h:commandButton class="payer"
+						action="#{mbRecapPanier.RedirectConnexionOuPointRelais()}"
+						value="Valider"></h:commandButton>
 				</div>
 			</div>
 
-			<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-			<script type="text/javascript" src="js/affichagePanier.js"></script>
-			<script type="text/javascript" src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
-			<script type="text/javascript" src="../jsHamburger/main.js"></script>
+		</div>
+
+				<script
+					src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+				<script type="text/javascript" src="js/affichagePanier.js"></script>
+				<script type="text/javascript"
+					src="../jsBreadCrumbs/styleBreadCrumbs.js"></script>
+				<script type="text/javascript" src="../jsHamburger/main.js"></script>
 
 
 	</ui:define>

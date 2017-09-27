@@ -43,11 +43,21 @@
     min-width: 180px;
 }
 
-.btn[disabled], .btn-success[disabled], .btn-lg[disabled], .btn-block[disabled]{
+.credit-card-box .btn[disabled], .btn-success[disabled], .btn-lg[disabled], .btn-block[disabled]{
 	background-color: var(--couleur-majeure-vert);
 	opacity:1;
 }
 
-.btn[disabled]:hover, .btn-success[disabled]:hover, .btn-lg[disabled]:hover, .btn-block[disabled]:hover {
+.credit-card-box .btn[disabled]:hover, .btn-success[disabled]:hover, .btn-lg[disabled]:hover, .btn-block[disabled]:hover {
 	opacity:0.85;
+}
+
+.credit-card-box .btn-success.active, .btn-success.focus, .btn-success:active, 
+.btn-success:focus, .btn-success:hover, .open>.dropdown-toggle.btn-success {
+	background-color: var(--couleur-majeure-vert);
+	opacity:1;
+}
+
+.btn-success{
+	background-color: var(--couleur-majeure-vert);
 }

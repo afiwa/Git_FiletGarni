@@ -22,12 +22,10 @@ public class ManagedBeanConnexionConsommateur implements Serializable {
 	private String mdp;
 	
 	public String seConnecter() {	
-		System.out.println("se connecter");
 		String page = "";
 		consommateurConnecte = buCnx.seConnecterConsommateur(mail, mdp);
 		if(consommateurConnecte != null) {
-			System.out.println("Je suis connecté");
-			page = "/commande/13Paiement/paiement.xhtml?faces-redirect=true";
+			page = "/commande/12PointRelais/choixPointRelais.xhtml?faces-redirect=true";
 			return page;
 		}else {
 			System.out.println("je suis null, je connais plus mes identifiants");

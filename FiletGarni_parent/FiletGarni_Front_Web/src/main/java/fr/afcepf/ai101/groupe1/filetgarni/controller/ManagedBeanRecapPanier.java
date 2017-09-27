@@ -37,7 +37,7 @@ public class ManagedBeanRecapPanier implements Serializable {
 		if(monMbCnx.getConsommateurConnecte() == null){
 			return "/commande/10Connexion/connexion.xhtml?faces-redirect=true";
 		} else {
-			return "/commande/13Paiement/paiement.xhtml?faces-redirect=true";
+			return "/commande/12PointRelais/choixPointRelais.xhtml?faces-redirect=true";
 		}
 	}
 

@@ -1,6 +1,9 @@
 package fr.afcepf.ai101.filetGarni.data.api;
 
+import java.util.List;
+
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 
 public interface IDaoCommande {
@@ -28,5 +31,4 @@ public interface IDaoCommande {
     public Commande updateDateRecuperationClient(Integer id);
 
     public Commande updatePointRelais(PointRelais id_pointRelais);
-
 }

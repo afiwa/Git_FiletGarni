@@ -1,5 +1,7 @@
 package fr.afcepf.ai101.filetGarni.data.api;
 
+import java.util.List;
+
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 
 public interface IDaoLgnCommande {
@@ -23,5 +25,7 @@ public interface IDaoLgnCommande {
     public LigneCommande updateDateRecuperationClient();
 
     public void signalerRetardLivraison();
+    
+	public List<LigneCommande> getLignesCommandeByIdCommmande(Integer id_commande);
 
 }

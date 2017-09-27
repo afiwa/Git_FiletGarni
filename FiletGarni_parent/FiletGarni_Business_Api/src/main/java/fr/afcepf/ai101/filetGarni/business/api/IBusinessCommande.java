@@ -51,6 +51,6 @@ public interface IBusinessCommande {
 
 	public Produit getProduitByIdWithConditionnements(Integer paramId_produit);
 
-	
+	public List<LigneCommande> getAllLigneCommandesByIdCommande(Integer id_commande);
 
 }
