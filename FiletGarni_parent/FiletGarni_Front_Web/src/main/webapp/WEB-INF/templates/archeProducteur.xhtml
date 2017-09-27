@@ -14,6 +14,10 @@
 	<h:form id="form-producteur">
 
 		<ul class="menuProducteur">
+		<h:commandLink action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}" style="position:absolute">
+             <h:graphicImage id="logo" value="../../Ressources/Images/Logos/Logo-Filet-Garni-PRODUCTEUR-small.png" />
+        </h:commandLink>
+        <li class="bonjour"><a href="#">Bonjour Kevin</a></li>
 			<li class="absences"><a href="#news">Gestion des absences</a></li>
 			<li class="compte"><a href="#news">Mon compte</a></li>
 			<li class="gestionCat"><a href="#news">Gestion du catalogue</a></li>
@@ -24,6 +28,7 @@
 						semaine</a>
 				</div></li>
 			<li class="tabBord"><a href="#home">Tableau de bord</a></li>
+			
 		</ul>
 		<ui:insert name="content"></ui:insert>
 	</h:form>
