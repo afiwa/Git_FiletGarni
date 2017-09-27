@@ -34,7 +34,7 @@ public class DaoProduit implements IDaoProduit {
     
     @SuppressWarnings("unchecked")
 	public java.util.List<Produit> getAllWithConditionnements() {
-        return em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements").getResultList();
+        return em.createQuery("SELECT p FROM Produit p left join fetch p.conditionnements ORDER BY p.categorie").getResultList();
     }
     
     @Override

@@ -117,13 +117,18 @@ function myMap() {
     var carteProducteur = new google.maps.Map(document.getElementById("carteProducteur"), mapOptions);
     
     var tabProd = [];
+    
+    var bounds = new google.maps.LatLngBounds();
+    
     producteurs.forEach(function (feature) {
+    	bounds.extend(feature.position);
+    	
         var marker = new google.maps.Marker({
             position: feature.position,
             icon: 'marker.png',
             map: carteProducteur
         });
-        
+        carteProducteur.fitBounds(bounds);
         var contentString = 
         '<div class="cd-tabs">'+
 	        '<nav>'+

@@ -32,7 +32,7 @@
 			<h:commandButton action="#{mbFicheRecetteDetaillee.retournerPagePrecedente()}" value="Retour"
 							class="btnRetour" />
 			<div class="entete">
-				<span class="titreRecette">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}</span>
+				<span class="titreRecette">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle.toUpperCase()}</span>
 			</div>
 			<div class="nbpers">
 				<span class="nbpers">#{mbFicheRecetteDetaillee.recetteSelectionnee.nbPers}</span>
