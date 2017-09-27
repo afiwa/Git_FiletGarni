@@ -80,11 +80,7 @@
 
                                     <ul>
                                         <li>Quantité :
-                                           <h:selectOneMenu id="listeDeroulanteFicheProduit" value= "#{mbTestPanier.remplirPanierByList()}"> 
-   														<f:ajax event="change" 
-   																execute="@this" 
-   																render="grosPanier prixLgnCmde :form-conso:prixTotalPanier :form-conso:affichageProduit" 
-   																listener="#{mbTestPanier.modifierLgnCmd(ligneCommande)}"></f:ajax>
+                                           <h:selectOneMenu id="listeDeroulanteFicheProduit" value="#{mbTestPanier.quantiteSelectionnee}"> 
    														<f:selectItem itemValue = "1" itemLabel = "1" /> 
   														<f:selectItem itemValue = "2" itemLabel = "2" /> 
   														<f:selectItem itemValue = "3" itemLabel = "3" /> 
@@ -94,10 +90,17 @@
   														<f:selectItem itemValue = "7" itemLabel = "7" /> 
   														<f:selectItem itemValue = "8" itemLabel = "8" /> 
   														<f:selectItem itemValue = "9" itemLabel = "9" /> 
+<!-- 													<f:selectItems value = "mettre la quantité en stock et mettre un max"></f:selectItems> -->
 											</h:selectOneMenu> 	
                                         </li>
                                     </ul>
-                                    <input type="button" class="btnAjoutPanier" value="Ajouter au panier" />
+                                    <h:commandLink class="btnAjoutPanier" value="Ajouter au panier">
+<!--                                     <h:input type="button" class="btnAjoutPanier" value="Ajouter au panier" /> -->
+										<f:ajax event="click"
+												execute="@form" 
+												listener="#{mbTestPanier.remplirPanierByList(mbPageProduitDetaille.produitSelectionne)}"
+												render="grosPanier prixLgnCmde :form-conso:prixTotalPanier :form-conso:affichageProduit"></f:ajax>
+                                    </h:commandLink>
                                     <div class="clear"></div>
                                 </div>
                             </div>
