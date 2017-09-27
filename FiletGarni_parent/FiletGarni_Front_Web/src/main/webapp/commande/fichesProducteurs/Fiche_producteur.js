@@ -133,15 +133,13 @@ function myMap() {
 	            '<!-- cd-tabs-navigation -->'+
 	        '</nav>'+
 
-	        '<ul class="cd-tabs-content">'+
-	            '<li data-content="info" class="selected">'+
+		     '<ul class="cd-tabs-content">'+
+	            '<li data-content="info" class="selected" id="infoEncart">'+
 	                '<img class="photo" src="../../Ressources/Images/Images_producteurs/'+feature.photo+'"/>'+
-	                '<h3 class="historique-pr-nom">'+feature.prenom+' '+feature.nom+'</h3>'+
-	                '<div class="historique-pr-ville">'+feature.ville+
-	                    '<div class="historique-pr-cp">'+feature.cp+'</div>'+
-	                '</div>'+
-	                '<div class="historique-pr-adresse">'+feature.adresse+'</div>'+
-	                '<div class="categorie_producteur">'+feature.categorie+'</div>'+
+		            '<div id="categorieProducteur">'+feature.categorie+'</div>'+
+		            '<h3>'+feature.prenom+' '+feature.nom+'</h3>'+
+		            '<div>'+feature.adresse+'</div>'+
+		            '<div>'+feature.cp+' '+feature.ville+'</div>'+
 	            '</li>'+
 	        '</ul>'+
 	        '<!-- cd-tabs-content -->'+

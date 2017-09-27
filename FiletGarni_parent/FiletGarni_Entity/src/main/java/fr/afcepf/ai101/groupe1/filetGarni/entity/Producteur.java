@@ -129,4 +129,16 @@ public class Producteur extends Professionnel {
         // TODO implement here
     }
 
+
+	public String getPhotoCarree() {
+		return photoCarree;
+	}
+
+
+	public void setPhotoCarree(String paramPhotoCarree) {
+		photoCarree = paramPhotoCarree;
+	}
+    
+    
+
 }

@@ -58,7 +58,7 @@ public class PageAffichageProducteursManagedBean {
 			position = "new google.maps.LatLng("+latitude+","+longitude+")";
 			nom = producteur.getNom();
 			prenom = producteur.getPrenom();
-			photo = producteur.getPhoto();
+			photo = producteur.getPhotoCarree();
 			ville = producteur.getAdresses().get(0).getCodePostal().getVilles().get(0).getNom();
 			cp = producteur.getAdresses().get(0).getCodePostal().getCodePostal();
 			numRue = producteur.getAdresses().get(0).getNumeroRue();

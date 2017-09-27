@@ -19,6 +19,7 @@ public class pageAccueilConsoManagedBean {
 	
 	private List<Producteur> tousLesProducteurs = new ArrayList<>();	
 	private List<Producteur> tousLesProducteursWithCategories = new ArrayList<>();
+	private List<Produit> produitsSelectionSemaine = new ArrayList<>();
 	
 	@EJB
 	IBusinessCommande businessCommande;
@@ -26,6 +27,7 @@ public class pageAccueilConsoManagedBean {
 	@PostConstruct
 	public void init() {
 		recupererTousLesProducteurs();
+		recupererProduitSelectionSemaine();
 	}
 	public String jsonProducteur() {
 		String jsonProducteurs = "";
@@ -48,7 +50,7 @@ public class pageAccueilConsoManagedBean {
 			position = "new google.maps.LatLng("+latitude+","+longitude+")";
 			nom = producteur.getNom();
 			prenom = producteur.getPrenom();
-			photo = producteur.getPhoto();
+			photo = producteur.getPhotoCarree();
 			ville = producteur.getAdresses().get(0).getCodePostal().getVilles().get(0).getNom();
 			cp = producteur.getAdresses().get(0).getCodePostal().getCodePostal();
 			numRue = producteur.getAdresses().get(0).getNumeroRue();
@@ -74,6 +76,19 @@ public class pageAccueilConsoManagedBean {
 		
 		jsonProducteurs = jsonProducteurs.substring(0, jsonProducteurs.length() - 1);		
 		return jsonProducteurs;
+	}
+	
+	public void recupererProduitSelectionSemaine() {
+		Produit gatine = businessCommande.getProduitByIdWithConditionnements(46);
+		Produit carotte = businessCommande.getProduitByIdWithConditionnements(26);		
+		Produit raisin = businessCommande.getProduitByIdWithConditionnements(17);
+		Produit noisette = businessCommande.getProduitByIdWithConditionnements(52);
+		
+		produitsSelectionSemaine.add(carotte);
+		produitsSelectionSemaine.add(gatine);
+		produitsSelectionSemaine.add(raisin);
+		produitsSelectionSemaine.add(noisette);
+		
 	}
 	public Produit afficherProduit(Integer id_produit) {
 		return businessCommande.getProduitByIdWithConditionnements(id_produit);
@@ -102,5 +117,16 @@ public class pageAccueilConsoManagedBean {
 	public void setBusinessCommande(IBusinessCommande paramBusinessCommande) {
 		businessCommande = paramBusinessCommande;
 	}
-	
+	public List<Producteur> getTousLesProducteursWithCategories() {
+		return tousLesProducteursWithCategories;
+	}
+	public void setTousLesProducteursWithCategories(List<Producteur> paramTousLesProducteursWithCategories) {
+		tousLesProducteursWithCategories = paramTousLesProducteursWithCategories;
+	}
+	public List<Produit> getProduitsSelectionSemaine() {
+		return produitsSelectionSemaine;
+	}
+	public void setProduitsSelectionSemaine(List<Produit> paramProduitsSelectionSemaine) {
+		produitsSelectionSemaine = paramProduitsSelectionSemaine;
+	}		
 }
