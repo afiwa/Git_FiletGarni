@@ -29,8 +29,11 @@
 	<ui:define name="content">
 
 			<section class="ficheRecetteDetaillee">
+			<div class="btnRetour" >
 			<h:commandButton action="#{mbFicheRecetteDetaillee.retournerPagePrecedente()}" value="Retour"
-							class="btnRetour" />
+							style="background-color: #2abb6d;vertical-align: middle;border: none;color: #fff;font-size: 23px;margin-left: 30px;" />
+			<span></span>
+			</div>
 			<div class="entete">
 				<span class="titreRecette">#{mbFicheRecetteDetaillee.recetteSelectionnee.libelle}</span>
 			</div>
