@@ -1,6 +1,7 @@
 package fr.afcepf.ai101.filetGarni.business.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -151,6 +152,23 @@ public class BusinessCommande implements IBusinessCommande{
 		}		
 		return produits;
 	}
+	
+	@Override
+	public Produit getProduitStockBasByIdProducteur(Integer id_producteur) {
+		Produit produitStockBas = new Produit();
+		produitStockBas.setQuantiteEnStock(3000);
+		List<Produit> produits = new ArrayList<>();
+		produits = daoProduit.getByIdProducteur(id_producteur);
+		List<Conditionnement> conditionnements = new ArrayList<>();
+		for (Produit produit : produits) {
+			conditionnements = daoConditionnement.getByProduit(produit);
+			produit.setConditionnements(conditionnements);
+			if(produitStockBas.getQuantiteEnStock() > produit.getQuantiteEnStock()) {
+				produitStockBas = produit;
+			}
+		}	
+		return produitStockBas;
+	}
 
 	@Override
 	public List<Produit> getProduitByNom(String paramNom, Region paramRegion) {
@@ -276,6 +294,18 @@ public class BusinessCommande implements IBusinessCommande{
 	public List<LigneCommande> getAllLigneCommandesByIdCommande(Integer id_commande) {
 		return daoLgnCommande.getLignesCommandeByIdCommmande(id_commande);
 	}
+
+	@Override
+	public List<Conditionnement> getAllConditionnements() {
+		return daoConditionnement.getAllConditionnement();
+	}
+
+	@Override
+	public List<CategorieProduit> getAllCategorieProduit() {
+		return daoCategorieProduit.getAllCategorie();
+	}
+
+	
 
 }
 

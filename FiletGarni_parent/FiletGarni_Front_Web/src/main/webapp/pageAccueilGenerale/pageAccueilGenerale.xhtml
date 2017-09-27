@@ -75,7 +75,7 @@
 </head>
 
 <body id="page-top">
-
+<h:form name="form-global">
     <!-- Navigation -->
 
     <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-light">
@@ -88,12 +88,18 @@
 
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
+                
                     <li class="nav-item">
                         <a class="nav-link" href="">Client</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Producteur</a>
+                    		<h:commandLink class="nav-link" 
+                    		action="#{mbDashboardProducteur.afficherDashboardProducteur()}" 
+	                         value="Producteur"/>
                     </li>
+                   <!--   <li class="nav-item">
+                        <a class="nav-link" href="">Producteur</a>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="">Livreur</a>
                     </li>
@@ -328,7 +334,7 @@
             <p>Copyright Le Filet Garni 2017</p>
         </div>
     </footer>
-
+</h:form>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/tether/tether.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

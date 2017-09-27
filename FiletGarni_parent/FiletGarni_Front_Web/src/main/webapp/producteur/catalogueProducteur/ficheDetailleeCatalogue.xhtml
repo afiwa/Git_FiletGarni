@@ -22,63 +22,59 @@
 		<section class="modifierProduit">
 		<div class="btnRetour">
 			<input type="submit" name="form-conso:j_idt72" value="Retour"
-				style="background-color: #F1C40F; vertical-align: middle; border: none; color: #fff; font-size: 20px; margin-left: 30px;"/>
-				<span></span>
+				style="background-color: #F1C40F; vertical-align: middle; border: none; color: #fff; font-size: 20px; margin-left: 30px;" />
+			<span></span>
 		</div>
 		<div class="titreModifCat">Modifiez ou supprimez votre produit</div>
 		<div class="imgModifCat">
-			<img class="imageCat" src="Basilic.jpg" alt="Basilic" />
+			<img class="imageCat"
+				src="../../Ressources/Images/Images_produits/#{mbDashboardProducteur.produitStockBas.photo}"
+				alt="#{mbDashboardProducteur.produitStockBas.libelle}" />
 		</div>
 		<div class="titreEtConditionnement">
 			<span class="nomProduit">Nom du produit <input
-				class="spanInputNom" type="text" name="nomProduit" value="Mickey" /></span>
-			<span class="condProduit"><span class="spanConditionnement">Conditionnement
-					: </span> A RENTRER DANS LA CHOICE BOX : quantite_conditionnement +
-				unite_conditionnement + libelle_conditionnement <select
-				class="choiceBox" type="conditionnement">
-					<option value="125g - Barquette">125g - Barquette</option>
-					<option value="250g - Boite">250g - Boite</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-			</select> </span>
+				class="spanInputNom" type="text" name="nomProduit"
+				value="#{mbDashboardProducteur.produitStockBas.libelle}" /></span> <span
+				class="condProduit"><span class="spanConditionnement">Conditionnement</span>
+					 <select class="choiceBox" type="conditionnement">
+						<ui:repeat var="conditionnement"
+							value="#{mbProducteurProduitDetaille.conditionnements}">
+							<option value="conditionnement">
+								<h:outputLabel value="#{conditionnement.quantite}">
+								<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+								</h:outputLabel>
+								#{conditionnement.unite} 
+								#{conditionnement.libelle}
+							</option>
+						</ui:repeat>
+				</select>
+			</span>
 		</div>
 		<div class="descRapide">
-			Description rapide <br /> <span class="descriptionRapide">IMPORTER
-				Produit chez .... par ....</span>
+			Sélectionnez la catégorie de votre produit<span class="descriptionRapide">
+				<select>
+				<ui:repeat var="categorie" value="#{mbProducteurProduitDetaille.categories}">
+					<option value="categorie">
+						#{categorie.libelle} 
+					</option>
+				</ui:repeat>
+				</select>
+			</span>
 		</div>
 		<div class="stockCat">
-			Stock <input class="nbStock" type="text" name="stock" value="100" />
+			Stock <input class="nbStock" type="text" name="stock" value="#{mbDashboardProducteur.produitStockBas.quantiteEnStock}" />
 		</div>
 		<div class="prixCat">
-			Prix <input class="prixProduit" type="text" name="prix" value="12" />
+			Prix <h:inputText class="prixProduit" type="text" name="prix" value="#{mbDashboardProducteur.produitStockBas.prix}">
+			<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+			</h:inputText>
 			€
 		</div>
+		
 		<div class="lngDesc">
-			Longue Description <br />
-			<textarea name="FirstName" cols="100" rows="5"
-				style="margin: 0px; width: 100%; height: 115px;"></textarea>
+			Description détaillée (max : 1500 caractères)<br />
+			<h:inputText value="#{mbDashboardProducteur.produitStockBas.description}" name="FirstName" cols="100" rows="5"
+				style="margin: 0px; width: 100%; height: 115px; padding-left: 20px;"></h:inputText>
 		</div>
 
 		<div class="btnModSup">

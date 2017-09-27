@@ -25,5 +25,11 @@ public class DaoConditionnement implements IDaoConditionnement {
 	@Override
 	public List<Conditionnement> getByProduit(Produit produit) {
 		return em.createQuery("SELECT p.conditionnements FROM Produit p WHERE p.id = :pid").setParameter("pid", produit.getId()).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Conditionnement> getAllConditionnement() {
+		return em.createQuery("SELECT c FROM Conditionnement c").getResultList();
 	}  
 }

@@ -40,22 +40,26 @@
 
 		<div class="stockCatalogue">
 			<span class="titreStockCatalogue">Produits dans le catalogue</span> <br />
-			<span class="nombreCommande">15</span> <br />
+			<h:outputLabel class="nombreCommande" value="#{mbDashboardProducteur.nbProduit}"/> <br />
 			
 			<div class="boutonCatalogue">
-				<input type="button" value="Consulter mon catalogue"
-					style="vertical-align: middle; border: none; background-color:#F1C40F ; color: #fff; font-size: 20px; "></input>
+				<h:commandButton value="Consulter mon catalogue"
+					style="vertical-align: middle; border: none; background-color:#F1C40F ; color: #fff; font-size: 20px; "
+					action="#{mbDashboardProducteur.afficherProduitProducteur(35)}"/>
 				<span></span>
 			</div>
 		</div>
 		<div class="stockRupture">
 			<img class="logoDanger" src="img/danger.png"
 				alt="Produit plus en stock!!!" /> <br /> <span class="infoStock">
-				Il ne vous reste plus que 30 pommes!!!!!!!</span> <br />
+				Il ne vous reste plus que #{mbDashboardProducteur.recupererProduitStockBas(35).quantiteEnStock}
+											#{mbDashboardProducteur.recupererProduitStockBas(35).conditionnements.get(0).unite} de  
+											#{mbDashboardProducteur.recupererProduitStockBas(35).libelle} !</span> <br />
 			
 			<div class="boutonAlert">
-				<input type="button" value="J'y vais!"
-					style="vertical-align: middle; border: none; background-color:#F1C40F ; color: #fff; font-size: 20px; margin-top: 7px;"></input>
+				<h:commandButton value="J'y vais!"
+					style="vertical-align: middle; border: none; background-color:#F1C40F ; color: #fff; font-size: 20px; margin-top: 7px;"
+					action="#{mbDashboardProducteur.afficherFicheProduitStockBas(35)}"/>
 				<span></span>
 			</div>
 		</div>

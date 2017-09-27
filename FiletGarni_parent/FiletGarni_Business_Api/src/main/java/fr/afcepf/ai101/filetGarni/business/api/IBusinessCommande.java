@@ -3,8 +3,10 @@ package fr.afcepf.ai101.filetGarni.business.api;
 import java.util.List;
 
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieRecette;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
@@ -22,6 +24,8 @@ public interface IBusinessCommande {
     public java.util.List<Produit> getProduitByIdCategorie(Integer id_categorieProduit, Boolean premierPassage);
 
     public java.util.List<Produit> getProduitsByIdProducteur(Integer id_producteur);
+    
+    public Produit getProduitStockBasByIdProducteur(Integer id_producteur);
 
     public Produit getProduitById(Integer id_produit);
 
@@ -52,5 +56,9 @@ public interface IBusinessCommande {
 	public Produit getProduitByIdWithConditionnements(Integer paramId_produit);
 
 	public List<LigneCommande> getAllLigneCommandesByIdCommande(Integer id_commande);
+	
+	public List<Conditionnement> getAllConditionnements();
+	
+	public List<CategorieProduit> getAllCategorieProduit();
 
 }

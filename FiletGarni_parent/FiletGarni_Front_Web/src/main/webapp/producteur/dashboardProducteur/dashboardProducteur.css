@@ -188,6 +188,7 @@ body {
 
 .infoStock {
     line-height: 2;
+    color: var(--couleur-orange-clair);
 }
 
 .boutonAlert {
