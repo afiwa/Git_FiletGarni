@@ -30,21 +30,21 @@ public class TourneeTheorique implements Serializable{
 	@Column(name="id_tournee_theorique", nullable= false)
 	private Integer id;
 
-	@Column(name="libelle_tournee_theorique", nullable= false, length=50)
+	@Column(name="libelle_tournee_theorique", nullable= true, length=50)
     private String libelle;
 
-	@Column(name="date_tournee_theorique", nullable= false)
+	@Column(name="date_tournee_theorique", nullable= true)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateTournee;
 
-	@Column(name="nbkm_tournee_theorique", nullable= false)
+	@Column(name="nbkm_tournee_theorique", nullable= true)
     private Integer nbKm;
 
-	@Column(name="heure_debut_tournee_theorique", nullable= false)
+	@Column(name="heure_debut_tournee_theorique", nullable= true)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date heureDebut;
 
-	@Column(name="heure_fin_tournee_theorique", nullable= false)
+	@Column(name="heure_fin_tournee_theorique", nullable= true)
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date heureFin;
 
