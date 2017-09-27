@@ -50,7 +50,9 @@ public class LigneCommande implements Serializable{
 				foreignKey = @ForeignKey(name = "FK_commande_tlignecommande"))
     private Commande commande;
     
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "id_produit_tlignecommande", nullable = false, 
+	foreignKey = @ForeignKey(name = "FK_produit_tlignecommande"))
     private Produit produit;
     
     @ManyToOne

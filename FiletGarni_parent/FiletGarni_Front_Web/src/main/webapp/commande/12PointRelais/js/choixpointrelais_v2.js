@@ -433,7 +433,7 @@ $(".buttonValide").on('click', function (){
 	console.log(mapPR.get(markerSelected).id);
 	let id_pr = mapPR.get(markerSelected).id;
 	console.log('####################'+id_pr+'#####################');
-	window.location = "choixPointRelais.xhtml?toto="+id_pr+"";
+	window.location = "choixPointRelais.jsf?toto="+id_pr+"";
 });
 /*
 var options2 = {

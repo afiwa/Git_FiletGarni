@@ -20,41 +20,14 @@
 				</ui:repeat>
 		
 				<!-- ADD TO CART INTERACTION -->
-    
-			    <div class="cd-cart-container empty">
-			        <a href="#0" class="cd-cart-trigger">
-						Panier
-						<ul class="count"> <!-- cart items count -->
-							<li>0</li>
-							<li>0</li>
-						</ul> <!-- .count -->
-					</a>
-			
-			        <div class="cd-cart">
-			            <div class="wrapper">
-			                <header>
-			                    <h2>Panier</h2>
-			                    <span class="undo"><a href="#0">Remettre article</a></span>
-			                </header>
-			
-			                <div class="body">
-			                    <ul>
-			                        <!-- products added to the cart will be inserted here using JavaScript -->
-			                    </ul>
-			                </div>
-			
-			                <footer>
-			                    <a href="#0" class="checkout btn"><em>Total - €<span>0</span></em></a>
-			                </footer>
-			            </div>
-			        </div>
-			        <!-- .cd-cart -->
-			       
-			    </div>		
+    			
+    			<ui:include src="../../WEB-INF/components/panier-add-to-cart.xhtml"></ui:include>
+				
 				<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 				<script type="text/javascript" src="../jsHamburger/main.js"></script>
+				<script type="text/javascript" src="../jsAddToCart/add-to-cart.js">
+				</script>
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    			<script type="text/javascript" src="../../pageAccueilConsommateur/fiche_produit/Affichage_Produit_Projet3.js"></script>
 		</ui:define>	
 	</ui:composition>
 </html>

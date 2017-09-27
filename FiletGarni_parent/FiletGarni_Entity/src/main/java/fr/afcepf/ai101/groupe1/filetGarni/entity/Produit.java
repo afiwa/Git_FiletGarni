@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,8 +60,8 @@ public class Produit implements Serializable {
     			foreignKey = @ForeignKey(name = "FK_categorie_tproduit"))
     private CategorieProduit categorie;
     
-    @OneToOne(mappedBy = "produit")
-    private LigneCommande lgnCommande;
+    @OneToMany(mappedBy = "produit")
+    private List<LigneCommande> lgnCommandes;
     
     @ManyToOne
     @JoinColumn(name = "id_producteur_tproduit", nullable = true, foreignKey = 
@@ -143,12 +143,13 @@ public class Produit implements Serializable {
 		categorie = paramCategorie;
 	}
 
-	public LigneCommande getLgnCommande() {
-		return lgnCommande;
+	
+	public List<LigneCommande> getLgnCommandes() {
+		return lgnCommandes;
 	}
 
-	public void setLgnCommande(LigneCommande paramLgnCommande) {
-		lgnCommande = paramLgnCommande;
+	public void setLgnCommandes(List<LigneCommande> paramLgnCommandes) {
+		lgnCommandes = paramLgnCommandes;
 	}
 
 	public Producteur getProducteur() {
@@ -160,8 +161,7 @@ public class Produit implements Serializable {
 	}
 
 	public Produit(Integer paramId, String paramPhoto, String paramLibelle, Double paramPrix, String paramDescription,
-			Integer paramQuantiteEnStock, Date paramDateCreationProduit, CategorieProduit paramCategorie,
-			LigneCommande paramLgnCommande, Producteur paramProducteur) {
+			Integer paramQuantiteEnStock, Date paramDateCreationProduit, CategorieProduit paramCategorie, Producteur paramProducteur) {
 		super();
 		id = paramId;
 		photo = paramPhoto;
@@ -171,7 +171,6 @@ public class Produit implements Serializable {
 		quantiteEnStock = paramQuantiteEnStock;
 		dateCreationProduit = paramDateCreationProduit;
 		categorie = paramCategorie;
-		lgnCommande = paramLgnCommande;
 		producteur = paramProducteur;
 	}
 

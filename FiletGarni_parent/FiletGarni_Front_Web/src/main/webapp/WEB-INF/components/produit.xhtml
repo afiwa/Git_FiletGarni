@@ -6,31 +6,39 @@
 
 	<ui:component>
 	 <figure class="FicheProduit">
+	 		
 	 		<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}">
 	        	<h:graphicImage value="../../Ressources/Images/Images_produits/#{produit.photo}" 
 	        	 				class="image_principale"/>
 	        </h:commandLink>
+	        
+	        
 	        <div class="icons">
+	        
+	        	
 	            <a>
-	                <i class="ion-android-cart cd-add-to-cart">
-	                	<h:outputLabel id="quantitePanierProduit" value="{mbTestPanier.quantite}"></h:outputLabel>
-	                	<span class="nbArticle">0</span>
-	                </i>
+	                <i id="petitPanier" class="ion-android-cart cd-add-to-cart">
+	            	<h:outputLabel id="quantitePanierProduit" class="nbArticle" value="#{mbTestPanier.afficherQuantiteLigneCommande(produit)}">
+	            		<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+	            	</h:outputLabel>
+<!-- 	                	<span class="nbArticle">0</span> -->
+	               </i>
 	            </a>
+	                   
+	           	<input class="image_minus" type="image" src="minus4.png" />
 	            
-	            
-	            	<input class="image_minus" type="image" src="minus4.png" />
-	            		
 				
-	           <h:commandLink> 
-	            <input class="image_plus" type="image" src="plus4.png" />
-	            	<f:ajax	listener="#{mbTestPanier.modifierQuantite(ligneCommande, -1, ligneCommande.quantiteCommandee)}" 
+			
+	            <h:commandLink>
+	            	<input class="image_plus" type="image" src="plus4.png" />
+	            		<f:ajax	listener="#{mbTestPanier.remplirPanier(1,produit)}"  
 								event="click" 
 								execute="@form" 
-								render="" />
-				</h:commandLink>
-				
-				
+								render="form-conso:icons form-conso:petitPanier form-conso:quantitePanierProduit form-conso:repeater-addToCart" />
+				</h:commandLink> 
+	            
+	            
+	            	
 	        </div>
 	        <figcaption>
 	        	<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"
