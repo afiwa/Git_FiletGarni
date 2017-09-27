@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@font-face {
+            font-family: "fibre";
+            src: url("fibre-font.otf");
+        }
+
+#ficheDetaillee {
+    margin: 20px;
+    line-height: 2;
+}
+
+.spanInputNom {
+    margin-left: 10px;
+}
+
+.spanConditionnement {
+    padding-left: 20px;
+}
+
+.choiceBox {
+    margin-left: 10px;
+}
+
+input[type=text]:focus {
+    border: 2px solid #555;
+    padding-left: 10px;
+}
+
+.modifierProduit {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+}
+
+.titreModifCat {
+    grid-row: 2;
+    grid-column: 1 /span 2;
+    font-family: "fibre";
+    font-size: 30px;
+}
+
+.imageCat {
+    height: 300px;
+    border: 1px solid #F1C40F;
+    border-radius: 3px;
+}
+
+.imgModifCat {
+    margin-top: 20px;
+    height: 100%;
+    grid-row: 3 /span 4;
+    grid-column: 1;
+}
+
+.titreEtConditionnement {
+    grid-row: 3;
+    grid-column: 2;
+    padding: 20px;
+    margin-left: 40px;
+}
+
+.descRapide {
+    grid-row: 4;
+    grid-column: 2;
+    padding: 20px;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    margin-left: 40px;
+}
+
+.stockCat {
+    grid-row: 5;
+    grid-column: 2;
+    padding: 20px;
+    border-bottom: 1px solid #EEEEEE;
+    margin-left: 40px;
+}
+
+.prixCat {
+    grid-row: 6;
+    grid-column: 2;
+    padding: 20px;
+    margin-left: 40px;
+}
+
+.lngDesc {
+    grid-row: 7;
+    grid-column: 1 /span 2;
+    padding-top: 5px;
+
+}
+
+.btnModSup {
+
+    grid-row: 8;
+    grid-column: 2;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-left: 600px;
+}
+
+
+
+/* BOUTON RETOUR */
+
+.btnRetour {
+    grid-row: 1;
+    grid-column: 1;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #F1C40F;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 23px;
+    padding: 5px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-bottom: 17px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btnRetour span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btnRetour span:after {
+    content: '\00ab';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 50px;
+    transition: 0.5s;
+    margin-right: 80px;
+}
+
+.btnRetour:hover span {
+    padding-left: 25px;
+}
+
+.btnRetour:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* BOUTOOOONS */
+
+.button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-left: 35px;
+    border-radius: 3px;
+}
+
+.button1 {
+    background-color: #F1C40F;
+    color: white;
+    border: 2px solid #F1C40F;
+    font-size: 20px;
+}
+
+.button1:hover {
+    background-color: white;
+    color: black;
+}
+
+.inputDescRapide {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.prixProduit {
+    width: 100px;
+    text-align: center;
+    margin-left: 21px;
+}
+
+.nbStock {
+    width: 100px;
+    text-align: center;
+    margin-left: 10px;
+}

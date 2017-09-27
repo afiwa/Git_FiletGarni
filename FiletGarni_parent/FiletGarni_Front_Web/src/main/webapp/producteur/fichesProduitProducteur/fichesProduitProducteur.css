@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
+.sectionProd {
+	display: inline-block;
+}
+
+.FicheProduitProducteur {
+    font-family: 'Fira Sans Extra Condensed', Arial, sans-serif;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin: 8px;
+    min-width: 230px;
+    max-width: 315px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #fff;
+    color: #111;
+    line-height: 1.2em;
+    text-align: left;
+    border: 1px solid #F1C40F;
+    border-radius: 3px;
+}
+
+.image_principale {
+    max-width: 100%;
+    vertical-align: top;
+    width: 315px;
+    height: 230px;
+    border-bottom: 1px solid #F1C40F;
+}
+
+.nbArticle {
+    border: 2px solid #F1C40F;
+    background-color: #F1C40F;
+    height: 40px;
+    width: 40px;
+    float: ;
+}
+
+.FicheProduitProducteur figcaption {
+    display: grid;
+    padding: 10px;
+    background-color:  #f2f2f2;
+}
+
+.FicheProduitProducteur .nomProduit {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0 0 4px;
+}
+
+.FicheProduitProducteur .conditionnement {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0 0 4px;
+    text-align: right;
+}
+
+.FicheProduitProducteur .ferme {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 1rem;
+    font-weight: 200;
+    color: #F1C40F;
+    margin: 0 0 4px;
+}
+
+.FicheProduitProducteur .poids {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 1rem;
+    font-weight: 200;
+    color: ;
+    margin: 0 0 4px;
+    text-align: right;
+}
+
+.FicheProduitProducteur .prixProduit {
+    grid-column: 2;
+    grid-row: 3;
+    margin: 8px 0;
+    font-weight: 700;
+    color: #F1C40F;
+    font-size: 1.5rem;
+    text-align: right;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-left: 35px;
+    border-radius: 3px;
+}
+
+.button1 {
+    background-color: #F1C40F; 
+    color: white; 
+    border: 2px solid #F1C40F;
+}
+
+.button1:hover {
+    background-color: white;
+    color: black;
+}
+
+.stockCatalogue {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 10px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:component>
+	<section class="sectionProd">
+		<figure class="FicheProduitProducteur">
+			
+			<h:graphicImage value="../../Ressources/Images/Images_produits/#{produit.photo}" 
+	        	 				class="image_principale"/>
+	        
+	        <figcaption>
+	        	<h3 class="nomProduit">#{produit.libelle}</h3>
+	        	
+	        	<!--  <h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"
+	        					value="#{produit.libelle}"
+	        					class="nomProduit"/> -->
+	            <h3 class="conditionnement">
+	            	#{produit.conditionnements.get(0).libelle}	
+				 </h3>
+	            <h2 class="ferme">#{produit.producteur.raisonSociale}</h2>
+	            <h2 class="poids">
+	            	<h:outputLabel value="#{produit.conditionnements.get(0).quantite}" >
+		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+		            </h:outputLabel>
+	            	#{produit.conditionnements.get(0).unite}           
+	            </h2>
+	            <div class="prixProduit">
+		            <h:outputLabel value="#{produit.prix}" >
+		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+		            </h:outputLabel>
+					 €
+	            </div>
+	            
+	        </figcaption>
+			
+		</figure>
+		<br />
+		<h:commandButton action="#" value="Accéder à la fiche détaillée" class="button button1" />
+	</section>
+	</ui:component>
+	
+</html>
+	
