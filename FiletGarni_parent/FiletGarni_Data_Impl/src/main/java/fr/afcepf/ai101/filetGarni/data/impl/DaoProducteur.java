@@ -45,4 +45,5 @@ public class DaoProducteur implements IDaoProducteur {
 								.setParameter("pid", paramId_producteur)
 								.getSingleResult();
 	}
+	
 }

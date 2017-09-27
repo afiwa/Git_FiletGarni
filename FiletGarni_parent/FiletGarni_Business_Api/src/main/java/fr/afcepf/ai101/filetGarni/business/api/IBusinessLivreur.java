@@ -1,5 +1,8 @@
 package fr.afcepf.ai101.filetGarni.business.api;
 
+import java.util.List;
+import java.util.Map;
+
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Livreur;
@@ -9,9 +12,9 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.SuiviIncident;
 
 public interface IBusinessLivreur {
 
-    public java.util.List<PointRelais> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee);
+    public Map<PointRelais,List<Commande>> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee);
 
-    public java.util.List<Producteur> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee);
+    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee);
 
     public java.util.List<Commande> afficherCommandeALivreePointRelais(Livreur livreur, PointRelais pointRelais, java.util.Date dateTournee);
 
@@ -23,4 +26,5 @@ public interface IBusinessLivreur {
 
     public SuiviIncident declarerIncident(Livreur livreur );
 
+    public Livreur getLivreurById(Integer id_livreur);
 }
