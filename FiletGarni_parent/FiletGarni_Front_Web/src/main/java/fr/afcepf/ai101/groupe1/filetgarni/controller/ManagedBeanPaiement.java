@@ -39,7 +39,6 @@ public class ManagedBeanPaiement implements Serializable {
 	private Integer id_paiement = 1;
 	private Integer id_pointRelais = 1;
 
-<<<<<<< HEAD
 	/*public String validerCommande() {
 		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), new Date(), buCmde.getTypePaiementById(id_paiement),buCmde.getPRById(id_pointRelais), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
 		for(LigneCommande l : monMbTestPanier.getLigneCommandes()) {
@@ -47,7 +46,7 @@ public class ManagedBeanPaiement implements Serializable {
 		}
 		return "/commande/14RecapitulatifCommande/recapitulatifCommande.xhtml";
 	}*/
-=======
+
 	public String validerCommande() {
 		System.out.println("je valide ma commande");
 		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), new Date(), buCmde.getTypePaiementById(id_paiement), buCmde.getPRById(id_pointRelais), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
@@ -73,7 +72,6 @@ public class ManagedBeanPaiement implements Serializable {
 
 		return "/commande/14RecapitulatifCommande/recapitulatifCommande.xhtml?faces-redirect=true";
 	}
->>>>>>> Ludo-mardi
 
 	public Date calculDateLivraison() {
 		Date dateLivraison= new Date();

@@ -16,8 +16,8 @@ public class Producteur extends Professionnel {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "photocarrée_producteur", nullable = true, length = 25)
-	private String photoCarrée;
+	@Column(name = "photocarree_producteur", nullable = true, length = 25)
+	private String photoCarree;
 	
 	@Column(name = "descriptionbreve_producteur", nullable = true, length = 200)
 	private String descriptionBreve;

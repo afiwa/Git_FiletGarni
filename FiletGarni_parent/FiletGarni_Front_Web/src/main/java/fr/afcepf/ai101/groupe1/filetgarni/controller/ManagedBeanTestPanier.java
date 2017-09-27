@@ -138,8 +138,15 @@ public class ManagedBeanTestPanier implements Serializable{
 	public Double getTotalMontantCommande() {
 		return totalMontantCommande;
 	}
+	
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
 
-<<<<<<< HEAD
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+
 /*	public Integer getIdPdt() {
 =======
 
@@ -229,8 +236,5 @@ public class ManagedBeanTestPanier implements Serializable{
 	public void setTotalMontantCommande(Double totalMontantCommande) {
 		this.totalMontantCommande = totalMontantCommande;
 	} */
-=======
->>>>>>> Marion
-
 
 }
