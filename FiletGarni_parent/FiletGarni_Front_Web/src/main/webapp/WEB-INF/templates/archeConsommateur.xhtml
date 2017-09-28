@@ -20,20 +20,18 @@
     <header>
     	<h:commandLink action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}">
      		<h:graphicImage id="logo" value="../../Ressources/Images/Logos/Logo-Filet-Garni-COMMANDE-small.png" />
-    	</h:commandLink>	
-        <div id="hamburger">
-            <div id="hamburger-content">
-                <nav>
-                    <ul>
-                    	<li class="menu">
-                    		<h:commandLink action="#{mbPageAffichageProduits.recupererTousLesProduits()}" 
+    	</h:commandLink>
+                <nav >
+                    <ul id="menu-principal">
+                    	<li class="menu" onmouseover="overFunction(this)">
+                    		<h:commandLink class="text-menu" action="#{mbPageAffichageProduits.recupererTousLesProduits()}" 
 	                        				   value="Tous les produits"/>
                     	</li>
-                        <li class="menu">
-                        	<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(1)}" 
+                        <li class="menu" onmouseover="overFunction(this)" >
+                        	<h:commandLink class="text-menu" action="#{mbPageAffichageProduits.recupererProduitsParCategorie(1)}" 
                         				   value="Fruits"
-                        				   onmouseover="overFunction(this)"/>
-                            <ul class="sous-menu">
+                        				   />
+                            <ul class="sous-menu" onmouseout="outFunction(this)">
                                 <li>
                                 	<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(8)}" 
                         				   value="Fruits à pépins" class="catFruits"/>
@@ -48,11 +46,11 @@
 								</li>
                             </ul>
                         </li>
-                        <li class="menu">
+                        <li class="menu" onmouseover="overFunction(this)">
 	                        <h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(2)}" 
-	                        				   value="Légumes" class="menu"
-	                        				   onmouseover="overFunction(this)"/>
-                            <ul class="sous-menu">
+	                        				   value="Légumes" class="text-menu"
+	                        				   />
+                            <ul class="sous-menu" onmouseout="outFunction(this)">
                             	<li>
                                 	<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(11)}" 
                         				   value="Légumes racines"/>
@@ -75,11 +73,11 @@
 								</li>
                             </ul>
                         </li>
-                        <li class="menu">
+                        <li class="menu" onmouseover="overFunction(this)">
 	                        <h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(3)}" 
-		                        				   value="Lait / Œufs" class="menu"
-		                        				   onmouseover="overFunction(this)"/>
-                            <ul class="sous-menu">
+		                        				   value="Lait / Œufs" class="text-menu"
+		                        				   />
+                            <ul class="sous-menu" onmouseout="outFunction(this)">
                             	<li>
                                 	<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(16)}" 
                         				   value="Lait" class="catLaitOeufs"/>
@@ -90,15 +88,15 @@
 								</li>
                             </ul>
                         </li>
-                        <li class="menu">
+                        <li class="menu" onmouseover="overFunction(this)">
                     		<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(4)}" 
-	                        				   value="Miels" class="menu"/>
+	                        				   value="Miels" class="text-menu"/>
                     	</li>
-                        <li class="menu">
+                        <li class="menu" onmouseover="overFunction(this)">
                         <h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(5)}" 
-		                        				   value="Boissons" class="menu"
-		                        				   onmouseover="overFunction(this)"/>
-                            <ul class="sous-menu">
+		                        				   value="Boissons" class="text-menu"
+		                        				   />
+                            <ul class="sous-menu" onmouseout="outFunction(this)">
                             	<li>
                                 	<h:commandLink action="#{mbPageAffichageProduits.recupererProduitsParCategorie(6)}" 
                         				   value="Boissons non-alcoolisées" class="catBoissons"/>
@@ -109,11 +107,11 @@
 								</li>
                             </ul>
                         </li>
-                        <li class="menu">
+                        <li class="menu" onmouseover="overFunction(this)">
                     		<h:commandLink action="#{mbPageAffichageRecettes.afficherToutesLesRecettes()}" 
-	                        				   value="Recettes" class="menu"
-	                        				   onmouseover="overFunction(this)"/>
-	                        <ul class="sous-menu">
+	                        				   value="Recettes" class="text-menu"
+	                        				   />
+	                        <ul class="sous-menu" onmouseout="outFunction(this)">
                                 <li>
                                 	<h:commandLink action="#{mbPageAffichageRecettes.afficherRecettesParCategorie(1)}" 
                         				   value="Entrées" class="catRecettes"/>
@@ -128,11 +126,11 @@
 								</li>
                             </ul>
                     	</li>
-                        <li class="menu">
+                        <li class="menu" onmouseover="overFunction(this)">
                         	<h:commandLink action="#{mbPageAffichageProducteurs.afficherTousLesProducteurs()}" 
-	                        				   value="Nos producteurs" class="menu"
-	                        				   onmouseover="overFunction(this)"/>
-                        	<ul class="sous-menu">                        	
+	                        				   value="Nos producteurs" class="text-menu"
+	                        				   />
+                        	<ul class="sous-menu" onmouseout="outFunction(this)">                        	
                         		<li>
                                 	<h:commandLink action="#{mbPageAffichageProducteurs.afficherProducteursParCategorie(1)}" 
                         				   value="Apiculteurs"/>
@@ -163,20 +161,20 @@
 								</li>
                             </ul>
                         </li>
+                        <li>
+							<div id="espace">
+							</div>
+                        </li>
+                        <li class="button-sign-in">
+                        	<a href="#" >Se connecter</a>
+                        </li>
+                        <li class="b button-sign-up">
+                        	<a href="#" >S'inscrire</a>
+                        </li>
                     </ul>
+                    
                 </nav>
-                <a href="#" class="button button-sign-up">S'inscrire</a>
-                <a href="#" class="button button-sign-in">Se connecter</a>
-            </div>
-            <button id="hamburger-button">&#9776;</button>
-            <div id="hamburger-sidebar">
-                <div id="hamburger-sidebar-header"></div>
-                <div id="hamburger-sidebar-body"></div>
-            </div>
-            <div id="hamburger-overlay"></div>
-        </div>
     </header>
-    
     <div id="global">
         
         

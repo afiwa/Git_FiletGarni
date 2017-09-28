@@ -4,27 +4,27 @@ var button = document.querySelector('#hamburger-button');
 var overlay = document.querySelector('#hamburger-overlay');
 var activatedClass = 'hamburger-activated';
 
-sidebarBody.innerHTML = content.innerHTML;			
+sidebarBody.innerHTML = content.innerHTML;
 
-button.addEventListener('click', function(e) {
-	e.preventDefault();
+button.addEventListener('click', function (e) {
+    e.preventDefault();
 
-	this.parentNode.classList.add(activatedClass);
+    this.parentNode.classList.add(activatedClass);
 });
 
-button.addEventListener('keydown', function(e) {
-	if (this.parentNode.classList.contains(activatedClass))
-	{
-		if (e.repeat === false && e.which === 27)
-			this.parentNode.classList.remove(activatedClass);
-	}
+button.addEventListener('keydown', function (e) {
+    if (this.parentNode.classList.contains(activatedClass)) {
+        if (e.repeat === false && e.which === 27)
+            this.parentNode.classList.remove(activatedClass);
+    }
 });
 
-overlay.addEventListener('click', function(e) {
-	e.preventDefault();
+overlay.addEventListener('click', function (e) {
+    e.preventDefault();
 
-	this.parentNode.classList.remove(activatedClass);
+    this.parentNode.classList.remove(activatedClass);
 });
+
 
 function clickFunction(elmt){
     switch(elmt){

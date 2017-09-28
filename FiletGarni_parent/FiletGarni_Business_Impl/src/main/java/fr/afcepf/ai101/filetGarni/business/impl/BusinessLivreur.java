@@ -1,10 +1,17 @@
 package fr.afcepf.ai101.filetGarni.business.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessLivreur;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoAdresse;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoCodePostal;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCommande;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoLgnCommande;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoLivreur;
@@ -14,12 +21,18 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoTourneeReelleLivraison;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTourneeReelleProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoTourneeTheorique;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoUtilisateur;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoVille;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Adresse;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.CodePostal;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Livreur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.SuiviIncident;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.TourneeReelleLivraison;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.TourneeReelleProducteur;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Ville;
 
 @Remote(IBusinessLivreur.class)
 @Stateless
@@ -28,6 +41,15 @@ public class BusinessLivreur implements IBusinessLivreur {
     public BusinessLivreur() {
     }
 
+    @EJB
+    private IDaoVille daoVille;
+    
+    @EJB
+    private IDaoCodePostal daoCp;
+    
+    @EJB
+    private IDaoAdresse daoAdresse;
+    
     @EJB
     private IDaoUtilisateur daoUtilisateur;
 
@@ -53,16 +75,78 @@ public class BusinessLivreur implements IBusinessLivreur {
     private IDaoLgnCommande daoLgnCommande;
 
     @EJB
-    private IDaoTourneeReelleLivraison iDaoTourneeReelleLivraison;
+    private IDaoTourneeReelleLivraison daoTourneeReelleLivraison;
 
-    public java.util.List<PointRelais> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee) {
-        // TODO implement here
-        return null;
+    public Map<PointRelais, List<Commande>> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee) {
+        TourneeReelleLivraison tourneeLiv = new TourneeReelleLivraison();
+        tourneeLiv = daoTourneeReelleLivraison.getTourneeReelleLivraison(livreur, dateTournee);
+        List<Commande> listeCommande = new ArrayList<>();
+        listeCommande = tourneeLiv.getCommandes();
+        PointRelais pr = new PointRelais();
+        List<Commande> listeCommandePr = new ArrayList<>();
+        Map<PointRelais,List<Commande>> mapPrCmd = new HashMap<>();
+    	
+        for(Commande c: listeCommande) {
+        	
+        	if(pr.getId() != c.getPointRelais().getId()) {
+        		
+        		if(pr.getId() != null) {
+        			mapPrCmd.put(pr, listeCommandePr);
+        		}
+        		
+        		pr = c.getPointRelais();
+        		List<Adresse> adresse = daoAdresse.getByNonSalarie(pr);
+            	pr.setAdresses(adresse);
+            	CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
+            	adresse.get(0).setCodePostal(codePostal);
+    			List<Ville> villes = daoVille.getByCodePostal(codePostal);
+    			codePostal.setVilles(villes);
+    			
+    			listeCommandePr.add(c);
+        	}
+        	else {
+        		listeCommandePr.add(c);
+        	}
+
+        }
+
+        return mapPrCmd;
     }
+    
 
-    public java.util.List<Producteur> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee) {
-        // TODO implement here
-        return null;
+    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee) {
+    	TourneeReelleProducteur tourneeProd = new TourneeReelleProducteur();
+        tourneeProd = daoTourneeReelleProducteur.getTourneeReelleProducteur(livreur, dateTournee);
+        List<LigneCommande> listeLgnCommandes = new ArrayList<>();
+        listeLgnCommandes = tourneeProd.getLgnCommandes();
+        Producteur producteur = new Producteur();
+        List<LigneCommande> listeLigneCommandeProd = new ArrayList<>();
+        Map<Producteur,List<LigneCommande>> mapProdLgnCmd = new HashMap<>();
+
+        for(LigneCommande lc: listeLgnCommandes) {
+        	
+        	if(producteur.getId() != lc.getProduit().getProducteur().getId()) {
+        		
+        		if(producteur.getId() != null) {
+        			mapProdLgnCmd.put(producteur, listeLigneCommandeProd);
+        		}
+        		
+        		producteur = lc.getProduit().getProducteur();
+        		List<Adresse> adresse = daoAdresse.getByNonSalarie(producteur);
+            	producteur.setAdresses(adresse);
+            	CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
+            	adresse.get(0).setCodePostal(codePostal);
+    			List<Ville> villes = daoVille.getByCodePostal(codePostal);
+    			codePostal.setVilles(villes);
+    			
+    			listeLigneCommandeProd.add(lc);
+        	}
+        	else {
+        		listeLigneCommandeProd.add(lc);
+        	}
+
+        }
+        return mapProdLgnCmd;
     }
 
     public java.util.List<Commande> afficherCommandeALivreePointRelais(Livreur livreur, PointRelais pointRelais, java.util.Date dateTournee) {
@@ -88,6 +172,11 @@ public class BusinessLivreur implements IBusinessLivreur {
     public SuiviIncident declarerIncident(Livreur livreur ) {
         // TODO implement here
         return null;
+    }
+    
+    public Livreur getLivreurById(Integer id_livreur) {
+    	
+    	return daoLivreur.getById(id_livreur);
     }
 
 }

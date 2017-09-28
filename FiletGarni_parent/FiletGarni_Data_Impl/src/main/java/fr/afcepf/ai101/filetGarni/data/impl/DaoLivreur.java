@@ -23,4 +23,11 @@ public class DaoLivreur implements IDaoLivreur {
         return null;
     }
 
+	@Override
+	public Livreur getById(Integer id_livreur) {
+		return (Livreur) em.createQuery("SELECT l FROM Livreur l WHERE l.id = :pid").setParameter("pid", id_livreur).getSingleResult();
+	}
+    
+    
+
 }

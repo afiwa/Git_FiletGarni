@@ -45,6 +45,7 @@ public class DaoProducteur implements IDaoProducteur {
 								.setParameter("pid", paramId_producteur)
 								.getSingleResult();
 	}
+<<<<<<< HEAD
 
 	@Override
 	public Producteur getByIdProduit(Integer paramId_produit) {		
@@ -52,4 +53,7 @@ public class DaoProducteur implements IDaoProducteur {
 								.setParameter("pid", paramId_produit)
 								.getSingleResult();
 	}
+=======
+	
+>>>>>>> Antoine
 }
