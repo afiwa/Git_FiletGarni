@@ -15,6 +15,10 @@ public interface IDaoProducteur {
     
     public Producteur getByIdWithAdresses(Integer id_producteur);
     
+<<<<<<< HEAD
     public Producteur getByIdProduit(Integer id_produit);
+=======
+    
+>>>>>>> Virginie
 
 }

@@ -1,77 +1,103 @@
-:root{
-	--couleur-majeure-vert : #2ABB6D;	
-	--couleur-majeure-vert-dark : #1b7e48;	
+:root { 
+	--couleur-majeure-vert: #2ABB6D; 
+	--couleur-majeure-vert-dark: #1b7e48;
 	--couleur-deux-vert: #2CC547;
-	--couleur-trois-vert:#41AE30;
-	--couleur-quatre-vert:#76C52C;
-	--couleur-cinq-vert:#A2BB2A;
-	
-	--couleur-majeure-jaune : #F1C40F;	
-	--couleur-deux-jaune :  #DAC503;
-	--couleur-trois-jaune : #F7F903;
-	--couleur-quatre-jaune :  #DA9903;
-	--couleur-cinq-jaune :  #F99603;
-
-	--couleur-gris-pale:#f8f8f8;
-	--couleur-gris-clair:#EEE;
-	
-	--couleur-orange-clair:#FF4C39;
-	--couleur-orange-dark:#BB382A;
+	--couleur-trois-vert: #41AE30; 
+	--couleur-quatre-vert: #76C52C; 
+	--couleur-cinq-vert: #A2BB2A; 
+	--couleur-majeure-jaune: #F1C40F; 
+	--couleur-deux-jaune: #DAC503; 
+	--couleur-trois-jaune: #F7F903;
+	--couleur-quatre-jaune: #DA9903; 
+	--couleur-cinq-jaune: #F99603;
+	--couleur-gris-pale: #f8f8f8; 
+	--couleur-gris-clair: #EEE;
+	--couleur-orange-clair: #FF4C39; 
+	--couleur-orange-dark: #BB382A; 
+	--couleur-majeure-bleu: #1D3E53; 
+	--couleur-deux-bleu: #254B62; 
+	--couleur-trois-bleu: #476D7C; 
+	--couleur-quatre-bleu: #77ABB7;
 }
 
-
 .menuProducteur {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: lightgrey;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: lightgrey;
+	margin-bottom: 40px;
+	padding-left: 20px;
+	margin-right: ;
+}
+
+.bonjour{
+	color: #F99603;
+	margin-top: 19px;
+	margin-left: 20px;
+	font-family: roboto;
+}
+
+.buttonValide{
+	color: white;
+	background-color:  #F1C40F;
+	padding-top: 16px;
+	margin-left: 20px;
+	margin-right: 90px;
+	width: 150px;
+	height: 44px;
+	cursor: pointer;
+	text-align: center;
+	
 }
 
 li {
-    float: right;
+	float: right;
 }
 
 li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: roboto;
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 20px 16px;
+	text-decoration: none;
+	font-family: roboto;
 }
 
 li a:hover, .cmdAPreparer:hover .dropbtn {
-    background-color: var(--couleur-majeure-jaune);
+/*	background-color: var(- -couleur-majeure-jaune);*/
+	background-color:  #F1C40F;
 }
 
 .menuProducteur a.active {
-    background-color: red;
+	background-color: ;
 }
 
 li.cmdAPreparer {
-    display: inline-block;
+	display: inline-block;
 }
 
 .cmdAPreparer-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .cmdAPreparer-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
 }
 
-.cmdAPreparer-content a:hover {background-color: #f1f1f1}
+.cmdAPreparer-content a:hover {
+	background-color: #f1f1f1
+}
 
 .cmdAPreparer:hover .cmdAPreparer-content {
-    display: block;
+	display: block;
 }

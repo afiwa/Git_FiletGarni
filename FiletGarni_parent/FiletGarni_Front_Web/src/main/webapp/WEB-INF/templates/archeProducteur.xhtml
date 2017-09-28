@@ -14,17 +14,46 @@
 	<h:form id="form-producteur">
 
 		<ul class="menuProducteur">
+			<h:commandLink
+				action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}"
+				style="position:absolute">
+				<h:graphicImage id="logo"
+					value="../../Ressources/Images/Logos/Logo-Filet-Garni-PRODUCTEUR-small.png"
+					style="padding-top: 5px;" />
+			</h:commandLink>
+
+			<li class="buttonValide"><h:commandButton value="Deconnexion"
+					style="vertical-align: middle; border:none ; background-color:#F1C40F ; color:white ; font-size:18px ;"
+					action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}" />
+				<span></span></li>
+				
+			<li class="bonjour">Bonjour Kevin</li>
+			
 			<li class="absences"><a href="#news">Gestion des absences</a></li>
+			
 			<li class="compte"><a href="#news">Mon compte</a></li>
-			<li class="gestionCat"><a href="#news">Gestion du catalogue</a></li>
-			<li class="cmdAPreparer"><a href="javascript:void(0)"
-				class="dropbtn">Commandes à préparer</a>
-				<div class="cmdAPreparer-content">
-					<a href="#">Commandes du jour</a> <a href="#">Commandes de la
-						semaine</a>
+			
+			<li class="gestionCat">
+                   <h:commandLink action="#{mbArcheProducteur.afficherCatalogueProducteur()}" 
+	                value="Gestion du catalogue"/>
+            </li>
+            
+			<li class="cmdAPreparer">
+				<a href="javascript:void(0)"
+					class="dropbtn">Commandes à préparer</a>
+					<div class="cmdAPreparer-content">
+				 		<h:commandLink action="#{mbArcheProducteur.afficherCmdAPreparerJourProducteur()}" 
+	                		value="Commandes du jour"/>
+					<a href="#">Commandes de la semaine</a>
 				</div></li>
-			<li class="tabBord"><a href="#home">Tableau de bord</a></li>
+			
+			<li class="tabBord">
+                   <h:commandLink action="#{mbArcheProducteur.afficherDashboardProducteur()}" 
+	                value="Tableau de bord"/>
+            </li>
+
 		</ul>
+
 		<ui:insert name="content"></ui:insert>
 	</h:form>
 </body>

@@ -12,7 +12,7 @@
     overflow: hidden;
     margin: 8px;
     min-width: 230px;
-    max-width: 315px;
+    max-width: 347px;
     width: 100%;
     font-size: 16px;
     background-color: #fff;
@@ -21,12 +21,13 @@
     text-align: left;
     border: 1px solid #F1C40F;
     border-radius: 3px;
+    margin-left:25px;
 }
 
 .image_principale {
     max-width: 100%;
     vertical-align: top;
-    width: 315px;
+    width: 347px;
     height: 230px;
     border-bottom: 1px solid #F1C40F;
 }
@@ -104,8 +105,10 @@
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    margin-left: 35px;
+    margin-left: 70px;
     border-radius: 3px;
+    margin-top: -6px;
+    margin-bottom: 20px;
 }
 
 .button1 {

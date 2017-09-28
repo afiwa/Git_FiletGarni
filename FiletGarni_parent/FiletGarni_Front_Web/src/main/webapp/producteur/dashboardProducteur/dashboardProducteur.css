@@ -68,13 +68,14 @@ body {
   content: '\00bb';
   position: absolute;
   opacity: 0;
-  top: 0;
+  top: -28px;
   right: -20px;
   transition: 0.5s;
+
 }
 
 .boutonNbCommande:hover {
-     background-color: #1FAB89;
+     background-color: ##F1C40F;
 }
 
 .boutonNbCommande:hover span {
@@ -155,13 +156,13 @@ body {
   content: '\00bb';
   position: absolute;
   opacity: 0;
-  top: 0;
+  top: -28px;
   right: -20px;
   transition: 0.5s;
 }
 
 .boutonCatalogue:hover {
-     background-color: #1FAB89;
+     background-color: #F1C40F;
 }
 
 .boutonCatalogue:hover span {
@@ -187,6 +188,54 @@ body {
 
 .infoStock {
     line-height: 2;
+    color: var(--couleur-orange-clair);
+}
+
+.boutonAlert {
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #F1C40F;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  width: 150px;
+    height: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+    float: right;
+}
+
+.boutonAlert span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.boutonAlert span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: -15px;
+  right: -20px;
+  transition: 0.5s;
+
+}
+
+.boutonAlert:hover {
+     background-color: ##F1C40F;
+}
+
+.boutonAlert:hover span {
+  padding-right: 25px;
+   
+}
+
+.boutonAlert:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 /* ------------------------------------------------- */
@@ -216,6 +265,54 @@ body {
     font-weight: 600;
     line-height: 2;
 }
+
+.boutonHistorique {
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #F1C40F;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  width: 269px;
+    height: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+    float: right;
+}
+
+.boutonHistorique span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.boutonHistorique span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: -14px;
+  right: -20px;
+  transition: 0.5s;
+
+}
+
+.boutonHistorique:hover {
+     background-color: ##F1C40F;
+}
+
+.boutonHistorique:hover span {
+  padding-right: 25px;
+   
+}
+
+.boutonHistorique:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 
 .articleStar {
     grid-row: 3;

@@ -14,9 +14,6 @@
 	        <figcaption>
 	        	<h3 class="nomProduit">#{produit.libelle}</h3>
 	        	
-	        	<!--  <h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"
-	        					value="#{produit.libelle}"
-	        					class="nomProduit"/> -->
 	            <h3 class="conditionnement">
 	            	#{produit.conditionnements.get(0).libelle}	
 				 </h3>
@@ -38,7 +35,7 @@
 			
 		</figure>
 		<br />
-		<h:commandButton action="#" value="Accéder à la fiche détaillée" class="button button1" />
+		<h:commandButton action="#{mbProducteurGestionCatalogue.afficherProduitSelectionne(produit.id)}" value="Accéder à la fiche détaillée" class="button button1" />
 	</section>
 	</ui:component>
 	

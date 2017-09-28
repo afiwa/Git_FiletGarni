@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" lang="fr">
+
+
+<h:head>
+	<title><ui:insert name="title"></ui:insert></title>
+	<ui:insert name="headcssscript"></ui:insert>
+</h:head>
+
+<body>
+	<h:form id="form-pointrelasi">
+
+		<ul class="menuPointrelais">
+			<h:commandLink
+				action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}"
+				style="position:absolute">
+				<h:graphicImage id="logo"
+					value="../Ressources/Images/Logos/Logo-Filet-Garni-POINTRELAIS-small.png"
+					style="padding-top: 10px;" />
+			</h:commandLink>
+
+
+
+			<li class="bonjour"><a href="#">Bonjour Point relais</a></li>
+			<li class="absences"><a href="#news">Gestion des absences</a></li>
+			<li class="compte"><a href="#news">Mon compte</a></li>
+			<li class="tabBord"><a href="#home">Tableau de bord</a></li>
+		
+		
+		</ul>
+		<ui:insert name="content"></ui:insert>
+	</h:form>
+</body>
+</html>

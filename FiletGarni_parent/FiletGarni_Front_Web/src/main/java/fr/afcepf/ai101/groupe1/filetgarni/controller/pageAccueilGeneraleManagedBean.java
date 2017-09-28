@@ -14,4 +14,10 @@ public class pageAccueilGeneraleManagedBean {
 	public String redirectionPageAccueilGenerale() {
 		return "/pageAccueilGenerale/pageAccueilGenerale.xhtml?faces-redirect=true";
 	}
+	
+	public String redirectionPageDashBoardProducteur() {
+		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
+	}
+	
+	
 }

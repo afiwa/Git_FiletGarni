@@ -27,4 +27,11 @@ public class DaoCategorieProduit implements IDaoCategorieProduit {
 				.setParameter("pid", paramId_categorieProduit).getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CategorieProduit> getAllCategorie() {
+		
+		return em.createQuery("SELECT c FROM CategorieProduit c").getResultList();
+	}
+
 }

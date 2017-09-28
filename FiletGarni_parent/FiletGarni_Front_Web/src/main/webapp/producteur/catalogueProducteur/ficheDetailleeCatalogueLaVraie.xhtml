@@ -28,13 +28,13 @@
 		<div class="titreModifCat">Modifiez ou supprimez votre produit</div>
 		<div class="imgModifCat">
 			<img class="imageCat"
-				src="../../Ressources/Images/Images_produits/#{mbDashboardProducteur.produitStockBas.photo}"
-				alt="#{mbDashboardProducteur.produitStockBas.libelle}" />
+				src="../../Ressources/Images/Images_produits/#{mbProducteurGestionCatalogue.produitSelectionne.photo}"
+				alt="#{mbProducteurGestionCatalogue.produitSelectionne.libelle}" />
 		</div>
 		<div class="titreEtConditionnement">
 			<span class="nomProduit">Nom du produit <input
 				class="spanInputNom" type="text" name="nomProduit"
-				value="#{mbDashboardProducteur.produitStockBas.libelle}" /></span> <span
+				value="#{mbProducteurGestionCatalogue.produitSelectionne.libelle}" /></span> <span
 				class="condProduit"><span class="spanConditionnement">Conditionnement</span>
 					 <select class="choiceBox" type="conditionnement">
 						<ui:repeat var="conditionnement"
@@ -62,10 +62,10 @@
 			</span>
 		</div>
 		<div class="stockCat">
-			Stock <input class="nbStock" type="text" name="stock" value="#{mbDashboardProducteur.produitStockBas.quantiteEnStock}" />
+			Stock <input class="nbStock" type="text" name="stock" value="#{mbProducteurGestionCatalogue.produitSelectionne.quantiteEnStock}" />
 		</div>
 		<div class="prixCat">
-			Prix <h:inputText class="prixProduit" type="text" name="prix" value="#{mbDashboardProducteur.produitStockBas.prix}">
+			Prix <h:inputText class="prixProduit" type="text" name="prix" value="#{mbProducteurGestionCatalogue.produitSelectionne.prix}">
 			<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 			</h:inputText>
 			€
@@ -73,7 +73,7 @@
 		
 		<div class="lngDesc">
 			Description détaillée (max : 1500 caractères)<br />
-			<h:inputText value="#{mbDashboardProducteur.produitStockBas.description}" name="FirstName" cols="100" rows="5"
+			<h:inputText value="#{mbProducteurGestionCatalogue.produitSelectionne.description}" name="FirstName" cols="100" rows="5"
 				style="margin: 0px; width: 100%; height: 115px; padding-left: 20px;"></h:inputText>
 		</div>
 

@@ -8,5 +8,7 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 public interface IDaoConditionnement {
 	
 	public List<Conditionnement> getByProduit(Produit produit);
+	
+	public List<Conditionnement> getAllConditionnement();
 
 }
