@@ -11,7 +11,9 @@
 		<a href="#0" class="cd-cart-trigger"> Panier
 			<h:panelGroup  id="pastille" layout="block">
 				<ul class="count">
-					<li><h:outputText value="#{mbTestPanier.quantiteTotalePanier}"></h:outputText></li>
+					<li><h:outputText value="#{mbTestPanier.quantiteTotalePanier}">
+						<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+					</h:outputText></li>
 				</ul>
 			</h:panelGroup>
 		</a>
@@ -49,24 +51,16 @@
 										<h:commandLink class="delete-item" value="Supprimer">
 											<f:ajax
 												listener="#{mbTestPanier.supprimerLgnCmd(ligneCommande)}"
-												event="click" execute="@form" render="grosPanier prixLgnCmde :form-conso:prixTotalPanier :form-conso:affichageProduit" />
+												event="click" execute="@form" render="grosPanier prixLgnCmde :form-conso:pastille :form-conso:prixTotalPanier :form-conso:affichageProduit" />
 										</h:commandLink>
 
 										<div class="quantity">
 											<label for="cd-product-#{ligneCommande.produit.id}">Quantite</label>
 											<span class="select"> 
 												<h:selectOneMenu id="listeDeroulanteQuantite" value= "#{ligneCommande.quantiteCommandee}"> 
-   														<f:ajax event="change" execute="@this" render="grosPanier prixLgnCmde :form-conso:prixTotalPanier  :form-conso:affichageProduit" 
+   														<f:ajax event="change" execute="@this" render="grosPanier prixLgnCmde :form-conso:pastille :form-conso:prixTotalPanier  :form-conso:affichageProduit" 
    														listener="#{mbTestPanier.modifierLgnCmd(ligneCommande)}"></f:ajax>
-   														<f:selectItem itemValue = "1" itemLabel = "1" /> 
-  														<f:selectItem itemValue = "2" itemLabel = "2" /> 
-  														<f:selectItem itemValue = "3" itemLabel = "3" /> 
-  														<f:selectItem itemValue = "4" itemLabel = "4" /> 
-  														<f:selectItem itemValue = "5" itemLabel = "5" /> 
-  														<f:selectItem itemValue = "6" itemLabel = "6" /> 
-  														<f:selectItem itemValue = "7" itemLabel = "7" /> 
-  														<f:selectItem itemValue = "8" itemLabel = "8" /> 
-  														<f:selectItem itemValue = "9" itemLabel = "9" /> 
+  														<f:selectItems value = "#{mbTestPanier.listQuantitesEnStock[ligneCommande.produit.id]}" var="i" itemLabel="#{i}" itemValue="#{i}"></f:selectItems>
 											</h:selectOneMenu> 	
 											
 											</span>
@@ -82,7 +76,7 @@
 
 				<footer> 
 				<h:commandLink class="checkout btn" action="#{mbTestPanier.validerPanier()}">
-					<em>Valider votre panier : Total - 
+					<em>Validez votre panier -  
 						<h:outputLabel id="prixTotalPanier"	class="total-panier" value="#{mbTestPanier.totalMontantCommande}">
 							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 						</h:outputLabel> €

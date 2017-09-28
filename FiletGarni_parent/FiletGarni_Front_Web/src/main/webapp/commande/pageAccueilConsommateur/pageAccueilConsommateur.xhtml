@@ -31,9 +31,13 @@
 
 	<ui:define name="content">
 		<section id="selection"> <span class="titreSelection"><center>Selection de la semaine</center></span> 
+			<h:panelGroup id="affichageProduit">
 			<ui:repeat var="produit" value="#{mbPageAccueilConso.produitsSelectionSemaine}">
+			
 				<ui:include src="../../WEB-INF/components/produit.xhtml" />
-			</ui:repeat>			 		
+					 
+			</ui:repeat>		
+				</h:panelGroup>	
 		</section>
 
 		<!-- SECTION RECETTES -->
@@ -110,47 +114,23 @@
 
 		<!-- ADD TO CART INTERACTION -->
 
-		<div class="cd-cart-container empty">
-			<a href="#0" class="cd-cart-trigger"> Panier
-				<ul class="count">
-					<!-- cart items count -->
-					<li>0</li>
-					<li>0</li>
-				</ul> <!-- .count -->
-			</a>
+		<ui:include src="../../WEB-INF/components/panier-add-to-cart.xhtml"></ui:include>
+		
 
-			<div class="cd-cart">
-				<div class="wrapper">
-					<header>
-					<h2>Panier</h2>
-					<span class="undo"><a href="#0">Remettre article</a></span> </header>
-
-					<div class="body">
-						<ul>
-							<!-- products added to the cart will be inserted here using JavaScript -->
-						</ul>
-					</div>
-
-					<footer> <a href="#0" class="checkout btn"><em>Total
-							- €<span>0</span>
-					</em></a> </footer>
-				</div>
-			</div>
-			<!-- .cd-cart -->
-
-		</div>
-
-		<script type="text/javascript" src="js/main.js"></script>
+		
 		<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
 		<script type="text/javascript">
 	var producteurs = [#{mbPageAccueilConso.jsonProducteur()}];
 	myMap();
 	</script>
-
+		
 		<!-- SCRIPT FICHE PRODUIT -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script type="text/javascript" src="fiche_produit/Affichage_Produit_Projet3.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="../jsAddToCart/add-to-cart.js"></script>
+		<script type="text/javascript" src="../jsHamburger/main.js">
+		</script>
 		<!-- -->
 		
 	</ui:define>

@@ -59,12 +59,19 @@
 				<h3 class="bg-success">
 					Votre commande d'un montant total de 
 					<span>
-					<b><h:outputLabel value="#{mbTestPanier.totalMontantCommande}" /></b>
-					€ </span> 
+					<b><h:outputLabel value="#{mbTestPanier.totalMontantCommande}">
+				<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+					</h:outputLabel>
+					€ </b></span> 
 					a bien été enregistrée et sera livrée le 
 					<b><h:outputLabel value="#{mbPaiement.commande.dateLivraisonPrevue}">
 						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
 					</h:outputLabel></b>
+					chez 
+					<b>
+					<h:outputLabel class="form-control"
+					value="#{mbPaiement.commande.pointRelais.raisonSociale}"></h:outputLabel>
+					</b>
 					<br/>
 					Toute l'équipe du Filet Garni vous remercie de votre confiance !
 				</h3>
@@ -152,7 +159,7 @@
 								<span class="required-lbl"></span><label class="control-label"
 									for="firstname">Nom</label>
 								<div class="controls">
-									<h:outputLabel id="lastname" name="lastname" type="text"
+									<h:outputLabel id="firstname" name="firstname" type="text"
 										placeholder="" class="form-control"
 										value="#{mbConnecterConso.consommateurConnecte.nom.toString()}" />
 								</div>
@@ -222,96 +229,12 @@
 							</div>
 
 						</div>
-						<!-- 					<div class="block billing-info"> -->
-
-						<!-- 						<div class="form-group col-md-12 bg-primary"> -->
-						<!-- 							<label class="control-label" for="billinginformation">Adresse -->
-						<!-- 								de facturation</label> <label class="checkbox" for="billinginformation"> -->
-						<!-- 								<output type="checkbox" name="billinginformation" -->
-						<!-- 									id="billinginformation" value="Use Shipping Address" /> -->
-						<!-- 							</label> -->
-						<!-- 						</div> -->
-
-						<!-- 						<div class="form-group col-md-6 contenu"> -->
-						<!-- 							<span class="required-lbl"></span><label class="control-label" -->
-						<!-- 								for="shippingaddress1">Adresse du propriétaire de la -->
-						<!-- 								carte</label> -->
-						<!-- 							<div class="controls"> -->
-						<!-- 								<output id="shippingaddress1" name="shippingaddress1" -->
-						<!-- 									type="text" placeholder="" class="form-control" required="" /> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-
-						<!-- 						<div class="form-group col-md-6 contenu"> -->
-						<!-- 							<label class="control-label" for="shippingaddress2">Complément -->
-						<!-- 								d'adresse</label> -->
-
-						<!-- 							<div class="controls"> -->
-						<!-- 								<output id="shippingaddress2 contenu" name="shippingaddress2" -->
-						<!-- 									type="text" placeholder="" class="form-control" required="" /> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-
-						<!-- 						<div class="form-group col-md-6 contenu"> -->
-						<!-- 							<span class="required-lbl"></span><label class="control-label" -->
-						<!-- 								for="shippingcity">Ville</label> -->
-						<!-- 							<div class="controls"> -->
-						<!-- 								<output id="shippingcity" name="shippingcity" type="text" -->
-						<!-- 									placeholder="" class="form-control" required="" /> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-
-						<!-- 						<div class="form-group col-md-6 contenu"> -->
-						<!-- 							<span class="required-lbl"></span><label class="control-label" -->
-						<!-- 								for="postcode">Code postal</label> -->
-						<!-- 							<div class="controls"> -->
-						<!-- 								<output id="postcode" name="postcode" type="text" placeholder="" -->
-						<!-- 									class="form-control" required="" /> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-						<!-- 					</div> -->
-
-<!-- 						<div class="other-info"> -->
-<!-- 							<div class="form-group col-md-12 bg-primary"> -->
-<!-- 								<label class="control-label" for="contactinformation">Informations -->
-<!-- 									complémentaires</label> -->
-<!-- 							</div> -->
-
-<!-- 							<div class="form-group col-md-12"> -->
-<!-- 								<div class="control-group"> -->
-<!-- 									<label class="control-label" for="iaccept"></label> -->
-<!-- 									<div class="controls"> -->
-<!-- 										<label class="checkbox" for="iaccept-0"> <input -->
-<!-- 											type="checkbox" name="iaccept" id="iaccept-0" -->
-<!-- 											value="I accept the Teams and conditions"> Je -->
-<!-- 												m'abonne à la newsLetter du Filet Garni afin de recevoir des -->
-<!-- 												informations pertinentes sur les nouveaux produits et les -->
-<!-- 												nouvelles des points relais près de chez moi.</input> -->
-<!-- 										</label> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
-<!-- 							<div class="form-group col-md-12"> -->
-<!-- 								<div class="control-group"> -->
-<!-- 									<label class="control-label" for="iaccept"></label> -->
-<!-- 									<div class="controls termsAndConditions"> -->
-<!-- 										<label class="checkbox" for="iaccept-1"> <input -->
-<!-- 											type="checkbox" name="iaccept" id="iaccept-1" -->
-<!-- 											value="I accept the Teams and conditions"> J'accepte -->
-<!-- 												les <a href="">termes et conditions</a> de Filet Garni.</input> -->
-<!-- 										</label> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-
-						<!-- 					<div class="form-group col-md-12 termsAndConditions2"> -->
 
 					</div>
 				</div>
-						<button id="placeorderbtn" name="placeorderbtn"
-							class="btn btn-primary">Retour à l'accueil</button>
+						<a href="../pageAccueilConsommateur/pageAccueilConsommateur.jsf" class="btn btn-primary">Retour à l'accueil</a>
+<!-- 						<button id="" name="placeorderbtn" -->
+<!-- 							>Retour à l'accueil</button></a> -->
 			</div>
 
 

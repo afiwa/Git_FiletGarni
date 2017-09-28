@@ -1,7 +1,9 @@
 package fr.afcepf.ai101.groupe1.filetgarni.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
+import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeMarion;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 
 @SessionScoped
@@ -17,10 +20,11 @@ public class pageAffichageProduitsManagedBean {
 	
 	private List<Produit> tousLesProduits = new ArrayList<>();
 	private List<Produit> produitsParCategorie = new ArrayList<>();
+	
 
 	@EJB
 	IBusinessCommande businessCommande;
-	
+		
 	@PostConstruct
 	public void init() {
 		recupererTousLesProduits();	
@@ -68,5 +72,9 @@ public class pageAffichageProduitsManagedBean {
 
 	public void setTousLesProduits(List<Produit> paramTousLesProduits) {
 		tousLesProduits = paramTousLesProduits;
-	}	
+	}
+
+	
+	
+	
 }
