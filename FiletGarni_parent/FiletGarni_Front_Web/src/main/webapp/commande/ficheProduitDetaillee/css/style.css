@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .btnRetour {
-	display: inline-block;
-	border-radius: 4px;
-	background-color: #2abb6d;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 23px;
-	padding: 5px;
-	width: 200px;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 5px;
-	margin-left: 153px;
-	margin-bottom: 17px;
-	font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #2abb6d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+    padding: 5px;
+    width: 180px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-left: 153px;
+    margin-bottom: 17px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .btnRetour span {
@@ -25,14 +25,14 @@
 	transition: 0.5s;
 }
 
-.btnRetour span:after {
-	content: '\00ab';
-	position: absolute;
-	opacity: 0;
-	top: -20px;
-	right: 10px;
-	transition: 0.5s;
-	margin-left: 80px;
+.btnRetour span:after {   
+    content: '\00ab';
+    position: absolute;
+    opacity: 0;
+    top: -23px;
+    right: 15px;
+    transition: 0.5s;
+    margin-right: 110px;
 }
 
 .btnRetour:hover span {

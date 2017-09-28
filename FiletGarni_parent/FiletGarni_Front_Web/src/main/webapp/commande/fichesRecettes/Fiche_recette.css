@@ -1,6 +1,7 @@
 .pageRecette {
     display: grid;
     font-family: roboto;
+    overflow-x: hidden;
 }
 
 .ideeRecette {

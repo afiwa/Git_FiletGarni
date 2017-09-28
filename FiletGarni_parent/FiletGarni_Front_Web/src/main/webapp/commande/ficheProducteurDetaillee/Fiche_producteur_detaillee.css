@@ -15,15 +15,15 @@
     border: none;
     color: #FFFFFF;
     text-align: center;
-    font-size: 23px;
+    font-size: 25px;
     padding: 5px;
-    width: 200px;
+    width: 180px;
     transition: all 0.5s;
     cursor: pointer;
-    margin-left: 20px;
+    margin: 5px;
+    margin-left: 15px;
+    margin-bottom: 17px;
     font-family: 'Roboto', sans-serif;
-    grid-row: 1;
-    grid-column: 1;
 }
 
 .btnRetour span {
@@ -33,14 +33,14 @@
   transition: 0.5s;
 }
 
-.btnRetour span:after {
+.btnRetour span:after {   
     content: '\00ab';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: 50px;
-  transition: 0.5s;
-  margin-right:80px;
+    position: absolute;
+    opacity: 0;
+    top: -23px;
+    right: 15px;
+    transition: 0.5s;
+    margin-right: 110px;
 }
 
 .btnRetour:hover span {
