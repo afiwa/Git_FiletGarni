@@ -24,6 +24,7 @@
 		            </h:outputLabel>
 	            	#{produit.conditionnements.get(0).unite}           
 	            </h2>
+	            <h2 class="quantiteStock">#{produit.quantiteEnStock} #{produit.conditionnements.get(0).libelle}(s) en stock</h2>
 	            <div class="prixProduit">
 		            <h:outputLabel value="#{produit.prix}" >
 		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
