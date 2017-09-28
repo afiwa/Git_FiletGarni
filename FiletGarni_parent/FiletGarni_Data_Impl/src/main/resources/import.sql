@@ -1187,7 +1187,7 @@ INSERT INTO `horairesouverture` (`id_horaires`, `heure_debut_ouverture`, `heure_
 INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (1, 'Mâche', '100 g', 36);
 INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (2, 'Champignons', '100 g', 44);
 INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (3, 'Echalotes', '4', 31);
-INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (4, 'Noisettes', '50 g', 24);
+INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (4, 'Noisettes', '50 g', 25);
 INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (5, 'Huile de noisettes', '30 ml', NULL);
 INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (6, 'Vinaigre balsamique', '10 ml', NULL);
 INSERT INTO `produitrecette` (`id_produitrecette`, `libelle_produitrecette`, `quantite_produitrecette`, `id_categorie_tproduitrecette`) VALUES (7, 'Miel', '10 g', 4);
