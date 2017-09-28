@@ -73,6 +73,7 @@ public class DashboardProducteurManagedBean {
 	public void recupererNbProduitProducteur () {
 		listProduitProducteur = businessCommande.getProduitsByIdProducteur(35);
 		nbProduit = listProduitProducteur.size();
+		System.out.println("nb produit =" + nbProduit);
 
 	}
 	

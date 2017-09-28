@@ -39,6 +39,10 @@ public class LivreurManagedBean {
 		initLivreur();
 		initialisationMap();
 	}
+	
+	public String afficherPageLivreur() {
+		return "/livreur/livraisonsDuJour.xhtml?faces-redirect=true";
+	}
 
 	public void initialisationMap(){
 		

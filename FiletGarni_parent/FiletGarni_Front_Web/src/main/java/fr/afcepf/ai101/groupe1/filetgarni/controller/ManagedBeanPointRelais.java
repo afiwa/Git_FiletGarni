@@ -38,6 +38,11 @@ public class ManagedBeanPointRelais implements Serializable {
 		initPR();
 		afficherCommandePointRelais(PR);
 	}
+	
+	public String afficherPagePointRelais() {
+		return "/pointRelais/pointRelais.xhtml?faces-redirect=true";
+	}
+	
 	public void afficherCommandePointRelais(PointRelais pointrelais){
 		listCommandePR = buPR.afficherCommandesLivrees(PR);
 
