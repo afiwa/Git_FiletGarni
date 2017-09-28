@@ -2,7 +2,6 @@ package fr.afcepf.ai101.filetGarni.data.api;
 
 import java.util.List;
 
-import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 
 public interface IDaoProducteur {
@@ -14,11 +13,7 @@ public interface IDaoProducteur {
     public List<Producteur> getAllWithCategories();
     
     public Producteur getByIdWithAdresses(Integer id_producteur);
-    
-<<<<<<< HEAD
+
     public Producteur getByIdProduit(Integer id_produit);
-=======
-    
->>>>>>> Virginie
 
 }

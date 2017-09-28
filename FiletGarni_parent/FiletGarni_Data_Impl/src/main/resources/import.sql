@@ -269,7 +269,7 @@ INSERT INTO `adresse` (`id_adresse`, `latitude_adresse`, `libelle_adresse`, `lon
 -- Table tourneepratique
 --
 INSERT INTO `tourneetheorique` (`type_tournee`, `id_tournee_theorique`, `date_tournee_theorique`, `heure_debut_tournee_theorique`, `heure_fin_tournee_theorique`, `libelle_tournee_theorique`, `nbkm_tournee_theorique`) VALUES ('tourneereelleproducteur', 1, '2017-09-29 00:00:00', NULL, NULL, NULL, NULL);
-INSERT INTO `tourneetheorique` (`type_tournee`, `id_tournee_theorique`, `date_tournee_theorique`, `heure_debut_tournee_theorique`, `heure_fin_tournee_theorique`, `libelle_tournee_theorique`, `nbkm_tournee_theorique`) VALUES ('tourneereellelivraison', 2, '2017-09-30 00:00:00', NULL, NULL, NULL, NULL);
+INSERT INTO `tourneetheorique` (`type_tournee`, `id_tournee_theorique`, `date_tournee_theorique`, `heure_debut_tournee_theorique`, `heure_fin_tournee_theorique`, `libelle_tournee_theorique`, `nbkm_tournee_theorique`) VALUES ('tourneereellelivraison', 2, '2017-09-29 00:00:00', NULL, NULL, NULL, NULL);
 
 --
 -- Déchargement des données de la table `utilisateur`

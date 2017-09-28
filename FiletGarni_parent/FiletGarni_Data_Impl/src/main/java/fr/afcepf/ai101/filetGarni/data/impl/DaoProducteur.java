@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProducteur;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProducteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 
 @Remote(IDaoProducteur.class)
@@ -45,7 +44,6 @@ public class DaoProducteur implements IDaoProducteur {
 								.setParameter("pid", paramId_producteur)
 								.getSingleResult();
 	}
-<<<<<<< HEAD
 
 	@Override
 	public Producteur getByIdProduit(Integer paramId_produit) {		
@@ -53,7 +51,4 @@ public class DaoProducteur implements IDaoProducteur {
 								.setParameter("pid", paramId_produit)
 								.getSingleResult();
 	}
-=======
-	
->>>>>>> Antoine
 }
