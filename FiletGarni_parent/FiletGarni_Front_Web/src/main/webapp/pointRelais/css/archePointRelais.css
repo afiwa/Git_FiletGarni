@@ -31,7 +31,24 @@
 	padding-left: 20px;
 	
 }
-
+.bonjour{
+	color: #F99603;
+	margin-top: 19px;
+	margin-left: 20px;
+	font-family: roboto;
+}
+.buttonValide{
+	color: white;
+	background-color:  #F1C40F;
+	padding-top: 16px;
+	margin-left: 20px;
+	margin-right: 90px;
+	width: 150px;
+	height: 44px;
+	cursor: pointer;
+	text-align: center;
+	
+}
 li {
 	float: right;
 }

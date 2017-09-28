@@ -7,8 +7,9 @@ public interface IBusinessPointRelais {
 
     public java.util.List<Commande> afficherCommandesLivrees(PointRelais pointRelais);
 
+    public PointRelais getPointRelaisByID(Integer id_PointRelais) ;
+    
     public Commande validerRecuperationConsommateur(Integer id_commande);
 
-//    public PointRelais getPointRelaisById(Integer id_point_relais);
-    
+
 }

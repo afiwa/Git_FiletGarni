@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.afcepf.ai101.filetGarni.data.api.IDaoPointRelais;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 
 @Remote(IDaoPointRelais.class)
@@ -50,7 +51,14 @@ public class DaoPointRelais implements IDaoPointRelais {
 
 	@Override
 	public PointRelais getById(Integer paramIdPointRelais) {
-		return (PointRelais) em.createQuery("select pr from PointRelais pr where id = :pId").setParameter("pId", paramIdPointRelais).getSingleResult();
+		return (PointRelais) em.createQuery("select pr from PointRelais pr where pr.id = :pId").setParameter("pId", paramIdPointRelais).getSingleResult();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Commande> getCommandesByIdPointRelais(Integer paramIdPointRelais) {
+		return em.createQuery("SELECT cmd FROM Commande cmd WHERE cmd.pointRelais.id = :pId").setParameter("pId", paramIdPointRelais).getResultList();
+	}
+	
 
 }
