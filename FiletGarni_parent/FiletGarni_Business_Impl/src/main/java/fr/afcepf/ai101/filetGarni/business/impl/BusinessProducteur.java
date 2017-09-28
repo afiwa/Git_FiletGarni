@@ -1,6 +1,10 @@
 package fr.afcepf.ai101.filetGarni.business.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
@@ -18,6 +22,7 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoRegion;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoSuiviIndisponibilite;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoUtilisateur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoVille;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
@@ -63,6 +68,8 @@ public class BusinessProducteur implements IBusinessProducteur {
     @EJB
     private IDaoProduit daoProduit;
 
+
+	
 	@Override
 	public List<LigneCommande> afficherLigneCommandeDuJour(Producteur paramProducteur) {
 		// TODO Auto-generated method stub
@@ -110,6 +117,26 @@ public class BusinessProducteur implements IBusinessProducteur {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Set<Commande> getCommandesByIdProducteurByDateLivraison(Integer id_producteur, Date date_livraison) {
+		Set<Commande> commandesDuJourAPreparerProducteur = new HashSet<>(); 
+		List<Commande> commandesDuJour = daoCommande.getAllByDate(date_livraison);
+		for (Commande commande : commandesDuJour) {
+			for (LigneCommande ligneCommande : commande.getLgnCommandes()) {
+				if(ligneCommande.getProduit().getProducteur().getId() == id_producteur) {
+					commandesDuJourAPreparerProducteur.add(commande);
+				}
+			}
+		}		
+		System.out.println("**************************test******************************");
+		System.out.println(date_livraison);
+		System.out.println(commandesDuJourAPreparerProducteur.size());
+		return commandesDuJourAPreparerProducteur;
+	
+	}
+
+
 
 
 }
