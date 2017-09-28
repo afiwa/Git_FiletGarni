@@ -29,14 +29,16 @@ public class DashboardProducteurManagedBean {
 	
 	public String afficherFicheProduitStockBas(Integer id_producteur) {
 		url = FacesContext.getCurrentInstance().getViewRoot().getViewId();
-		produitStockBas = businessCommande.getProduitStockBasByIdProducteur(id_producteur);
-		
+		produitStockBas = businessCommande.getProduitStockBasByIdProducteur(id_producteur);		
 		return "/producteur/catalogueProducteur/ficheDetailleeCatalogue.xhtml?faces-redirect=true";
 	}
 	
+	public String retournerDashBoard() {
+		return url + "?faces-redirect=true"; 
+	}
+	
 
-	public String afficherProduitProducteur(Integer id_producteur) {
-		
+	public String afficherProduitProducteur(Integer id_producteur) {		
 		listProduitProducteur = businessCommande.getProduitsByIdProducteur(id_producteur);
 		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
 		

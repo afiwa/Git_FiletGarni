@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.jms.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transaction;
 
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
@@ -50,16 +52,20 @@ public class DaoProduit implements IDaoProduit {
 								.setParameter("pid", paramId_producteur)
 								.getResultList();
 	}
+	
+	@Override
+	public void supprimerbyIdProduit(Integer paramId_produit) {
+		Produit produit = (Produit) em.createQuery("SELECT p FROM Produit p WHERE p.id = :pid")
+								.setParameter("pid", paramId_produit)
+								.getSingleResult();
+		em.remove(produit);
+	}
 
     public void creer() {
         // TODO implement here
     }
 
     public void modifier() {
-        // TODO implement here
-    }
-
-    public void supprimer() {
         // TODO implement here
     }
 
@@ -76,4 +82,6 @@ public class DaoProduit implements IDaoProduit {
         // TODO implement here
         return null;
     }
+
+
 }

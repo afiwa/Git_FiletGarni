@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.CategorieProduit;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 
 @SessionScoped
 @ManagedBean(name = "mbProducteurProduitDetaille")
@@ -18,6 +19,8 @@ public class ProducteurProduitDetailleManagedBean {
 	
 	private List<Conditionnement> conditionnements = new ArrayList<>();
 	private List<CategorieProduit> categories = new ArrayList<>();
+	private List<Produit> listProduitProducteur = new ArrayList<>();
+	
 	@EJB
 	IBusinessCommande businessCommande;
 
@@ -25,9 +28,7 @@ public class ProducteurProduitDetailleManagedBean {
 	public void init() {
 		recupererLesConditionnements();
 		recupererLesCategories();
-	}
-	
-
+	}	
 	
 	public void recupererLesConditionnements() {
 		conditionnements = businessCommande.getAllConditionnements();
@@ -35,6 +36,17 @@ public class ProducteurProduitDetailleManagedBean {
 	
 	public void recupererLesCategories() {
 		categories = businessCommande.getAllCategorieProduit();
+	}
+	
+	public String supprimerUnProduitStockBas(Integer paramid_produit) {
+		businessCommande.supprimerUnProduit(paramid_produit);
+		return "/producteur/dashboardProducteur/dashboardProducteur.xhtml?faces-redirect=true";
+	}
+	
+	public String supprimerUnProduitCatalogue(Integer paramid_produit) {
+		businessCommande.supprimerUnProduit(paramid_produit);
+		listProduitProducteur = businessCommande.getProduitsByIdProducteur(35);
+		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
 	}
 	
 //	GET ET SET
@@ -61,9 +73,13 @@ public class ProducteurProduitDetailleManagedBean {
 	public void setBusinessCommande(IBusinessCommande businessCommande) {
 		this.businessCommande = businessCommande;
 	}
-	
-	
-	
-	
+
+	public List<Produit> getListProduitProducteur() {
+		return listProduitProducteur;
+	}
+
+	public void setListProduitProducteur(List<Produit> paramListProduitProducteur) {
+		listProduitProducteur = paramListProduitProducteur;
+	}	
 
 }

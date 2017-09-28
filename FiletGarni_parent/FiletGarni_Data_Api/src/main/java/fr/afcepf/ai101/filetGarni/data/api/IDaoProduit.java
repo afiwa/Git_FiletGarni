@@ -26,7 +26,7 @@ public interface IDaoProduit {
 
     public void modifier();
 
-    public void supprimer();
+    public void supprimerbyIdProduit(Integer id_produit);
 
     public void rechercher();
 

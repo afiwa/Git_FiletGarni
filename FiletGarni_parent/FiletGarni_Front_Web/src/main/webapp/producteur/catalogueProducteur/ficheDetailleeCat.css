@@ -202,3 +202,35 @@ input[type=text]:focus {
     text-align: center;
     margin-left: 10px;
 }
+
+.pop-up {
+	z-index: -1;
+	display: none;
+}
+
+.pop-up-visible {
+	z-index: 500;
+	display: block;
+	position: absolute;
+	top: 10em;
+	background-color: #000;
+	opacity: 0.5;
+	width: 50%;
+	height: 30%;
+	left: 24em;
+	border-radius: 10px;
+}
+
+
+.settings-visible{
+	z-index: 1000;
+	opacity: 1;
+	display: block;
+	text-align: center;
+	margin-top: 4em;
+}
+
+#titre-popup{
+	z-index: 1000;
+	color: #FFF;
+}

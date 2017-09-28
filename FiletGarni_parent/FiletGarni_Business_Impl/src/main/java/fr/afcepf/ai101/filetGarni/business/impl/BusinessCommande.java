@@ -169,6 +169,11 @@ public class BusinessCommande implements IBusinessCommande{
 		}	
 		return produitStockBas;
 	}
+	
+	@Override
+	public void supprimerUnProduit(Integer paramId_produit) {
+		daoProduit.supprimerbyIdProduit(paramId_produit);	
+	}
 
 	@Override
 	public List<Produit> getProduitByNom(String paramNom, Region paramRegion) {
@@ -317,8 +322,6 @@ public class BusinessCommande implements IBusinessCommande{
 	public List<CategorieProduit> getAllCategorieProduit() {
 		return daoCategorieProduit.getAllCategorie();
 	}
-
 	
-
 }
 

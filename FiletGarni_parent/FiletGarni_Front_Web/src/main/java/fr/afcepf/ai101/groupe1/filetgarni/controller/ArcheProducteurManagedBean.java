@@ -14,10 +14,5 @@ public class ArcheProducteurManagedBean {
 	public String afficherCmdAPreparerJourProducteur() {
 		return "/producteur/commandeEnCours/commandesProducteur.xhtml?faces-redirect=true";
 	}
-	
-	public String afficherCatalogueProducteur() {
-		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
-	}
-	
 
 }

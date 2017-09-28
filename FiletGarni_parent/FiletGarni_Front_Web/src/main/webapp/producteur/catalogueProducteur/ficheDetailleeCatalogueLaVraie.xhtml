@@ -20,11 +20,11 @@
 
 		<!-- 	<body id="ficheDetaillee">  -->
 		<section class="modifierProduit">
-		<div class="btnRetour">
-			<input type="submit" name="form-conso:j_idt72" value="Retour"
-				style="background-color: #F1C40F; vertical-align: middle; border: none; color: #fff; font-size: 20px; margin-left: 30px;" />
+		<div class="btnRetour" >
+			<h:commandButton action="#{mbDashboardProducteur.retournerDashBoard()}" value="Retour"
+							style="background-color: #F1C40F;vertical-align: middle;border: none;color: #fff;font-size: 20px;margin-left: 30px;" />
 			<span></span>
-		</div>
+		</div> 
 		<div class="titreModifCat">Modifiez ou supprimez votre produit</div>
 		<div class="imgModifCat">
 			<img class="imageCat"
@@ -78,10 +78,29 @@
 		</div>
 
 		<div class="btnModSup">
-			<button class="button button1">Modifier</button>
-			<button class="button button1">Supprimer</button>
+			<button type="button" class="button button1">Modifier</button>
+			<button type="button" class="button button1" id="button-sup">Supprimer</button>	
+			<div id="pop-up" class="pop-up">
+				<div id="settings" class="pop-up">
+					<h2 id="titre-popup">Êtes-vous sûr de vouloir supprimer ce produit?</h2>
+					<h:commandButton 
+						action="#{mbProducteurProduitDetaille.supprimerUnProduitCatalogue(mbProducteurGestionCatalogue.produitSelectionne.id)}" 
+						value="Supprimer" 
+						class="btnPopUp" 
+						style="height: 40px; width: 120px; background-color: #F99603; color: white;
+								border-radius: 3px; border: none; font-weight: 400;"/>
+					<button type="button" class="btnPopUpRetour"
+						style="height: 40px; width: 120px; background-color: #F99603; color: white;
+								border-radius: 3px; border: none; font-weight: 400; margin-left:20px;">
+						Retour
+					</button>	
+				</div>	
+			</div>		
 		</div>
+		
 		</section>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/ficheDetailleeCatalogue.js"></script>
 	</ui:define>
 	<!-- 	</body> -->
 

@@ -28,6 +28,8 @@ public interface IBusinessCommande {
     public Produit getProduitStockBasByIdProducteur(Integer id_producteur);
 
     public Produit getProduitById(Integer id_produit);
+    
+    public void supprimerUnProduit(Integer id_produit);
 
     public Commande creerUneCommande();
     
