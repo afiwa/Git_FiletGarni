@@ -1,5 +1,6 @@
 package fr.afcepf.ai101.filetGarni.data.api;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
@@ -31,4 +32,6 @@ public interface IDaoCommande {
     public Commande updateDateRecuperationClient(Integer id);
 
     public Commande updatePointRelais(PointRelais id_pointRelais);
+    
+    public List<Commande> getAllByDate(Date date_livraisonprevue);
 }

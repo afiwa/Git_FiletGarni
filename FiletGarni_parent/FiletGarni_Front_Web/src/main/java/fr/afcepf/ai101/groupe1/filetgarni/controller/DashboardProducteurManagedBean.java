@@ -1,7 +1,12 @@
 package fr.afcepf.ai101.groupe1.filetgarni.controller;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,6 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommande;
+import fr.afcepf.ai101.filetGarni.business.api.IBusinessProducteur;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
 
 @SessionScoped
@@ -18,13 +25,27 @@ public class DashboardProducteurManagedBean {
 	private List<Produit> listProduitProducteur = new ArrayList<>();
 	private Integer nbProduit = new Integer(0);
 	private String url;
+	private Set<Commande> commandesJourAPreparer = new HashSet<>();
+	private Calendar myCal = Calendar.getInstance();
+	private int NbCommandesAPreparer;
 	
 	@EJB
 	private IBusinessCommande businessCommande;
 	
+	@EJB
+	private IBusinessProducteur businessProducteur;
+	
 	@PostConstruct
 	public void init() {
 		recupererNbProduitProducteur();
+	}
+	
+	public int recupererNbCmdAPrepDuJour() {
+		myCal.set(2017, 8, 30, 00, 00, 00);
+		Date dateLivraisonPresentation = myCal.getTime(); 
+		commandesJourAPreparer = businessProducteur.getCommandesByIdProducteurByDateLivraison(35, dateLivraisonPresentation);
+		NbCommandesAPreparer = commandesJourAPreparer.size();	
+		return NbCommandesAPreparer;
 	}
 	
 	public String afficherFicheProduitStockBas(Integer id_producteur) {
@@ -101,7 +122,38 @@ public class DashboardProducteurManagedBean {
 	public void setNbProduit(Integer nbProduit) {
 		this.nbProduit = nbProduit;
 	}
-	
+
+	public Set<Commande> getCommandesJourAPreparer() {
+		return commandesJourAPreparer;
+	}
+
+	public void setCommandesJourAPreparer(Set<Commande> commandesJourAPreparer) {
+		this.commandesJourAPreparer = commandesJourAPreparer;
+	}
+
+	public Calendar getMyCal() {
+		return myCal;
+	}
+
+	public void setMyCal(Calendar myCal) {
+		this.myCal = myCal;
+	}
+
+	public int getNbCommandesAPreparer() {
+		return NbCommandesAPreparer;
+	}
+
+	public void setNbCommandesAPreparer(int nbCommandesAPreparer) {
+		NbCommandesAPreparer = nbCommandesAPreparer;
+	}
+
+	public IBusinessProducteur getBusinessProducteur() {
+		return businessProducteur;
+	}
+
+	public void setBusinessProducteur(IBusinessProducteur businessProducteur) {
+		this.businessProducteur = businessProducteur;
+	}	
 	
 	
 	

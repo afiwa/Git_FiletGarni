@@ -1,5 +1,10 @@
 package fr.afcepf.ai101.filetGarni.business.api;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
@@ -22,5 +27,7 @@ public interface IBusinessProducteur {
     public Boolean supprimerUnProduit(Produit produit);
 
     public SuiviIndisponibilite declarerIndispo(SuiviIndisponibilite indispo, LigneCommande ligneCommande);
+    
+    public Set<Commande> getCommandesByIdProducteurByDateLivraison(Integer id_producteur, Date date_livraison);
 
 }

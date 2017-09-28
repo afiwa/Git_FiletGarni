@@ -1,6 +1,7 @@
 package fr.afcepf.ai101.filetGarni.data.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -39,6 +40,14 @@ public class DaoCommande implements IDaoCommande {
 
 	public Commande getById(Integer idCommande) {
 		return (Commande) em.createQuery("select c from Commande c where c.id = :pId").setParameter("pId", idCommande).getSingleResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Commande> getAllByDate(Date date_livraisonprevue) {
+		return em.createQuery("SELECT c FROM Commande c left join fetch c.lgnCommandes WHERE c.dateLivraisonPrevue = :pdateLivraisonPrevue")
+				.setParameter("pdateLivraisonPrevue", date_livraisonprevue)
+				.getResultList();
 	}
 
 	public void validerCmde() {
