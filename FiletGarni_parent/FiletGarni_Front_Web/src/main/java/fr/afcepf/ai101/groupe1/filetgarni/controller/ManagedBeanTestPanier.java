@@ -54,7 +54,7 @@ public class ManagedBeanTestPanier implements Serializable{
 			}
 		}
 	calculTotalMontantCommande();
-	//calculQuantiteTotalPanier();
+	calculQuantiteTotalPanier();
 	}
 	
 	
@@ -82,7 +82,7 @@ public class ManagedBeanTestPanier implements Serializable{
 			}
 		}
 		calculTotalMontantCommande();
-		//calculQuantiteTotalPanier();
+		calculQuantiteTotalPanier();
 	}
 	
 	public void remplirPanierByList(Produit produit) {
@@ -108,7 +108,7 @@ public class ManagedBeanTestPanier implements Serializable{
 					quantites.put(lgnCommandeTemp.getProduit().getId(), quantites.get(lgnCommandeTemp.getProduit().getId()) + chiffreModificateur);
 					lgnCmd.setQuantiteCommandee(lgnCmd.getQuantiteCommandee()+(chiffreModificateur));
 					calculTotalMontantCommande();
-					//calculQuantiteTotalPanier();
+					calculQuantiteTotalPanier();
 					return lgnCmd.getQuantiteCommandee();
 				}
 			}
@@ -121,7 +121,7 @@ public class ManagedBeanTestPanier implements Serializable{
 		ligneCommandes.remove(ligneCommandeTempASupprimer);
 		quantites.remove(ligneCommandeTempASupprimer.getProduit().getId());
 		calculTotalMontantCommande();
-		//calculQuantiteTotalPanier();
+		calculQuantiteTotalPanier();
 		
 	}
 
@@ -134,9 +134,11 @@ public class ManagedBeanTestPanier implements Serializable{
 	}
 	
 	public void calculQuantiteTotalPanier() {
+		quantiteTotalePanier=0d;
 		for (LigneCommande ligneCommande : ligneCommandes) {
 			quantiteTotalePanier = quantiteTotalePanier + ligneCommande.getQuantiteCommandee();
 		}
+		System.out.println(quantiteTotalePanier);
 	}
 	
 	public Double afficherQuantiteLigneCommande(Produit produit) {
