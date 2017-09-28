@@ -190,5 +190,9 @@ public class LigneCommande implements Serializable{
 	public Double getMontantLgnCommande(Double paramPrix) {
         return (produit.getPrix())*quantiteCommandee;
     }
+	
+	public Double getMontantLgnCommandeProducteur() {
+        return (produit.getPrix())*quantiteCommandee;
+    }
 
 }

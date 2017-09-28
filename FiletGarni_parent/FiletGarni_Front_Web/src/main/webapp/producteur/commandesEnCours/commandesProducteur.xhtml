@@ -32,22 +32,26 @@
 					<td>N° de commande</td>
 					<td>Nombre d'articles</td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;Montant total
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(€
-						T.T.C.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(€
+						T.T.C.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>Marquer comme prêt</td>
 					<td>Afficher détails</td>
 				</tr>
 			</table>
 			<!-- Commandes -->
-			<!-- 			<ui:repeat layout="inline" id="repeater" var="commande" -->
-			<!-- 				value="#{mbCommandesProducteur.listeCommandes}"> -->
+			<ui:repeat layout="inline" id="repeater" var="commande"
+		 				value="#{mbProducteurCommandeDuJour.listeCommandesDuJour}">
 			<div class="commande id1">
 				<table class="resumeCommande">
 					<tr class="resumeCommande">
-						<td id="#dateEnlevement"><h:outputLabel value="21/08/2017"/></td>
-						<td id="#numCmd">CL-2017-09-<h:outputLabel value="'id" /></td>
-						<td id="#nbARticles"><h:outputLabel value="15"/></td>
-						<td><span id="#totalCommande"><b><h:outputLabel value="350"/></b></span><span><b>&nbsp;€</b></span></td>
+						<td id="#dateEnlevement"><h:outputLabel value="#{mbProducteurCommandeDuJour.dateEnlevemeentString}"/></td>
+						<td id="#numCmd">CL-2017-09-<h:outputLabel value="#{commande.id}" /></td>
+						<td id="#nbARticles">
+							<h:outputLabel value="#{mbProducteurCommandeDuJour.listeNbArticles[commande.id]}">
+								<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+							</h:outputLabel>
+						</td>
+						<td><span id="#totalCommande"><b><h:outputLabel value="#{commande.getMontantCommande()}"/></b></span><span><b>&nbsp;€</b></span></td>
 						<td class="validerCmd" id="btnCmdPrete" for="validerCmd"><input
 							type="checkbox" name="validerCmd" class="validerCmd"
 							id="validerCmd" value="" style="width:25px;height:25px;" /></td>
@@ -55,45 +59,59 @@
 							src="images/DropDown-button.svg" /></td>
 					</tr>
 				</table>
-
+				<ui:repeat var="ligneCommande" value="#{commande.lgnCommandes}">
 				<div class="toggler">
 					<table class="">
-						<!-- 						<tr> -->
-						<!-- 							<td><b>PRODUIT</b></td> -->
-						<!-- 							<td>Libellé</td> -->
-						<!-- 							<td>Quantité commandée</td> -->
-						<!-- 							<td>sous-total (€ T.T.C.)</td> -->
-						<!-- 							<td>Marquer comme prêt</td> -->
-						<!-- 							<td>Indisponibilité</td> -->
-						<!-- 						</tr> -->
-
 						<tr>
 							<td>
 								<div class="item">
 									<div class="image">
 										<img class="image"
-											src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo.toString()}"
+											src="../../Ressources/Images/Images_produits/#{ligneCommande.produit.photo}"
 											alt="" />
 									</div>
 								</div>
 							</td>
 							<td>
 								<div class="description titreEtCategorie">
-									<span class="article-titre"><b><h:outputLabel value="Oeufs bios tout pétés"/></b></span>
-									<span class="article-categorie"><h:outputLabel value="Catégorie pdt"/></span> <span
-										class="article-conditionnement"><span><h:outputLabel value="Boîte"/></span> <span><h:outputLabel value="12"/></span><span><h:outputLabel value="unités"/></span></span>
+									<span class="article-titre"><b><h:outputLabel value="#{ligneCommande.produit.libelle}"/></b></span>
+									<span class="article-categorie"><h:outputLabel value="#{ligneCommande.produit.categorie.libelle}"/></span> 
+									<span class="article-conditionnement">
+										<span>
+											<h:outputLabel value="#{ligneCommande.produit.conditionnements.get(0).libelle}"/>
+										</span> 
+										<span>
+											<h:outputLabel value="#{ligneCommande.produit.conditionnements.get(0).quantite}">
+												<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+											</h:outputLabel>
+										</span>
+											<span><h:outputLabel value="#{ligneCommande.produit.conditionnements.get(0).unite}"/></span>
+										</span>
 								</div>
 							</td>
 							<td>
 								<div class="description conditionnement">
 
-									<span> </span><span class="article-quantite"><h:outputLabel value="10"/></span><span>
-										X </span> <span class="article-price"><h:outputLabel value="50"/></span><span>€</span>
+									<span> </span><span class="article-quantite">
+									<h:outputLabel value="#{ligneCommande.quantiteCommandee}">
+										<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+									</h:outputLabel>									
+									</span><span>
+										X </span> 
+									<span class="article-price">
+										<h:outputLabel value="#{ligneCommande.produit.prix}">
+											<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+										</h:outputLabel>
+									</span><span>€</span>								
 								</div>
 							</td>
 							<td>
 								<div class="total-price">
-									<h:outputLabel class="total-article"><h:outputLabel value="150"/></h:outputLabel>
+									<h:outputLabel class="total-article">
+										<h:outputLabel value="#{ligneCommande.getMontantLgnCommande(2)}">
+											<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+										</h:outputLabel>
+									</h:outputLabel>
 									<span>&nbsp;€</span>
 								</div>
 							</td>
@@ -110,7 +128,7 @@
 										indisponible</label> <input type="checkbox" class="pdtIndispo"
 										id="pdtIndispo" value="Produit indisponible" style="width:15px;height:15px;"/>
 										<select name="qteDispo" id="qteIndispo">
-											<option select="disabled">Qté disponible</option>
+											<option select="disabled">Quantité disponible</option>
 											<option value="1">0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -131,11 +149,10 @@
 							</td>
 						</tr>
 					</table>
-
 				</div>
-
+				</ui:repeat>
 			</div>
-			<!-- 			</ui:repeat> -->
+			</ui:repeat>
 			<h:commandButton value="enregistrer mes modifications" class="button btn enregistrerModifications"></h:commandButton>
 		</div>
 		<!-- Fin affichage contenu commande -->

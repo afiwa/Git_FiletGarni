@@ -14,6 +14,7 @@ import fr.afcepf.ai101.filetGarni.business.api.IBusinessProducteur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoAdresse;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCodePostal;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoCommande;
+import fr.afcepf.ai101.filetGarni.data.api.IDaoConditionnement;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoLgnCommande;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoNonSalarie;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoProduit;
@@ -23,6 +24,7 @@ import fr.afcepf.ai101.filetGarni.data.api.IDaoSuiviIndisponibilite;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoUtilisateur;
 import fr.afcepf.ai101.filetGarni.data.api.IDaoVille;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Conditionnement;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.LigneCommande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Produit;
@@ -67,6 +69,9 @@ public class BusinessProducteur implements IBusinessProducteur {
 
     @EJB
     private IDaoProduit daoProduit;
+    
+    @EJB
+    private IDaoConditionnement daoConditionnement;
 
 
 	
@@ -128,15 +133,15 @@ public class BusinessProducteur implements IBusinessProducteur {
 					commandesDuJourAPreparerProducteur.add(commande);
 				}
 			}
-		}		
-		System.out.println("**************************test******************************");
-		System.out.println(date_livraison);
-		System.out.println(commandesDuJourAPreparerProducteur.size());
+		}
 		return commandesDuJourAPreparerProducteur;
 	
 	}
 
-
-
-
+	@Override
+	public List<Conditionnement> getConditionnementsByProduit(Produit produit) {
+		List<Conditionnement> conditionnements = new ArrayList<>();
+		conditionnements = daoConditionnement.getByProduit(produit);
+		return conditionnements;
+	}
 }
