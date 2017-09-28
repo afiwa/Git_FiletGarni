@@ -21,6 +21,7 @@
 			<groupId>fr.afcepf.ai101</groupId>
 			<artifactId>FiletGarni_Business_Api</artifactId>
 			<version>1.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
