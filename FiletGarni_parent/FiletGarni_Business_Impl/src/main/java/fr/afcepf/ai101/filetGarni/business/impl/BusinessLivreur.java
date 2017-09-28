@@ -120,36 +120,34 @@ public class BusinessLivreur implements IBusinessLivreur {
         List<LigneCommande> listeLgnCommandes = new ArrayList<>();
         listeLgnCommandes = tourneeProd.getLgnCommandes();
         Producteur producteur = new Producteur();
-        List<LigneCommande> listeLigneCommandeProd = new ArrayList<>();
+        List<LigneCommande> listeLigneCommandeProd;
         Map<Producteur,List<LigneCommande>> mapProdLgnCmd = new HashMap<>();
 
         for(LigneCommande lc: listeLgnCommandes) {
         	// Hydrater produit conditionnement
-        	if(producteur.getId() != lc.getProduit().getProducteur().getId()) {
-        		
-        		if(producteur.getId() != null) {
-        			mapProdLgnCmd.put(producteur, listeLigneCommandeProd);
-        		}
-        		
-        		producteur = lc.getProduit().getProducteur();
-        		System.out.println("producteur id :"+producteur.getId());
-        		List<Adresse> adresse = daoAdresse.getByNonSalarie(producteur);
-            	producteur.setAdresses(adresse);
-            	CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
-            	adresse.get(0).setCodePostal(codePostal);
-    			List<Ville> villes = daoVille.getByCodePostal(codePostal);
-    			codePostal.setVilles(villes);
-    			System.out.println("ligne commande id:"+lc.getId());
-    			listeLigneCommandeProd.add(lc);
+        	if( mapProdLgnCmd.containsKey(lc.getProduit().getProducteur())) {
+        		mapProdLgnCmd.get(lc.getProduit().getProducteur()).add(lc);
         	}
         	else {
-        		System.out.println("ligne commande id:"+lc.getId());
+        		listeLigneCommandeProd = new ArrayList<>();
         		listeLigneCommandeProd.add(lc);
+        		producteur = lc.getProduit().getProducteur();
+        		List<Adresse> adresse = daoAdresse.getByNonSalarie(producteur);
+        		producteur.setAdresses(adresse);
+        		CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
+        		adresse.get(0).setCodePostal(codePostal);
+        		List<Ville> villes = daoVille.getByCodePostal(codePostal);
+        		codePostal.setVilles(villes);
+        		mapProdLgnCmd.put(producteur, listeLigneCommandeProd);
         	}
 
         }
         return mapProdLgnCmd;
     }
+    
+    /*
+	
+	listeLigneCommandeProd.add(lc);*/
 
     public java.util.List<Commande> afficherCommandeALivreePointRelais(Livreur livreur, PointRelais pointRelais, java.util.Date dateTournee) {
         // TODO implement here

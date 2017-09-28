@@ -43,12 +43,6 @@ public class LivreurManagedBean {
 	public void initialisationMap(){
 		
 		producteurLgnCmd = buLivreur.afficherTourneeProducteur(livreurConnectee);
-		
-		System.out.println("passe");
-		for (Map.Entry<Producteur,List<LigneCommande>> e : producteurLgnCmd.entrySet()){
-
-		}
-		
 
 		pointRelaisCmd = buLivreur.afficherTourneePointRelais(livreurConnectee);
 	}

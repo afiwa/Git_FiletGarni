@@ -37,17 +37,19 @@
 				<div id="content">
 					<ul class="timeline">
 					
-					<ui:repeat layout="inline" id="repeaterProducteur" var="producteur"
-					value="#{mbLivreur.producteurLgnCmd.key}">
+					<ui:repeat layout="inline" id="repeaterProducteur" var="map"
+					value="#{mbLivreur.producteurLgnCmd.entrySet().toArray()}">
 						<li class="event ">
 							<div class="member-infos">
 								<h1 class='coordonneesProd'>
-									<h:outputText value="#{producteur.key.nom} #{producteur.key.prenom} - #{producteur.key.adresses.get(0)}" />
+									<h:outputText value="#{map.key.nom} #{map.key.prenom} - 
+									#{map.key.adresses.get(0).numeroRue} #{map.key.adresses.get(0).nomRue} 
+									#{map.key.adresses.get(0).codePostal.codePostal} #{map.key.adresses.get(0).codePostal.villes.get(0).nom}" />
 								</h1>
 								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
 								
 								<ui:repeat layout="inline" id="repeaterLgnCmdProd" var="ligneCommande"
-									value="#{producteur.value}">
+									value="#{map.value}">
 								<span>
 								
 								<h:outputText value="#{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
