@@ -13,6 +13,7 @@
 			type="text/css" /> -->
 		<link type="text/css" rel="stylesheet" href="../css/main.css" />
 		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
+		<link type="text/css" rel="stylesheet" href="../fichesProduit/styleTest.css" />
 		<style>
 @font-face {
 	font-family: "fibre";
@@ -78,10 +79,14 @@
 					</div>
 				</section>
 			</div>
+			
+			<ui:include src="../../WEB-INF/components/panier-add-to-cart.xhtml"></ui:include>
+			
 			<script type="text/javascript" src="Fiche_recette.js"></script>
 			<script
 				src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 			<script type="text/javascript" src="../jsHamburger/main.js"></script>
+			<script type="text/javascript" src="../jsAddToCart/add-to-cart.js"></script>
 			<script type="text/javascript"
 				src="choix_menu_fiche_recette/js/index.js"></script>
 	</ui:define>

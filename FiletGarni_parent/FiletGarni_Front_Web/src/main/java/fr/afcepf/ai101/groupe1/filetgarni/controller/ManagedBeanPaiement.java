@@ -59,14 +59,10 @@ public class ManagedBeanPaiement implements Serializable {
 
 	public String validerCommande() {
 		System.out.println("je valide ma commande");
-		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), new Date(), buCmde.getTypePaiementById(id_paiement), buCmde.getPRById(monMbChoixPRConso.getPointRelais().getId()), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
-		System.out.println("##### id cmd : "+idNouvelleCommande);
+		Integer idNouvelleCommande = buCmde.creerUneCommande(null, new Date(), new Date(), calculDateLivraison(), buCmde.getTypePaiementById(id_paiement), buCmde.getPRById(monMbChoixPRConso.getPointRelais().getId()), buCmde.getConsoById(monMbCnxConso.getConsommateurConnecte().getId()));
 		for(LigneCommande l : monMbTestPanier.getLigneCommandes()) {
 			buCmde.creerUneLigneCommande(null, l.getQuantiteCommandee(), buCmde.getCommandebyId(idNouvelleCommande), l.getProduit());
 		}
-		System.out.println("##### id cmd : "+idNouvelleCommande);
-
-		
 		// Je crée une commande contenant les infos de la commande nouvellement créée en base.
 		commande = buCmde.getCommandebyId(idNouvelleCommande);
 		commande.setPointRelais( monMbChoixPRConso.getPointRelais());
@@ -76,11 +72,6 @@ public class ManagedBeanPaiement implements Serializable {
 		}
 		commande.setLgnCommandes(listTemp);
 		
-//		System.out.println("montant cmd : "+commande.getMontantCommande());
-
-//		commande.setLgnCommandes(buCmde2.getCommandebyId(idNouvelleCommande).getLgnCommandes());
-//		System.out.println("##### id cmd : "+idNouvelleCommande);
-
 		return "/commande/14RecapitulatifCommande/recapitulatifCommande.xhtml?faces-redirect=true";
 	}
 
@@ -93,13 +84,13 @@ public class ManagedBeanPaiement implements Serializable {
 		case GregorianCalendar.THURSDAY:
 			cal.add(cal.DATE, 4);			
 			break;
-
+		case GregorianCalendar.FRIDAY:
+			cal.add(cal.DATE, 4);			
+			break;
 		default:
 			cal.add(cal.DATE, 3);
 			break;
 		}
-		//Calendar cal = Calendar.getInstance(Locale.FRANCE);
-		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-JJ hh:mm:ss", Locale.FRANCE);		
 		dateLivraison = cal.getTime();
 		return dateLivraison;
 	}
@@ -164,7 +155,7 @@ public class ManagedBeanPaiement implements Serializable {
 	
 	public String getAdressePointRelais() {
 		System.out.println("je passe par l'adresse");
-		return commande.getPointRelais().getAdresses().get(0).getNumeroRue() +
+		return commande.getPointRelais().getAdresses().get(0).getNumeroRue() + " " +
 				 commande.getPointRelais().getAdresses().get(0).getNomRue();
 	}
 

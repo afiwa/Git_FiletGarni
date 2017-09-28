@@ -33,6 +33,15 @@
     <ui:repeat var="producteur" value="#{mbPageAffichageProducteurs.tousLesProducteurs}">
     	<ui:include src="../../WEB-INF/components/ficheProducteur.xhtml"/>
     </ui:repeat>
+    
+    <!-- ADD TO CART INTERACTION -->
+    			<ui:include src="../../WEB-INF/components/panier-add-to-cart.xhtml"></ui:include>
+			       
+			    	
+				
+				<script type="text/javascript" src="../jsHamburger/main.js"></script>
+				<script type="text/javascript" src="../jsAddToCart/add-to-cart.js"></script>
+    
     <script type="text/javascript" src="Fiche_producteur.js"></script>   
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
     <script type="text/javascript">
@@ -42,6 +51,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script type="text/javascript" src="../jsHamburger/main.js"></script>
+	<script type="text/javascript" src="../jsAddToCart/add-to-cart.js"></script>
 	
 	
 	</ui:define>

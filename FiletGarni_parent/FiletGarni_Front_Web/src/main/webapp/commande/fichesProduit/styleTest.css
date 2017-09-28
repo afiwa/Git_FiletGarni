@@ -175,7 +175,7 @@ Main Components
 }
 
 .cd-cart-trigger .count li:last-of-type {
-    visibility: hidden;
+    visibility: visible;
 }
 
 .cd-cart-trigger .count.update-count li:last-of-type {

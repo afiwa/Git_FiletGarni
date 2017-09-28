@@ -34,11 +34,13 @@ public class PageFicheProduitDetailleManagedBean {
 	public String afficherFicheProduitDetaille(Integer id_produit) {
 		url = FacesContext.getCurrentInstance().getViewRoot().getViewId();
 		produitSelectionne = businessCommande.getProduitByIdWithConditionnements(id_produit);
+		
 		for (int i = 0; i < buCmdeMarion.getQuantiteEnStock(id_produit) ; i++) {
 			quantiteCommandable+=1;
 			quantitesEnStockCommandables.add(quantiteCommandable);
 		}
 		quantitesEnStock.put(id_produit, quantitesEnStockCommandables);
+		
 		System.out.println(produitSelectionne.getLibelle());
 		return "/commande/ficheProduitDetaillee/ficheProduitDetaillee.xhtml?faces-redirect=true";
 	}

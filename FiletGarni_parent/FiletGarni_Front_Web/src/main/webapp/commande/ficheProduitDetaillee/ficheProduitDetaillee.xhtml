@@ -19,7 +19,7 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
 		<link type="text/css" rel="stylesheet" href="../css/main.css" />
 		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
-		
+		<link type="text/css" rel="stylesheet" href="../fichesProduit/styleTest.css" />
 		
 		
 	</ui:define>
@@ -81,26 +81,16 @@
                                     <ul>
                                         <li>Quantité :
                                            <h:selectOneMenu id="listeDeroulanteFicheProduit" value="#{mbTestPanier.quantiteSelectionnee}"> 
-   														<f:selectItem itemValue = "1" itemLabel = "1" /> 
-  														<f:selectItem itemValue = "2" itemLabel = "2" /> 
-  														<f:selectItem itemValue = "3" itemLabel = "3" /> 
-  														<f:selectItem itemValue = "4" itemLabel = "4" /> 
-  														<f:selectItem itemValue = "5" itemLabel = "5" /> 
-  														<f:selectItem itemValue = "6" itemLabel = "6" /> 
-  														<f:selectItem itemValue = "7" itemLabel = "7" /> 
-  														<f:selectItem itemValue = "8" itemLabel = "8" /> 
-  														<f:selectItem itemValue = "9" itemLabel = "9" /> 
-<!-- 													<f:selectItems itemvalue = "#{mbPageProduitDetaille.quantitesEnStockCommandables}" itemLabel="#{mbPageProduitDetaille.quantitesEnStockCommandables}"></f:selectItems> -->
+												<f:selectItems value = "#{mbPageProduitDetaille.quantitesEnStockCommandables}" var="i" itemLabel="#{i}" itemValue="#{i}"></f:selectItems>
 											</h:selectOneMenu> 	
                                         </li>
                                     </ul>
-                                    <h:commandLink class="btnAjoutPanier" value="Ajouter au panier">
-<!--                                     <h:input type="button" class="btnAjoutPanier" value="Ajouter au panier" /> -->
-										<f:ajax event="click"
+                                    <h:commandButton class="btnAjoutPanier" value="Ajouter au panier">
+                                    	<f:ajax event="click"
 												execute="@form" 
 												listener="#{mbTestPanier.remplirPanierByList(mbPageProduitDetaille.produitSelectionne)}"
-												render="grosPanier prixLgnCmde :form-conso:prixTotalPanier :form-conso:affichageProduit"></f:ajax>
-                                    </h:commandLink>
+												render="grosPanier prixLgnCmde :form-conso:pastille :form-conso:prixTotalPanier :form-conso:affichageProduit"></f:ajax>
+                                    </h:commandButton>
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -141,6 +131,9 @@
                                         <li></li>
                                     </ul>
                                 </div>
+                                
+                                
+                                
                                 <div class="content-3">
                                     
   <blockquote>
@@ -204,12 +197,20 @@
             </div>
         </div>
     </div>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-	
+     	
+    <ui:include src="../../WEB-INF/components/panier-add-to-cart.xhtml"></ui:include>
+   	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-				
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+	<script type="text/javascript" src="../jsAddToCart/add-to-cart.js"></script>
 	<script type="text/javascript" src="../jsHamburger/main.js"></script>
+	
 	</ui:define>
+	
+	
+	
 </ui:composition>
 
+ 
+	
 </html>

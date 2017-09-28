@@ -23,22 +23,28 @@ public class ManagedBeanTestPanier implements Serializable{
 
 	@EJB
 	private IBusinessCommandeMarion buPdt;
+	@EJB
+	private IBusinessCommandeMarion buCmdeMarion;
 	private Double quantite = 0d;
 	private Integer idProduit;
 	private Produit pdt = new Produit();
 	private List<LigneCommande> ligneCommandes= new ArrayList<LigneCommande>();
 	private Double totalMontantCommande;
 	private Map<Integer, Integer> quantites = new HashMap<>();
-	private Map<Integer, Double> quantitesEnStock;
 	private Double quantiteTotalePanier = 0d;
 	private Double quantiteSelectionnee = 0d;
+	private Integer quantiteCommandable = 0;
+	private Map<Integer, List<Integer>> listQuantitesEnStock = new HashMap<>();
 
 	public void remplirPanier(Integer chiffreModificateur, Produit produit) {
+		System.out.println(produit);
+		System.out.println(chiffreModificateur);
 		if (!isInLigneCommandes(produit) && chiffreModificateur==1){
 			LigneCommande ligneCommande = new LigneCommande(null, 1d, produit);
 			quantites.put(produit.getId(), 1);
 			ligneCommandes.add(ligneCommande);
-			System.out.println(ligneCommande.toString());
+			System.out.println(ligneCommande.getQuantiteCommandee());
+			System.out.println(ligneCommande);
 		} 
 		else if(isInLigneCommandes(produit)) {
 			if((getLigneCommandeWithProduit(produit).getQuantiteCommandee() == 1 && chiffreModificateur==-1)) {
@@ -49,12 +55,12 @@ public class ManagedBeanTestPanier implements Serializable{
 				getLigneCommandeWithProduit(produit).setQuantiteCommandee(modifierQuantitePanier(
 																			getLigneCommandeWithProduit(produit)
 																			, chiffreModificateur));
-				
-				System.out.println(getLigneCommandeWithProduit(produit).toString());
 			}
 		}
+		fabricationListeQuantitéCommandable();
 	calculTotalMontantCommande();
 	calculQuantiteTotalPanier();
+	
 	}
 	
 	
@@ -77,8 +83,9 @@ public class ManagedBeanTestPanier implements Serializable{
 	
 	public void modifierLgnCmd(LigneCommande lc) {
 		for (LigneCommande ligneCommande : ligneCommandes) {
-			if(lc.getId() == ligneCommande.getId()) {
+			if(lc.getProduit().getId() == ligneCommande.getProduit().getId()) {
 				quantites.put(ligneCommande.getProduit().getId(), lc.getQuantiteCommandee().intValue());
+				System.out.println("passe !!!!! id = "+ ligneCommande.getProduit().getId()+ "quantite = "+ lc.getQuantiteCommandee().intValue());
 			}
 		}
 		calculTotalMontantCommande();
@@ -94,6 +101,10 @@ public class ManagedBeanTestPanier implements Serializable{
 			getLigneCommandeWithProduit(produit).setQuantiteCommandee(quantiteSelectionnee);
 			quantites.put(produit.getId(), quantiteSelectionnee.intValue());
 		}
+		fabricationListeQuantitéCommandable();
+		calculTotalMontantCommande();
+		calculQuantiteTotalPanier();
+		
 		
 	}
 	
@@ -138,7 +149,21 @@ public class ManagedBeanTestPanier implements Serializable{
 		for (LigneCommande ligneCommande : ligneCommandes) {
 			quantiteTotalePanier = quantiteTotalePanier + ligneCommande.getQuantiteCommandee();
 		}
-		System.out.println(quantiteTotalePanier);
+		System.out.println("!!!!!!!!!!!!!!!!!!! quantiteTotalPanier = "+quantiteTotalePanier);
+	}
+	
+	public void fabricationListeQuantitéCommandable() {
+		for (LigneCommande lc : ligneCommandes) {
+			List<Integer> quantitesEnStockCommandables = new ArrayList<>();
+			quantiteCommandable = 0;
+			int max = buCmdeMarion.getQuantiteEnStock(lc.getProduit().getId());
+			for (int i = 0; i < max ; i++) {
+				quantiteCommandable+=1;
+				quantitesEnStockCommandables.add(quantiteCommandable);
+			}
+			System.out.println(quantitesEnStockCommandables);
+			listQuantitesEnStock.put(lc.getProduit().getId(), quantitesEnStockCommandables);
+		}
 	}
 	
 	public Double afficherQuantiteLigneCommande(Produit produit) {
@@ -152,7 +177,7 @@ public class ManagedBeanTestPanier implements Serializable{
 	
 	public Boolean isInLigneCommandes(Produit produit) {
 		for(LigneCommande l : ligneCommandes) {
-			if(produit.equals(l.getProduit())) {
+			if(produit.getId().equals(l.getProduit().getId())) {
 				return true;
 			}
 		}
@@ -161,7 +186,7 @@ public class ManagedBeanTestPanier implements Serializable{
 	
 	public LigneCommande getLigneCommandeWithProduit(Produit produit) {
 		for(LigneCommande l : ligneCommandes) {
-			if(produit.equals(l.getProduit())) {
+			if(produit.getId().equals(l.getProduit().getId())) {
 				return l;
 			}
 		}
@@ -245,16 +270,35 @@ public class ManagedBeanTestPanier implements Serializable{
 		quantiteSelectionnee = paramQuantiteSelectionnee;
 	}
 
-
-	public Map<Integer, Double> getQuantitesEnStock() {
-		return quantitesEnStock;
-	}
-
-
-	public void setQuantitesEnStock(Map<Integer, Double> paramQuantitesEnStock) {
-		quantitesEnStock = paramQuantitesEnStock;
-	}
 	
+	public Map<Integer, List<Integer>> getListQuantitesEnStock() {
+		return listQuantitesEnStock;
+	}
+
+
+	public void setListQuantitesEnStock(Map<Integer, List<Integer>> paramListQuantitesEnStock) {
+		listQuantitesEnStock = paramListQuantitesEnStock;
+	}
+
+
+	public IBusinessCommandeMarion getBuCmdeMarion() {
+		return buCmdeMarion;
+	}
+
+
+	public void setBuCmdeMarion(IBusinessCommandeMarion paramBuCmdeMarion) {
+		buCmdeMarion = paramBuCmdeMarion;
+	}
+
+
+	public Integer getQuantiteCommandable() {
+		return quantiteCommandable;
+	}
+
+
+	public void setQuantiteCommandable(Integer paramQuantiteCommandable) {
+		quantiteCommandable = paramQuantiteCommandable;
+	}
 	
 
 
