@@ -77,9 +77,9 @@ public class BusinessLivreur implements IBusinessLivreur {
     @EJB
     private IDaoTourneeReelleLivraison daoTourneeReelleLivraison;
 
-    public Map<PointRelais, List<Commande>> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee) {
+    public Map<PointRelais, List<Commande>> afficherTourneePointRelais(Livreur livreur) {
         TourneeReelleLivraison tourneeLiv = new TourneeReelleLivraison();
-        tourneeLiv = daoTourneeReelleLivraison.getTourneeReelleLivraison(livreur, dateTournee);
+        tourneeLiv = daoTourneeReelleLivraison.getTourneeReelleLivraison(livreur);
         List<Commande> listeCommande = new ArrayList<>();
         listeCommande = tourneeLiv.getCommandes();
         PointRelais pr = new PointRelais();
@@ -114,40 +114,40 @@ public class BusinessLivreur implements IBusinessLivreur {
     }
     
 
-    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee) {
+    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur) {
     	TourneeReelleProducteur tourneeProd = new TourneeReelleProducteur();
-        tourneeProd = daoTourneeReelleProducteur.getTourneeReelleProducteur(livreur, dateTournee);
+        tourneeProd = daoTourneeReelleProducteur.getTourneeReelleProducteur(livreur);
         List<LigneCommande> listeLgnCommandes = new ArrayList<>();
         listeLgnCommandes = tourneeProd.getLgnCommandes();
         Producteur producteur = new Producteur();
-        List<LigneCommande> listeLigneCommandeProd = new ArrayList<>();
+        List<LigneCommande> listeLigneCommandeProd;
         Map<Producteur,List<LigneCommande>> mapProdLgnCmd = new HashMap<>();
 
         for(LigneCommande lc: listeLgnCommandes) {
-        	
-        	if(producteur.getId() != lc.getProduit().getProducteur().getId()) {
-        		
-        		if(producteur.getId() != null) {
-        			mapProdLgnCmd.put(producteur, listeLigneCommandeProd);
-        		}
-        		
-        		producteur = lc.getProduit().getProducteur();
-        		List<Adresse> adresse = daoAdresse.getByNonSalarie(producteur);
-            	producteur.setAdresses(adresse);
-            	CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
-            	adresse.get(0).setCodePostal(codePostal);
-    			List<Ville> villes = daoVille.getByCodePostal(codePostal);
-    			codePostal.setVilles(villes);
-    			
-    			listeLigneCommandeProd.add(lc);
+        	// Hydrater produit conditionnement
+        	if( mapProdLgnCmd.containsKey(lc.getProduit().getProducteur())) {
+        		mapProdLgnCmd.get(lc.getProduit().getProducteur()).add(lc);
         	}
         	else {
+        		listeLigneCommandeProd = new ArrayList<>();
         		listeLigneCommandeProd.add(lc);
+        		producteur = lc.getProduit().getProducteur();
+        		List<Adresse> adresse = daoAdresse.getByNonSalarie(producteur);
+        		producteur.setAdresses(adresse);
+        		CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
+        		adresse.get(0).setCodePostal(codePostal);
+        		List<Ville> villes = daoVille.getByCodePostal(codePostal);
+        		codePostal.setVilles(villes);
+        		mapProdLgnCmd.put(producteur, listeLigneCommandeProd);
         	}
 
         }
         return mapProdLgnCmd;
     }
+    
+    /*
+	
+	listeLigneCommandeProd.add(lc);*/
 
     public java.util.List<Commande> afficherCommandeALivreePointRelais(Livreur livreur, PointRelais pointRelais, java.util.Date dateTournee) {
         // TODO implement here

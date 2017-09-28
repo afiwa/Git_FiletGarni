@@ -11,15 +11,159 @@
 		<link type="text/css" rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
 
-		<link type="text/css" rel="stylesheet"
-			href="../livreur/css/archeLivreur.css" />
-
-		<link type="text/css" rel="stylesheet" href="../livreur/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="style.css" />
+		
+		<link type="text/css" rel="stylesheet" href="archeLivreur.css" />
 
 		<link type="text/css" rel="stylesheet" href="livraisonsDuJour.css" />
 	</ui:define>
 
+	<ui:define name="content-Livreur">
 
+		<div class="w3-container">
+
+			<div class="w3-bar w3-black">
+
+				<button type="button" class="w3-bar-item w3-button tablink w3-red"
+					onclick="openCity(event,'Producteurs')">Producteurs à
+					visiter</button>
+				<button type="button" class="w3-bar-item w3-button tablink"
+					onclick="openCity(event,'PointRelais')">Point Relais à
+					visiter</button>
+
+			</div>
+
+			<div id="Producteurs" class="w3-container w3-border city">
+				<div id="content">
+					<ul class="timeline">
+					
+					<ui:repeat layout="inline" id="repeaterProducteur" var="map"
+					value="#{mbLivreur.producteurLgnCmd.entrySet().toArray()}">
+						<li class="event ">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>
+									<h:outputText value="#{map.key.nom} #{map.key.prenom} - 
+									#{map.key.adresses.get(0).numeroRue} #{map.key.adresses.get(0).nomRue} 
+									#{map.key.adresses.get(0).codePostal.codePostal} #{map.key.adresses.get(0).codePostal.villes.get(0).nom}" />
+								</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								
+								<ui:repeat layout="inline" id="repeaterLgnCmdProd" var="ligneCommande"
+									value="#{map.value}">
+								<span>
+								
+								<h:outputText value="#{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
+								
+								</span>
+								</ui:repeat>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+
+								</div>
+							</div>
+						</li>
+					</ui:repeat>
+					</ul>
+				</div>
+			</div>
+
+			<div id="PointRelais" class="w3-container w3-border city"
+				style="display: none">
+				<div id="content">
+					<ul class="timeline">
+						<li class="event" data-date="12:30 - 1:00pm">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
+									Général de Gaulle 92000 Montrouge</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								<span></span>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+
+								</div>
+							</div>
+						</li>
+
+						<li id='fader' class="event" data-date="2:30 - 4:00pm">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
+									Général de Gaulle 92000 Montrouge</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								<span></span>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+								</div>
+
+							</div>
+
+						</li>
+						<li class="event" data-date="5:00 - 8:00pm">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
+									Général de Gaulle 92000 Montrouge</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								<span></span>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+								</div>
+
+							</div>
+
+						</li>
+						<li class="event" data-date="8:30 - 9:30pm">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
+									Général de Gaulle 92000 Montrouge</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								<span></span>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+								</div>
+
+							</div>
+						</li>
+
+
+						<li class="event" data-date="8:30 - 9:30pm">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
+									Général de Gaulle 92000 Montrouge</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								<span></span>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="event" data-date="8:30 - 9:30pm">
+							<div class="member-infos">
+								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
+									Général de Gaulle 92000 Montrouge</h1>
+								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
+								<span></span>
+								<div class="member-parameters">
+									<a href="" class="follow">Valider la récupération</a>
+								</div>
+
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+		<script
+			src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+		<script src="js/index.js"></script>
+
+	</ui:define>
 
 </ui:composition>
 </html>

@@ -14,17 +14,32 @@
 	<h:form id="form-livreur">
 
 		<ul class="menuLivreur">
+			<h:commandLink
+				action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}"
+				style="position:absolute">
+				<h:graphicImage id="logo"
+					value="../Ressources/Images/Logos/Logo-Filet-Garni-LIVREUR-small.png"
+					style="padding-top: 5px;" />
+			</h:commandLink>
+
+			<li class="buttonValide"><h:commandButton value="Deconnexion"
+					style="vertical-align: middle; border:none; background-color:#e74c3c; color:white; font-size:18px; font-family:'roboto';"
+					action="#{mbPageAccueilGenerale.redirectionPageAccueilGenerale()}" />
+				<span></span></li>
+				
+			<li class="bonjour">Bonjour Ludovic</li>
+
 			<li class="absences"><a href="#news">Gestion des absences</a></li>
 			<li class="compte"><a href="#news">Mon compte</a></li>
 			<li class="livraisonsDuJour"><a href="javascript:void(0)"
 				class="dropbtn">Commandes à préparer</a>
 				<div class="livraisonsDuJour-content">
-					<a href="#">Producteurs à visiter</a> 
-					<a href="#">Point Relais à visiter</a>
+					<a href="#">Producteurs à visiter</a> <a href="#">Point Relais
+						à visiter</a>
 				</div></li>
 			<li class="tabBord"><a href="#home">Tableau de bord</a></li>
 		</ul>
-		<ui:insert name="content"></ui:insert>
+		<ui:insert name="content-Livreur"></ui:insert>
 	</h:form>
 </body>
 </html>

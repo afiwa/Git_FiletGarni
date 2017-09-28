@@ -22,10 +22,31 @@
 
 .menuLivreur {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: lightgrey;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	margin-bottom: 40px;
+	padding-left: 20px;
+	margin-right: ;
+}
+
+.bonjour{
+	color: #e74c3c;
+	margin-top: 19px;
+	margin-left: 20px;
+	font-family: roboto;
+}
+
+.buttonValide{
+	color: white;
+	background-color: #e74c3c;
+	padding-top: 16px;
+	margin-left: 20px;
+	margin-right: 90px;
+	width: 150px;
+	height: 62px;
+	cursor: pointer;
+	text-align: center;
 }
 
 li {
@@ -36,7 +57,7 @@ li a, .dropbtn {
     display: inline-block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px;
     text-decoration: none;
     font-family: roboto;
 }
@@ -71,7 +92,7 @@ li.livraisonsDuJour {
     text-align: left;
 }
 
-.livraisonsDuJour-content a:hover {background-color: ##e74c3c}
+.livraisonsDuJour-content a:hover {background-color: #e74c3c}
 
 .livraisonsDuJour:hover .livraisonsDuJour-content {
     display: block;

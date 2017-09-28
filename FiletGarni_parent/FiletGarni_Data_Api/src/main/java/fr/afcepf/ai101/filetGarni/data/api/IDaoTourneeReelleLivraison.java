@@ -31,5 +31,5 @@ public interface IDaoTourneeReelleLivraison {
      */
     public void rechercher();
 
-    public TourneeReelleLivraison getTourneeReelleLivraison(Livreur livreur, Date date);
+    public TourneeReelleLivraison getTourneeReelleLivraison(Livreur livreur);
 }

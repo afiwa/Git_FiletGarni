@@ -73,4 +73,13 @@ public class DaoLgnCommande implements IDaoLgnCommande {
 		return em.createQuery("select l from LigneCommande l where l.commande.id = :pId").setParameter("pId", id_commande).getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LigneCommande> getLignesCommandeByTourneeReelleProdAndProducteur(Integer id_tourneeReelleProd,
+			Integer id_producteur) {
+		return em.createQuery("select l from LigneCommande l where l.tourneeReelleProducteur.id = :pidTournee AND l.produit.producteur.id = :pidProd")
+				.setParameter("pidTournee", id_tourneeReelleProd)
+				.setParameter("idProd", id_producteur).getResultList();
+	}
+
 }

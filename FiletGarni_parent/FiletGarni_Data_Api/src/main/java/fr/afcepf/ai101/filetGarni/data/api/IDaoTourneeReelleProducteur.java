@@ -30,6 +30,6 @@ public interface IDaoTourneeReelleProducteur {
      */
     public void rechercher();
     
-    public TourneeReelleProducteur getTourneeReelleProducteur(Livreur livreur, Date date);
+    public TourneeReelleProducteur getTourneeReelleProducteur(Livreur livreur);
 
 }
