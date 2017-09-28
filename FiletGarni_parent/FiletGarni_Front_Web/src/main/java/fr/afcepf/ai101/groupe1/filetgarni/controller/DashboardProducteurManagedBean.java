@@ -54,6 +54,17 @@ public class DashboardProducteurManagedBean {
 		return "/producteur/catalogueProducteur/ficheDetailleeCatalogue.xhtml?faces-redirect=true";
 	}
 	
+	public String supprimerUnProduitStockBas(Integer paramid_produit) {
+		businessCommande.supprimerUnProduit(paramid_produit);
+		return "/producteur/dashboardProducteur/dashboardProducteur.xhtml?faces-redirect=true";
+	}
+	
+	public String supprimerUnProduitCatalogue(Integer paramid_produit) {
+		businessCommande.supprimerUnProduit(paramid_produit);
+		listProduitProducteur = businessCommande.getProduitsByIdProducteur(35);
+		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
+	}
+	
 	public String retournerDashBoard() {
 		return url + "?faces-redirect=true"; 
 	}
@@ -61,6 +72,7 @@ public class DashboardProducteurManagedBean {
 
 	public String afficherProduitProducteur(Integer id_producteur) {		
 		listProduitProducteur = businessCommande.getProduitsByIdProducteur(id_producteur);
+		System.out.println("nombre de produit" + listProduitProducteur.size());
 		return "/producteur/fichesProduitProducteur/ficheProduitProducteur.xhtml?faces-redirect=true";
 		
 	}
