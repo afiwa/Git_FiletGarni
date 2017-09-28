@@ -42,8 +42,7 @@
 		<div>
 			<ol class="cd-multi-steps text-center custom-icons">
 				<li class="visited"><a href="..\11Panier\panier.jsf">Panier</a></li>
-				<li class="current"><a href="..\12PointRelais\pointRelais.jsf">Point
-						relais</a></li>
+				<li class="current"><a>Point relais</a></li>
 				<li><em>Paiement</em></li>
 				<li><em>Récapitulatif</em></li>
 			</ol>
@@ -166,12 +165,19 @@
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKCZdpXr9Kvru7X_JMlnAT3z4rTgLMgrw"></script>
 		<script type="text/javascript">
 		
+<<<<<<< HEAD
 		
 	var pointrelais = [#{mbChoixPRConso.jsonPointRelais()}];
 	var consommateur = [#{mbChoixPRConso.jsonConsommateur()}];
 	myMap();
 	</script>
 
+=======
+	var pointrelais = [#{mbChoixPRConso.jsonPointRelais()}];
+	var consommateur = [#{mbChoixPRConso.jsonConsommateur()}];
+	myMap();
+		</script>
+>>>>>>> Ludo
 
 		<!-- Resource js communes -->
 		<script type="text/javascript"

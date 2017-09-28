@@ -357,14 +357,14 @@ var tabs = $('.cd-tabs');
 			if( !selectedItem.hasClass('selected') ) {
 				var selectedTab = selectedItem.data('content'),
 					selectedContent = tabContentWrapper.find('li[data-content="'+selectedTab+'"]'),
-					slectedContentHeight = selectedContent.innerHeight();
+					selectedContentHeight = selectedContent.innerHeight();
 				
 				tabItems.find('a.selected').removeClass('selected');
 				selectedItem.addClass('selected');
 				selectedContent.addClass('selected').siblings('li').removeClass('selected');
 				//animate tabContentWrapper height when content changes 
 				tabContentWrapper.animate({
-					'height': slectedContentHeight
+					'height': selectedContentHeight
 				}, 200);
 			}
 		});

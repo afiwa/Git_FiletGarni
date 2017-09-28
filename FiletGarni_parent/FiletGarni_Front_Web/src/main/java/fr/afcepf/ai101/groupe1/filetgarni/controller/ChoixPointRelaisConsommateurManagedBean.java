@@ -8,17 +8,14 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeChoixPointRelais;
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessCommandeMarion;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.Consommateur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.HorairesOuverture;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
-import fr.afcepf.ai101.groupe1.filetGarni.entity.Utilisateur;
 
 @SessionScoped
 @ManagedBean(name="mbChoixPRConso")
@@ -27,17 +24,14 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 	@EJB
 	private IBusinessCommandeMarion buCmde;
 	
-
+//	@ManagedProperty(value = "mbConnecterConso")
+//	private ManagedBeanConnexionConsommateur monMbConnecterConso;
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	private List<PointRelais> tousLesPointRelais = new ArrayList<>();
 	private PointRelais pointRelais = new PointRelais();
-	
-	/*@ManagedProperty(value = "mbConnecterConso")
-	private ManagedBeanConnexionConsommateur mbConnecterConso;*/
-
-	private Consommateur user = new Consommateur();
+//	private Consommateur user = new Consommateur();
 	
 	/* Parti simulation */
 	String adresseDomicile ="7-9 Rue Gathelot, 92140 Clamart, France";
@@ -52,10 +46,10 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		//user = (Consommateur) mbConnecterConso.getConsommateurConnecte();
+//		user = (Consommateur) monMbConnecterConso.getConsommateurConnecte();
 		recupererTousLesPointRelais();
 	}
-	
+
 	public String jsonPointRelais() {
 		StringBuilder jsonPointRelais = new StringBuilder();
 		String id;
@@ -165,7 +159,14 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 		if(request.getParameter("toto") != null) {
 			Integer id_pr = Integer.parseInt(request.getParameter("toto"));
 			System.out.println(id_pr);
-			pointRelais = buCmde.getPRById(id_pr);
+			// J'enregistre les données du point relais sélectionné.
+			for(PointRelais pr : tousLesPointRelais) {
+				if(pr.getId() == id_pr) {
+					pointRelais = pr;
+					System.out.println("je fais le point relais");
+					System.out.println(pointRelais.getAdresses().get(0).getCodePostal().getVilles().get(0));
+				}
+			}
 			ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) FacesContext.getCurrentInstance()
 					.getApplication().getNavigationHandler();
 			nav.performNavigation("/commande/13Paiement/paiement.xhtml?faces-redirect=true");
@@ -199,6 +200,23 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 	public void setBusinessPr(IBusinessCommandeChoixPointRelais businessPr) {
 		this.businessPr = businessPr;
 	}
+	
+	public PointRelais getPointRelais() {
+		return pointRelais;
+	}
+
+	public void setPointRelais(PointRelais pointRelais) {
+		this.pointRelais = pointRelais;
+	}
+	
+//	
+//	public ManagedBeanConnexionConsommateur getMonMbConnecterConso() {
+//		return monMbConnecterConso;
+//	}
+//
+//	public void setMonMbConnecterConso(ManagedBeanConnexionConsommateur monMbConnecterConso) {
+//		this.monMbConnecterConso = monMbConnecterConso;
+//	}
 	
 	
 }
