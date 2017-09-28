@@ -63,12 +63,17 @@ public class BusinessPointRelais implements IBusinessPointRelais {
     private IDaoCodePostal daoCodePostal;
 
     public java.util.List<Commande> afficherCommandesLivrees(PointRelais pointRelais) {
-        // TODO implement here
     	List<Commande> commandes = new ArrayList<>();
-    	
+    	List<Commande> commandesLivrees = new ArrayList<>();    	
     	commandes = daoPointRelais.getCommandesByIdPointRelais(pointRelais.getId());
+    	for (Commande commande : commandes) {
+    		if (commande.getDateLivraisonReelle() != null) {
+    			commandesLivrees.add(commande);
+    		}
+			
+		}
    
-        return commandes;
+        return commandesLivrees;
     }
     
     public PointRelais getPointRelaisByID(Integer id_PointRelais) {
