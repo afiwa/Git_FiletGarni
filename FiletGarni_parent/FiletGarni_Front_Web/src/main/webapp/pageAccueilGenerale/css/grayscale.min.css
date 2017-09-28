@@ -162,6 +162,7 @@ a:hover {
 
 .masthead .intro-body .brand-heading {
     color: #fff;
+    margin-top: 206px;
 }
 
 .masthead .intro-body .intro-text {
@@ -250,7 +251,8 @@ a:hover {
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     text-transform: uppercase;
-    border-radius: 0
+    border-radius: 0;
+    margin-bottom: 200px;
 }
 
 .btn-default {
