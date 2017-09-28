@@ -36,85 +36,31 @@
 			<div id="Producteurs" class="w3-container w3-border city">
 				<div id="content">
 					<ul class="timeline">
-						<li class="event">
+					
+					<ui:repeat layout="inline" id="repeaterProducteur" var="producteur"
+					value="#{mbLivreur.producteurLgnCmd.key}">
+						<li class="event ">
 							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
+								<h1 class='coordonneesProd'>
+									<h:outputText value="#{producteur.key.nom} #{producteur.key.prenom} - #{producteur.key.adresses.get(0)}" />
+								</h1>
 								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
+								
+								<ui:repeat layout="inline" id="repeaterLgnCmdProd" var="ligneCommande"
+									value="#{producteur.value}">
+								<span>
+								
+								<h:outputText value="#{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
+								
+								</span>
+								</ui:repeat>
 								<div class="member-parameters">
 									<a href="" class="follow">Valider la récupération</a>
 
 								</div>
 							</div>
 						</li>
-
-						<li id='fader' class="event">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-
-						</li>
-						<li class="event" data-date="5:00 - 8:00pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-
-						</li>
-						<li class="event" data-date="8:30 - 9:30pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-						</li>
-
-
-						<li class="event" data-date="8:30 - 9:30pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-						</li>
-
-						<li class="event" data-date="8:30 - 9:30pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-						</li>
-
+					</ui:repeat>
 					</ul>
 				</div>
 			</div>

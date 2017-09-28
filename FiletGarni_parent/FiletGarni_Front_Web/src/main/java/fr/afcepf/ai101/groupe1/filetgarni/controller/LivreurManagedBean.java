@@ -1,5 +1,6 @@
 package fr.afcepf.ai101.groupe1.filetgarni.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import fr.afcepf.ai101.filetGarni.business.api.IBusinessLivreur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
@@ -15,6 +18,8 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.Livreur;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.Producteur;
 
+@SessionScoped
+@ManagedBean(name="mbLivreur")
 public class LivreurManagedBean {
 	
 	@EJB
@@ -26,9 +31,8 @@ public class LivreurManagedBean {
 	
 	private Livreur livreurConnectee;
 	
-	private Date dateTourneeProducteur;
+	private Calendar myCal = Calendar.getInstance();
 	
-	private Date dateTourneePointRelais;
 	
 	@PostConstruct
 	public void init(){
@@ -37,8 +41,16 @@ public class LivreurManagedBean {
 	}
 
 	public void initialisationMap(){
-		producteurLgnCmd = buLivreur.afficherTourneeProducteur(livreurConnectee, dateTourneeProducteur);
-		pointRelaisCmd = buLivreur.afficherTourneePointRelais(livreurConnectee, dateTourneePointRelais);
+		
+		producteurLgnCmd = buLivreur.afficherTourneeProducteur(livreurConnectee);
+		
+		System.out.println("passe");
+		for (Map.Entry<Producteur,List<LigneCommande>> e : producteurLgnCmd.entrySet()){
+
+		}
+		
+
+		pointRelaisCmd = buLivreur.afficherTourneePointRelais(livreurConnectee);
 	}
 	
 	public void initLivreur() {
@@ -53,21 +65,6 @@ public class LivreurManagedBean {
 		this.livreurConnectee = livreurConnectee;
 	}
 
-	public Date getDateTourneeProducteur() {
-		return dateTourneeProducteur;
-	}
-
-	public void setDateTourneeProducteur(Date dateTourneeProducteur) {
-		this.dateTourneeProducteur = dateTourneeProducteur;
-	}
-
-	public Date getDateTourneePointRelais() {
-		return dateTourneePointRelais;
-	}
-
-	public void setDateTourneePointRelais(Date dateTourneePointRelais) {
-		this.dateTourneePointRelais = dateTourneePointRelais;
-	}
 
 	public IBusinessLivreur getBuLivreur() {
 		return buLivreur;

@@ -40,10 +40,9 @@ public class DaoTourneeReelleLivraison implements IDaoTourneeReelleLivraison {
     }
 
 	@Override
-	public TourneeReelleLivraison getTourneeReelleLivraison(Livreur livreur, Date date) {
-		return (TourneeReelleLivraison) em.createQuery("SELECT t FROM TourneeReelleLivraison t left join fetch t.commandes "
-				+ "WHERE t.livreur = :pl AND t.dateTournee = :pd")
-				.setParameter("pl", livreur).setParameter("pd", date).getSingleResult();
+	public TourneeReelleLivraison getTourneeReelleLivraison(Livreur livreur) {
+		return (TourneeReelleLivraison) em.createQuery("SELECT t FROM TourneeReelleLivraison t left join fetch t.commandes WHERE t.livreur.id = :pl ")
+				.setParameter("pl", livreur.getId()).getSingleResult();
 	}
 
 }

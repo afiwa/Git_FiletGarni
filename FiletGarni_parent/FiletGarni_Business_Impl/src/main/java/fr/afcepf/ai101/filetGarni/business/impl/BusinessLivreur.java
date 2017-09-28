@@ -77,9 +77,9 @@ public class BusinessLivreur implements IBusinessLivreur {
     @EJB
     private IDaoTourneeReelleLivraison daoTourneeReelleLivraison;
 
-    public Map<PointRelais, List<Commande>> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee) {
+    public Map<PointRelais, List<Commande>> afficherTourneePointRelais(Livreur livreur) {
         TourneeReelleLivraison tourneeLiv = new TourneeReelleLivraison();
-        tourneeLiv = daoTourneeReelleLivraison.getTourneeReelleLivraison(livreur, dateTournee);
+        tourneeLiv = daoTourneeReelleLivraison.getTourneeReelleLivraison(livreur);
         List<Commande> listeCommande = new ArrayList<>();
         listeCommande = tourneeLiv.getCommandes();
         PointRelais pr = new PointRelais();
@@ -114,9 +114,9 @@ public class BusinessLivreur implements IBusinessLivreur {
     }
     
 
-    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee) {
+    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur) {
     	TourneeReelleProducteur tourneeProd = new TourneeReelleProducteur();
-        tourneeProd = daoTourneeReelleProducteur.getTourneeReelleProducteur(livreur, dateTournee);
+        tourneeProd = daoTourneeReelleProducteur.getTourneeReelleProducteur(livreur);
         List<LigneCommande> listeLgnCommandes = new ArrayList<>();
         listeLgnCommandes = tourneeProd.getLgnCommandes();
         Producteur producteur = new Producteur();
@@ -124,7 +124,7 @@ public class BusinessLivreur implements IBusinessLivreur {
         Map<Producteur,List<LigneCommande>> mapProdLgnCmd = new HashMap<>();
 
         for(LigneCommande lc: listeLgnCommandes) {
-        	
+        	// Hydrater produit conditionnement
         	if(producteur.getId() != lc.getProduit().getProducteur().getId()) {
         		
         		if(producteur.getId() != null) {
@@ -132,16 +132,18 @@ public class BusinessLivreur implements IBusinessLivreur {
         		}
         		
         		producteur = lc.getProduit().getProducteur();
+        		System.out.println("producteur id :"+producteur.getId());
         		List<Adresse> adresse = daoAdresse.getByNonSalarie(producteur);
             	producteur.setAdresses(adresse);
             	CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
             	adresse.get(0).setCodePostal(codePostal);
     			List<Ville> villes = daoVille.getByCodePostal(codePostal);
     			codePostal.setVilles(villes);
-    			
+    			System.out.println("ligne commande id:"+lc.getId());
     			listeLigneCommandeProd.add(lc);
         	}
         	else {
+        		System.out.println("ligne commande id:"+lc.getId());
         		listeLigneCommandeProd.add(lc);
         	}
 

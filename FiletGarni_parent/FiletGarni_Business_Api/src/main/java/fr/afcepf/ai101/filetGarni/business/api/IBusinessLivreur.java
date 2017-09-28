@@ -12,9 +12,9 @@ import fr.afcepf.ai101.groupe1.filetGarni.entity.SuiviIncident;
 
 public interface IBusinessLivreur {
 
-    public Map<PointRelais,List<Commande>> afficherTourneePointRelais(Livreur livreur, java.util.Date dateTournee);
+    public Map<PointRelais,List<Commande>> afficherTourneePointRelais(Livreur livreur);
 
-    public Map<Producteur,List<LigneCommande>> afficherTourneeProducteur(Livreur livreur, java.util.Date dateTournee);
+    public Map<Producteur, List<LigneCommande>> afficherTourneeProducteur(Livreur livreur);
 
     public java.util.List<Commande> afficherCommandeALivreePointRelais(Livreur livreur, PointRelais pointRelais, java.util.Date dateTournee);
 

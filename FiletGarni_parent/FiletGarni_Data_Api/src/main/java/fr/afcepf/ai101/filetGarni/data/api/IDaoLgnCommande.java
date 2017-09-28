@@ -27,5 +27,7 @@ public interface IDaoLgnCommande {
     public void signalerRetardLivraison();
     
 	public List<LigneCommande> getLignesCommandeByIdCommmande(Integer id_commande);
+	
+	public List<LigneCommande> getLignesCommandeByTourneeReelleProdAndProducteur(Integer id_tourneeReelleProd, Integer id_producteur);
 
 }
