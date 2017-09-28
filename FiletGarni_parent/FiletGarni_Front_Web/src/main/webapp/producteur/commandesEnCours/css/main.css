@@ -126,7 +126,7 @@ table {
 
 body {
     font-family: 'Roboto', sans-serif;
-    overflow: scroll;
+    overflow: auto;
 }
 
 header {
