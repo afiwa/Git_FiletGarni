@@ -34,12 +34,12 @@ public class ChoixPointRelaisConsommateurManagedBean implements Serializable{
 //	private Consommateur user = new Consommateur();
 	
 	/* Parti simulation */
-	String adresseDomicile ="7-9 Rue Gathelot, 92140 Clamart, France";
-	String longitudeDomicile ="2.2649";
-	String latitudeDomicile = "48.798723";
-	String adresseTravail ="26 Rue du Quatre Septembre, 75002 Paris, France";
-	String longitudeTravail ="2.333908";
-	String latitudeTravail = "48.870135";
+	String adresseDomicile ="54 Rue Voltaire, 92220 Malakoff, France";
+	String longitudeDomicile ="2.311463";
+	String latitudeDomicile = "48.821152";
+	String adresseTravail ="27 Rue de Varenne, 75007 Paris, France";
+	String longitudeTravail ="2.324145";
+	String latitudeTravail = "48.853924";
 	/*Fin Simulation*/
 	@EJB
 	IBusinessCommandeChoixPointRelais businessPr;

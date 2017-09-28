@@ -72,7 +72,7 @@
 											<label for="cardNumber">Numéro de carte</label>
 											<div class="input-group">
 												<input type="tel" class="form-control" name="cardNumber"
-													placeholder="Numéro de Carte valide" required="true" /> <span
+													placeholder="Numéro de Carte valide" id="carteBancaire" /> <span
 													class="input-group-addon"><i
 													class="fa fa-credit-card"></i></span>
 											</div>
@@ -86,13 +86,13 @@
 													d'expiration</span><span class="visible-xs-inline">Date</span>
 												exp.</label> <input type="tel" class="form-control"
 												name="cardExpiry" placeholder="MM / AAAA"
-												autocomplete="cc-exp" />
+												autocomplete="cc-exp" id="dateExpiration"/>
 										</div>
 									</div>
 									<div class="col-xs-5 col-md-5 pull-right">
 										<div class="form-group">
 											<label for="cardCVC">Code CVC</label> <input type="tel"
-												class="form-control" name="cardCVC" placeholder="CVC" />
+												class="form-control" name="cardCVC" placeholder="CVC" id="CVC" />
 										</div>
 									</div>
 								</div>
