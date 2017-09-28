@@ -30,6 +30,13 @@ public class PageFicheProducteurDetailleManagedBean {
 		return "/commande/ficheProducteurDetaillee/ficheProducteurDetaillee.xhtml?faces-redirect=true";
 	}
 	
+	public String afficherFicheProducteurDetailleParIdProduit(Integer paramid_produit) {
+		url = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+		producteurSelectionne = businessCommande.getProducteurByIdProduit(paramid_produit);
+		produitsProducteur = businessCommande.getProduitsByIdProducteur(producteurSelectionne.getId());
+		return "/commande/ficheProducteurDetaillee/ficheProducteurDetaillee.xhtml?faces-redirect=true";
+	}
+	
 	public String retournerPagePrecedente() {
 		return url + "?faces-redirect=true";
 	}

@@ -1,66 +1,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:component>
-	 <figure class="FicheProduit">
-	 		
-	 		<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}">
-	        	<h:graphicImage value="../../Ressources/Images/Images_produits/#{produit.photo}" 
-	        	 				class="image_principale"/>
-	        </h:commandLink>
-	        
-	        
-	        <div class="icons">
-	        
-	        	
-	            <a>
-	                <i id="petitPanier" class="ion-android-cart cd-add-to-cart">
-	            	<h:outputLabel id="quantitePanierProduit" class="nbArticle" value="#{mbTestPanier.afficherQuantiteLigneCommande(produit)}">
-	            		<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
-	            	</h:outputLabel>
-<!-- 	                	<span class="nbArticle">0</span> -->
-	               </i>
-	            </a>
-	                   
-	           	<input class="image_minus" type="image" src="minus4.png" />
-	            
-				
-			
-	            <h:commandLink>
-	            	<input class="image_plus" type="image" src="plus4.png" />
-	            		<f:ajax	listener="#{mbTestPanier.remplirPanier(1,produit)}"  
-								event="click" 
-								execute="@form" 
-								render="form-conso:icons form-conso:petitPanier form-conso:quantitePanierProduit form-conso:repeater-addToCart" />
-				</h:commandLink> 
-	            
-	            
-	            	
-	        </div>
-	        <figcaption>
-	        	<h:commandLink action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"
-	        					value="#{produit.libelle}"
-	        					class="nomProduit"/>
-	            <h3 class="prixProduit">
-	            	#{produit.conditionnements.get(0).libelle}	
-				 </h3>
-	            <h2 class="ferme"><a href="">#{produit.producteur.raisonSociale}</a></h2>
-	            <h2 class="poids">
-	            	<h:outputLabel value="#{produit.conditionnements.get(0).quantite}" >
-		            	<f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
-		            </h:outputLabel>
-	            	#{produit.conditionnements.get(0).unite}           
-	            </h2>
-	            <div class="prixKilo">
-		            <h:outputLabel value="#{produit.prix}" >
-		            	<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-		            </h:outputLabel>
-					 €
-	            </div>
-	        </figcaption>
-	    </figure>
-	</ui:component> 
+<ui:component>
+	<figure class="FicheProduit"> <h:commandLink
+		action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}">
+		<h:graphicImage
+			value="../../Ressources/Images/Images_produits/#{produit.photo}"
+			class="image_principale" />
+	</h:commandLink>
+
+
+	<div class="icons">
+
+
+		<a> <h:panelGroup id="petitPanier" layout="block">
+				<i class="ion-android-cart cd-add-to-cart"> <h:outputLabel
+						id="quantitePanierProduit" class="nbArticle"
+						value="#{mbTestPanier.quantites[produit.id]}">
+						<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+					</h:outputLabel>
+				</i>
+			</h:panelGroup>
+		</a>
+
+		<h:commandLink>
+			<input class="image_minus" type="image" src="minus4.png" />
+			<f:ajax listener="#{mbTestPanier.remplirPanier(-1,produit)}"
+				event="click" execute="@form"
+				render="icons petitPanier :form-conso:grosPanier :form-conso:prixTotalPanier :form-conso:pastille :form-conso:listeDeroulanteQuantite" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<input class="image_plus" type="image" src="plus4.png" />
+			<f:ajax listener="#{mbTestPanier.remplirPanier(1,produit)}"
+				event="click" execute="@form"
+				render="icons petitPanier :form-conso:grosPanier :form-conso:prixTotalPanier :form-conso:pastille :form-conso:listeDeroulanteQuantite" />
+		</h:commandLink>
+	</div>
+
+
+	<figcaption> <h:commandLink
+		action="#{mbPageProduitDetaille.afficherFicheProduitDetaille(produit.id)}"
+		value="#{produit.libelle}" class="nomProduit" />
+	<h3 class="prixProduit">
+		#{produit.conditionnements.get(0).libelle}</h3>
+	<h:commandLink
+		action="#{mbFicheProducteurDetaille.afficherFicheProducteurDetailleParIdProduit(produit.id)}"
+		value="#{produit.producteur.raisonSociale}" class="ferme" />
+	<h2 class="poids">
+		<h:outputLabel value="#{produit.conditionnements.get(0).quantite}">
+			<f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+		</h:outputLabel>
+		#{produit.conditionnements.get(0).unite}
+	</h2>
+	<div class="prixKilo">
+		<h:outputLabel value="#{produit.prix}">
+			<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+		</h:outputLabel>
+		€
+	</div>
+	</figcaption> </figure>
+</ui:component>
 </html>
