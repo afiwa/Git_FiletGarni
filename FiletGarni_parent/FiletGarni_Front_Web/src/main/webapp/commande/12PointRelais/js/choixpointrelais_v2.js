@@ -167,17 +167,16 @@ function initMarkerAndMapPR(){
             		'<nav>'+
             			'<ul class="cd-tabs-navigation">'+
             				'<li><a data-content="adresse" class="selected" href="#0" style="padding-left: 40px;">Adresse</a></li>'+
-            				'<li><a data-content="horaire" href="#0" style="padding-left: 40px;">Horaire </a></li>'+
+            				'<li><a data-content="horaire" href="#0" style="padding-left: 40px;">Horaires</a></li>'+
             			'</ul>'+
             	'<!-- cd-tabs-navigation -->'+
             		'</nav>'+
             		'<ul class="cd-tabs-content">'+
             			'<li data-content="adresse" class="selected">'+
             				'<h3 class="historique-pr-nom">'+feature.nom+'</h3>'+
-            				'<div class="historique-pr-ville">'+feature.ville +
-            				'<div class="historique-pr-cp">'+feature.cp+'</div>'+
-            				'</div>'+
             				'<div class="historique-pr-adresse">'+feature.adresse+'</div>'+
+            				'<div class="historique-pr-cp historique-pr-ville">'+feature.cp + ' ' +feature.ville +
+            				'</div>'+
             			'</li>'+
 
            				'<li data-content="horaire">';
@@ -264,7 +263,7 @@ $(document).ready(function(){
 	choixDepart = $("input[name=adresse]:checked").val();
 	console.log(choixDepart);
 	$("input[name=adresse]").change(function(){
-		console.log(mapPR.get(markerSelected).id);
+//		console.log(mapPR.get(markerSelected).id);
 		choixDepart = $("input[name=adresse]:checked").val();
 		setMarkerVisible(distanceMax);
 		changeCenterOfMap();
@@ -272,9 +271,11 @@ $(document).ready(function(){
 	});
 	
 	slider.oninput = function() {
-	    //output.innerHTML = this.value;
+		output = document.getElementById("lblDistanceKm");
+		output.innerHTML = slider.value + "km"; // Display the default slider value
 		distanceMax = slider.value;
 		setMarkerVisible(distanceMax);
+		
 	}
 });
 
@@ -332,11 +333,11 @@ function changeCenterOfMap(){
 }
 
 
-/*
 
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
-*/
+
+var output = document.getElementById("lblDistanceKm");
+output.innerHTML = slider.value + "km"; // Display the default slider value
+
 // Update the current slider value (each time you drag the slider handle)
 
 

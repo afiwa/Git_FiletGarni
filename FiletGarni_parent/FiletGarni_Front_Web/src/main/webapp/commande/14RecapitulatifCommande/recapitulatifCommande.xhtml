@@ -57,6 +57,7 @@
 				<!-- <h1><b>Récapitulatif de votre commande</b></h1> -->
 				<!-- <hr/> -->
 				<h3 class="bg-success">
+<<<<<<< HEAD
 					Votre commande d'un montant total de 
 					<span>
 					<b><h:outputLabel value="#{mbTestPanier.totalMontantCommande}">
@@ -74,6 +75,21 @@
 					</b>
 					<br/>
 					Toute l'équipe du Filet Garni vous remercie de votre confiance !
+=======
+					Toute l'équipe du Filet Garni vous remercie de votre confiance ! <br />
+					<span> Votre commande N° CMD-FLT-201709- <h:outputLabel
+							value="#{mbPaiement.commande.id}">
+						</h:outputLabel>
+					</span> d'un montant total de <span> <b><h:outputLabel
+								value="#{mbTestPanier.totalMontantCommande}">
+								<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+							</h:outputLabel> € </b></span> a bien été enregistrée et sera livrée le <b><h:outputLabel
+							value="#{mbPaiement.commande.dateLivraisonPrevue}">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+						</h:outputLabel></b> chez <b> <h:outputLabel
+							value="#{mbPaiement.commande.pointRelais.raisonSociale}"></h:outputLabel>
+					</b>
+>>>>>>> Ludo2
 				</h3>
 
 				<div id="recap-cmd">
@@ -97,9 +113,9 @@
 
 									<div class="description">
 										<span><b><h:outputLabel
-													value="#{ligneCommande.produit.libelle.toString()}" /></b></span>
-										<span> <h:outputLabel
-												value="#{ligneCommande.produit.prix}" class="article-price">
+													value="#{ligneCommande.produit.libelle.toString()}" /></b></span> <span>
+											<h:outputLabel value="#{ligneCommande.produit.prix}"
+												class="article-price">
 												<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 											</h:outputLabel> €
 										</span> <span> <h:outputLabel
@@ -199,7 +215,7 @@
 
 
 							<div class="form-group col-md-6 contenu">
-															<label class="control-label" for="shippingaddress2">Etablissement</label>
+								<label class="control-label" for="shippingaddress2">Etablissement</label>
 								<div class="controls">
 									<h:outputLabel class="form-control"
 										value="#{mbPaiement.commande.pointRelais.raisonSociale}"></h:outputLabel>
@@ -207,8 +223,8 @@
 							</div>
 
 							<div class="form-group col-md-6 contenu">
-															<span class="required-lbl"></span><label class="control-label"
-																for="shippingaddress1">Rue</label>
+								<span class="required-lbl"></span><label class="control-label"
+									for="shippingaddress1">Rue</label>
 								<div class="controls">
 									<h:outputLabel class="form-control"
 										value="#{mbPaiement.adressePointRelais}"></h:outputLabel>
@@ -218,8 +234,8 @@
 
 
 							<div class="form-group col-md-6 contenu">
-															<span class="required-lbl"></span><label class="control-label"
-																for="shippingcity">Ville</label>
+								<span class="required-lbl"></span><label class="control-label"
+									for="shippingcity">Ville</label>
 								<div class="controls form-control">
 									<h:outputLabel value="#{mbPaiement.codePostalPointRelais}">
 										<span>&nbsp;</span>
@@ -228,13 +244,59 @@
 								</div>
 							</div>
 
+							<div class="form-group col-md-6 contenu">
+								<span class="required-lbl"></span><label class="control-label"
+									for="shippingcity">Mail</label>
+								<div class="controls form-control">
+									<h:outputLabel
+										value="#{mbPaiement.commande.pointRelais.mail.toString()}"></h:outputLabel>
+								</div>
+							</div>
+
+							<div class="form-group col-md-6 contenu">
+								<span class="required-lbl"></span><label class="control-label"
+									for="shippingcity">Téléphone</label>
+								<div class="controls form-control">
+									<h:outputLabel
+										value="#{mbPaiement.commande.pointRelais.tel1.toString()}"></h:outputLabel>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="block shipping-info">
+							<div class="bg-primary form-group col-md-12">
+								<label class="control-label" for="billinginformation">Horaires d'ouverture</label>
+							</div>
+							<ui:repeat layout="inline" id="repeater" var="horaire"
+								value="#{mbPaiement.commande.pointRelais.listeHorairesOuverture}">
+								
+								<div class="form-group col-md-6 contenu">
+									<div class="controls form-control">
+										<h:outputLabel value="#{horaire.jour.libelle.toString()}"></h:outputLabel>
+									    <span>&nbsp;:&nbsp;</span>
+										<h:outputLabel value="#{horaire.heureDeDébut}"></h:outputLabel>
+										<span>&nbsp;-&nbsp;</span>
+										<h:outputLabel value="#{horaire.heureDeFin}"></h:outputLabel>
+											
+									</div>
+								</div>
+								
+							</ui:repeat>
 						</div>
 
 					</div>
 				</div>
+<<<<<<< HEAD
 						<a href="../pageAccueilConsommateur/pageAccueilConsommateur.jsf" class="btn btn-primary">Retour à l'accueil</a>
 <!-- 						<button id="" name="placeorderbtn" -->
 <!-- 							>Retour à l'accueil</button></a> -->
+=======
+				<a href="../../pageAccueilGenerale/pageAccueilGenerale.jsf"
+					class="btn btn-primary">Retour à l'accueil</a>
+				<!-- 						<button id="" name="placeorderbtn" -->
+				<!-- 							>Retour à l'accueil</button></a> -->
+>>>>>>> Ludo2
 			</div>
 
 

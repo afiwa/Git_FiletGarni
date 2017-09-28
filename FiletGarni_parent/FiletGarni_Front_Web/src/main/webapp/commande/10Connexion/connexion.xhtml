@@ -4,7 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml" xmlns:customer="http://java.sun.com/jsf/composite/components/customer">
+<ui:composition template="/WEB-INF/templates/archeConsommateur.xhtml"
+	xmlns:customer="http://java.sun.com/jsf/composite/components/customer">
 
 	<ui:define name="title">InscriptionConnection</ui:define>
 	<ui:define name="headcssscript">
@@ -16,13 +17,15 @@
 		<link type="text/css" rel="stylesheet" href="../css/main.css" />
 		<link type="text/css" rel="stylesheet" href="../css/ownmain.css" />
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
+
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form name="form-connexion">
-		<div id="warningConnexion">
-			<label id="warningConnexion">Veuillez vous connecter pour finaliser votre commande.</label>
-		</div>
+			<div id="warningConnexion">
+				<label id="warningConnexion">Veuillez vous connecter pour
+					finaliser votre commande.</label>
+			</div>
 			<div class="login-wrap">
 				<div class="login-html">
 
@@ -33,19 +36,23 @@
 					<div class="login-form">
 						<div class="sign-in-htm">
 							<div class="group">
-								<label for="user" class="label">Nom d'utilisateur</label> <h:inputText
-									id="user" class="input" value="#{mbConnecterConso.mail}" />
+								<label for="user" class="label">Nom d'utilisateur</label>
+								<h:inputText id="user" class="input"
+									value="#{mbConnecterConso.mail}"></h:inputText>
 							</div>
 							<div class="group">
-								<label for="pass" class="label">Mot de passe</label> <h:inputSecret
-									id="pass" class="input" data-type="password" value="#{mbConnecterConso.mdp}" />
+								<label for="pass" class="label">Mot de passe</label>
+								<h:inputSecret id="pass" class="input" data-type="password"
+									value="#{mbConnecterConso.mdp}"></h:inputSecret>
 							</div>
 							<div class="group">
-								<input id="check" type="checkbox" class="check" checked="checked"/>
-								<label for="check"><span class="icon"></span> Rester connecté</label>
+								<input id="check" type="checkbox" class="check"
+									checked="checked" /> <label for="check" class="resterConnecte"><span
+									class="icon"></span> Rester connecté</label>
 							</div>
 							<div class="group">
-								<h:commandButton class="button" value="Connexion" action="#{mbConnecterConso.seConnecter()}" />
+								<h:commandButton class="button" value="Connexion"
+									action="#{mbConnecterConso.seConnecter()}" />
 							</div>
 							<div class="hr"></div>
 							<div class="foot-lnk">
@@ -82,6 +89,10 @@
 				</div>
 			</div>
 		</h:form>
+		
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/autoFill.js"></script>
 	</ui:define>
 
 </ui:composition>

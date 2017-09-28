@@ -54,20 +54,23 @@
 **/
 .shopping-cart .buttons {
   position: relative;
-  padding-top: 24px;
+  padding-top: 32px;
   margin-right: 60px;
 }
 .shopping-cart .delete-btn,
 .shopping-cart .like-btn {
   display: inline-block;
   Cursor: pointer;
+  opacity:0.7;
 }
 .shopping-cart .delete-btn {
   background: url("https://designmodo.com/demo/shopping-cart/delete-icn.svg") no-repeat center;
+  background-color:var(--couleur-orange-clair);
 }
 
 .shopping-cart .delete-btn:hover {
   background-color: var(--couleur-orange-clair);
+  opacity:1;
 }
  
 .shopping-cart .like-btn {
@@ -145,9 +148,8 @@
 }
  
 .shopping-cart a[class*=btn] {
-  width: 32px;
-  height: 32px;
-  background-color: #E1E8EE;
+  width: 24px;
+  height: 24px;
   border-radius: 0.2em;
   border: none;
   cursor: pointer;

@@ -119,6 +119,11 @@ var readyInterval = setInterval(function() {
 }, 250);
 
 
+$(".fa-credit-card").on("click", function(){
+	$("#carteBancaire").val("4434 5431 6936 7930");
+	$("#dateExpiration").val("11 / 2018");
+	$("#CVC").val("711");
+});
 /*
 https://goo.gl/PLbrBK
 */

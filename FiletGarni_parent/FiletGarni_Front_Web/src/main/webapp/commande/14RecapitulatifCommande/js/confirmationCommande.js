@@ -11,7 +11,11 @@ $('#placeorderbtn').on('click', function(e) {
 //			formFalse = true;
 //		}
 //	} else {
+<<<<<<< HEAD
 		window.location.href = "../pageAccueilConsommateur/pageAccueilConsommateur.jsf";
+=======
+		window.location.href = "../11Panier/panier.jsf";
+>>>>>>> Ludo2
 //	}
 });
 
