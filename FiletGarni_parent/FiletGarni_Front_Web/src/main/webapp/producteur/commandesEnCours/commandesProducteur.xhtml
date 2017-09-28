@@ -25,7 +25,13 @@
 		<!-- Afficher le contenu du panier -->
 		<div class="shopping-cart">
 			<!-- Title -->
-			<div class="title">Commandes du jour<h:commandButton value="enregistrer mes modifications" class="button btn enregistrerModifications" id="boutonTitre"></h:commandButton></div>
+			<div class="title">Commandes du jour
+				<h:commandButton value="enregistrer mes modifications" 
+								class="button btn enregistrerModifications" 
+								id="boutonTitre"
+								action="#{mbProducteurCommandeDuJour.viderLesCommandesDuJour()}">
+				</h:commandButton>
+			</div>
 			<table class="enTete">
 				<tr>
 					<td><b>Date d'enlèvement</b></td>

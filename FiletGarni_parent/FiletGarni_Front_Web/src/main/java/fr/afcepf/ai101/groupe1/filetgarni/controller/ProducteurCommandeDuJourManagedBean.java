@@ -57,6 +57,11 @@ public class ProducteurCommandeDuJourManagedBean {
 		}
 		return "/producteur/commandesEnCours/commandesProducteur.xhtml?faces-redirect=true";
 	}
+	
+	public String viderLesCommandesDuJour() {
+		listeCommandesDuJour.clear();
+		return "/producteur/commandesEnCours/commandesProducteur.xhtml?faces-redirect=true";
+	}
 
 
 	
