@@ -2,6 +2,7 @@ package fr.afcepf.ai101.filetGarni.data.api;
 
 import java.util.List;
 
+import fr.afcepf.ai101.groupe1.filetGarni.entity.Commande;
 import fr.afcepf.ai101.groupe1.filetGarni.entity.PointRelais;
 
 public interface IDaoPointRelais {
@@ -15,4 +16,6 @@ public interface IDaoPointRelais {
     public List<PointRelais> getAll();
     
     public PointRelais getById(Integer paramIdPointRelais);
+
+	public List<Commande> getCommandesByIdPointRelais(Integer paramIdPointRelais);
 }

@@ -1,5 +1,8 @@
 package fr.afcepf.ai101.filetGarni.business.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -61,9 +64,17 @@ public class BusinessPointRelais implements IBusinessPointRelais {
 
     public java.util.List<Commande> afficherCommandesLivrees(PointRelais pointRelais) {
         // TODO implement here
-        return null;
+    	List<Commande> commandes = new ArrayList<>();
+    	
+    	commandes = daoPointRelais.getCommandesByIdPointRelais(pointRelais.getId());
+   
+        return commandes;
     }
-
+    
+    public PointRelais getPointRelaisByID(Integer id_PointRelais) {
+    	return daoPointRelais.getById(id_PointRelais);
+    }
+   
     public Commande validerRecuperationConsommateur(Integer id_commande) {
         // TODO implement here
         return null;

@@ -25,58 +25,39 @@
 			<tr>
 				<th><span>Date</span></th>
 				<th>Numéro de commande</th>
-				<th>Informations concernant le mec qui vient récupérer la
-					commande</th>
+				<th>Informations Consommateur</th>
 				<th>Statut</th>
 			</tr>
-
+<ui:repeat layout="inline" id="repeater" var="Commandes"
+					value="#{mbPointRelais.listCommandePR}">
 			<tr>
-				<td>24/09/2017</td>
-				<td>n°32326564</td>
-				<td><label>Nom:</label><br /> <label>Prénom:</label>
-					<address>Adresse:</address>
-					<address>CodePostal:</address>
-					<address>Ville:</address></td>
+			<td><h:outputLabel value="#{Commandes.dateLivraisonReelle.date}"  />/<h:outputLabel value="#{Commandes.dateLivraisonReelle.month+1}"/>/<h:outputLabel value="#{Commandes.dateLivraisonReelle.year+1900}"  />
+			
+			
+			</td>
+				<td><span>N° Commande: CL-2017-09-</span><h:outputLabel  value="#{Commandes.id}"/><br /> </td>
+				<td><span>Nom: </span><h:outputLabel value="#{Commandes.consommateur.nom}" /><br /> 
+				<span>Prénom: </span><h:outputLabel value="#{Commandes.consommateur.prenom}" /><br />
+				<span>Tel: </span><h:outputLabel value="#{Commandes.consommateur.tel1}" /><br/>
+				<span>Mail: </span><h:outputLabel value="#{Commandes.consommateur.mail}" /><br/> </td>
 				<td align="center">
 					<div class="btn-group">
-						<button class="btnRecup">Récupéré</button>
+						<input type="button" value="Récupéré" class="btnRecup" onclick="rendreDisable(this)"/>
 					</div>
 				</td>
 			</tr>
-
-			<tr>
-				<td>24/09/2017</td>
-				<td>n°32326564</td>
-				<td><label>Nom:</label><br /> <label>Prénom:</label>
-					<address>Adresse:</address>
-					<address>CodePostal:</address>
-					<address>Ville:</address></td>
-				<td align="center">
-					<div class="btn-group">
-						<button class="btnRecup">Récupéré</button>
-					</div>
-				</td>
-			</tr>
-
-			<tr>
-				<td>24/09/2017</td>
-				<td>n°32326564</td>
-				<td><label>Nom:</label><br /> <label>Prénom:</label>
-					<address>Adresse:</address>
-					<address>Code Postal:</address>
-					<address>Ville:</address></td>
-				<td align="center">
-					<div class="btn-group">
-						<button class="btnRecup">Récupéré</button>
-					</div>
-				</td>
-			</tr>
+</ui:repeat>
+				
 
 		</table>
 		<script
 			src='http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'></script>
 
-
+		<script type="text/javascript">
+			function rendreDisable(elem){
+				elem.disabled = true;
+			}
+</script>
 	</ui:define>
 </ui:composition>
 </html>
