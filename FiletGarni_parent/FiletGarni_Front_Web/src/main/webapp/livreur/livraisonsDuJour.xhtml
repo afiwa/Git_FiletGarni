@@ -41,23 +41,25 @@
 					value="#{mbLivreur.producteurLgnCmd.entrySet().toArray()}">
 						<li class="event ">
 							<div class="member-infos">
-								<h1 class='coordonneesProd'>
+								<h1 class='coordonneesProd' onclick="prodfunction(this)">
 									<h:outputText value="#{map.key.nom} #{map.key.prenom} - 
 									#{map.key.adresses.get(0).numeroRue} #{map.key.adresses.get(0).nomRue} 
 									#{map.key.adresses.get(0).codePostal.codePostal} #{map.key.adresses.get(0).codePostal.villes.get(0).nom}" />
 								</h1>
+								<div class="member-parameters prod" style="display: none;">
 									<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-									<div class="member-parameters">
+									
 									
 									<ui:repeat layout="block" id="repeaterLgnCmdProd" var="ligneCommande"
 									value="#{map.value}">
-										<span>
-										<h:outputText class="cmdARecup" value="#{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
+										<span >
+										<h:outputText style="font-family:'Roboto'; line-height: 5px;margin-left: 2em;padding-bottom: 1em;"
+										 class="cmdARecup" value="CL-2017-09-#{ligneCommande.commande.id} - #{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
 										<br/>
 										</span>
 									</ui:repeat>
 									<a href="" class="follow">Valider la récupération</a>
-									</div>
+								</div>
 							</div>
 						</li>
 					</ui:repeat>
@@ -75,20 +77,21 @@
 					
 						<li class="event">
 							<div class="member-infos">
-								<h1 class='coordonneesPr'>
+								<h1 class='coordonneesPr' onclick="prfunction(this)">
 									<h:outputText value="#{map.key.raisonSociale} - 
 									#{map.key.adresses.get(0).numeroRue} #{map.key.adresses.get(0).nomRue} 
 									#{map.key.adresses.get(0).codePostal.codePostal} #{map.key.adresses.get(0).codePostal.villes.get(0).nom}" />
 								</h1>
-								<h2 class="titreCmdARecup">Commandes à déposer</h2>
-								<ui:repeat layout="block" id="repeaterLgnCmdProd" var="commande"
-									value="#{map.value}">
-										<span>
-										<h:outputText class="cmdARecup" value="CL-2017-09-#{commande.id}" />
-										<br/>
-										</span>
+								
+								<div class="member-parameters pr" style="display: none;">
+									<h2 class="titreCmdARecup">Commandes à déposer</h2>
+									<ui:repeat layout="block" id="repeaterLgnCmdProd" var="commande"
+										value="#{map.value}">
+											<span style="font-family:'Roboto'; line-height: 5px;margin-left: 2em;">
+											<h:outputText class="cmdARecup" value="CL-2017-09-#{commande.id}" />
+											<br/>
+											</span>
 									</ui:repeat>
-								<div class="member-parameters">
 									<a href="" class="follow">Valider la récupération</a>
 
 								</div>
