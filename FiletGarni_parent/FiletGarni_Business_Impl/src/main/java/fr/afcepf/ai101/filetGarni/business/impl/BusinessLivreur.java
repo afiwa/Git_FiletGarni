@@ -83,18 +83,18 @@ public class BusinessLivreur implements IBusinessLivreur {
         List<Commande> listeCommande = new ArrayList<>();
         listeCommande = tourneeLiv.getCommandes();
         PointRelais pr = new PointRelais();
-        List<Commande> listeCommandePr = new ArrayList<>();
+        List<Commande> listeCommandePr;
         Map<PointRelais,List<Commande>> mapPrCmd = new HashMap<>();
     	
         for(Commande c: listeCommande) {
         	
-        	if(pr.getId() != c.getPointRelais().getId()) {
-        		
-        		if(pr.getId() != null) {
-        			mapPrCmd.put(pr, listeCommandePr);
-        		}
-        		
+        	if( mapPrCmd.containsKey(c.getPointRelais())) {
+        		mapPrCmd.get(c.getPointRelais()).add(c);
+        	}
+        	else {	
         		pr = c.getPointRelais();
+        		listeCommandePr = new ArrayList<>();
+        		listeCommandePr.add(c);
         		List<Adresse> adresse = daoAdresse.getByNonSalarie(pr);
             	pr.setAdresses(adresse);
             	CodePostal codePostal = daoCp.getByAdresse(adresse.get(0));
@@ -102,14 +102,9 @@ public class BusinessLivreur implements IBusinessLivreur {
     			List<Ville> villes = daoVille.getByCodePostal(codePostal);
     			codePostal.setVilles(villes);
     			
-    			listeCommandePr.add(c);
+    			mapPrCmd.put(pr, listeCommandePr);
         	}
-        	else {
-        		listeCommandePr.add(c);
-        	}
-
         }
-
         return mapPrCmd;
     }
     

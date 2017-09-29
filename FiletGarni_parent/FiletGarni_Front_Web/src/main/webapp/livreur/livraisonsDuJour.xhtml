@@ -48,10 +48,12 @@
 								</h1>
 									<h2 class="titreCmdARecup">Commandes à récupérer</h2>
 									<div class="member-parameters">
-									<ui:repeat layout="inline" id="repeaterLgnCmdProd" var="ligneCommande"
+									
+									<ui:repeat layout="block" id="repeaterLgnCmdProd" var="ligneCommande"
 									value="#{map.value}">
 										<span>
-										<h:outputText value="#{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
+										<h:outputText class="cmdARecup" value="#{ligneCommande.produit.libelle} : #{ligneCommande.quantiteCommandee}" />
+										<br/>
 										</span>
 									</ui:repeat>
 									<a href="" class="follow">Valider la récupération</a>
@@ -67,85 +69,32 @@
 				style="display: none">
 				<div id="content">
 					<ul class="timeline">
-						<li class="event" data-date="12:30 - 1:00pm">
+					
+					<ui:repeat layout="inline" id="repeaterPr" var="map"
+					value="#{mbLivreur.pointRelaisCmd.entrySet().toArray()}">
+					
+						<li class="event">
 							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
+								<h1 class='coordonneesPr'>
+									<h:outputText value="#{map.key.raisonSociale} - 
+									#{map.key.adresses.get(0).numeroRue} #{map.key.adresses.get(0).nomRue} 
+									#{map.key.adresses.get(0).codePostal.codePostal} #{map.key.adresses.get(0).codePostal.villes.get(0).nom}" />
+								</h1>
+								<h2 class="titreCmdARecup">Commandes à déposer</h2>
+								<ui:repeat layout="block" id="repeaterLgnCmdProd" var="commande"
+									value="#{map.value}">
+										<span>
+										<h:outputText class="cmdARecup" value="CL-2017-09-#{commande.id}" />
+										<br/>
+										</span>
+									</ui:repeat>
 								<div class="member-parameters">
 									<a href="" class="follow">Valider la récupération</a>
 
 								</div>
 							</div>
 						</li>
-
-						<li id='fader' class="event" data-date="2:30 - 4:00pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-
-						</li>
-						<li class="event" data-date="5:00 - 8:00pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-
-						</li>
-						<li class="event" data-date="8:30 - 9:30pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-						</li>
-
-
-						<li class="event" data-date="8:30 - 9:30pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-						</li>
-
-						<li class="event" data-date="8:30 - 9:30pm">
-							<div class="member-infos">
-								<h1 class='coordonneesProd'>Nom producteur - 9 boulevard du
-									Général de Gaulle 92000 Montrouge</h1>
-								<h2 class="titreCmdARecup">Commandes à récupérer</h2>
-								<span></span>
-								<div class="member-parameters">
-									<a href="" class="follow">Valider la récupération</a>
-								</div>
-
-							</div>
-						</li>
-
+						</ui:repeat>
 					</ul>
 				</div>
 			</div>
