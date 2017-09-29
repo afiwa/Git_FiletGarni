@@ -57,7 +57,7 @@ public class DaoPointRelais implements IDaoPointRelais {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Commande> getCommandesByIdPointRelais(Integer paramIdPointRelais) {
-		return em.createQuery("SELECT cmd FROM Commande cmd WHERE cmd.pointRelais.id = :pId").setParameter("pId", paramIdPointRelais).getResultList();
+		return em.createQuery("SELECT cmd FROM Commande cmd WHERE cmd.pointRelais.id = :pId ORDER BY cmd.dateLivraisonReelle").setParameter("pId", paramIdPointRelais).getResultList();
 	}
 	
 
