@@ -119,3 +119,7 @@ h1 span {
 .btn-group .btnRecup:hover {
     background-color: #11A997;
 }
+
+/*.btn-group .btnRecup:focus {
+	background-color: red;
+}*/

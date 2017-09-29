@@ -485,6 +485,7 @@ body {
 .tabs {
 	position: relative;
 	margin: 40px auto;
+	z-index: 1;
 }
 
 .tabs input {

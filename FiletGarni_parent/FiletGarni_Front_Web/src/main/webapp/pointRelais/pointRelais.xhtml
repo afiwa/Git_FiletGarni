@@ -42,7 +42,8 @@
 				<span>Mail: </span><h:outputLabel value="#{Commandes.consommateur.mail}" /><br/> </td>
 				<td align="center">
 					<div class="btn-group">
-						<input type="button" value="Récupéré" class="btnRecup" onclick="rendreDisable(this)"/>
+							<input type="button" value="Récupéré" class="btnRecup" id="btn-recup"/>
+<!-- 						<input type="button" value="Récupéré" class="btnRecup" onclick="rendreDisable(this)"/> -->
 					</div>
 				</td>
 			</tr>
@@ -50,6 +51,10 @@
 				
 
 		</table>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="pointrelais.js"></script>
+		
 		<script
 			src='http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'></script>
 

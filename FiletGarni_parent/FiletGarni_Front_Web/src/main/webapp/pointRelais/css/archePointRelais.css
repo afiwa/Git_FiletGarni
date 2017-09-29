@@ -29,17 +29,17 @@
 	background-color: #f2f2f2;
 	margin-bottom: 40px;
 	padding-left: 20px;
-	
+	margin-right: ;
 }
 .bonjour{
-	color: #F99603;
+	color: #254B62;
 	margin-top: 19px;
 	margin-left: 20px;
 	font-family: roboto;
 }
 .buttonValide{
 	color: white;
-	background-color:  #F1C40F;
+	background-color:  #254B62;
 	padding-top: 16px;
 	margin-left: 20px;
 	margin-right: 90px;
@@ -47,6 +47,7 @@
 	height: 44px;
 	cursor: pointer;
 	text-align: center;
+	box-sizing:initial;
 	
 }
 li {
@@ -55,11 +56,11 @@ li {
 
 li a, .dropbtn {
 	display: inline-block;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-family: roboto;
-	color: black;
+    color: black;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+    font-family: roboto;
 }
 
 li a:hover {
