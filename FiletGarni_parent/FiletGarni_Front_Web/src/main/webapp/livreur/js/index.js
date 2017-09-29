@@ -2,6 +2,16 @@ $('.coordonneesProd').click(function(e) {
   console.log("Clicked");
   $(this).next().slideToggle();
   $(this).next().next().next().slideToggle();
+  
+  
+})
+
+$('.coordonneesPr').click(function(e) {
+  console.log("Clicked");
+  $(this).next().slideToggle();
+  $(this).next().next().next().slideToggle();
+  
+  
 })
 
 function openCity(evt, cityName) {
@@ -17,3 +27,29 @@ function openCity(evt, cityName) {
                 document.getElementById(cityName).style.display = "block";
                 evt.currentTarget.className += " w3-red";
             }
+
+function prfunction(elmt){
+	x = $(elmt).find(".pr");
+	  if(x.style.display == "block"){
+		      x.style.display = "none";
+	  }
+	  else{
+		      x.style.display = "block";
+	  }
+}
+
+function prodfunction(elmt){
+	
+	x = $(elmt).find(".prod");
+console.log(x);
+	if(x.style.display == "block"){
+		      x.style.display = "none";
+	  }
+	  else{
+		      x.style.display = "block";
+	  }
+}
+
+function validerCommande(elmt){
+	
+}
